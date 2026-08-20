@@ -794,8 +794,6 @@ window.addEventListener("resize",()=>{
 
     }
 
-});
-
     // 다시 세로로 돌리면
     if(
         mission03Detail.classList.contains("show") &&
@@ -806,6 +804,10 @@ window.addEventListener("resize",()=>{
         rotateNotice.style.display="flex";
 
     }
+
+});
+
+
 
 
 // 미션창 닫기
