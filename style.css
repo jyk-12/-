@@ -1,0 +1,1664 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+
+/* 🌤️ 하늘 */
+
+.sky {
+    position: relative;
+
+    width: 100%;
+    height: 100vh;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #8ecff4 0%,
+            #b9e2f7 45%,
+            #e7f4fa 100%
+        );
+
+    overflow: hidden;
+}
+
+
+/* ☁️ 구름 */
+
+.cloud {
+    position: absolute;
+
+    width: 220px;
+
+    opacity: 0.48;
+
+    pointer-events: none;
+}
+
+.cloud svg {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    fill: rgba(255, 255, 255, 0.9);
+
+    filter: blur(1px);
+}
+
+
+/* ☁️ 구름 위치 & 움직임 */
+
+.cloud-1 {
+    top: 12%;
+    left: -250px;
+    width: 220px;
+
+    animation: cloudRight 38s linear infinite;
+}
+
+.cloud-2 {
+    top: 30%;
+    left: calc(100% + 250px);
+    width: 155px;
+
+    animation: cloudLeft 45s linear infinite;
+}
+
+.cloud-3 {
+    top: 48%;
+    left: -250px;
+    width: 110px;
+
+    animation: cloudRight 42s linear infinite;
+}
+
+.cloud-4 {
+    top: 65%;
+    left: calc(100% + 250px);
+    width: 185px;
+
+    animation: cloudLeft 50s linear infinite;
+}
+
+.cloud-5 {
+    top: 82%;
+    left: -250px;
+    width: 130px;
+
+    animation: cloudRight 40s linear infinite;
+}
+
+
+/* ☁️ 구름 애니메이션 */
+
+@keyframes cloudRight {
+
+    from {
+        left: -250px;
+    }
+
+    to {
+        left: calc(100% + 250px);
+    }
+}
+
+@keyframes cloudLeft {
+
+    from {
+        left: calc(100% + 250px);
+    }
+
+    to {
+        left: -250px;
+    }
+}
+
+
+/* 🌤️ 시작 화면 */
+
+.start-screen {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 10;
+}
+
+
+/* ✨ MISSION START */
+
+.mission-start {
+    border: none;
+    background: transparent;
+
+    font-size: clamp(80px, 6vw, 80px);
+    font-weight: 1200;
+    letter-spacing: 0.08em;
+
+    color: #ffffff;
+
+    cursor: pointer;
+
+    text-shadow:
+        0 3px 12px rgba(70, 120, 150, 0.35);
+
+    transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
+}
+
+.mission-start:hover {
+    transform: scale(1.05);
+}
+
+.mission-start:active {
+    transform: scale(0.97);
+}
+
+
+/* 📋 미션 패널 */
+
+.mission-panel {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 24px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    opacity: 0;
+    visibility: hidden;
+
+    z-index: 20;
+
+    transition:
+        opacity 0.45s ease,
+        visibility 0.45s ease;
+}
+
+
+/* 패널이 열렸을 때 */
+
+.mission-panel.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* 📋 실제 창 */
+
+.mission-box {
+    position: relative;
+
+    width: min(90%, 750px);
+    min-height:600px;
+
+    padding: 42px 32px 32px;
+
+    background: rgba(237, 230, 251, 0.35);
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 20px 60px rgba(60, 100, 130, 0.18);
+
+    overflow-y: auto;
+
+    transform: translateY(20px) scale(0.97);
+
+    transition:
+        transform 0.45s ease;
+}
+
+
+/* 패널 등장 애니메이션 */
+
+.mission-panel.show .mission-box {
+    transform: translateY(0) scale(1);
+}
+
+
+/* ✕ 닫기 */
+
+.close-button {
+    position: absolute;
+
+    top: 16px;
+    right: 18px;
+
+    width: 34px;
+    height: 34px;
+
+    border: none;
+
+    background: transparent;
+
+    font-size: 28px;
+    font-weight: 300;
+
+    color: #78909c;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        color 0.2s ease;
+}
+
+.close-button:hover {
+    transform: rotate(90deg);
+    color: #455a64;
+}
+
+
+/* 제목 */
+
+.panel-subtitle {
+    margin-bottom: 5px;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 0.18em;
+
+    color: #78909c;
+}
+
+.mission-box h1 {
+    margin-bottom: 28px;
+
+    font-size: 30px;
+    font-weight: 800;
+
+    letter-spacing: 0.05em;
+
+    color: #37474f;
+}
+
+
+/* 📌 미션 목록 */
+
+.mission-list {
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+
+/* 미션 카드 */
+
+.mission-card {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 18px 20px;
+
+    border: none;
+    border-radius: 16px;
+
+    text-align: left;
+
+    background: #f4f9fc;
+
+    color: #455a64;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease;
+}
+
+
+/* 열려있는 미션 */
+
+.mission-card.open {
+    cursor: pointer;
+
+    background: #e8f5fb;
+}
+
+.mission-card.open:hover {
+    transform: translateY(-2px);
+
+    background: #dff1fa;
+}
+
+
+/* 잠긴 미션 */
+
+.mission-card.locked {
+    cursor: default;
+
+    opacity: 0.52;
+}
+
+
+/* FINAL */
+
+.mission-card.final {
+    margin-top: 8px;
+
+    border-top: 1px solid rgba(120, 144, 156, 0.15);
+}
+
+
+/* 미션 번호 */
+
+.mission-number {
+    display: block;
+
+    margin-bottom: 5px;
+
+    font-size: 15px;
+    font-weight: 800;
+
+    letter-spacing: 0.05em;
+}
+
+
+/* 미션 설명 */
+
+.mission-description {
+    display: block;
+
+    font-size: 12px;
+
+    color: #90a4ae;
+}
+
+
+/* 상태 */
+
+.mission-status {
+    flex-shrink: 0;
+
+    margin-left: 16px;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 0.04em;
+
+    color: #78909c;
+}
+
+
+/* 📱 모바일 */
+
+@media (max-width: 480px) {
+
+    .mission-box {
+        width: 92%;
+
+        padding:
+            38px
+            20px
+            24px;
+
+        border-radius: 20px;
+    }
+
+    .mission-box h1 {
+        font-size: 26px;
+    }
+
+    .mission-card {
+        padding: 16px;
+    }
+}
+
+/* ✨ 타이틀 폰트 */
+
+.mission-start {
+    font-family: 'Jua', sans-serif;
+}
+
+/* MISSION START 숨기기 */
+
+.start-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* ⭐ MISSION 01 내용창 */
+
+.mission-detail {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 24px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    opacity: 0;
+    visibility: hidden;
+
+    z-index: 30;
+
+    transition:
+        opacity 0.4s ease,
+        visibility 0.4s ease;
+}
+
+
+/* 내용창 열림 */
+
+.mission-detail.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* 실제 내용창 */
+
+.detail-box {
+    position: relative;
+
+    width: min(90%, 600px);
+    max-height: 300vh;
+
+    padding: 42px 30px 30px;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 20px 60px rgba(60, 100, 130, 0.2);
+
+    overflow-y: auto;
+
+    transform: translateY(20px) scale(0.97);
+
+    transition:
+        transform 0.4s ease;
+}
+
+
+.mission-detail.show .detail-box {
+    transform: translateY(0) scale(1);
+}
+
+
+/* 닫기 */
+
+.detail-close {
+    position: absolute;
+
+    top: 15px;
+    right: 18px;
+
+    width: 34px;
+    height: 34px;
+
+    border: none;
+
+    background: transparent;
+
+    font-size: 28px;
+    font-weight: 300;
+
+    color: #78909c;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.detail-close:hover {
+    transform: rotate(90deg);
+
+    color: #455a64;
+}
+
+
+/* 미션 번호 */
+
+.detail-label {
+    margin-bottom: 6px;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 0.18em;
+
+    color: #78909c;
+}
+
+
+/* 제목 */
+
+.detail-box h2 {
+    margin-bottom: 22px;
+
+    font-size: 28px;
+    font-weight: 800;
+
+    color: #37474f;
+}
+
+
+/* 🖼️ 코스 이미지 자리 */
+
+.detail-image {
+    width: 100%;
+    height: 180px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 22px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #dff2fb,
+            #edf7fa
+        );
+
+    color: #90a4ae;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 0.12em;
+}
+
+
+/* 미션 설명 */
+
+.detail-text {
+    margin-bottom: 25px;
+
+    font-size: 14px;
+    line-height: 1.8;
+    text-align: center;
+
+    color: #546e7a;
+}
+
+
+.detail-text p + p {
+    margin-top: 8px;
+    
+}
+
+
+/* 🔐 인증 영역 */
+
+.code-area {
+    padding-top: 20px;
+
+    border-top:
+        1px solid
+        rgba(120, 144, 156, 0.15);
+
+    text-align: center;
+}
+
+
+.code-area p {
+    margin-bottom: 14px;
+
+    font-size: 12px;
+    line-height: 1.7;
+
+    color: #78909c;
+}
+
+
+.code-area input {
+    width: 100%;
+
+    height: 48px;
+
+    margin-bottom: 10px;
+
+    padding: 0 15px;
+
+    border:
+        1px solid
+        rgba(120, 144, 156, 0.25);
+
+    border-radius: 12px;
+
+    outline: none;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    text-align: center;
+
+    background: #f8fbfc;
+}
+
+
+.code-area input:focus {
+    border-color: #90cce5;
+
+    background: #ffffff;
+}
+
+
+.code-area button {
+    width: 100%;
+
+    height: 48px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: #8ecff4;
+
+    color: #ffffff;
+
+    font-family: inherit;
+
+    font-size: 14px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
+}
+
+
+.code-area button:hover {
+    transform: translateY(-1px);
+
+    opacity: 0.9;
+}
+
+
+/* 📱 모바일 */
+
+@media (max-width: 480px) {
+
+    .detail-box {
+        width: 92%;
+
+        padding:
+            38px
+            20px
+            24px;
+    }
+
+    .detail-box h2 {
+        font-size: 25px;
+    }
+
+    .detail-image {
+        height: 150px;
+    }
+}
+
+.face-popup {
+
+    position: fixed;
+
+    top: 80%;
+    left: 80%;
+
+    transform: translate(-50%, -50%);
+
+    background: rgba(197, 204, 248, 0.817);
+
+    padding: 25px;
+
+    border-radius: 30px;
+
+    text-align: center;
+
+    z-index: 999;
+
+}
+
+
+
+
+/* ==========================
+   🧩 MISSION 01 QUIZ STYLE
+   ========================== */
+
+
+/* 미션 상세창 정사각형 느낌 */
+
+.detail-box {
+
+    width: min(90%, 420px);
+
+    min-height: 420px;
+    height:auto;
+
+    padding: 42px 30px 30px;
+
+    border-radius: 24px;
+
+    overflow-y: visible;
+
+}
+
+
+/* 퀴즈 영역 */
+
+.quiz-area {
+
+    text-align: center;
+
+    margin-top: 20px;
+
+}
+
+
+.quiz-title {
+
+    margin-bottom: 15px;
+
+    font-size: 20px;
+
+    font-weight: 800;
+
+    color: #37474f;
+
+}
+
+
+.quiz-question {
+
+    margin-bottom: 20px;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    color: #546e7a;
+
+}
+
+
+.quiz-area input {
+
+    width: 80%;
+
+    height: 45px;
+
+    padding: 0 15px;
+
+    border:
+
+        1px solid
+
+        rgba(120,144,156,0.25);
+
+
+    border-radius: 12px;
+
+    outline: none;
+
+    text-align: center;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    background: #f8fbfc;
+
+}
+
+
+.quiz-area input:focus {
+
+    border-color: #90cce5;
+
+    background: white;
+
+}
+
+
+/* 퀴즈 확인 버튼 */
+
+#checkQuiz {
+
+    width: 140px;
+
+    height: 48px;
+
+    margin-top: 15px;
+
+    border: none;
+
+    border-radius: 25px;
+
+    background: #8ecff4;
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+
+    transition:
+
+        transform 0.2s ease,
+
+        opacity 0.2s ease;
+
+}
+
+
+#checkQuiz:hover {
+
+    transform: translateY(-2px);
+
+    opacity: 0.9;
+
+}
+
+
+
+/* ==========================
+   📸 정답 얼굴 팝업
+   ========================== */
+
+
+.face-popup {
+
+    position: fixed;
+
+    top: 50%;
+
+    left: 50%;
+
+
+    transform:
+
+        translate(-50%, -50%);
+
+
+    width: 340px;
+
+
+    padding:
+
+        45px 30px;
+
+
+    background:
+
+        rgba(198, 242, 239, 0.95);
+
+
+    border-radius: 35px;
+
+    
+
+
+    text-align: center;
+
+
+    z-index: 9999;
+
+
+    box-shadow:
+
+        0 20px 50px
+
+        rgba(60,100,130,0.25);
+
+}
+
+
+
+.face-circle {
+
+    width: 130px;
+
+    height: 130px;
+
+
+    margin:
+
+        0 auto 20px;
+
+
+    border-radius: 50%;
+
+
+    background:
+
+        rgba(255,255,255,0.9);
+
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+
+    font-size: 60px;
+
+}
+
+
+
+.face-popup h2 {
+
+    margin-bottom: 20px;
+
+
+    font-size: 20px;
+
+    font-weight: 800;
+
+
+    color: #37474f;
+
+    
+
+}
+
+.comment-sub{
+
+    font-size:17px;
+    font-weight: 600;
+    color:#415661;
+    margin-bottom: 18;
+    line-height: 1.8;
+   
+}
+
+
+
+/* 팝업 확인 버튼 */
+
+#closeFacePopup {
+
+
+    width: 140px;
+
+
+    height: 45px;
+
+
+    border: none;
+
+
+    border-radius: 25px;
+
+
+    background: #a1c5e7;
+
+
+    color: white;
+
+
+    font-family: inherit;
+
+
+    font-size: 15px;
+
+
+    font-weight: 800;
+
+
+    cursor: pointer;
+
+}
+
+
+@media (max-width:480px){
+
+    .detail-box {
+
+        width: 92%;
+
+        min-height: 0;
+
+        padding: 35px 20px 25px;
+
+    }
+
+}
+
+
+/* ==========================
+   🎉 MISSION CLEAR POPUP
+   ========================== */
+
+
+.clear-popup {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    z-index: 10000;
+
+}
+
+
+
+
+.clear-box {
+
+    width: 300px;
+
+    padding: 35px 25px;
+
+    background: rgba(250, 218, 218, 0.881);
+
+    border-radius: 35px;
+
+    text-align: center;
+
+    box-shadow:
+
+        0 20px 50px
+
+        rgba(60,100,130,0.25);
+
+}
+
+
+
+.clear-box h2 {
+
+    margin-bottom: 15px;
+
+    color: #37474f;
+    
+
+}
+
+
+
+.clear-box p {
+
+    margin-bottom: 25px;
+
+    color: #1c2e4e;
+     font-weight: 600;
+
+}
+
+
+
+#closeClear {
+
+    width: 140px;
+
+    height: 45px;
+
+    border: none;
+
+    border-radius: 25px;
+
+    background: #8ecff4;
+
+    color: white;
+
+    font-weight: 800;
+
+}
+
+/* 🔓 열린 미션 */
+
+.mission-card.opened {
+
+    cursor: pointer;
+
+    background: #e8f5fb;
+
+    opacity: 1;
+
+}
+
+
+.mission-card.clear {
+
+    background: #f1eefb;
+
+    opacity: 0.8;
+
+}
+
+/* ==========================
+   MISSION TIMER
+========================== */
+
+.mission-status{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+    gap:4px;
+}
+
+#mission02Timer{
+    font-size:12px;
+    color:#616c9c;
+    font-weight:600;
+    line-height:1;
+}
+
+/* ==========================
+   MISSION 02
+========================== */
+
+#mission02FacePopup{
+    display:none;
+}
+
+#mission02CodeArea{
+    display:none;
+}
+
+#mission02ClearPopup{
+    display:none;
+}
+
+/* ==========================
+   MISSION 02 BUTTON
+========================== */
+
+#checkMission02Quiz{
+
+    width:140px;
+
+    height:48px;
+
+    margin-top:15px;
+
+    border:none;
+
+    border-radius:25px;
+
+    background:#8ecff4;
+
+    color:white;
+
+    font-family:inherit;
+
+    font-size:15px;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+    transition:
+        transform .2s ease,
+        opacity .2s ease;
+
+}
+
+#checkMission02Quiz:hover{
+
+    transform:translateY(-2px);
+
+    opacity:.9;
+
+}
+
+
+
+#closeMission02FacePopup{
+
+    width:140px;
+
+    height:45px;
+
+    border:none;
+
+    border-radius:25px;
+
+    background:#b39ddb;
+
+    color:white;
+
+    font-family:inherit;
+
+    font-size:15px;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+}
+
+
+
+#closeMission02Clear{
+
+    width:140px;
+
+    height:45px;
+
+    border:none;
+
+    border-radius:25px;
+
+    background:#8ecff4;
+
+    color:white;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+}
+
+
+/* ==========================
+   MISSION 03
+========================== */
+
+
+/* 처음 숨김 */
+
+#mission03FacePopup{
+    display:none;
+}
+
+
+#mission03CodeArea{
+    display:none;
+}
+
+
+#mission03ClearPopup{
+    display:none;
+}
+
+
+
+/* MISSION 03 퀴즈 버튼 */
+
+#checkMission03Quiz{
+
+    width:140px;
+
+    height:48px;
+
+    margin-top:15px;
+
+    border:none;
+
+    border-radius:25px;
+
+    background:#9ad7c8;
+
+    color:white;
+
+    font-family:inherit;
+
+    font-size:15px;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+    transition:
+        transform .2s ease,
+        opacity .2s ease;
+
+}
+
+
+#checkMission03Quiz:hover{
+
+    transform:translateY(-2px);
+
+    opacity:.9;
+
+}
+
+
+
+
+
+/* ==========================
+   ☕ MISSION 03 NEW DESIGN 찐찐찐
+========================== */
+
+.mission03-box{
+
+    width:95%;
+    max-width:1100px;
+
+    min-height:850px;
+
+    margin:0 auto;
+
+    padding:30px;
+
+    background:#fffaf3;
+
+    border-radius:25px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+
+}
+
+.mission-title{
+
+    text-align:center;
+
+    font-size:32px;
+
+    font-weight:800;
+
+    color:#5d4037;
+
+    margin-bottom:10px;
+
+}
+
+.mission-subtitle{
+
+    text-align:center;
+
+    font-size:18px;
+
+    color:#6d4c41;
+
+    margin-bottom:20px;
+
+}
+
+.find-count{
+
+    width:220px;
+
+    margin:0 auto 25px;
+
+    padding:12px;
+
+    text-align:center;
+
+    font-size:20px;
+
+    font-weight:700;
+
+    color:#4e342e;
+
+    background:#f6e6c8;
+
+    border-radius:50px;
+
+    box-shadow:0 3px 10px rgba(0,0,0,.1);
+
+}
+
+/* ==========================
+   🔍 숨은 물건
+========================== */
+
+.hidden-item{
+
+    position:absolute;
+
+    padding:0;
+
+    margin:0;
+
+    border:none;
+
+    background:transparent;
+
+    cursor:pointer;
+
+    z-index:100;
+
+    overflow:visible;
+
+    appearance:none;
+
+    -webkit-appearance:none;
+
+}
+
+.hidden-item img{
+
+    width:100%;
+
+    height:100%;
+
+    display:block;
+
+    object-fit:contain;
+
+    pointer-events:none;
+
+}
+
+.hidden-item:hover{
+
+    transform:none;
+
+}
+
+/* 찾았을 때 */
+.hidden-item.found{
+
+    border:2px solid #ff3b30;
+
+    border-radius:50%;
+
+    animation:foundPop .25s ease;
+
+}
+
+@keyframes foundPop{
+
+    0%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.15);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+
+}
+
+.mission-guide{
+
+    margin-top:25px;
+
+    text-align:center;
+
+    font-size:17px;
+
+    color:#6d4c41;
+
+}
+
+/* ==========================
+   📱 모바일
+========================== */
+
+@media(max-width:768px){
+
+    .mission03-box{
+
+        width:98%;
+        padding:18px;
+        min-height:700px;
+
+    }
+
+    .mission-title{
+
+        font-size:26px;
+
+    }
+
+    .mission-subtitle{
+
+        font-size:15px;
+
+    }
+
+    .find-count{
+
+        font-size:17px;
+        width:180px;
+
+    }
+
+    .cafe-game{
+
+        width:100%;
+        aspect-ratio:16/10;
+
+    }
+
+}
+
+/* ==========================
+   ☕ 카페 배경
+========================== */
+
+.cafe-game{
+
+    position:relative;
+
+    width:100%;
+
+    max-width:1000px;
+
+    margin:0 auto;}
+
+.cafe-bg{ display: block;
+width: 100%;
+height: auto;
+border-radius: 20px;}
+
+    
+
+
+
+/* ==========================
+   ⭐ 숨은 물건 (최종)
+========================== */
+
+/* ⭐ 별 */
+.item-star{
+    top:21%;
+    left:42%;
+    width:15px;
+    height:15px;
+}
+
+.item-star img{
+    opacity:100;
+    transform:rotate(18deg);
+}
+
+/* ✉️ 편지 */
+.item-letter{
+    top:74.5%;
+    left:41.5%;
+    width:28px;
+    height:22px;
+}
+
+.item-letter img{
+    opacity:100;
+    transform:rotate(0deg);
+}
+
+/* 🔑 열쇠 */
+.item-key{
+    top:38.5%;
+    left:8%;
+    width:32px;
+    height:26px;
+}
+
+.item-key img{
+    opacity:.9;
+    transform:rotate(-10deg);
+}
+
+/* 🌙 반달 */
+.item-moon{
+    top:25.5%;
+    left:66.5%;
+    width:24px;
+    height:28px;
+
+}
+
+.item-moon img{
+    opacity:.7;
+    transform:rotate(50deg);
+}
+
+/* 🧸 곰 */
+.item-bear{
+    top:85%;
+    left:88%;
+    width:30px;
+    height:36px;
+}
+
+.item-bear img{
+    opacity:.95;
+    transform:rotate(190deg);
+}
