@@ -752,11 +752,13 @@ mission03Card.addEventListener("click",()=>{
     }
 
     // 📱 세로
-    if(window.innerHeight > window.innerWidth){
+    alert(window.innerWidth + " / " + window.innerHeight);
 
-        rotateNotice.style.display="flex";
+if(window.innerHeight > window.innerWidth){
 
-    }
+    rotateNotice.style.display="flex";
+
+}
 
     // 💻 가로
     else{
