@@ -1571,6 +1571,52 @@ body {
 }
 
 /* ==========================
+   ROTATE NOTICE mobail
+========================== */
+
+#rotateNotice{
+
+    position:fixed;
+    inset:0;
+
+    display:none;
+
+    align-items:center;
+    justify-content:center;
+
+    background:rgba(0,0,0,.82);
+
+    z-index:99999;
+}
+
+.rotate-box{
+
+    width:300px;
+
+    padding:35px 25px;
+
+    border-radius:25px;
+
+    background:#1b263b;
+
+    color:white;
+
+    text-align:center;
+}
+
+.rotate-box h2{
+
+    margin-bottom:18px;
+
+    color:#ffd166;
+}
+
+.rotate-box p{
+
+    line-height:1.8;
+}
+
+/* ==========================
    ☕ 카페 배경
 ========================== */
 

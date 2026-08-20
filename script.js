@@ -720,20 +720,30 @@ function startMission03Timer(){
 // MISSION 03 OPEN
 // ==========================
 
-
 const mission03Detail =
 document.getElementById("mission03Detail");
-
 
 const mission03Close =
 document.getElementById("mission03Close");
 
+const rotateNotice =
+document.getElementById("rotateNotice");
 
 
+// 숨은그림 열기
+function openMission03(){
+
+    missionPanel.classList.remove("show");
+
+    mission03Detail.classList.add("show");
+
+}
+
+
+// 미션3 클릭
 if(mission03Card){
 
 mission03Card.addEventListener("click",()=>{
-
 
     if(mission03Card.classList.contains("locked")){
 
@@ -741,31 +751,60 @@ mission03Card.addEventListener("click",()=>{
 
     }
 
+    // 📱 세로
+    if(window.innerHeight > window.innerWidth){
 
-    missionPanel.classList.remove("show");
+        rotateNotice.style.display="flex";
 
+    }
 
-    mission03Detail.classList.add("show");
+    // 💻 가로
+    else{
 
+        openMission03();
 
+    }
 
 });
 
 }
 
 
+// 화면 회전 감지
+window.addEventListener("resize",()=>{
 
+    if(!rotateNotice){
+
+        return;
+
+    }
+
+    // 안내창이 떠있을 때 가로로 돌리면
+    if(
+
+        rotateNotice.style.display==="flex" &&
+
+        window.innerWidth > window.innerHeight
+
+    ){
+
+        rotateNotice.style.display="none";
+
+        openMission03();
+
+    }
+
+});
+
+
+// 미션창 닫기
 if(mission03Close){
 
 mission03Close.addEventListener("click",()=>{
 
-
     mission03Detail.classList.remove("show");
 
-
     missionPanel.classList.add("show");
-
-
 
 });
 
