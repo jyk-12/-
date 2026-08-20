@@ -752,13 +752,11 @@ mission03Card.addEventListener("click",()=>{
     }
 
     // 📱 세로
-    alert(window.innerWidth + " / " + window.innerHeight);
+    (window.innerHeight > window.innerWidth){
 
-if(window.innerHeight > window.innerWidth){
+        rotateNotice.style.display="flex";
 
-    rotateNotice.style.display="flex";
-
-}
+    }
 
     // 💻 가로
     else{
@@ -797,6 +795,17 @@ window.addEventListener("resize",()=>{
     }
 
 });
+
+    // 다시 세로로 돌리면
+    if(
+        mission03Detail.classList.contains("show") &&
+        window.innerHeight > window.innerWidth
+    ){
+
+        mission03Detail.classList.remove("show");
+        rotateNotice.style.display="flex";
+
+    }
 
 
 // 미션창 닫기
