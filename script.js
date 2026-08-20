@@ -752,16 +752,14 @@ mission03Card.addEventListener("click",()=>{
     }
 
     // 📱 세로
-    (window.innerHeight > window.innerWidth){
+    if(window.innerHeight > window.innerWidth){
 
         rotateNotice.style.display="flex";
 
     }
 
     // 💻 가로
-    else{
-
-        openMission03();
+    else{penMission03();
 
     }
 
