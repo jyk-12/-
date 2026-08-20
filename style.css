@@ -1708,3 +1708,12 @@ border-radius: 20px;}
     opacity:.95;
     transform:rotate(190deg);
 }
+
+/*미션3box*/
+@media (orientation: landscape) {
+    #mission03Detail .detail-box{
+        width:95%;
+        max-height:90vh;
+        padding:20px;
+    }
+}
