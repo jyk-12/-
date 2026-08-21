@@ -974,8 +974,7 @@ checkMission03Code.addEventListener("click",()=>{
     mission03Code.value.trim();
 
 
-
-    if(code==="3333"){
+if(code==="3333"){
 
     // ⭐ 인증번호 팝업 닫기
     mission03CodeArea.style.display="none";
@@ -983,13 +982,10 @@ checkMission03Code.addEventListener("click",()=>{
     // ⭐ 클리어 팝업 열기
     mission03ClearPopup.style.display="flex";
 
-    mission03Status.innerHTML="CLEAR ✓";
-
-}else{
-
-    alert("인증번호가 틀렸어!");
-
-}
+    mission03Status.innerHTML="CLEAR ✓"; }
+    
+    else{  alert("인증번호가 틀렸어!"); }
+    
 
 
 
