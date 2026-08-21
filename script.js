@@ -977,22 +977,19 @@ checkMission03Code.addEventListener("click",()=>{
 
     if(code==="3333"){
 
+    // ⭐ 인증번호 팝업 닫기
+    mission03CodeArea.style.display="none";
 
-        mission03ClearPopup.style.display="flex";
+    // ⭐ 클리어 팝업 열기
+    mission03ClearPopup.style.display="flex";
 
+    mission03Status.innerHTML="CLEAR ✓";
 
+}else{
 
-        mission03Status.innerHTML =
-        "CLEAR ✓";
+    alert("인증번호가 틀렸어!");
 
-
-
-    }else{
-
-
-        alert("인증번호가 틀렸어!");
-
-    }
+}
 
 
 
