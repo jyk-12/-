@@ -759,7 +759,7 @@ mission03Card.addEventListener("click",()=>{
     }
 
     // 💻 가로
-    else{penMission03();
+    else{openMission03();
 
     }
 
@@ -895,67 +895,44 @@ if(mission03ClearPopup){
 
 
 
-
 // ==========================
 // HIDDEN CLICK
 // ==========================
 
-
 hiddenItems.forEach(item=>{
-
 
     item.addEventListener("click",()=>{
 
-
+        // 이미 찾은 물건이면 종료
         if(item.classList.contains("found")){
-
             return;
-
         }
 
-
+        // 찾음 표시
         item.classList.add("found");
-        item.stlye.pointerEvents="none";
+        item.style.pointerEvents="none";
 
-
-
+        // 카운트 증가
         foundItemsCount++;
 
-
-
+        // 화면 숫자 변경
         if(foundCount){
-
-            foundCount.innerHTML =
-            '${foundItemsCount} /5';
-
+            foundCount.textContent = `${foundItemsCount} / 5`;
         }
 
+        // 5개 모두 찾으면
+        if(foundItemsCount === 5){
 
+            if(foundCount){
+                foundCount.textContent = "5 / 5";
+            }
 
-        if(foundItemsCount===5){
-
-
-            setTimeout(()=>{
-
-
-                mission03FacePopup.style.display="block";
-
-
-            },500);
-
-
-
+            mission03FacePopup.style.display = "flex";
         }
-
-
 
     });
 
-
 });
-
-
-
 
 
 // ==========================
