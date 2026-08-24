@@ -2394,6 +2394,7 @@ if(openingReplay){
 ===================================================== */
 
 function showLightFragment(){
+    alert("빛의조각 실행");
 
     const fragment = document.querySelector(".fragment");
 
