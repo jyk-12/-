@@ -487,7 +487,7 @@ body {
     position: relative;
 
     width: min(90%, 600px);
-    max-height: 300vh;
+    max-height: 320vh;
 
     padding: 42px 30px 30px;
 
@@ -625,6 +625,8 @@ body {
 /* 🔐 인증 영역 */
 
 .code-area {
+
+    margin-top:20px;
     padding-top: 20px;
 
     border-top:
@@ -742,7 +744,7 @@ body {
 
     transform: translate(-50%, -50%);
 
-    background: rgba(197, 204, 248, 0.817);
+    background: rgba(69, 77, 131, 0.906);
 
     padding: 25px;
 
@@ -776,6 +778,8 @@ body {
     border-radius: 24px;
 
     overflow-y: visible;
+
+    border: 5px solid red;
 
 }
 
@@ -929,9 +933,7 @@ body {
         45px 30px;
 
 
-    background:
-
-        rgba(198, 242, 239, 0.95);
+     background: rgba(46, 55, 112, 0.906);
 
 
     border-radius: 35px;
@@ -998,7 +1000,7 @@ body {
     font-weight: 800;
 
 
-    color: #37474f;
+    color: #ffffff;
 
     
 
@@ -1008,7 +1010,7 @@ body {
 
     font-size:17px;
     font-weight: 600;
-    color:#415661;
+    color:#ddf3ff;
     margin-bottom: 18;
     line-height: 1.8;
    
@@ -1300,79 +1302,28 @@ body {
 }
 
 
-/* ==========================
-   MISSION 03
-========================== */
-
+/* =====================================================
+                    MISSION 03
+===================================================== */
 
 /* 처음 숨김 */
 
-#mission03FacePopup{
-    display:none;
-}
-
-
-#mission03CodeArea{
-    display:none;
-}
-
-
+#mission03FacePopup,
+#mission03CodeArea,
 #mission03ClearPopup{
+
     display:none;
-}
-
-
-
-/* MISSION 03 퀴즈 버튼 */
-
-#checkMission03Quiz{
-
-    width:140px;
-
-    height:48px;
-
-    margin-top:15px;
-
-    border:none;
-
-    border-radius:25px;
-
-    background:#9ad7c8;
-
-    color:white;
-
-    font-family:inherit;
-
-    font-size:15px;
-
-    font-weight:800;
-
-    cursor:pointer;
-
-    transition:
-        transform .2s ease,
-        opacity .2s ease;
 
 }
 
 
-#checkMission03Quiz:hover{
-
-    transform:translateY(-2px);
-
-    opacity:.9;
-
-}
-
-
-
-
-
-/* ==========================
-   ☕ MISSION 03 NEW DESIGN 찐찐찐
-========================== */
+/* =====================================================
+                    MISSION BOX
+===================================================== */
 
 .mission03-box{
+
+    position:relative;
 
     width:95%;
     max-width:1100px;
@@ -1389,9 +1340,41 @@ body {
 
     box-shadow:0 10px 30px rgba(0,0,0,.15);
 
+    box-sizing:border-box;
+
 }
 
+
+/* 닫기 버튼 */
+
+#mission03Close{
+
+    position:absolute;
+
+    top:20px;
+    right:20px;
+
+    border:none;
+    background:none;
+
+    font-size:34px;
+
+    color:#7a7a7a;
+
+    cursor:pointer;
+
+    z-index:100;
+
+}
+
+
+/* =====================================================
+                    TITLE
+===================================================== */
+
 .mission-title{
+
+    margin-bottom:10px;
 
     text-align:center;
 
@@ -1401,11 +1384,11 @@ body {
 
     color:#5d4037;
 
-    margin-bottom:10px;
-
 }
 
 .mission-subtitle{
+
+    margin-bottom:20px;
 
     text-align:center;
 
@@ -1413,9 +1396,12 @@ body {
 
     color:#6d4c41;
 
-    margin-bottom:20px;
-
 }
+
+
+/* =====================================================
+                    FIND COUNT
+===================================================== */
 
 .find-count{
 
@@ -1425,6 +1411,10 @@ body {
 
     padding:12px;
 
+    border-radius:50px;
+
+    background:#f6e6c8;
+
     text-align:center;
 
     font-size:20px;
@@ -1433,17 +1423,55 @@ body {
 
     color:#4e342e;
 
-    background:#f6e6c8;
-
-    border-radius:50px;
-
     box-shadow:0 3px 10px rgba(0,0,0,.1);
 
 }
 
-/* ==========================
-   🔍 숨은 물건
-========================== */
+
+/* =====================================================
+                    CAFE
+===================================================== */
+
+.cafe-game{
+
+    position:relative;
+
+    width:100%;
+
+    max-width:1000px;
+
+    margin:0 auto;
+
+}
+
+.cafe-bg{
+
+    display:block;
+
+    width:100%;
+
+    height:auto;
+
+    border-radius:20px;
+
+}
+
+.mission-guide{
+
+    margin-top:25px;
+
+    text-align:center;
+
+    font-size:17px;
+
+    color:#6d4c41;
+
+}
+
+
+/* =====================================================
+                    HIDDEN ITEM
+===================================================== */
 
 .hidden-item{
 
@@ -1471,11 +1499,11 @@ body {
 
 .hidden-item img{
 
+    display:block;
+
     width:100%;
 
     height:100%;
-
-    display:block;
 
     object-fit:contain;
 
@@ -1489,7 +1517,9 @@ body {
 
 }
 
-/* 찾았을 때 */
+
+/* 찾은 후 */
+
 .hidden-item.found{
 
     border:2px solid #ff3b30;
@@ -1502,43 +1532,132 @@ body {
 
 @keyframes foundPop{
 
-    0%{
-        transform:scale(1);
-    }
-
-    50%{
-        transform:scale(1.15);
-    }
-
-    100%{
-        transform:scale(1);
-    }
+    0%{transform:scale(1);}
+    50%{transform:scale(1.15);}
+    100%{transform:scale(1);}
 
 }
 
-.mission-guide{
+/* =====================================================
+                    ITEM POSITION
+===================================================== */
 
-    margin-top:25px;
+/* ⭐ */
 
-    text-align:center;
+.item-star{
 
-    font-size:17px;
+    top:21%;
+    left:42%;
 
-    color:#6d4c41;
+    width:15px;
+    height:15px;
 
 }
 
-/* ==========================
-   📱 모바일
-========================== */
+.item-star img{
 
-@media(max-width:768px){
+    opacity:1;
+
+    transform:rotate(18deg);
+
+}
+
+
+/* ✉ */
+
+.item-letter{
+
+    top:74.5%;
+    left:41.5%;
+
+    width:28px;
+    height:22px;
+
+}
+
+.item-letter img{
+
+    opacity:1;
+
+}
+
+
+/* 🔑 */
+
+.item-key{
+
+    top:38.5%;
+    left:8%;
+
+    width:32px;
+    height:26px;
+
+}
+
+.item-key img{
+
+    opacity:.9;
+
+    transform:rotate(-10deg);
+
+}
+
+
+/* 🌙 */
+
+.item-moon{
+
+    top:25.5%;
+    left:66.5%;
+
+    width:24px;
+    height:28px;
+
+}
+
+.item-moon img{
+
+    opacity:.7;
+
+    transform:rotate(50deg);
+
+}
+
+
+/* 🧸 */
+
+.item-bear{
+
+    top:85%;
+    left:88%;
+
+    width:30px;
+    height:36px;
+
+}
+
+.item-bear img{
+
+    opacity:.95;
+
+    transform:rotate(190deg);
+
+}
+
+
+/* =====================================================
+                    MOBILE
+===================================================== */
+
+@media (max-width:768px){
 
     .mission03-box{
 
         width:98%;
-        padding:18px;
+
         min-height:700px;
+
+        padding:18px;
 
     }
 
@@ -1556,37 +1675,155 @@ body {
 
     .find-count{
 
-        font-size:17px;
         width:180px;
 
-    }
-
-    .cafe-game{
-
-        width:100%;
-        aspect-ratio:16/10;
+        font-size:17px;
 
     }
 
 }
 
-/* ==========================
-   ROTATE NOTICE mobail
-========================== */
 
-#rotateNotice{
+/* =====================================================
+            LANDSCAPE (MISSION 03)
+===================================================== */
+
+@media (max-width:900px) and (orientation:landscape){
+
+    .mission03-box{
+
+        width:96%;
+
+        height:72vh;
+
+        max-height:72vh;
+
+        min-height:auto;
+
+        padding:18px;
+
+        overflow-y:auto;
+
+        border-radius:20px;
+
+    }
+
+    /* 확대 가능한 영역 */
+
+    .cafe-game{
+
+        position:relative;
+
+        width:80%;
+
+        margin:0 auto;
+
+        overflow:auto;
+
+        touch-action:pan-x pan-y pinch-zoom;
+
+        -webkit-overflow-scrolling:touch;
+
+    }
+
+    .cafe-bg{
+
+        display:block;
+
+        width:100%;
+
+        height:auto;
+
+        border-radius:20px;
+
+    }
+
+    /* 터치영역 확대 */
+
+    .hidden-item{
+
+        padding:14px;
+
+        box-sizing:content-box;
+
+    }
+
+    /* =====================================================
+                        DEBUG MODE
+        테스트 시 아래 주석만 해제
+    ====================================================== */
+
+    /*
+    .hidden-item{
+
+        border:2px solid red;
+        background:rgba(255,0,0,.18);
+
+    }
+    */
+
+    /* ==========================
+            MOBILE POSITION
+    ========================== */
+
+    .item-star{
+
+        top:21%;
+        left:42%;
+
+    }
+
+    .item-letter{
+
+        top:36%;
+        left:40%;
+
+    }
+
+    .item-key{
+
+        top:33%;
+        left:28%;
+
+    }
+
+    .item-moon{
+
+        top:25%;
+        left:56%;
+
+    }
+
+    .item-bear{
+
+        top:48%;
+        left:53%;
+
+    }
+
+}
+
+/* =====================================================
+                    ROTATE NOTICE
+===================================================== */
+
+#rotateNotice,
+#rotatePortraitNotice{
 
     position:fixed;
+
     inset:0;
 
     display:none;
 
     align-items:center;
+
     justify-content:center;
 
     background:rgba(0,0,0,.82);
 
     z-index:99999;
+
 }
 
 .rotate-box{
@@ -1599,9 +1836,10 @@ body {
 
     background:#1b263b;
 
-    color:white;
+    color:#fff;
 
     text-align:center;
+
 }
 
 .rotate-box h2{
@@ -1609,244 +1847,57 @@ body {
     margin-bottom:18px;
 
     color:#ffd166;
+
 }
 
 .rotate-box p{
 
     line-height:1.8;
+
 }
+
+
+/* =====================================================
+                    POPUP
+===================================================== */
 
 /* ==========================
-   ☕ 카페 배경
+        FACE POPUP
 ========================== */
 
-.cafe-game{
-
-    position:relative;
-
-    width:100%;
-
-    max-width:1000px;
-
-    margin:0 auto;}
-
-.cafe-bg{ display: block;
-width: 100%;
-height: auto;
-border-radius: 20px;}
-
-    
-
-
-
-/* ==========================
-   ⭐ 숨은 물건 (최종)
-========================== */
-
-/* ⭐ 별 */
-.item-star{
-    top:21%;
-    left:42%;
-    width:15px;
-    height:15px;
-}
-
-.item-star img{
-    opacity:100;
-    transform:rotate(18deg);
-}
-
-/* ✉️ 편지 */
-.item-letter{
-    top:74.5%;
-    left:41.5%;
-    width:28px;
-    height:22px;
-}
-
-.item-letter img{
-    opacity:100;
-    transform:rotate(0deg);
-}
-
-/* 🔑 열쇠 */
-.item-key{
-    top:38.5%;
-    left:8%;
-    width:32px;
-    height:26px;
-}
-
-.item-key img{
-    opacity:.9;
-    transform:rotate(-10deg);
-}
-
-/* 🌙 반달 */
-.item-moon{
-    top:25.5%;
-    left:66.5%;
-    width:24px;
-    height:28px;
-
-}
-
-.item-moon img{
-    opacity:.7;
-    transform:rotate(50deg);
-}
-
-/* 🧸 곰 */
-.item-bear{
-    top:85%;
-    left:88%;
-    width:30px;
-    height:36px;
-}
-
-.item-bear img{
-    opacity:.95;
-    transform:rotate(190deg);
-}
-
-/* ==========================================
-   📱 MISSION 03 MOBILE (가로 전용)
-========================================== */
-
-@media (max-width: 900px) and (orientation: landscape) {
-
-    /* 미션3 팝업 */
-
-    .mission03-box{
-
-        width:96%;
-        height:60vh;
-        max-height:80vh;
-        min-height:auto;
-
-        padding:20px;
-
-        overflow-y:auto;
-
-        border-radius:20px;
-
-    }
-
-    /* ⭐ 별 */
-
-    .item-star{
-
-        top:21%;
-        left:42%;
-
-        width:15px;
-        height:15px;
-
-    }
-
-    .item-star img{
-
-        opacity:1;
-        transform:rotate(18deg);
-
-    }
-
-    /* ✉️ 편지 */
-
-    .item-letter{
-
-        top:74.5%;
-        left:41.5%;
-
-        width:28px;
-        height:22px;
-
-    }
-
-    .item-letter img{
-
-        opacity:1;
-        transform:rotate(0deg);
-
-    }
-
-    /* 🔑 열쇠 */
-
-    .item-key{
-
-        top:38.5%;
-        left:8%;
-
-        width:32px;
-        height:26px;
-
-    }
-
-    .item-key img{
-
-        opacity:.9;
-        transform:rotate(-10deg);
-
-    }
-
-    /* 🌙 반달 */
-
-    .item-moon{
-
-        top:25.5%;
-        left:66.5%;
-
-        width:24px;
-        height:28px;
-
-    }
-
-    .item-moon img{
-
-        opacity:.7;
-        transform:rotate(50deg);
-
-    }
-
-    /* 🧸 곰 */
-
-    .item-bear{
-
-        top:85%;
-        left:88%;
-
-        width:30px;
-        height:36px;
-
-    }
-
-    .item-bear img{
-    opacity:.95;
-    transform:rotate(190deg);
-}
-
-}
-
-/* ==========================
-   MISSION 03 POPUP
-========================== */
-
-/* 처음 숨김 */
-
-#mission03CodeArea{
+#mission03FacePopup{
 
     display:none;
 
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
 }
 
+#mission03FacePopup .story-text{
 
-/* ⭐ 코멘트 팝업 버튼 */
+    margin-bottom:22px;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    line-height:1.8;
+
+    color:#d9e6ff;
+
+}
 
 #closeMission03FacePopup{
 
-    width:140px;
+    width:150px;
 
-    height:45px;
+    height:46px;
 
     margin-top:18px;
 
@@ -1866,10 +1917,38 @@ border-radius: 20px;}
 
     cursor:pointer;
 
+    transition:.2s;
+
+}
+
+#closeMission03FacePopup:hover{
+
+    opacity:.9;
+
 }
 
 
-/* ⭐ 인증번호 팝업 */
+/* =====================================================
+                    CODE POPUP
+===================================================== */
+
+#mission03CodeArea{
+
+    display:none;
+
+}
+
+#mission03CodeArea p{
+
+    margin-bottom:18px;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    color:#ddf3ff;
+
+}
 
 #mission03CodeArea input{
 
@@ -1887,6 +1966,8 @@ border-radius: 20px;}
 
     background:#f8fbfc;
 
+    outline:none;
+
     box-sizing:border-box;
 
     text-align:center;
@@ -1895,8 +1976,6 @@ border-radius: 20px;}
 
     font-size:15px;
 
-    outline:none;
-
 }
 
 #mission03CodeArea input:focus{
@@ -1904,7 +1983,6 @@ border-radius: 20px;}
     background:#fff;
 
 }
-
 
 #checkMission03Code{
 
@@ -1934,20 +2012,28 @@ border-radius: 20px;}
 
 #checkMission03Code:hover{
 
-    opacity:.9;
-
     transform:translateY(-1px);
+
+    opacity:.9;
 
 }
 
 
-/* ⭐ 클리어 버튼 */
+/* =====================================================
+                    CLEAR POPUP
+===================================================== */
+
+#mission03ClearPopup{
+
+    display:none;
+
+}
 
 #closeMission03Clear{
 
-    width:140px;
+    width:150px;
 
-    height:45px;
+    height:46px;
 
     border:none;
 
@@ -1965,44 +2051,1524 @@ border-radius: 20px;}
 
     cursor:pointer;
 
+    transition:.2s;
+
+}
+
+#closeMission03Clear:hover{
+
+    opacity:.9;
+
+}
+
+
+/* =====================================================
+                    MOBILE POPUP
+===================================================== */
+
+@media (max-width:768px){
+
+    .face-popup{
+
+        width:92%;
+
+        max-width:340px;
+
+        padding:35px 22px;
+
+        border-radius:22px;
+
+    }
+
+    .clear-box{
+
+        width:92%;
+
+        max-width:310px;
+
+    }
+
+    #mission03CodeArea input{
+
+        font-size:16px;
+
+    }
+
+}
+
+
+/* =====================================================
+                    03 END
+===================================================== */
+
+
+/* ==========================
+   MISSION 04
+========================== */
+
+#mission04FacePopup{
+    display:none;
+}
+
+#mission04CodeArea{
+    display:none;
+}
+
+#mission04ClearPopup{
+    display:none;
 }
 
 /* ==========================
-   MISSION03 FACE POPUP UI
+   MISSION 04 BUTTON
 ========================== */
 
-#mission03FacePopup{
+#checkMission04Quiz{
+
+    width:140px;
+
+    height:48px;
+
+    margin-top:15px;
+
+    border:none;
+
+    border-radius:25px;
+
+    background:#8ecff4;
+
+    color:white;
+
+    font-family:inherit;
+
+    font-size:15px;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+    transition:
+        transform .2s ease,
+        opacity .2s ease;
+
+}
+
+#checkMission04Quiz:hover{
+
+    transform:translateY(-2px);
+
+    opacity:.9;
+
+}
+
+
+
+#closeMission04FacePopup{
+
+    width:140px;
+
+    height:45px;
+
+    border:none;
+
+    border-radius:25px;
+
+    background:#aecba7;
+
+    color:white;
+
+    font-family:inherit;
+
+    font-size:15px;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+}
+
+
+
+#closeMission04Clear{
+
+    width:140px;
+
+    height:45px;
+
+    border:none;
+
+    border-radius:25px;
+
+    background:#8ecff4;
+
+    color:white;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+}
+
+
+/* ==========================
+   MISSION 04 ONLY
+========================== */
+
+#mission04Detail h2{
+
+    text-align:center;
+
+    margin-bottom:8px;
+
+    letter-spacing:1px;
+
+}
+
+
+
+/* ==========================
+   MISSION 04 SECTION TITLE
+========================== */
+
+#mission04Detail .section-title{
 
     display:flex;
-
-    flex-direction:column;
 
     align-items:center;
 
     justify-content:center;
 
+    width: 100%;
+
+    margin:0 0 30px;
+
+    font-size:13px;
+
+    font-weight:800;
+
+    letter-spacing:2px;
+
+    color:#90a4ae;
+
+
+}
+
+
+
+#mission04Detail .section-title::before{
+
+    content:"✦━━━━━━━━━━━━";
+
+    color:#cfd8dc;
+
+    margin-right:0;
+
+}
+
+
+
+#mission04Detail .section-title::after{
+
+    content:"━━━━━━━━━━━━✦";
+
+    color:#cfd8dc;
+
+    margin-left:0;
+
+}
+
+
+
+/* ==========================
+   STORY
+========================== */
+
+#mission04Detail .detail-text{
+
+    margin-top:0;
+
+    margin-bottom:14px;
+
     text-align:center;
 
 }
 
-#mission03FacePopup .story-text{
 
-    margin-bottom:22px;
 
-    font-size:18px;
+#mission04Detail .detail-text p{
 
-    font-weight:700;
+    margin:0;
 
     line-height:1.8;
 
-    color:#161d2a;
+    color:#607d8b;
 
 }
 
-#mission03FacePopup button{
+
+
+/* ==========================
+   QUIZ
+========================== */
+
+#mission04Detail .quiz-area{
+
+    margin-top:6px;
+
+}
+
+
+
+#mission04Detail .quiz-question{
+
+    margin-bottom:20px;
+
+}
+
+
+
+/* ==========================
+   CODE
+========================== */
+
+#mission04Detail .code-area .section-title{
+
+    all:unset;
 
     display:block;
 
-    margin:0 auto;
+    text-align:center;
+
+    font-size:13px;
+
+    font-weight:800;
+
+    color:#90a4ae;
 
 }
+
+
+/* =====================================================
+                    MISSION 05
+===================================================== */
+
+#mission05FacePopup,
+#mission05CodeArea,
+#mission05ClearPopup{
+
+    display:none;
+
+}
+
+
+/* 제목 */
+
+#mission05Detail h2{
+
+    margin-top:10px;
+    margin-bottom:8px;
+
+    text-align:center;
+
+}
+
+
+/* 스토리 */
+
+#mission05Detail .detail-text{
+
+    margin-top:10px;
+    margin-bottom:28px;
+
+}
+
+#mission05Detail .detail-text p{
+
+    line-height:1.75;
+
+}
+
+
+/* QUIZ / 인증번호 */
+
+#mission05Detail .section-title{
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:14px;
+
+    width:100%;
+
+    margin:26px 0 18px;
+
+    font-size:13px;
+
+    font-weight:800;
+
+    letter-spacing:2px;
+
+    color:#6f7d87;
+
+    text-transform:uppercase;
+
+}
+
+#mission05Detail .section-title::before{
+
+    content:"✦━━━━━━━━━━━━";
+
+    color:#cfd8dc;
+
+    margin-right:0;
+
+}
+
+#mission05Detail .section-title::after{
+
+    content:"━━━━━━━━━━━━✦";
+
+    color:#cfd8dc;
+
+    margin-left:0;
+
+}
+
+
+/* 오래된 흔적 아래 라인 */
+
+#mission05Detail .detail-label+h2+.section-title{
+
+    margin-top:6px;
+    margin-bottom:14px;
+
+}
+
+
+/* 퀴즈 */
+
+#mission05Detail .quiz-area{
+
+    margin-top:6px;
+
+}
+
+#mission05Detail .quiz-question{
+
+    margin-bottom:16px;
+
+    text-align:center;
+
+}
+
+#mission05Detail .quiz-area input{
+
+    margin-bottom:14px;
+
+}
+
+#mission05Detail .quiz-area button{
+
+    margin-bottom:26px;
+
+}
+
+
+/* 인증번호 */
+
+#mission05Detail .code-area{
+
+    padding-top:28px;
+
+}
+
+#mission05Detail .code-area p:not(.section-title){
+
+    margin-bottom:16px;
+
+}
+
+
+/* 버튼 */
+
+#checkMission05Quiz{
+
+    width:140px;
+
+    height:48px;
+
+    margin-top:15px;
+
+    border:none;
+
+    border-radius:25px;
+
+    background:#93c5fd;
+
+    color:white;
+
+    font-family:inherit;
+
+    font-size:15px;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+    transition:
+        transform .2s ease,
+        opacity .2s ease;
+
+}
+
+#checkMission05Quiz:hover{
+
+    transform:translateY(-2px);
+
+    opacity:.9;
+
+}
+
+#closeMission05FacePopup{
+
+    width:140px;
+
+    height:45px;
+
+    border:none;
+
+    border-radius:25px;
+
+    background:#eec290;
+
+    color:white;
+
+    font-family:inherit;
+
+    font-size:15px;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+}
+
+#checkMission05Code{
+
+    background:#93c5fd;
+
+}
+
+#closeMission05Clear{
+
+    width:140px;
+
+    height:45px;
+
+    border:none;
+
+    border-radius:25px;
+
+    background:#93c5fd;
+
+    color:white;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+}
+
+
+/* 새로문제해결 테스트 */
+#mission05Detail .code-area .section-title{
+
+    all:unset;
+
+    display:block;
+
+    text-align:center;
+
+    font-size:13px;
+
+    font-weight:800;
+
+    color:#90a4ae;
+
+}
+
+/* =====================================================
+                    MISSION 06
+===================================================== */
+
+#mission06FacePopup,
+#mission06CodeArea,
+#mission06ClearPopup{
+
+    display:none;
+
+}
+
+
+/* 제목 */
+
+#mission06Detail h2{
+
+    margin-top:10px;
+    margin-bottom:8px;
+
+    text-align:center;
+
+}
+
+
+/* 스토리 */
+
+#mission06Detail .detail-text{
+
+    margin-top:10px;
+    margin-bottom:28px;
+
+}
+
+#mission06Detail .detail-text p{
+
+    line-height:1.75;
+
+}
+
+
+/* QUIZ / 인증번호 */
+
+#mission06Detail .section-title{
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:14px;
+
+    width:100%;
+
+    margin:26px 0 18px;
+
+    font-size:13px;
+
+    font-weight:800;
+
+    letter-spacing:2px;
+
+    color:#6f7d87;
+
+    text-transform:uppercase;
+
+}
+
+#mission06Detail .section-title::before{
+
+    content:"✦━━━━━━━━━━━━";
+
+    color:#cfd8dc;
+
+    margin-right:0;
+
+}
+
+#mission06Detail .section-title::after{
+
+    content:"━━━━━━━━━━━━✦";
+
+    color:#cfd8dc;
+
+    margin-left:0;
+
+}
+
+/* 오래된 흔적 아래 라인 */
+
+#mission06Detail .detail-label+h2+.section-title{
+
+    margin-top:6px;
+    margin-bottom:14px;
+
+}
+
+
+/* 스토리 */
+
+#mission06Detail .detail-text p{
+
+    line-height:1.75;
+
+}
+
+
+/* 퀴즈 */
+
+#mission06Detail .quiz-area{
+
+    margin-top:6px;
+
+}
+
+#mission06Detail .quiz-question{
+
+    margin-bottom:16px;
+
+    text-align:center;
+
+}
+
+#mission06Detail .quiz-area input{
+
+    margin-bottom:14px;
+
+}
+
+#mission06Detail .quiz-area button{
+
+    margin-bottom:26px;
+
+}
+
+
+/* 인증번호 */
+
+#mission06Detail .code-area{
+
+    padding-top:28px;
+
+}
+
+#mission06Detail .code-area p:not(.section-title){
+
+    margin-bottom:16px;
+
+}
+
+
+/* 버튼 */
+
+#checkMission06Quiz{
+
+    width:140px;
+
+    height:48px;
+
+    margin-top:15px;
+
+    border:none;
+
+    border-radius:25px;
+
+    background:#93c5fd;
+
+    color:white;
+
+    font-family:inherit;
+
+    font-size:15px;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+    transition:
+        transform .2s ease,
+        opacity .2s ease;
+
+}
+
+#checkMission06Quiz:hover{
+
+    transform:translateY(-2px);
+
+    opacity:.9;
+
+}
+
+#closeMission06FacePopup{
+
+    width:140px;
+
+    height:45px;
+
+    border:none;
+
+    border-radius:25px;
+
+    background:#516a90;
+
+    color:white;
+
+    font-family:inherit;
+
+    font-size:15px;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+}
+
+#checkMission06Code{
+
+    background:#93c5fd;
+
+}
+
+#closeMission06Clear{
+
+    width:140px;
+
+    height:45px;
+
+    border:none;
+
+    border-radius:25px;
+
+    background:#93c5fd;
+
+    color:white;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+}
+
+#mission06Detail .code-area .section-title{
+
+    all:unset;
+
+    display:block;
+
+    text-align:center;
+
+    font-size:13px;
+
+    font-weight:800;
+
+    color:#90a4ae;
+
+}
+
+
+/* =====================================================
+                    ENDING HEADER
+===================================================== */
+
+.mission-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+#endingButton{
+
+    display:none;
+
+    background:none;
+
+    border:none;
+
+    color:#0a1a31;
+
+    font-size:17px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    letter-spacing:1px;
+
+}
+
+#endingButton:hover{
+
+    color:#fff4b0;
+
+    transform:scale(1.08);
+
+}
+
+
+
+/* =====================================================
+                    ENDING SKY
+===================================================== */
+
+#endingDetail{
+
+    background:
+
+    radial-gradient(circle at top,#25355f 0%,#10192f 45%,#05070f 100%);
+
+}
+
+#endingDetail .detail-box{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    width:100%;
+
+    height:100%;
+
+}
+
+
+
+/* =====================================================
+                    STAR
+===================================================== */
+
+#endingStar{
+
+    background:none;
+
+    border:none;
+
+    font-size:70px;
+
+    color:#fff4b0;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    animation:endingTwinkle 2s infinite;
+
+}
+
+#endingStar:hover{
+
+    transform:scale(1.15);
+
+}
+
+
+
+@keyframes endingTwinkle{
+
+    0%{
+
+        opacity:.4;
+
+    }
+
+    50%{
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        opacity:.4;
+
+    }
+
+}
+
+
+
+/* =====================================================
+                    WAITING TIMER
+===================================================== */
+
+#endingTimer{
+
+    margin-top:12px;
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    letter-spacing:2px;
+
+}
+
+
+
+/* =====================================================
+                    STORY
+===================================================== */
+
+#endingStory .clear-box{
+
+    max-width:420px;
+
+}
+
+
+
+/* =====================================================
+                CONSTELLATION
+===================================================== */
+
+#constellationPopup h2{
+
+    font-size:70px;
+
+    margin-bottom:20px;
+
+}
+
+/* =====================================================
+                    HIDDEN
+===================================================== */
+
+.hidden-overlay{
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.55);
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:9999;
+
+}
+
+
+
+.hidden-box{
+
+    width:520px;
+
+    max-width:90%;
+
+    background:#ffe9e9da;
+
+    border-radius:25px;
+
+    padding:45px;
+
+    text-align:center;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
+
+}
+
+
+
+.hidden-box h2{
+
+    margin-bottom:25px;
+
+}
+
+
+
+.hidden-box p{
+
+    line-height:1.8;
+
+}
+
+
+
+.hidden-code{
+
+    margin:30px 0;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    letter-spacing:3px;
+
+}
+
+
+
+.hidden-box input{
+
+    width:100%;
+
+    padding:14px;
+
+    margin-bottom:20px;
+
+    border-radius:12px;
+
+    border:1px solid #ccc;
+
+}
+
+
+
+.hidden-box button{
+
+    width:100%;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+}
+
+/* =====================================================
+                    OPENING OVERLAY
+===================================================== */
+
+#openingOverlay{
+
+    position:fixed;
+    inset:0;
+
+    background:rgba(6,12,22,.68);
+
+    backdrop-filter:blur(4px);
+
+    opacity:0;
+    pointer-events:none;
+
+    transition:opacity .45s ease;
+
+    z-index:9998;
+
+}
+
+#openingOverlay.show{
+
+    opacity:1;
+    pointer-events:auto;
+
+}
+
+
+/* =====================================================
+                    OPENING
+===================================================== */
+
+#openingStory{
+
+    position:fixed;
+    inset:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.45s ease;
+
+    z-index:9999;
+
+}
+
+#openingStory.show{
+
+    opacity:1;
+    visibility:visible;
+
+}
+
+
+/* =====================================================
+                    PAPER
+===================================================== */
+
+.opening-paper{
+
+    position:relative;
+
+    width:min(92%,720px);
+
+    max-height:min(760px,88vh);
+
+    padding:58px 52px 42px;
+
+    border-radius:20px;
+
+    border:1px solid rgba(122,92,54,.18);
+
+    background:
+
+    radial-gradient(
+        circle at 15% 20%,
+        rgba(255,255,255,.30),
+        transparent 28%
+    ),
+
+    radial-gradient(
+        circle at 85% 82%,
+        rgba(120,88,42,.08),
+        transparent 30%
+    ),
+
+    radial-gradient(
+        circle at 50% 50%,
+        rgba(255,248,232,.18),
+        transparent 70%
+    ),
+
+    linear-gradient(
+        180deg,
+        #f8eed8 0%,
+        #efddb7 52%,
+        #ead3aa 100%
+    );
+
+    box-shadow:
+
+    0 26px 65px rgba(0,0,0,.32),
+
+    0 8px 22px rgba(80,55,28,.14),
+
+    inset 0 0 55px rgba(95,68,38,.08),
+
+    inset 0 0 8px rgba(255,255,255,.22);
+
+    transform:
+    translateY(28px)
+    scale(.975);
+
+    opacity:0;
+
+    overflow:hidden;
+
+    transition:
+    transform .6s cubic-bezier(.22,.61,.36,1),
+    opacity .6s ease;
+
+}
+
+
+/* 종이 질감 */
+
+.opening-paper::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:20px;
+
+    pointer-events:none;
+
+    background:
+
+    radial-gradient(
+        circle at top left,
+        rgba(255,255,255,.24),
+        transparent 40%
+    ),
+
+    radial-gradient(
+        circle at bottom right,
+        rgba(80,55,28,.06),
+        transparent 42%
+    ),
+
+    radial-gradient(
+        circle at 22% 74%,
+        rgba(110,80,40,.04),
+        transparent 30%
+    ),
+
+    radial-gradient(
+        circle at 82% 18%,
+        rgba(255,255,255,.08),
+        transparent 28%
+    );
+
+}
+
+
+/* 가장자리 */
+
+.opening-paper::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:20px;
+
+    pointer-events:none;
+
+    box-shadow:
+
+    inset 0 0 42px rgba(74,50,22,.13),
+
+    inset 0 0 8px rgba(112,78,36,.15);
+
+}
+
+
+#openingStory.show .opening-paper{
+
+    transform:
+    translateY(0)
+    scale(1);
+
+    opacity:1;
+
+}
+
+
+/* =====================================================
+                    STORY
+===================================================== */
+
+.story-line{
+
+    max-height:0;
+
+    overflow:hidden;
+
+    margin-bottom:0;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transform:translateY(10px);
+
+    transition:
+    opacity .45s ease,
+    transform .45s ease,
+    max-height .45s ease,
+    margin .45s ease;
+
+    line-height:2;
+
+    color:#4d3b2a;
+
+    font-size:18px;
+
+    letter-spacing:.2px;
+
+}
+
+.story-line.show{
+
+    max-height:520px;
+
+    margin-bottom:24px;
+
+    opacity:1;
+
+    visibility:visible;
+
+    transform:translateY(0);
+
+}
+
+.story-bold{
+
+    font-weight:700;
+
+    color:#352617;
+
+}
+
+.story-last{
+
+    margin-top:34px;
+
+    text-align:center;
+
+    font-size:24px;
+
+    font-weight:800;
+
+    line-height:1.8;
+
+    color:#2b1d12;
+
+}
+
+
+/* =====================================================
+                    NEXT
+===================================================== */
+
+#storyNext{
+
+    margin-top:28px;
+
+    text-align:center;
+
+    font-size:15px;
+
+    color:#75614d;
+
+    letter-spacing:1px;
+
+    animation:storyBlink 1.8s infinite;
+
+    user-select:none;
+
+    cursor:pointer;
+
+}
+
+
+/* =====================================================
+                    CLOSE
+===================================================== */
+
+#closeOpening{
+
+    display:none;
+
+    margin:30px auto 0;
+
+    width:180px;
+
+    height:48px;
+
+    border:none;
+
+    border-radius:999px;
+
+    background:
+    linear-gradient(
+        180deg,
+        #4b5d82,
+        #354766
+    );
+
+    color:#fff;
+
+    font-family:inherit;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    letter-spacing:.5px;
+
+    cursor:pointer;
+
+    box-shadow:
+    0 10px 20px rgba(30,40,70,.20);
+
+    transition:
+    transform .25s ease,
+    box-shadow .25s ease;
+
+}
+
+#closeOpening:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+    0 14px 24px rgba(30,40,70,.28);
+
+}
+
+
+/* =====================================================
+                    MOBILE
+===================================================== */
+
+@media(max-width:768px){
+
+    .opening-paper{
+
+        width:94%;
+
+        max-height:84vh;
+
+        overflow-y:auto;
+
+        padding:36px 24px 30px;
+
+    }
+
+    .story-line{
+
+        font-size:16px;
+
+        line-height:1.9;
+
+    }
+
+    .story-last{
+
+        font-size:20px;
+
+    }
+
+}
+
+
+/* =====================================================
+                OPENING REPLAY
+===================================================== */
+
+.opening-replay{
+
+    position:absolute;
+
+    top: 60px;
+
+    left:700px;
+
+    width:25px;
+
+    height:25px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:rgba(169, 209, 243, 0.401);
+
+    backdrop-filter:blur(8px);
+
+    font-size:24px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.opening-replay:hover{
+
+    transform:scale(1.08);
+
+    background:rgba(255,255,255,.28);
+
+}
+

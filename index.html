@@ -103,165 +103,222 @@
         </div>
 
 
-        <!-- 🌤️ 시작 화면 -->
+    <!-- 🌤️ 시작 화면 -->
 
-        <section class="start-screen" id="startScreen">
+<section class="start-screen" id="startScreen">
 
-            <button class="mission-start" id="missionStart">
-                MISSION START
-            </button>
+    <button class="mission-start" id="missionStart">
+        MISSION START
+    </button>
 
-        </section>
-
-
-        <!-- 📋 미션 목록 -->
-
-        <section class="mission-panel" id="missionPanel">
-
-            <div class="mission-box">
-
-                <button class="close-button" id="closeMission">
-                    ×
-                </button>
-
-                <p class="panel-subtitle">
-                    TODAY'S TOUR
-                </p>
-
-                <h1>
-                    MISSION
-                </h1>
+</section>
 
 
-                <div class="mission-list">
+<!-- 📋 미션 목록 -->
 
-                    <!-- MISSION 01 -->
+<section class="mission-panel" id="missionPanel">
 
-                    <button class="mission-card open">
-                        <div>
-                            <span class="mission-number">
-                                MISSION 01
-                            </span>
+    <div class="mission-box">
 
-                            <span class="mission-description">
-                                첫 번째 미션
-                            </span>
-                        </div>
+        <button id="openingReplay" class="opening-replay"> 📜 </button>
 
-                        <span class="mission-status" id="mission01Status">
-                            OPEN
-                        </span>
-                    </button>
+        <button class="close-button" id="closeMission">
+            ×
+        </button>
 
+        <p class="panel-subtitle">  TODAY'S TOUR </p>
 
-                    <!-- MISSION 02 -->
+      <div class="mission-header">
 
-                    <button class="mission-card locked" id="mission02Card">
-                        <div>
-                            <span class="mission-number">
-                                MISSION 02
-                            </span>
+       <h1> MISSION  </h1>
 
-                            <span class="mission-description">
-                                두 번째 미션
-                            </span>
-                        </div>
+    <button
+        id="endingButton"
+        style="display:none;">
 
-                        <span class="mission-status" id="mission02Status">
-                            🔒
-                        <small id="mission02Timer"></small>
-                        </span>
+        ✨ENDING✨
 
-                    </button>
+    </button>
 
+</div>
 
-                    <!-- MISSION 03 -->
+        <div class="mission-list">
 
-                    <button class="mission-card locked" id="mission03Card">
-                        <div>
-                            <span class="mission-number">
-                                MISSION 03
-                            </span>
+            <!-- MISSION 01 -->
 
-                            <span class="mission-description">
-                                세 번째 미션
-                            </span>
-                        </div>
+            <button class="mission-card open">
 
-                        <span class="mission-status" id="mission03Status">
-                            🔒
-                            <small id="mission03Timer"></small>
-                        </span>
-                    </button>
+                <div>
 
-                    <!-- MISSION 04 -->
+                    <span class="mission-number">
+                        MISSION 01
+                    </span>
 
-                    <button class="mission-card locked" id="mission03Card">
-                        <div>
-                            <span class="mission-number">
-                                MISSION 04
-                            </span>
-
-                            <span class="mission-description">
-                                네 번째 미션
-                            </span>
-                        </div>
-
-                        <span class="mission-status" id="mission03Status">
-                            🔒
-                            <small id="mission03Timer"></small>
-                        </span>
-                    </button>
-
-                    <!-- MISSION 05 -->
-
-                    <button class="mission-card locked" id="mission03Card">
-                        <div>
-                            <span class="mission-number">
-                                MISSION 05
-                            </span>
-
-                            <span class="mission-description">
-                                다섯 번째 미션
-                            </span>
-                        </div>
-
-                        <span class="mission-status" id="mission03Status">
-                            🔒
-                            <small id="mission03Timer"></small>
-                        </span>
-                    </button>
-
-
-                    <!-- FINAL -->
-
-                    <button class="mission-card locked final">
-                        <div>
-                            <span class="mission-number">
-                               MISSION 06
-                            </span>
-
-                            <span class="mission-description">
-                                여섯 번째 미션
-                            </span>
-                        </div>
-
-                        <span class="mission-status">
-                            🔒
-                        </span>
-                    </button>
+                    <span class="mission-description">
+                        첫 번째 미션
+                    </span>
 
                 </div>
 
-            </div>
+                <span class="mission-status" id="mission01Status">
+                    OPEN
+                </span>
 
-        </section>
+            </button>
+
+
+            <!-- MISSION 02 -->
+
+            <button class="mission-card locked" id="mission02Card">
+
+                <div>
+
+                    <span class="mission-number">
+                        MISSION 02
+                    </span>
+
+                    <span class="mission-description">
+                        두 번째 미션
+                    </span>
+
+                </div>
+
+                <span class="mission-status" id="mission02Status">
+
+                    🔒
+
+                    <small id="mission02Timer"></small>
+
+                </span>
+
+            </button>
+
+
+            <!-- MISSION 03 -->
+
+            <button class="mission-card locked" id="mission03Card">
+
+                <div>
+
+                    <span class="mission-number">
+                        MISSION 03
+                    </span>
+
+                    <span class="mission-description">
+                        세 번째 미션
+                    </span>
+
+                </div>
+
+                <span class="mission-status" id="mission03Status">
+
+                    🔒
+
+                    <small id="mission03Timer"></small>
+
+                </span>
+
+            </button>
+
+
+            <!-- MISSION 04 -->
+
+            <button class="mission-card locked" id="mission04Card">
+
+                <div>
+
+                    <span class="mission-number">
+                        MISSION 04
+                    </span>
+
+                    <span class="mission-description">
+                        네 번째 미션
+                    </span>
+
+                </div>
+
+                <span class="mission-status" id="mission04Status">
+
+                    🔒
+
+                    <small id="mission04Timer"></small>
+
+                </span>
+
+            </button>
+
+
+            <!-- MISSION 05 -->
+
+            <button class="mission-card locked" id="mission05Card">
+
+                <div>
+
+                    <span class="mission-number">
+                        MISSION 05
+                    </span>
+
+                    <span class="mission-description">
+                        다섯 번째 미션
+                    </span>
+
+                </div>
+
+                <span class="mission-status" id="mission05Status">
+
+                    🔒
+
+                    <small id="mission05Timer"></small>
+
+                </span>
+
+            </button>
+
+
+            <!-- MISSION 06 -->
+
+            <button
+                class="mission-card locked"
+                id="mission06Card">
+
+                <div>
+
+                    <span class="mission-number">
+                        MISSION 06
+                    </span>
+
+                    <span class="mission-description">
+                        여섯 번째 미션
+                    </span>
+
+                </div>
+
+                <span
+                    class="mission-status"
+                    id="mission06Status">
+
+                    🔒
+
+                    <small id="mission06Timer"></small>
+
+                </span>
+
+            </button>
+
+        
+
+        </div>
+
+    </div>
+
+</section>
+
         
 <!-- ⭐ MISSION 01 내용창 -->
 
 <section class="mission-detail" id="missionDetail">
 
-    <div class="detail-box">
+   <div class="detail-box" style="border:10px solid red;">
 
         <button class="detail-close" id="detailClose">
             ×
@@ -496,9 +553,10 @@
      가로공지
 ========================== -->
 
-
 <div id="rotateNotice">
+
     <div class="rotate-box">
+
         <h2>NOTICE</h2>
 
         <p>
@@ -506,8 +564,31 @@
             <br><br>
             📱 휴대폰을 가로로 돌려주세요.
         </p>
+
     </div>
-</div>->
+
+</div>
+
+<!-- ==========================
+     세로공지
+========================== -->
+
+<div id="rotatePortraitNotice">
+
+    <div class="rotate-box">
+
+        <h2>NOTICE</h2>
+
+        <p>
+        
+            다음 단계를 진행하기 위해
+            <br>
+            📱 휴대폰을 세로로 돌려주세요.
+        </p>
+
+    </div>
+
+</div>
 
 <!-- ==========================
      MISSION 03
@@ -516,6 +597,14 @@
 <div id="mission03Detail" class="mission-detail">
 
     <div class="mission03-box">
+
+        <button
+            class="detail-close"
+            id="mission03Close">
+
+            ×
+
+        </button>
 
         <h2 class="mission-title">
             ☕ MISSION 03
@@ -533,112 +622,914 @@
 
             <span id="foundCount">0/5</span>
 
-        
-
         </div>
 
         <!-- 카페 게임 -->
 
-       <div class="cafe-game">
+        <div class="cafe-game">
 
-  <img
-    src="images/cafe.png"
-    class="cafe-bg"
-    alt="카페">
+            <img
+                src="images/cafe.png"
+                class="cafe-bg"
+                alt="카페">
 
-<!-- ⭐ -->
-<button class="hidden-item item-star" onclick="findItem('star')">
-    <img src="images/star.png" alt="">
-</button>
+            <!-- ⭐ -->
+            <button class="hidden-item item-star">
+                <img src="images/star.png" alt="">
+            </button>
 
-<!-- ✉️ -->
-<button class="hidden-item item-letter" onclick="findItem('letter')">
-    <img src="images/letter.png" alt="">
-</button>
+            <!-- ✉️ -->
+            <button class="hidden-item item-letter">
+                <img src="images/letter.png" alt="">
+            </button>
 
-<!-- 🔑 -->
-<button class="hidden-item item-key" onclick="findItem('key')">
-    <img src="images/key.png" alt="">
-</button>
+            <!-- 🔑 -->
+            <button class="hidden-item item-key">
+                <img src="images/key.png" alt="">
+            </button>
 
-<!-- 🌙 -->
-<button class="hidden-item item-moon" onclick="findItem('moon')">
-    <img src="images/moon.png" alt="">
-</button>
+            <!-- 🌙 -->
+            <button class="hidden-item item-moon">
+                <img src="images/moon.png" alt="">
+            </button>
 
-<!-- 🧸 -->
-<button class="hidden-item item-bear" onclick="findItem('bear')">
-    <img src="images/bear.png" alt="">
-</button>
-        <p class="mission-guide">
+            <!-- 🧸 -->
+            <button class="hidden-item item-bear">
+                <img src="images/bear.png" alt="">
+            </button>
 
-         별,곰인형,달,열쇠,편지를 찾아보세요👀
+            <p class="mission-guide">
+                별, 곰인형, 달, 열쇠, 편지를 찾아보세요 👀
+            </p>
 
+        </div>
+        <!-- cafe-game 끝 -->
+
+    </div>
+    <!-- mission03-box 끝 -->
+
+    <!-- ⭐ 모든 그림 발견 -->
+
+    <div class="face-popup" id="mission03FacePopup">
+
+        <p class="story-text">
+            숨은 조각찾기 미션 성공<br>
+            숨겨진 조각이 모습을 드러냈습니다.
         </p>
+
+        <button id="closeMission03FacePopup">
+            계속하기
+        </button>
+
+    </div>
+
+    <!-- 🔐 인증번호 -->
+
+    <div class="face-popup" id="mission03CodeArea">
+
+        <p>
+            인증번호를 입력해주세요.
+        </p>
+
+        <input
+            type="text"
+            id="mission03Code"
+            placeholder="인증번호">
+
+        <button id="checkMission03Code">
+            인증하기
+        </button>
+
+    </div>
+
+    <!-- ⭐ 미션 클리어 -->
+
+    <div class="clear-popup" id="mission03ClearPopup">
+
+        <div class="clear-box">
+
+            <h2>SYSTEM</h2>
+
+            <p>
+                숨겨진 전설의 조각이 깨어났습니다.<br>
+                다음 발자취를 따라 이동해주세요.
+            </p>
+
+            <button id="closeMission03Clear">
+                다음으로
+            </button>
+
+        </div>
 
     </div>
 
 </div>
+<!-- mission03Detail 끝 -->
+ 
+<!-- =====================================================
+                    MISSION 04 찐
+===================================================== -->
 
-<!-- ⭐ 모든 그림 발견 -->
+<section
+    class="mission-detail"
+    id="mission04Detail">
 
-<div class="face-popup" id="mission03FacePopup">
+    <div class="detail-box">
 
-    <p class="story-text">
-        숨은 조각찾기 미션 성공<br>
-        숨겨진 조각이 모습을 드러냈습니다.
-    </p>
+        <button
+            class="detail-close"
+            id="mission04Close">
 
-    <button id="closeMission03FacePopup">
-        계속하기
-    </button>
+            ×
 
-</div>
+        </button>
 
+        <p class="detail-label">
 
-<!-- 🔐 인증번호 -->
-
-<div class="face-popup" id="mission03CodeArea">
-
-    <p>
-        인증번호를 입력해주세요.
-    </p>
-
-    <input
-        type="text"
-        id="mission03Code"
-        placeholder="인증번호">
-
-    <button id="checkMission03Code">
-        인증하기
-    </button>
-
-</div>
-
-
-<!-- ⭐ 미션 클리어 -->
-
-<div class="clear-popup" id="mission03ClearPopup">
-
-    <div class="clear-box">
-
-        <h2>SYSTEM</h2>
-
-        <p>
-
-            숨겨진 전설의 조각이 깨어났습니다.<br>
-
-            다음 발자취를 따라 이동해주세요.
+            MISSION 04
 
         </p>
 
-        <button id="closeMission03Clear">
+        <h2>
 
-            다음으로
+            오래된 흔적
+
+        </h2>
+
+        <p class="section-title"></p>
+
+        <div class="detail-text">
+
+            <p>
+
+                여기에 스토리 내용을 작성해주세요.
+
+            </p>
+
+        </div>
+
+        <p class="section-title">
+
+            QUIZ
+
+        </p>
+
+        <div class="quiz-area">
+
+            <p class="quiz-question">
+
+                여기에 문제를 작성해주세요.
+
+            </p>
+
+            <input
+                type="text"
+                id="mission04QuizAnswer"
+                placeholder="정답 입력">
+
+            <button
+                id="checkMission04Quiz">
+
+                확인
+
+            </button>
+
+        </div>
+
+        <!-- FACE POPUP -->
+
+        <div
+            class="face-popup"
+            id="mission04FacePopup">
+
+            <h2>
+
+                MISSION CLEAR
+
+            </h2>
+
+            <p class="comment-sub">
+
+                여기에 클리어 문구를 작성해주세요.
+
+            </p>
+
+            <button
+                id="closeMission04FacePopup">
+
+                계속하기
+
+            </button>
+
+        </div>
+
+        <!-- CODE AREA -->
+
+        <div
+            class="code-area"
+            id="mission04CodeArea">
+
+            <p class="section-title">
+
+                인증번호
+
+            </p>
+
+            <p>
+
+                인증번호를 입력해주세요.
+
+            </p>
+
+            <input
+                type="text"
+                id="mission04Code"
+                placeholder="인증번호"
+                maxlength="10">
+
+            <button
+                id="checkMission04Code">
+
+                인증하기
+
+            </button>
+
+        </div>
+
+        <!-- CLEAR POPUP -->
+
+        <div
+            class="clear-popup"
+            id="mission04ClearPopup">
+
+            <div class="clear-box">
+
+                <h2>
+
+                    ⭐
+
+                </h2>
+
+                <p>
+
+                    미션이 완료되었습니다.<br>
+
+                    다음 장소로 이동해주세요.
+
+                </p>
+
+                <button
+                    id="closeMission04Clear">
+
+                    확인
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+                    MISSION 05
+===================================================== -->
+
+<section
+    class="mission-detail"
+    id="mission05Detail">
+
+    <div class="detail-box">
+
+        <button
+            class="detail-close"
+            id="mission05Close">
+
+            ×
+
+        </button>
+
+        <p class="detail-label">
+
+            MISSION 05
+
+        </p>
+
+        <h2>
+
+            오래된 흔적
+
+        </h2>
+
+        <p class="section-title"></p>
+
+        <div class="detail-text">
+
+            <p>
+
+                여기에 스토리 내용을 작성해주세요.
+
+            </p>
+
+        </div>
+
+        <p class="section-title">
+
+            QUIZ
+
+        </p>
+
+        <div class="quiz-area">
+
+            <p class="quiz-question">
+
+                여기에 문제를 작성해주세요.
+
+            </p>
+
+            <input
+                type="text"
+                id="mission05QuizAnswer"
+                placeholder="정답 입력">
+
+            <button
+                id="checkMission05Quiz">
+
+                확인
+
+            </button>
+
+        </div>
+
+        <!-- FACE POPUP -->
+
+        <div
+            class="face-popup"
+            id="mission05FacePopup">
+
+            <h2>
+
+                MISSION CLEAR
+
+            </h2>
+
+            <p class="comment-sub">
+
+                여기에 클리어 문구를 작성해주세요.
+
+            </p>
+
+            <button
+                id="closeMission05FacePopup">
+
+                계속하기
+
+            </button>
+
+        </div>
+
+        <!-- CODE AREA -->
+
+        <div
+            class="code-area"
+            id="mission05CodeArea">
+
+            <p class="section-title">
+
+                인증번호
+
+            </p>
+
+            <p>
+
+                인증번호를 입력해주세요.
+
+            </p>
+
+            <input
+                type="text"
+                id="mission05Code"
+                placeholder="인증번호"
+                maxlength="10">
+
+            <button
+                id="checkMission05Code">
+
+                인증하기
+
+            </button>
+
+        </div>
+
+        <!-- CLEAR POPUP -->
+
+        <div
+            class="clear-popup"
+            id="mission05ClearPopup">
+
+            <div class="clear-box">
+
+                <h2>
+
+                    ⭐
+
+                </h2>
+
+                <p>
+
+                    미션이 완료되었습니다.<br>
+
+                    다음 장소로 이동해주세요.
+
+                </p>
+
+                <button
+                    id="closeMission05Clear">
+
+                    확인
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+                    MISSION 06
+===================================================== -->
+
+<section
+    class="mission-detail"
+    id="mission06Detail">
+
+    <div class="detail-box">
+
+        <button
+            class="detail-close"
+            id="mission06Close">
+
+            ×
+
+        </button>
+
+        <p class="detail-label">
+
+            MISSION 06
+
+        </p>
+
+        <h2>
+
+            오래된 흔적
+
+        </h2>
+
+        <p class="section-title"></p>
+
+        <div class="detail-text">
+
+            <p>
+
+                여기에 스토리 내용을 작성해주세요.
+
+            </p>
+
+        </div>
+
+        <p class="section-title">
+
+            QUIZ
+
+        </p>
+
+        <div class="quiz-area">
+
+            <p class="quiz-question">
+
+                여기에 문제를 작성해주세요.
+
+            </p>
+
+            <input
+                type="text"
+                id="mission06QuizAnswer"
+                placeholder="정답 입력">
+
+            <button
+                id="checkMission06Quiz">
+
+                확인
+
+            </button>
+
+        </div>
+
+        <!-- FACE POPUP -->
+
+        <div
+            class="face-popup"
+            id="mission06FacePopup">
+
+            <h2>
+
+                MISSION CLEAR
+
+            </h2>
+
+            <p class="comment-sub">
+
+                여기에 클리어 문구를 작성해주세요.
+
+            </p>
+
+            <button
+                id="closeMission06FacePopup">
+
+                계속하기
+
+            </button>
+
+        </div>
+
+        <!-- CODE AREA -->
+
+        <div
+            class="code-area"
+            id="mission06CodeArea">
+
+            <p class="section-title">
+
+                인증번호
+
+            </p>
+
+            <p>
+
+                인증번호를 입력해주세요.
+
+            </p>
+
+            <input
+                type="text"
+                id="mission06Code"
+                placeholder="인증번호"
+                maxlength="10">
+
+            <button
+                id="checkMission06Code">
+
+                인증하기
+
+            </button>
+
+        </div>
+
+        <!-- CLEAR POPUP -->
+
+        <div
+            class="clear-popup"
+            id="mission06ClearPopup">
+
+            <div class="clear-box">
+
+                <h2>
+
+                    ⭐
+
+                </h2>
+
+                <p>
+
+                    미션이 완료되었습니다.<br>
+
+                    다음 장소로 이동해주세요.
+
+                </p>
+
+                <button
+                    id="closeMission06Clear">
+
+                    확인
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+                        ENDING
+===================================================== -->
+
+<!-- 활성화 전 -->
+
+<div
+    class="clear-popup"
+    id="endingWaitingPopup">
+
+    <div class="clear-box">
+
+        <h2>
+
+            🌌
+
+        </h2>
+
+        <p>
+
+            엔딩 활성화 중입니다.
+
+        </p>
+
+        <p id="endingTimer">
+
+            00:00:00
+
+        </p>
+
+        <button
+            id="closeEndingWaiting">
+
+            확인
 
         </button>
 
     </div>
+
+</div>
+
+
+
+<!-- 밤하늘 -->
+
+<section
+    class="mission-detail"
+    id="endingDetail">
+
+    <div class="detail-box">
+
+        <button
+            id="endingStar">
+
+            ★
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- STORY -->
+
+<div
+    class="clear-popup"
+    id="endingStory">
+
+    <div class="clear-box">
+
+        <h2>
+
+            STORY
+
+        </h2>
+
+        <p>
+
+            엔딩 스토리가 들어갈 자리입니다.
+
+        </p>
+
+        <button
+            id="showConstellation">
+
+            완성된 별자리 보기
+
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- 별자리 -->
+
+<div
+    class="clear-popup"
+    id="constellationPopup">
+
+    <div class="clear-box">
+
+        <h2>
+
+            ♎
+
+        </h2>
+
+        <p>
+
+            천칭자리가 완성되었습니다.
+
+        </p>
+
+        <button
+            id="endingReplay">
+
+            목록으로
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+                    HIDDEN 01
+===================================================== -->
+
+<div
+    class="hidden-overlay"
+    id="hidden01Popup">
+
+    <div class="hidden-box">
+
+        <h2>
+
+            🌟 HIDDEN MISSION
+
+        </h2>
+
+        <p>
+
+            에너지가 떨어졌어요!<br>
+            에너지를 충전하러<br>
+            에너지샵으로 이동해주세요!
+
+        </p>
+
+        <p class="hidden-code">
+
+            ㅂㅈㄱㅂㄹ45ㄱ341
+
+        </p>
+
+        <input
+            type="text"
+            id="hidden01Answer"
+            placeholder="정답 입력">
+
+        <button
+            id="checkHidden01">
+
+            확인
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+                    HIDDEN 02
+===================================================== -->
+
+<div
+    class="hidden-overlay"
+    id="hidden02Popup">
+
+    <div class="hidden-box">
+
+        <h2>
+
+            🌟 HIDDEN MISSION
+
+        </h2>
+
+        <p>
+
+            여기에 Hidden02 내용을 작성해주세요.
+
+        </p>
+
+        <p class="hidden-code">
+
+            ㅂㅈㄱㅂㄹ45ㄱ341
+
+        </p>
+
+        <input
+            type="text"
+            id="hidden02Answer"
+            placeholder="정답 입력">
+
+        <button
+            id="checkHidden02">
+
+            확인
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- =====================================================
+                    OPENING STORY
+===================================================== -->
+
+<!-- 암전 -->
+<div id="openingOverlay"></div>
+
+<!-- 오프닝 -->
+<div id="openingStory">
+
+    <div class="opening-paper">
+
+        <div id="storyContainer">
+
+            <p class="story-line">
+                오래전, 세상에는 누구도 끝을 보지 못한 하나의 전설이 존재했습니다.
+            </p>
+
+            <p class="story-line">
+                사람들의 기억 속에서조차 잊혀진 그 전설은,
+                긴 세월을 지나며 수많은 조각으로 흩어졌고
+                마침내 세상에서 그 자취를 감추었습니다.
+            </p>
+
+            <p class="story-line">
+                하지만 전설은 완전히 사라진 것이 아니었습니다.
+            </p>
+
+            <p class="story-line">
+                지금도 누군가의 기억 한편,
+                오래된 물건들 사이,
+                그리고 아무도 눈여겨보지 않았던 작은 흔적 속에
+                조용히 잠들어 있을 뿐입니다.
+            </p>
+
+            <p class="story-line">
+                그리고 마지막 조각이 제자리를 찾는 순간,
+                누구도 알지 못했던 전설의 진실이
+                모습을 드러낼 것입니다.
+            </p>
+
+            <p class="story-line story-bold">
+                잠들어 있던 전설의 조각들은,
+                지금도 제자리를 기억하고 있습니다.
+            </p>
+
+            <p class="story-line story-bold">
+                전설의 발자취에 있는 그 조각들이
+                다시 하나가 되는 순간,
+                잃어버린 전설은 다시 깨어나게 될 것입니다.
+            </p>
+
+            <p class="story-line story-last">
+                잃어버린 전설을 깨우는
+                그 여정을 함께하시겠습니까?
+            </p>
+
+        </div>
+
+        <div id="storyNext">
+
+            ▼ 클릭하여 계속
+
+        </div>
+
+        <button id="closeOpening">
+
+            닫기
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- =====================================================
+                LIGHT FRAGMENT
+===================================================== -->
+
+<div id="lightFragment">
+
+    <div class="fragment"></div>
 
 </div>
 

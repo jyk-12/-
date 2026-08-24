@@ -3,8 +3,6 @@
    START + MISSION PANEL
    + MISSION 01
 ========================== */
-
-
 // ==========================
 // START
 // ==========================
@@ -19,7 +17,18 @@ if (missionStart) {
 
     missionStart.addEventListener("click", () => {
 
+        // ⭐ 처음에는 오프닝
+        if (!openingViewed) {
+
+            openOpening();
+
+            return;
+
+        }
+
+        // ⭐ 두 번째부터 미션목록
         missionPanel.classList.add("show");
+
         startScreen.classList.add("hidden");
 
     });
@@ -32,6 +41,7 @@ if (closeMission) {
     closeMission.addEventListener("click", () => {
 
         missionPanel.classList.remove("show");
+
         startScreen.classList.remove("hidden");
 
     });
@@ -283,6 +293,8 @@ closeClear.addEventListener("click",()=>{
 
     missionDetail.classList.remove("show");
 
+    showLightFragment();
+
 
     missionPanel.classList.add("show");
 
@@ -358,7 +370,6 @@ function startMission02Timer(){
 
         mission02Timer.innerHTML =
         `${String(min).padStart(2,"0")}:${String(sec).padStart(2,"0")}`;
-
 
 
     },1000);
@@ -616,6 +627,8 @@ closeMission02Clear.addEventListener("click",()=>{
 
     mission02Detail.classList.remove("show");
 
+    showLightFragment();
+
 
     missionPanel.classList.add("show");
 
@@ -625,94 +638,47 @@ closeMission02Clear.addEventListener("click",()=>{
 
 }
 
-
-
-
-
-
-
 // ==========================
 // MISSION 03 TIMER
 // ==========================
 
-
 function startMission03Timer(){
-
 
     const timerText =
     document.getElementById("mission03Timer");
 
+    if(!timerText) return;
 
+    const timer = setInterval(()=>{
 
-    if(!timerText){
+        const now = new Date();
 
-        return;
+        const distance = mission03OpenTime - now;
 
-    }
-
-
-
-    const timer =
-    setInterval(()=>{
-
-
-        const now =
-        new Date();
-
-
-        const distance =
-        mission03OpenTime - now;
-
-
-
-        if(distance<=0){
-
+        if(distance <= 0){
 
             clearInterval(timer);
 
+            mission03Status.innerHTML = "OPEN";
 
-
-            mission03Status.innerHTML =
-            "OPEN";
-
-
-
-            timerText.style.display="none";
-
-
+            timerText.style.display = "none";
 
             mission03Card.classList.remove("locked");
-
-
             mission03Card.classList.add("opened");
-
-
 
             return;
 
         }
 
-
-
-        const min =
-        Math.floor(distance/1000/60);
-
-
-        const sec =
-        Math.floor((distance/1000)%60);
-
-
+        const min = Math.floor(distance/1000/60);
+        const sec = Math.floor((distance/1000)%60);
 
         timerText.innerHTML =
         `${String(min).padStart(2,"0")}:${String(sec).padStart(2,"0")}`;
 
-
-
     },1000);
 
-
 }
-
 
 
 
@@ -729,8 +695,13 @@ document.getElementById("mission03Close");
 const rotateNotice =
 document.getElementById("rotateNotice");
 
+const rotatePortraitNotice =
+document.getElementById("rotatePortraitNotice");
 
-// 숨은그림 열기
+let mission03NeedPortrait = false;
+
+
+
 function openMission03(){
 
     missionPanel.classList.remove("show");
@@ -740,48 +711,81 @@ function openMission03(){
 }
 
 
-// 미션3 클릭
+
+// ==========================
+// CARD CLICK
+// ==========================
+
 if(mission03Card){
 
-mission03Card.addEventListener("click",()=>{
+    mission03Card.addEventListener("click",()=>{
 
-    if(mission03Card.classList.contains("locked")){
+        if(mission03Card.classList.contains("locked")) return;
 
-        return;
+        // ⭐ 모바일 여부 먼저 확인
+        const isMobile = window.innerWidth <= 900;
 
-    }
+        // PC는 바로 오픈
+        if(!isMobile){
 
-    // 📱 세로
-    if(window.innerHeight > window.innerWidth){
+            openMission03();
+            return;
 
-        rotateNotice.style.display="flex";
+        }
 
-    }
+        // 모바일
+        if(window.innerHeight > window.innerWidth){
 
-    // 💻 가로
-    else{openMission03();
+            rotateNotice.style.display="flex";
 
-    }
+        }
 
-});
+        else{
+
+            openMission03();
+
+        }
+
+    });
 
 }
 
 
-// 화면 회전 감지
+
+// ==========================
+// CLOSE
+// ==========================
+
+if(mission03Close){
+
+    mission03Close.addEventListener("click",()=>{
+
+        mission03Detail.classList.remove("show");
+
+        missionPanel.classList.add("show");
+
+    });
+
+}
+
+
+
+// ==========================
+// ROTATE CHECK
+// ==========================
+
 window.addEventListener("resize",()=>{
 
-    if(!rotateNotice){
+    const isMobile = window.innerWidth <= 900;
 
-        return;
+    // ⭐ PC는 회전 안내 사용 안 함
+    if(!isMobile) return;
 
-    }
-
-    // 안내창이 떠있을 때 가로로 돌리면
+    // 처음 가로 안내
     if(
 
+        rotateNotice &&
         rotateNotice.style.display==="flex" &&
-
         window.innerWidth > window.innerHeight
 
     ){
@@ -792,14 +796,142 @@ window.addEventListener("resize",()=>{
 
     }
 
-    // 다시 세로로 돌리면
+    // 게임 중 세로 돌리면
     if(
+
         mission03Detail.classList.contains("show") &&
+        !mission03NeedPortrait &&
         window.innerHeight > window.innerWidth
+
     ){
 
         mission03Detail.classList.remove("show");
+
         rotateNotice.style.display="flex";
+
+    }
+
+    // 클리어 후 세로 안내
+    if(
+
+        mission03NeedPortrait &&
+        rotatePortraitNotice &&
+        window.innerHeight > window.innerWidth
+
+    ){
+
+        rotatePortraitNotice.style.display="none";
+
+        mission03ClearPopup.style.display="flex";
+
+        mission03NeedPortrait = false;
+
+    }
+
+});
+
+
+
+// ==========================
+// HIDDEN ITEM
+// ==========================
+
+const hiddenItems =
+document.querySelectorAll(".hidden-item");
+
+let mission03FoundCount = 0;
+
+hiddenItems.forEach(item=>{
+
+    item.addEventListener("click",()=>{
+
+        if(item.classList.contains("found")) return;
+
+        item.classList.add("found");
+
+        mission03FoundCount++;
+
+        if(mission03FoundCount===5){
+
+            setTimeout(()=>{
+
+                mission03FacePopup.style.display="flex";
+
+            },300);
+
+        }
+
+    });
+
+});
+
+// ==========================
+// FACE POPUP → PORTRAIT
+// ==========================
+
+if(closeMission03FacePopup){
+
+    closeMission03FacePopup.addEventListener("click",()=>{
+
+        mission03FacePopup.style.display="none";
+
+        // ⭐ 모바일 여부 먼저 확인
+        const isMobile = window.innerWidth <= 900;
+
+        // PC는 바로 인증번호
+        if(!isMobile){
+
+            mission03CodeArea.style.display="block";
+            return;
+
+        }
+
+        // 모바일 가로 → 세로 안내
+        if(window.innerWidth > window.innerHeight){
+
+            mission03NeedPortrait = true;
+
+            rotatePortraitNotice.style.display="flex";
+
+        }
+
+        // 이미 세로
+        else{
+
+            mission03CodeArea.style.display="block";
+
+        }
+
+    });
+
+}
+
+
+
+// ==========================
+// ROTATE → CODE
+// ==========================
+
+window.addEventListener("resize",()=>{
+
+    const isMobile = window.innerWidth <= 900;
+
+    // ⭐ PC는 사용 안 함
+    if(!isMobile) return;
+
+    if(
+
+        mission03NeedPortrait &&
+        rotatePortraitNotice &&
+        window.innerHeight > window.innerWidth
+
+    ){
+
+        rotatePortraitNotice.style.display="none";
+
+        mission03NeedPortrait = false;
+
+        mission03CodeArea.style.display="block";
 
     }
 
@@ -808,192 +940,37 @@ window.addEventListener("resize",()=>{
 
 
 
-// 미션창 닫기
-if(mission03Close){
-
-mission03Close.addEventListener("click",()=>{
-
-    mission03Detail.classList.remove("show");
-
-    missionPanel.classList.add("show");
-
-});
-
-}
-
-/* ==========================
-   SCRIPT.JS PART 3/3
-   MISSION 03 HIDDEN GAME
-========================== */
-
-
 // ==========================
-// MISSION 03 HIDDEN ITEMS
+// CODE CHECK
 // ==========================
 
+if(checkMission03Code){
 
-const hiddenItems =
-document.querySelectorAll(".hidden-item");
+    checkMission03Code.addEventListener("click",()=>{
 
+        const code =
+        mission03Code.value.trim();
 
-const foundCount =
-document.getElementById("foundCount");
+        if(code==="3333"){
 
+            mission03CodeArea.style.display="none";
 
-const mission03FacePopup =
-document.getElementById("mission03FacePopup");
+            // ⭐ 다른 미션과 동일
+            mission03ClearPopup.style.display="flex";
 
+            mission03Status.innerHTML="CLEAR ✓";
 
-const closeMission03FacePopup =
-document.getElementById("closeMission03FacePopup");
-
-
-const mission03CodeArea =
-document.getElementById("mission03CodeArea");
-
-
-const mission03Code =
-document.getElementById("mission03Code");
-
-
-const checkMission03Code =
-document.getElementById("checkMission03Code");
-
-
-const mission03ClearPopup =
-document.getElementById("mission03ClearPopup");
-
-
-const closeMission03Clear =
-document.getElementById("closeMission03Clear");
-
-
-
-let foundItemsCount = 0;
-
-
-
-if(mission03FacePopup){
-
-    mission03FacePopup.style.display="none";
-
-}
-
-
-if(mission03CodeArea){
-
-    mission03CodeArea.style.display="none";
-
-}
-
-
-if(mission03ClearPopup){
-
-    mission03ClearPopup.style.display="none";
-
-}
-
-
-
-// ==========================
-// HIDDEN CLICK
-// ==========================
-
-hiddenItems.forEach(item=>{
-
-    item.addEventListener("click",()=>{
-
-        // 이미 찾은 물건이면 종료
-        if(item.classList.contains("found")){
-            return;
         }
 
-        // 찾음 표시
-        item.classList.add("found");
-        item.style.pointerEvents="none";
+        else{
 
-        // 카운트 증가
-        foundItemsCount++;
+            alert("인증번호가 틀렸어!");
 
-        // 화면 숫자 변경
-        if(foundCount){
-            foundCount.textContent = `${foundItemsCount} / 5`;
-        }
-
-        // 5개 모두 찾으면
-        if(foundItemsCount === 5){
-
-            if(foundCount){
-                foundCount.textContent = "5 / 5";
-            }
-
-            mission03FacePopup.style.display = "flex";
         }
 
     });
 
-});
-
-
-// ==========================
-// FACE POPUP → CODE
-// ==========================
-
-
-if(closeMission03FacePopup){
-
-closeMission03FacePopup.addEventListener("click",()=>{
-
-
-    mission03FacePopup.style.display="none";
-
-
-    mission03CodeArea.style.display="block";
-
-
-
-});
-
 }
-
-
-
-
-
-// ==========================
-// MISSION 03 CODE CHECK
-// ==========================
-
-
-if(checkMission03Code){
-
-checkMission03Code.addEventListener("click",()=>{
-
-
-    const code =
-    mission03Code.value.trim();
-
-
-if(code==="3333"){
-
-    // ⭐ 인증번호 팝업 닫기
-    mission03CodeArea.style.display="none";
-
-    // ⭐ 클리어 팝업 열기
-    mission03ClearPopup.style.display="flex";
-
-    mission03Status.innerHTML="CLEAR ✓"; }
-    
-    else{  alert("인증번호가 틀렸어!"); }
-    
-
-
-
-});
-
-}
-
-
 
 
 
@@ -1001,25 +978,1464 @@ if(code==="3333"){
 // FINAL CLOSE
 // ==========================
 
-
 if(closeMission03Clear){
 
-closeMission03Clear.addEventListener("click",()=>{
+    closeMission03Clear.addEventListener("click",()=>{
 
+        mission03ClearPopup.style.display="none";
 
-    mission03ClearPopup.style.display="none";
+        mission03Detail.classList.remove("show");
 
+        // ⭐ 빛의 조각
+        showLightFragment();
 
-    mission03Detail.classList.remove("show");
+        // ⭐ 미션 목록
+        missionPanel.classList.add("show");
 
+        // ⭐ 다음 타이머 시작
+        startMission04Timer();
 
-    missionPanel.classList.add("show");
+        startHidden01Timer();
 
-
-
-});
+    });
 
 }
 
 
 
+
+// =====================================================
+//                    MISSION 04
+// =====================================================
+
+const mission04Card =
+document.getElementById("mission04Card");
+
+const mission04Status =
+document.getElementById("mission04Status");
+
+const mission04Detail =
+document.getElementById("mission04Detail");
+
+const mission04Close =
+document.getElementById("mission04Close");
+
+const mission04Timer =
+document.getElementById("mission04Timer");
+
+
+// 처음에는 잠금 상태
+
+if (mission04Card) {
+
+    mission04Card.classList.add("locked");
+
+    mission04Card.classList.remove("open");
+
+}
+
+
+// ==========================
+// MISSION 04 TIMER
+// ==========================
+
+function startMission04Timer() {
+
+    if (!mission04Timer) return;
+
+    let timeLeft = 30;   // ← 필요하면 30초를 원하는 시간으로 변경
+
+    mission04Timer.style.display = "block";
+
+    const timer = setInterval(() => {
+
+        const min = Math.floor(timeLeft / 60);
+
+        const sec = timeLeft % 60;
+
+        mission04Timer.innerHTML =
+            `${String(min).padStart(2, "0")}:${String(sec).padStart(2, "0")}`;
+
+        if (timeLeft <= 0) {
+
+            clearInterval(timer);
+
+            mission04Status.innerHTML = "OPEN";
+
+            mission04Timer.style.display = "none";
+
+            mission04Card.classList.remove("locked");
+
+            mission04Card.classList.add("open");
+
+        }
+
+        timeLeft--;
+
+    }, 1000);
+
+}
+
+
+// ==========================
+// MISSION 04 OPEN
+// ==========================
+
+if (mission04Card) {
+
+    mission04Card.addEventListener("click", () => {
+
+        // OPEN 전에는 열리지 않음
+        if (!mission04Card.classList.contains("open")) {
+
+            return;
+
+        }
+
+        missionPanel.classList.remove("show");
+
+        mission04Detail.classList.add("show");
+
+    });
+
+}
+
+
+// ==========================
+// CLOSE
+// ==========================
+
+if (mission04Close) {
+
+    mission04Close.addEventListener("click", () => {
+
+        mission04Detail.classList.remove("show");
+
+        missionPanel.classList.add("show");
+
+    });
+
+}
+
+
+// =====================================================
+//                    MISSION 04 QUIZ
+// =====================================================
+
+const mission04QuizAnswer =
+document.getElementById("mission04QuizAnswer");
+
+const checkMission04Quiz =
+document.getElementById("checkMission04Quiz");
+
+const mission04FacePopup =
+document.getElementById("mission04FacePopup");
+
+const closeMission04FacePopup =
+document.getElementById("closeMission04FacePopup");
+
+const mission04CodeArea =
+document.getElementById("mission04CodeArea");
+
+
+
+if(mission04FacePopup){
+
+    mission04FacePopup.style.display="none";
+
+}
+
+if(mission04CodeArea){
+
+    mission04CodeArea.style.display="none";
+
+}
+
+
+
+if(checkMission04Quiz){
+
+    checkMission04Quiz.addEventListener("click",()=>{
+
+        const answer =
+        mission04QuizAnswer.value.trim();
+
+        if(answer==="정답"){
+
+            mission04FacePopup.style.display="block";
+
+        }
+
+        else{
+
+            alert("다시 입력해주세요!");
+
+        }
+
+    });
+
+}
+
+
+
+if(closeMission04FacePopup){
+
+    closeMission04FacePopup.addEventListener("click",()=>{
+
+        mission04FacePopup.style.display="none";
+
+        mission04CodeArea.style.display="block";
+
+    });
+
+}
+
+
+
+// =====================================================
+//                    MISSION 04 CLEAR
+// =====================================================
+
+const mission04Code =
+document.getElementById("mission04Code");
+
+const checkMission04Code =
+document.getElementById("checkMission04Code");
+
+const mission04ClearPopup =
+document.getElementById("mission04ClearPopup");
+
+const closeMission04Clear =
+document.getElementById("closeMission04Clear");
+
+
+
+if(mission04ClearPopup){
+
+    mission04ClearPopup.style.display="none";
+
+}
+
+
+
+if(checkMission04Code){
+
+    checkMission04Code.addEventListener("click",()=>{
+
+        const code =
+        mission04Code.value.trim();
+
+        if(code==="4444"){
+
+            mission04ClearPopup.style.display="flex";
+
+            mission04Status.innerHTML="CLEAR ✓";
+
+            startMission05Timer();
+            
+            startHidden02Timer();
+
+        }
+
+        else{
+
+            alert("인증번호가 틀렸습니다.");
+
+        }
+
+    });
+
+}
+
+
+
+if(closeMission04Clear){
+
+    closeMission04Clear.addEventListener("click",()=>{
+
+        mission04ClearPopup.style.display="none";
+
+        mission04Detail.classList.remove("show");
+
+        showLightFragment();
+
+        missionPanel.classList.add("show");
+
+        startMission05Timer();
+
+    });
+
+}
+
+// =====================================================
+//                    MISSION 05
+// =====================================================
+
+const mission05Card =
+document.getElementById("mission05Card");
+
+const mission05Status =
+document.getElementById("mission05Status");
+
+const mission05Detail =
+document.getElementById("mission05Detail");
+
+const mission05Close =
+document.getElementById("mission05Close");
+
+const mission05Timer =
+document.getElementById("mission05Timer");
+
+
+// 처음에는 잠금
+
+if(mission05Card){
+
+    mission05Card.classList.add("locked");
+
+    mission05Card.classList.remove("open");
+
+}
+
+
+// ======================================
+// ⭐ 실제 오픈 시간 (행사 전날 수정)
+// ======================================
+
+let mission05OpenTime = new Date();
+
+// 날짜 (행사 전날 설정)
+// mission05OpenTime.setFullYear(2026);
+// mission05OpenTime.setMonth(8);
+// mission05OpenTime.setDate(25);
+
+// 시간 (행사 전날 설정)
+// mission05OpenTime.setHours(15);
+// mission05OpenTime.setMinutes(40);
+// mission05OpenTime.setSeconds(0);
+
+
+// ==========================
+// MISSION 05 TIMER
+// ==========================
+
+function startMission05Timer(){
+
+    if(!mission05Timer) return;
+
+    let timeLeft = 30;
+
+    mission05Timer.style.display="block";
+
+    const timer=setInterval(()=>{
+
+        const min=Math.floor(timeLeft/60);
+
+        const sec=timeLeft%60;
+
+        mission05Timer.innerHTML=
+        `${String(min).padStart(2,"0")}:${String(sec).padStart(2,"0")}`;
+
+        if(timeLeft<=0){
+
+            clearInterval(timer);
+
+            mission05Status.innerHTML="OPEN";
+
+            mission05Timer.style.display="none";
+
+            mission05Card.classList.remove("locked");
+
+            mission05Card.classList.add("open");
+
+        }
+
+        timeLeft--;
+
+    },1000);
+
+}
+
+
+// ==========================
+// OPEN
+// ==========================
+
+if(mission05Card){
+
+    mission05Card.addEventListener("click",()=>{
+
+        if(!mission05Card.classList.contains("open")){
+
+            return;
+
+        }
+
+        missionPanel.classList.remove("show");
+
+        mission05Detail.classList.add("show");
+
+    });
+
+}
+
+
+// ==========================
+// CLOSE
+// ==========================
+
+if(mission05Close){
+
+    mission05Close.addEventListener("click",()=>{
+
+        mission05Detail.classList.remove("show");
+
+        missionPanel.classList.add("show");
+
+
+    });
+
+}
+
+// =====================================================
+//                    MISSION 05 QUIZ
+// =====================================================
+
+const mission05QuizAnswer =
+document.getElementById("mission05QuizAnswer");
+
+const checkMission05Quiz =
+document.getElementById("checkMission05Quiz");
+
+const mission05FacePopup =
+document.getElementById("mission05FacePopup");
+
+const closeMission05FacePopup =
+document.getElementById("closeMission05FacePopup");
+
+const mission05CodeArea =
+document.getElementById("mission05CodeArea");
+
+
+
+if(mission05FacePopup){
+
+    mission05FacePopup.style.display="none";
+
+}
+
+if(mission05CodeArea){
+
+    mission05CodeArea.style.display="none";
+
+}
+
+
+
+if(checkMission05Quiz){
+
+    checkMission05Quiz.addEventListener("click",()=>{
+
+        const answer =
+        mission05QuizAnswer.value.trim();
+
+        if(answer==="정답"){
+
+            mission05FacePopup.style.display="block";
+
+        }
+
+        else{
+
+            alert("다시 입력해주세요!");
+
+        }
+
+    });
+
+}
+
+
+
+// ==========================
+// FACE POPUP
+// ==========================
+
+if(closeMission05FacePopup){
+
+    closeMission05FacePopup.addEventListener("click",()=>{
+
+        mission05FacePopup.style.display="none";
+
+        mission05CodeArea.style.display="block";
+
+    });
+
+}
+
+
+
+// =====================================================
+//                    MISSION 05 CLEAR
+// =====================================================
+
+const mission05Code =
+document.getElementById("mission05Code");
+
+const checkMission05Code =
+document.getElementById("checkMission05Code");
+
+const mission05ClearPopup =
+document.getElementById("mission05ClearPopup");
+
+const closeMission05Clear =
+document.getElementById("closeMission05Clear");
+
+
+
+if(mission05ClearPopup){
+
+    mission05ClearPopup.style.display="none";
+
+}
+
+
+
+if(checkMission05Code){
+
+    checkMission05Code.addEventListener("click",()=>{
+
+        const code =
+        mission05Code.value.trim();
+
+        if(code==="5555"){
+
+            mission05ClearPopup.style.display="flex";
+
+            mission05Status.innerHTML="CLEAR ✓";
+
+            
+
+        }
+
+        else{
+
+            alert("인증번호가 틀렸습니다.");
+
+        }
+
+    });
+
+}
+
+
+
+// ==========================
+// FINAL CLOSE
+// ==========================
+
+if(closeMission05Clear){
+
+    closeMission05Clear.addEventListener("click",()=>{
+
+        mission05ClearPopup.style.display="none";
+
+        mission05Detail.classList.remove("show");
+
+        showLightFragment();
+
+        missionPanel.classList.add("show");
+        
+        startMission06Timer();
+
+
+    });
+
+}
+
+// =====================================================
+//                    MISSION 06
+// =====================================================
+
+const mission06Card =
+document.getElementById("mission06Card");
+
+const mission06Status =
+document.getElementById("mission06Status");
+
+const mission06Detail =
+document.getElementById("mission06Detail");
+
+const mission06Close =
+document.getElementById("mission06Close");
+
+const mission06Timer =
+document.getElementById("mission06Timer");
+
+
+// 처음에는 잠금
+
+if(mission06Card){
+
+    mission06Card.classList.add("locked");
+
+    mission06Card.classList.remove("open");
+
+}
+
+
+// ======================================
+// ⭐ 실제 오픈 시간 (행사 전날 수정)
+// ======================================
+
+let mission06OpenTime = new Date();
+
+// 날짜 (행사 전날 설정)
+// mission06OpenTime.setFullYear(2026);
+// mission06OpenTime.setMonth(8);
+// mission06OpenTime.setDate(25);
+
+// 시간 (행사 전날 설정)
+// mission06OpenTime.setHours(16);
+// mission06OpenTime.setMinutes(0);
+// mission06OpenTime.setSeconds(0);
+
+
+// ==========================
+// MISSION 06 TIMER
+// ==========================
+
+function startMission06Timer(){
+
+    if(!mission06Timer) return;
+
+    let timeLeft = 30;
+
+    mission06Timer.style.display="block";
+
+    const timer=setInterval(()=>{
+
+        const min=Math.floor(timeLeft/60);
+
+        const sec=timeLeft%60;
+
+        mission06Timer.innerHTML=
+        `${String(min).padStart(2,"0")}:${String(sec).padStart(2,"0")}`;
+
+        if(timeLeft<=0){
+
+            clearInterval(timer);
+
+            mission06Status.innerHTML="OPEN";
+
+            mission06Timer.style.display="none";
+
+            mission06Card.classList.remove("locked");
+
+            mission06Card.classList.add("open");
+
+        }
+
+        timeLeft--;
+
+    },1000);
+
+}
+
+
+
+// ==========================
+// OPEN
+// ==========================
+
+if(mission06Card){
+
+    mission06Card.addEventListener("click",()=>{
+
+        if(!mission06Card.classList.contains("open")){
+
+            return;
+
+        }
+
+        missionPanel.classList.remove("show");
+
+        mission06Detail.classList.add("show");
+
+    });
+
+}
+
+
+
+// ==========================
+// CLOSE
+// ==========================
+
+if(mission06Close){
+
+    mission06Close.addEventListener("click",()=>{
+
+        mission06Detail.classList.remove("show");
+
+        missionPanel.classList.add("show");
+
+    });
+
+}
+
+// =====================================================
+//                    MISSION 06 QUIZ
+// =====================================================
+
+const mission06QuizAnswer =
+document.getElementById("mission06QuizAnswer");
+
+const checkMission06Quiz =
+document.getElementById("checkMission06Quiz");
+
+const mission06FacePopup =
+document.getElementById("mission06FacePopup");
+
+const closeMission06FacePopup =
+document.getElementById("closeMission06FacePopup");
+
+const mission06CodeArea =
+document.getElementById("mission06CodeArea");
+
+
+
+if(mission06FacePopup){
+
+    mission06FacePopup.style.display="none";
+
+}
+
+if(mission06CodeArea){
+
+    mission06CodeArea.style.display="none";
+
+}
+
+
+
+if(checkMission06Quiz){
+
+    checkMission06Quiz.addEventListener("click",()=>{
+
+        const answer =
+        mission06QuizAnswer.value.trim();
+
+        if(answer==="정답"){
+
+            mission06FacePopup.style.display="block";
+
+        }
+
+        else{
+
+            alert("다시 입력해주세요!");
+
+        }
+
+    });
+
+}
+
+
+
+// ==========================
+// FACE POPUP
+// ==========================
+
+if(closeMission06FacePopup){
+
+    closeMission06FacePopup.addEventListener("click",()=>{
+
+        mission06FacePopup.style.display="none";
+
+        mission06CodeArea.style.display="block";
+
+    });
+
+}
+
+
+
+// =====================================================
+//                    MISSION 06 CLEAR
+// =====================================================
+
+const mission06Code =
+document.getElementById("mission06Code");
+
+const checkMission06Code =
+document.getElementById("checkMission06Code");
+
+const mission06ClearPopup =
+document.getElementById("mission06ClearPopup");
+
+const closeMission06Clear =
+document.getElementById("closeMission06Clear");
+
+
+
+if(mission06ClearPopup){
+
+    mission06ClearPopup.style.display="none";
+
+}
+
+
+
+if(checkMission06Code){
+
+    checkMission06Code.addEventListener("click",()=>{
+
+        const code =
+        mission06Code.value.trim();
+
+        if(code==="6666"){
+
+            mission06ClearPopup.style.display="flex";
+
+            mission06Status.innerHTML="CLEAR ✓";
+
+        }
+
+        else{
+
+            alert("인증번호가 틀렸습니다.");
+
+        }
+
+    });
+
+}
+
+
+
+// ==========================
+// FINAL CLOSE
+// ==========================
+
+if(closeMission06Clear){
+
+    closeMission06Clear.addEventListener("click",()=>{
+
+        mission06ClearPopup.style.display="none";
+
+        mission06Detail.classList.remove("show");
+
+        showLightFragment();
+
+        missionPanel.classList.add("show");
+
+        if(endingButton){ endingButton.style.display="block";}
+
+       
+
+    });
+
+}
+
+// =====================================================
+//                      ENDING
+// =====================================================
+
+const endingButton =
+document.getElementById("endingButton");
+
+const endingWaitingPopup =
+document.getElementById("endingWaitingPopup");
+
+const closeEndingWaiting =
+document.getElementById("closeEndingWaiting");
+
+const endingTimer =
+document.getElementById("endingTimer");
+
+const endingDetail =
+document.getElementById("endingDetail");
+
+const endingStar =
+document.getElementById("endingStar");
+
+const endingStory =
+document.getElementById("endingStory");
+
+const showConstellation =
+document.getElementById("showConstellation");
+
+const constellationPopup =
+document.getElementById("constellationPopup");
+
+const endingReplay =
+document.getElementById("endingReplay");
+
+
+// ==========================
+// 실제 행사 전날 수정
+// ==========================
+
+let endingOpenTime = new Date();
+
+endingOpenTime.setMinutes(
+    endingOpenTime.getMinutes()+4
+);
+
+// 날짜
+// endingOpenTime.setFullYear(2026);
+// endingOpenTime.setMonth(8);
+// endingOpenTime.setDate(25);
+
+// 시간
+// endingOpenTime.setHours(21);
+// endingOpenTime.setMinutes(50);
+// endingOpenTime.setSeconds(0);
+
+
+// ==========================
+// 처음에는 모두 숨김
+// ==========================
+
+if(endingDetail){
+
+    endingDetail.classList.remove("show");
+
+}
+
+if(endingWaitingPopup){
+
+    endingWaitingPopup.style.display="none";
+
+}
+
+if(endingStory){
+
+    endingStory.style.display="none";
+
+}
+
+if(constellationPopup){
+
+    constellationPopup.style.display="none";
+
+}
+
+
+// ==========================
+// ENDING BUTTON
+// ==========================
+
+if(endingButton){
+
+    endingButton.addEventListener("click",()=>{
+
+        const updateTimer = ()=>{
+
+            const now = new Date();
+
+            const distance = endingOpenTime - now;
+
+            if(distance <= 0){
+
+                clearInterval(timer);
+
+                endingWaitingPopup.style.display="none";
+
+                missionPanel.classList.remove("show");
+
+                endingDetail.classList.add("show");
+
+                return;
+
+            }
+
+            const hour = Math.floor(distance/1000/60/60);
+
+            const min = Math.floor((distance/1000/60)%60);
+
+            const sec = Math.floor((distance/1000)%60);
+
+            endingTimer.innerHTML =
+            `${String(hour).padStart(2,"0")}:${String(min).padStart(2,"0")}:${String(sec).padStart(2,"0")}`;
+
+        };
+
+        const now = new Date();
+
+        if(now < endingOpenTime){
+
+            endingWaitingPopup.style.display="flex";
+
+            updateTimer();
+
+            const timer = setInterval(updateTimer,1000);
+
+            return;
+
+        }
+
+        missionPanel.classList.remove("show");
+
+        endingDetail.classList.add("show");
+
+    });
+
+}
+
+
+// ==========================
+// WAITING CLOSE
+// ==========================
+
+if(closeEndingWaiting){
+
+    closeEndingWaiting.addEventListener("click",()=>{
+
+        endingWaitingPopup.style.display="none";
+
+    });
+
+}
+
+
+// ==========================
+// STAR CLICK
+// ==========================
+
+if(endingStar){
+
+    endingStar.addEventListener("click",()=>{
+
+        endingStory.style.display="flex";
+
+    });
+
+}
+
+
+// ==========================
+// STORY
+// ==========================
+
+if(showConstellation){
+
+    showConstellation.addEventListener("click",()=>{
+
+        endingStory.style.display="none";
+
+        constellationPopup.style.display="flex";
+
+    });
+
+}
+
+
+// ==========================
+// REPLAY
+// ==========================
+
+if(endingReplay){
+
+    endingReplay.addEventListener("click",()=>{
+
+        constellationPopup.style.display="none";
+
+        endingDetail.classList.remove("show");
+
+        missionPanel.classList.add("show");
+
+    });
+
+}
+
+// =====================================================
+//                  HIDDEN 01
+// =====================================================
+
+const hidden01Popup =
+document.getElementById("hidden01Popup");
+
+const hidden01Answer =
+document.getElementById("hidden01Answer");
+
+const checkHidden01 =
+document.getElementById("checkHidden01");
+
+
+
+if(hidden01Popup){
+
+    hidden01Popup.style.display="none";
+
+}
+
+
+
+// ======================================
+// TEST
+// ======================================
+
+function startHidden01Timer(){
+
+    setTimeout(()=>{
+
+        hidden01Popup.style.display="flex";
+
+    },30000);
+
+}
+
+
+
+// ======================================
+// ANSWER
+// ======================================
+
+if(checkHidden01){
+
+    checkHidden01.addEventListener("click",()=>{
+
+        const answer=
+        hidden01Answer.value.trim();
+
+        if(answer==="정답"){
+
+            hidden01Popup.style.display="none";
+
+        }
+
+        else{
+
+            alert("다시 입력해주세요.");
+
+        }
+
+    });
+
+}
+
+// =====================================================
+//                  HIDDEN 02
+// =====================================================
+
+const hidden02Popup =
+document.getElementById("hidden02Popup");
+
+const hidden02Answer =
+document.getElementById("hidden02Answer");
+
+const checkHidden02 =
+document.getElementById("checkHidden02");
+
+
+
+if(hidden02Popup){
+
+    hidden02Popup.style.display="none";
+
+}
+
+
+
+// ======================================
+// TEST
+// ======================================
+
+function startHidden02Timer(){
+
+    setTimeout(()=>{
+
+        hidden02Popup.style.display="flex";
+
+    },30000);
+
+}
+
+
+
+// ======================================
+// ANSWER
+// ======================================
+
+if(checkHidden02){
+
+    checkHidden02.addEventListener("click",()=>{
+
+        const answer=
+        hidden02Answer.value.trim();
+
+        if(answer==="정답"){
+
+            hidden02Popup.style.display="none";
+
+        }
+
+        else{
+
+            alert("다시 입력해주세요.");
+
+        }
+
+    });
+
+}
+
+/* =====================================================
+                    OPENING STORY
+===================================================== */
+
+const openingOverlay =
+document.getElementById("openingOverlay");
+
+const openingStory =
+document.getElementById("openingStory");
+
+const storyLines =
+document.querySelectorAll(".story-line");
+
+const storyNext =
+document.getElementById("storyNext");
+
+const closeOpening =
+document.getElementById("closeOpening");
+
+let storyIndex = 0;
+
+// ⭐ 처음 오프닝을 봤는지
+let openingViewed = false;
+
+// ⭐ 다시보기 여부
+let replayMode = false;
+
+
+// =====================================================
+// OPEN
+// =====================================================
+
+function openOpening(replay = false){
+
+    // ⭐ 혹시 숨겨놨다면 다시 표시
+    openingOverlay.style.display = "block";
+    openingStory.style.display = "flex";
+
+    replayMode = replay;
+
+    storyIndex = 0;
+
+    storyLines.forEach(line=>{
+
+        line.classList.remove("show");
+
+    });
+
+    storyNext.style.display="block";
+    closeOpening.style.display="none";
+
+    openingOverlay.classList.add("show");
+    openingStory.classList.add("show");
+
+    setTimeout(()=>{
+
+        // 📜 다시보기
+        if(replay){
+
+            storyLines.forEach(line=>{
+
+                line.classList.add("show");
+
+            });
+
+            storyNext.style.display="none";
+            closeOpening.style.display="block";
+
+            return;
+
+        }
+
+        // 🌌 첫 실행
+        storyLines[0].classList.add("show");
+
+        storyIndex = 1;
+
+    },350);
+
+}
+
+
+// =====================================================
+// NEXT
+// =====================================================
+
+openingStory.addEventListener("click",(e)=>{
+
+    if(replayMode) return;
+
+    if(e.target===closeOpening) return;
+
+    if(storyIndex>=storyLines.length) return;
+
+    storyLines[storyIndex].classList.add("show");
+
+    storyIndex++;
+
+    if(storyIndex===storyLines.length){
+
+        storyNext.style.display="none";
+
+        setTimeout(()=>{
+
+            closeOpening.style.display="block";
+
+        },250);
+
+    }
+
+});
+
+
+// =====================================================
+// CLOSE
+// =====================================================
+
+closeOpening.addEventListener("click",()=>{
+
+    openingOverlay.classList.remove("show");
+    openingStory.classList.remove("show");
+
+    // ⭐ 테스트용 : 완전히 제거
+    openingOverlay.style.display="none";
+    openingStory.style.display="none";
+
+    closeOpening.style.display="none";
+    storyNext.style.display="block";
+
+    openingViewed=true;
+
+    if(replayMode){
+
+        missionPanel.classList.add("show");
+        return;
+
+    }
+
+    startScreen.classList.remove("hidden");
+
+});
+
+
+// ==========================
+// START
+// ==========================
+
+if(missionStart){
+
+    missionStart.addEventListener("click",()=>{
+
+        if(!openingViewed){
+
+            replayMode=false;
+
+            openOpening(false);
+
+            return;
+
+        }
+
+        missionPanel.classList.add("show");
+
+        startScreen.classList.add("hidden");
+
+    });
+
+}
+
+
+if(closeMission){
+
+    closeMission.addEventListener("click",()=>{
+
+        missionPanel.classList.remove("show");
+
+        startScreen.classList.remove("hidden");
+
+    });
+
+}
+
+
+/* =====================================================
+                OPENING REPLAY
+===================================================== */
+
+const openingReplay =
+document.getElementById("openingReplay");
+
+if(openingReplay){
+
+    openingReplay.addEventListener("click",()=>{
+
+        missionPanel.classList.remove("show");
+
+        startScreen.classList.add("hidden");
+
+        replayMode=true;
+
+        openOpening(true);
+
+    });
+
+}
+
+/* =====================================================
+                LIGHT FRAGMENT
+===================================================== */
+
+const lightFragment =
+document.getElementById("lightFragment");
+
+function showLightFragment(){
+
+    if(!lightFragment) return;
+
+    // 시작 위치
+    lightFragment.style.left="50%";
+    lightFragment.style.top="52%";
+
+    lightFragment.style.opacity="1";
+
+    lightFragment.style.transform=
+    "translate(-50%,-50%) scale(.3)";
+
+    // 등장
+    requestAnimationFrame(()=>{
+
+        lightFragment.style.transition=
+        "transform .35s ease, opacity .35s ease";
+
+        lightFragment.style.transform=
+        "translate(-50%,-50%) scale(1.2)";
+
+    });
+
+    // 잠깐 반짝
+
+    setTimeout(()=>{
+
+        lightFragment.style.transition=
+        "left .9s cubic-bezier(.2,.8,.2,1), top .9s cubic-bezier(.2,.8,.2,1), transform .9s ease, opacity .9s ease";
+
+        // ⭐ 미션목록 상단 근처
+        lightFragment.style.left="50%";
+        lightFragment.style.top="14%";
+
+        lightFragment.style.transform=
+        "translate(-50%,-50%) scale(.45)";
+
+        lightFragment.style.opacity="0";
+
+    },350);
+
+}
