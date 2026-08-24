@@ -2393,49 +2393,25 @@ if(openingReplay){
                 LIGHT FRAGMENT
 ===================================================== */
 
-const lightFragment =
-document.getElementById("lightFragment");
-
 function showLightFragment(){
 
-    if(!lightFragment) return;
+    const fragment = document.querySelector(".fragment");
 
-    // 시작 위치
-    lightFragment.style.left="50%";
-    lightFragment.style.top="52%";
+    if(!fragment) return;
 
-    lightFragment.style.opacity="1";
+    // 이전 애니메이션 초기화
+    fragment.style.animation = "none";
+    fragment.offsetWidth;
 
-    lightFragment.style.transform=
-    "translate(-50%,-50%) scale(.3)";
+    // 애니메이션 시작
+    fragment.style.animation = "fragmentAppear .28s forwards";
 
-    // 등장
-    requestAnimationFrame(()=>{
-
-        lightFragment.style.transition=
-        "transform .35s ease, opacity .35s ease";
-
-        lightFragment.style.transform=
-        "translate(-50%,-50%) scale(1.2)";
-
-    });
-
-    // 잠깐 반짝
-
+    // 위로 이동
     setTimeout(()=>{
 
-        lightFragment.style.transition=
-        "left .9s cubic-bezier(.2,.8,.2,1), top .9s cubic-bezier(.2,.8,.2,1), transform .9s ease, opacity .9s ease";
+        fragment.style.animation =
+        "fragmentFly .9s ease-in forwards";
 
-        // ⭐ 미션목록 상단 근처
-        lightFragment.style.left="50%";
-        lightFragment.style.top="14%";
-
-        lightFragment.style.transform=
-        "translate(-50%,-50%) scale(.45)";
-
-        lightFragment.style.opacity="0";
-
-    },350);
+    },280);
 
 }

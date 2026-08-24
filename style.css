@@ -3572,3 +3572,162 @@ body {
 
 }
 
+/* =====================================================
+                LIGHT FRAGMENT
+===================================================== */
+
+#lightFragment{
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    overflow:hidden;
+
+    z-index:99999;
+
+}
+
+.fragment{
+
+    position:absolute;
+
+    left:50%;
+    top:60%;
+
+    width:20px;
+    height:20px;
+
+    opacity:0;
+
+    border-radius:40% 60% 55% 45% / 45% 55% 40% 60%;
+
+    /* ===== 디버그 색상 ===== */
+
+    background:
+        radial-gradient(circle,
+        #ffffff 0%,
+        #ff7b7b 35%,
+        #ff0000 70%,
+        rgba(255,0,0,0) 100%);
+
+    box-shadow:
+        0 0 8px #ffffff,
+        0 0 18px #ff5555,
+        0 0 35px #ff0000;
+
+    transform:
+        translate(-50%,-50%)
+        rotate(25deg)
+        scale(.2);
+
+}
+
+/* ==========================
+        등장
+========================== */
+
+@keyframes fragmentAppear{
+
+    0%{
+
+        opacity:0;
+
+        transform:
+            translate(-50%,-50%)
+            rotate(0deg)
+            scale(.2);
+
+    }
+
+    60%{
+
+        opacity:1;
+
+        transform:
+            translate(-50%,-50%)
+            rotate(15deg)
+            scale(1.25);
+
+    }
+
+    100%{
+
+        opacity:1;
+
+        transform:
+            translate(-50%,-50%)
+            rotate(25deg)
+            scale(1);
+
+    }
+
+}
+
+/* ==========================
+      위로 흡수(지그재그)
+========================== */
+
+@keyframes fragmentFly{
+
+    0%{
+
+        opacity:1;
+
+        transform:
+            translate(-50%,-50%)
+            rotate(25deg)
+            scale(1);
+
+    }
+
+    20%{
+
+        transform:
+            translate(calc(-50% - 6px),-90px)
+            rotate(45deg)
+            scale(.95);
+
+    }
+
+    40%{
+
+        transform:
+            translate(calc(-50% + 6px),-150px)
+            rotate(70deg)
+            scale(.85);
+
+    }
+
+    60%{
+
+        transform:
+            translate(calc(-50% - 4px),-220px)
+            rotate(95deg)
+            scale(.70);
+
+    }
+
+    80%{
+
+        transform:
+            translate(calc(-50% + 3px),-290px)
+            rotate(120deg)
+            scale(.55);
+
+    }
+
+    100%{
+
+        opacity:0;
+
+        transform:
+            translate(-50%,-360px)
+            rotate(150deg)
+            scale(.25);
+
+    }
+
+}
