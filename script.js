@@ -705,17 +705,28 @@ function openMission03(){
 
     mission03Detail.classList.add("show");
 
-    // 실제 플레이 시작 시간
+    // 플레이 시작
     mission03PlayTime = new Date();
 
-    // 버튼 잠금
     mission03CanClose = false;
+
+    mission03Notice20 = false;
+    mission03Notice22 = false;
+    mission03Notice24 = false;
+
+    if(closeMission03Clear){
+
+        closeMission03Clear.classList.remove("active");
+
+    }
+
+    // 숨은그림 초기화
+    resetMission03Hidden();
 
     // 이벤트 시작
     startMission03Event();
 
 }
-
 
 // ==========================
 // CARD CLICK
@@ -786,7 +797,9 @@ window.addEventListener("resize",()=>{
     // ⭐ PC는 회전 안내 사용 안 함
     if(!isMobile) return;
 
-    // 처음 가로 안내
+    // ===================================
+    // 처음 입장 → 가로 공지
+    // ===================================
     if(
 
         rotateNotice &&
@@ -799,43 +812,34 @@ window.addEventListener("resize",()=>{
 
         openMission03();
 
-    }
-
-    // 게임 중 세로 돌리면
-    if(
-
-        mission03Detail.classList.contains("show") &&
-        !mission03NeedPortrait &&
-        window.innerHeight > window.innerWidth
-
-    ){
-
-        mission03Detail.classList.remove("show");
-
-        rotateNotice.style.display="flex";
+        return;
 
     }
 
-    // 클리어 후 세로 안내
+    // ===================================
+    // 숨은그림 완료 후 → 세로 공지
+    // ===================================
     if(
 
         mission03NeedPortrait &&
         rotatePortraitNotice &&
+        rotatePortraitNotice.style.display==="flex" &&
         window.innerHeight > window.innerWidth
 
     ){
 
         rotatePortraitNotice.style.display="none";
 
-        mission03ClearPopup.style.display="flex";
-
         mission03NeedPortrait = false;
+
+        // ★ FacePopup은 세로가 된 뒤에만
+        mission03FacePopup.style.display="flex";
+
+        return;
 
     }
 
 });
-
-
 
 // ==========================
 // HIDDEN ITEM
@@ -844,7 +848,28 @@ window.addEventListener("resize",()=>{
 const hiddenItems =
 document.querySelectorAll(".hidden-item");
 
+const foundCount =
+document.getElementById("foundCount");
+
 let mission03FoundCount = 0;
+
+function resetMission03Hidden(){
+
+    mission03FoundCount = 0;
+
+    if(foundCount){
+
+        foundCount.innerHTML = "0/5";
+
+    }
+
+    hiddenItems.forEach(item=>{
+
+        item.classList.remove("found");
+
+    });
+
+}
 
 hiddenItems.forEach(item=>{
 
@@ -856,11 +881,50 @@ hiddenItems.forEach(item=>{
 
         mission03FoundCount++;
 
-        if(mission03FoundCount===5){
+        if(foundCount){
+
+            foundCount.innerHTML =
+            `${mission03FoundCount}/5`;
+
+        }
+
+        if(mission03FoundCount >= hiddenItems.length){
 
             setTimeout(()=>{
 
-                mission03FacePopup.style.display="flex";
+                const isMobile =
+                window.innerWidth <= 900;
+
+                // ==========================
+                // PC
+                // ==========================
+                if(!isMobile){
+
+                    mission03FacePopup.style.display="flex";
+
+                    return;
+
+                }
+
+                // ==========================
+                // 모바일
+                // ==========================
+
+                // 이미 세로면 바로 FacePopup
+                if(window.innerHeight > window.innerWidth){
+
+                    mission03FacePopup.style.display="flex";
+
+                }
+
+                // 가로면 세로공지 먼저
+                else{
+
+                    mission03NeedPortrait = true;
+
+                    rotatePortraitNotice.style.display="flex";
+
+                }
 
             },300);
 
@@ -883,16 +947,30 @@ if(closeMission03FacePopup){
         // ⭐ 모바일 여부 먼저 확인
         const isMobile = window.innerWidth <= 900;
 
-        // PC는 바로 인증번호
+        // ==========================
+        // PC
+        // ==========================
         if(!isMobile){
 
             mission03CodeArea.style.display="block";
+
             return;
 
         }
 
-        // 모바일 가로 → 세로 안내
-        if(window.innerWidth > window.innerHeight){
+        // ==========================
+        // 모바일
+        // ==========================
+
+        // 이미 세로면 바로 인증번호
+        if(window.innerHeight > window.innerWidth){
+
+            mission03CodeArea.style.display="block";
+
+        }
+
+        // 가로면 세로공지
+        else{
 
             mission03NeedPortrait = true;
 
@@ -900,18 +978,38 @@ if(closeMission03FacePopup){
 
         }
 
-        // 이미 세로
-        else{
-
-            mission03CodeArea.style.display="block";
-
-        }
-
     });
 
 }
 
+// ==========================
+// ROTATE → CODE
+// ==========================
 
+window.addEventListener("resize",()=>{
+
+    const isMobile = window.innerWidth <= 900;
+
+    if(!isMobile) return;
+
+    if(
+
+        mission03NeedPortrait &&
+        rotatePortraitNotice &&
+        rotatePortraitNotice.style.display==="flex" &&
+        window.innerHeight > window.innerWidth
+
+    ){
+
+        rotatePortraitNotice.style.display="none";
+
+        mission03NeedPortrait = false;
+
+        mission03CodeArea.style.display="block";
+
+    }
+
+});
 
 // ==========================
 // ROTATE → CODE
@@ -1025,7 +1123,6 @@ if(closeMission03Clear){
 
 }
 
-
 /* =====================================================
                 MISSION03 EVENT
 ===================================================== */
@@ -1044,20 +1141,20 @@ let mission03Notice20 = false;
 let mission03Notice22 = false;
 let mission03Notice24 = false;
 
-
 function startMission03Event(){
 
-   // ===== 테스트용 =====
-const EVENT20 = 2 * 60;   // 2분
-const EVENT22 = 3 * 60;   // 3분
-const EVENT24 = 5 * 60;   // 5분
-const EVENT25 = 6 * 60;   // 6분
+    // ===== 테스트용 =====
+    const EVENT20 = 2 * 60;
+    const EVENT22 = 3 * 60;
+    const EVENT24 = 5 * 60;
+    const EVENT25 = 6 * 60;
+
     /*
     // ===== 실제 =====
-    const EVENT20 = 20*60;
-    const EVENT22 = 22*60;
-    const EVENT24 = 24*60;
-    const EVENT25 = 25*60;
+    const EVENT20 = 20 * 60;
+    const EVENT22 = 22 * 60;
+    const EVENT24 = 24 * 60;
+    const EVENT25 = 25 * 60;
     */
 
     mission03Notice20 = false;
@@ -1065,6 +1162,12 @@ const EVENT25 = 6 * 60;   // 6분
     mission03Notice24 = false;
 
     mission03CanClose = false;
+
+    if(closeMission03Clear){
+
+        closeMission03Clear.classList.remove("active");
+
+    }
 
     if(mission03EventTimer){
 
@@ -1084,15 +1187,16 @@ const EVENT25 = 6 * 60;   // 6분
 
             mission03Notice20 = true;
 
-            // 아직 미션 진행 중인 사람만
             if(
                 mission03Detail.classList.contains("show") &&
                 mission03ClearPopup.style.display!="flex"
             ){
 
-                // navigator.vibrate([500,150,500]);
+                if(navigator.vibrate){
 
-                console.log("20분 진동");
+                    navigator.vibrate([500,150,500]);
+
+                }
 
             }
 
@@ -1105,7 +1209,6 @@ const EVENT25 = 6 * 60;   // 6분
 
             mission03Notice22 = true;
 
-            // 아직 미션 진행 중인 사람만
             if(
                 mission03Detail.classList.contains("show") &&
                 mission03ClearPopup.style.display!="flex"
@@ -1124,7 +1227,14 @@ const EVENT25 = 6 * 60;   // 6분
 
             mission03Notice24 = true;
 
-            // 전원 공통
+            // 전원 공통 진동
+            if(navigator.vibrate){
+
+                navigator.vibrate([700,200,700]);
+
+            }
+
+            // 전원 공통 시스템창
             alert("곧 다음 구역이 활성화됩니다.\n준비해주세요.");
 
         }
@@ -1138,8 +1248,6 @@ const EVENT25 = 6 * 60;   // 6분
 
             clearInterval(mission03EventTimer);
 
-            console.log("25분 오픈");
-
             if(closeMission03Clear){
 
                 closeMission03Clear.classList.add("active");
@@ -1151,6 +1259,7 @@ const EVENT25 = 6 * 60;   // 6분
     },1000);
 
 }
+
 
 // =====================================================
 //                    MISSION 04
