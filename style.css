@@ -1480,71 +1480,65 @@ body {
 
 .mission-ui{
 
-    display:flex;
+    position:absolute;
 
-    justify-content:flex-end;
+    top:18px;
+
+    right:70px;
+
+    display:flex;
 
     align-items:center;
 
-    gap:12px;
+    gap:8px;
 
-    margin-top:14px;
+    z-index:500;
 
 }
 
 .find-count{
 
-    display:flex;
+    min-width:auto;
 
-    align-items:center;
+    padding:6px 10px;
 
-    justify-content:center;
-
-    min-width:120px;
-
-    padding:10px 18px;
-
-    border-radius:30px;
+    border-radius:20px;
 
     background:#f6e6c8;
 
     color:#4e342e;
 
-    font-size:17px;
+    font-size:15px;
 
     font-weight:700;
 
-    box-shadow:0 3px 10px rgba(0,0,0,.1);
+    box-shadow:0 2px 6px rgba(0,0,0,.12);
 
 }
 
 .story-btn{
 
-    padding:10px 18px;
+    width:34px;
+
+    height:34px;
+
+    padding:0;
 
     border:none;
 
-    border-radius:30px;
+    border-radius:50%;
 
     background:#d9c4a1;
 
-    color:#4e342e;
+    display:flex;
 
-    font-family:inherit;
+    justify-content:center;
 
-    font-size:15px;
+    align-items:center;
 
-    font-weight:700;
+    font-size:17px;
 
     cursor:pointer;
-
-    transition:.2s;
-
-}
-
-.story-btn:hover{
-
-    opacity:.9;
 
 }
 
