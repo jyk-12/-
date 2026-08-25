@@ -681,7 +681,6 @@ function startMission03Timer(){
 }
 
 
-
 // ==========================
 // MISSION 03 OPEN
 // ==========================
@@ -700,16 +699,22 @@ document.getElementById("rotatePortraitNotice");
 
 let mission03NeedPortrait = false;
 
-
-
 function openMission03(){
 
     missionPanel.classList.remove("show");
 
     mission03Detail.classList.add("show");
 
-}
+    // 실제 플레이 시작 시간
+    mission03PlayTime = new Date();
 
+    // 버튼 잠금
+    mission03CanClose = false;
+
+    // 이벤트 시작
+    startMission03Event();
+
+}
 
 
 // ==========================
@@ -972,8 +977,6 @@ if(checkMission03Code){
 
 }
 
-
-
 // ==========================
 // FINAL CLOSE
 // ==========================
@@ -982,27 +985,172 @@ if(closeMission03Clear){
 
     closeMission03Clear.addEventListener("click",()=>{
 
-        mission03ClearPopup.style.display="none";
+        // ==========================
+        // 25분 이후
+        // ==========================
+        if(mission03CanClose){
 
-        mission03Detail.classList.remove("show");
+            mission03ClearPopup.style.display="none";
 
-        // ⭐ 빛의 조각
-        showLightFragment();
+            mission03Detail.classList.remove("show");
 
-        // ⭐ 미션 목록
-        missionPanel.classList.add("show");
+            showLightFragment();
 
-        // ⭐ 다음 타이머 시작
-        startMission04Timer();
+            missionPanel.classList.add("show");
 
-        startHidden01Timer();
+            startMission04Timer();
+
+            startHidden01Timer();
+
+            return;
+
+        }
+
+        // ==========================
+        // 24분 이후
+        // ==========================
+        if(mission03Notice24){
+
+            // 아무 반응 없음
+            return;
+
+        }
+
+        // ==========================
+        // 24분 이전
+        // ==========================
+        alert("최종 확인이 진행 중입니다.\n잠시 후 다시 시도해주세요.");
 
     });
 
 }
 
 
+/* =====================================================
+                MISSION03 EVENT
+===================================================== */
 
+// 실제 플레이 시작 시간
+let mission03PlayTime = null;
+
+// 25분 이후 닫기 가능
+let mission03CanClose = false;
+
+// 이벤트 타이머
+let mission03EventTimer = null;
+
+// 중복 방지
+let mission03Notice20 = false;
+let mission03Notice22 = false;
+let mission03Notice24 = false;
+
+
+function startMission03Event(){
+
+   // ===== 테스트용 =====
+const EVENT20 = 2 * 60;   // 2분
+const EVENT22 = 3 * 60;   // 3분
+const EVENT24 = 5 * 60;   // 5분
+const EVENT25 = 6 * 60;   // 6분
+    /*
+    // ===== 실제 =====
+    const EVENT20 = 20*60;
+    const EVENT22 = 22*60;
+    const EVENT24 = 24*60;
+    const EVENT25 = 25*60;
+    */
+
+    mission03Notice20 = false;
+    mission03Notice22 = false;
+    mission03Notice24 = false;
+
+    mission03CanClose = false;
+
+    if(mission03EventTimer){
+
+        clearInterval(mission03EventTimer);
+
+    }
+
+    mission03EventTimer = setInterval(()=>{
+
+        const elapsed =
+        Math.floor((new Date()-mission03PlayTime)/1000);
+
+        // ==========================
+        // 20분
+        // ==========================
+        if(!mission03Notice20 && elapsed>=EVENT20){
+
+            mission03Notice20 = true;
+
+            // 아직 미션 진행 중인 사람만
+            if(
+                mission03Detail.classList.contains("show") &&
+                mission03ClearPopup.style.display!="flex"
+            ){
+
+                // navigator.vibrate([500,150,500]);
+
+                console.log("20분 진동");
+
+            }
+
+        }
+
+        // ==========================
+        // 22분
+        // ==========================
+        if(!mission03Notice22 && elapsed>=EVENT22){
+
+            mission03Notice22 = true;
+
+            // 아직 미션 진행 중인 사람만
+            if(
+                mission03Detail.classList.contains("show") &&
+                mission03ClearPopup.style.display!="flex"
+            ){
+
+                alert("시간이 얼마 남지 않았습니다.\n서둘러 미션을 완료해주세요.");
+
+            }
+
+        }
+
+        // ==========================
+        // 24분
+        // ==========================
+        if(!mission03Notice24 && elapsed>=EVENT24){
+
+            mission03Notice24 = true;
+
+            // 전원 공통
+            alert("곧 다음 구역이 활성화됩니다.\n준비해주세요.");
+
+        }
+
+        // ==========================
+        // 25분
+        // ==========================
+        if(elapsed>=EVENT25){
+
+            mission03CanClose = true;
+
+            clearInterval(mission03EventTimer);
+
+            console.log("25분 오픈");
+
+            if(closeMission03Clear){
+
+                closeMission03Clear.classList.add("active");
+
+            }
+
+        }
+
+    },1000);
+
+}
 
 // =====================================================
 //                    MISSION 04
@@ -2394,8 +2542,7 @@ if(openingReplay){
 ===================================================== */
 
 function showLightFragment(){
-    alert("빛의조각 실행");
-
+    
     const fragment = document.querySelector(".fragment");
 
     if(!fragment) return;

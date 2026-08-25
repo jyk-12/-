@@ -2039,7 +2039,8 @@ body {
 
     border-radius:25px;
 
-    background:#8ecff4;
+    /* 기본 : 잠금 */
+    background:#8b8b8b;
 
     color:#fff;
 
@@ -2049,18 +2050,27 @@ body {
 
     font-weight:800;
 
-    cursor:pointer;
+    cursor:not-allowed;
 
     transition:.2s;
 
 }
 
-#closeMission03Clear:hover{
+/* 25분 이후 */
+
+#closeMission03Clear.active{
+
+    background:#8ecff4;
+
+    cursor:pointer;
+
+}
+
+#closeMission03Clear.active:hover{
 
     opacity:.9;
 
 }
-
 
 /* =====================================================
                     MOBILE POPUP
