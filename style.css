@@ -1301,7 +1301,6 @@ body {
 
 }
 
-
 /* =====================================================
                     MISSION 03
 ===================================================== */
@@ -1324,14 +1323,14 @@ body {
 
     position:relative;
 
-    width:98%;
-    max-width:1280px;
+    width:95%;
+    max-width:1100px;
 
     min-height:850px;
 
     margin:0 auto;
 
-    padding:20px;
+    padding:30px;
 
     background:#fffaf3;
 
@@ -1341,8 +1340,27 @@ body {
 
     box-sizing:border-box;
 
-    display:flex;
-    flex-direction:column;
+}
+
+/* 닫기 버튼 */
+
+#mission03Close{
+
+    position:absolute;
+
+    top:20px;
+    right:20px;
+
+    border:none;
+    background:none;
+
+    font-size:34px;
+
+    color:#7a7a7a;
+
+    cursor:pointer;
+
+    z-index:100;
 
 }
 
@@ -1352,11 +1370,11 @@ body {
 
 .mission-title{
 
-    margin-bottom:8px;
+    margin-bottom:10px;
 
     text-align:center;
 
-    font-size:30px;
+    font-size:32px;
 
     font-weight:800;
 
@@ -1366,11 +1384,11 @@ body {
 
 .mission-subtitle{
 
-    margin-bottom:15px;
+    margin-bottom:20px;
 
     text-align:center;
 
-    font-size:17px;
+    font-size:18px;
 
     color:#6d4c41;
 
@@ -1382,27 +1400,73 @@ body {
 
 .find-count{
 
-    display:flex;
+    width:220px;
 
-    align-items:center;
+    margin:0 auto 25px;
 
-    justify-content:center;
+    padding:12px;
 
-    min-width:120px;
-
-    padding:10px 18px;
-
-    border-radius:30px;
+    border-radius:50px;
 
     background:#f6e6c8;
 
-    font-size:17px;
+    text-align:center;
+
+    font-size:20px;
 
     font-weight:700;
 
     color:#4e342e;
 
     box-shadow:0 3px 10px rgba(0,0,0,.1);
+
+}
+
+/* =====================================================
+                    MISSION UI
+===================================================== */
+
+.mission-ui{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    align-items:center;
+
+    gap:14px;
+
+    margin-top:15px;
+
+}
+
+.story-btn{
+
+    padding:10px 18px;
+
+    border:none;
+
+    border-radius:30px;
+
+    background:#d9c4a1;
+
+    color:#4e342e;
+
+    font-family:inherit;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+.story-btn:hover{
+
+    opacity:.9;
 
 }
 
@@ -1446,101 +1510,6 @@ body {
 
 }
 
-/* =====================================================
-                    CAFE
-===================================================== */
-
-.cafe-game{
-
-    position:relative;
-
-    width:100%;
-
-    max-width:1180px;
-
-    margin:10px auto 0;
-
-}
-
-.cafe-bg{
-
-    display:block;
-
-    width:100%;
-
-    height:auto;
-
-    border-radius:20px;
-
-}
-
-/* =====================================================
-                    MISSION UI
-===================================================== */
-
-.mission-ui{
-
-    position:absolute;
-
-    top:18px;
-
-    right:70px;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:8px;
-
-    z-index:500;
-
-}
-
-.find-count{
-
-    min-width:auto;
-
-    padding:6px 10px;
-
-    border-radius:20px;
-
-    background:#f6e6c8;
-
-    color:#4e342e;
-
-    font-size:15px;
-
-    font-weight:700;
-
-    box-shadow:0 2px 6px rgba(0,0,0,.12);
-
-}
-
-.story-btn{
-
-    width:34px;
-
-    height:34px;
-
-    padding:0;
-
-    border:none;
-
-    border-radius:50%;
-
-    background:#d9c4a1;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    font-size:17px;
-
-    cursor:pointer;
-
-}
 
 /* =====================================================
                     HIDDEN ITEM
@@ -1590,7 +1559,6 @@ body {
 
 }
 
-
 /* 찾은 후 */
 
 .hidden-item.found{
@@ -1635,7 +1603,6 @@ body {
 
 }
 
-
 /* ✉ */
 
 .item-letter{
@@ -1653,7 +1620,6 @@ body {
     opacity:1;
 
 }
-
 
 /* 🔑 */
 
@@ -1675,7 +1641,6 @@ body {
 
 }
 
-
 /* 🌙 */
 
 .item-moon{
@@ -1696,7 +1661,6 @@ body {
 
 }
 
-
 /* 🧸 */
 
 .item-bear{
@@ -1716,7 +1680,6 @@ body {
     transform:rotate(190deg);
 
 }
-
 
 /* =====================================================
                     MOBILE
@@ -1756,6 +1719,7 @@ body {
 
 }
 
+
 /* =====================================================
             LANDSCAPE (MISSION 03)
 ===================================================== */
@@ -1764,47 +1728,102 @@ body {
 
     .mission03-box{
 
-        width:98%;
+        width:96%;
 
-        height:78vh;
+        height:72vh;
 
-        max-height:78vh;
+        max-height:72vh;
 
         min-height:auto;
 
-        padding:14px;
+        padding:12px;
 
-        overflow-y:auto;
+        overflow:hidden;
 
         border-radius:20px;
 
     }
 
-    .mission-title{
+    /* 모바일에서만 제목 숨김 */
 
-        font-size:24px;
-
-        margin-bottom:6px;
-
-    }
-
+    .mission-title,
     .mission-subtitle{
 
-        font-size:14px;
-
-        margin-bottom:12px;
+        display:none;
 
     }
+
+    /* X / 찾은물건 / 다시보기 */
+
+    .mission-ui{
+
+        position:absolute;
+
+        top:12px;
+
+        right:70px;
+
+        display:flex;
+
+        align-items:center;
+
+        gap:10px;
+
+        margin:0;
+
+        z-index:200;
+
+    }
+
+    .find-count{
+
+        width:auto;
+
+        min-width:0;
+
+        margin:0;
+
+        padding:6px 12px;
+
+        font-size:15px;
+
+        border-radius:30px;
+
+    }
+
+    .story-btn{
+
+        padding:6px 10px;
+
+        font-size:0;
+
+        line-height:1;
+
+    }
+
+    .story-btn::after{
+
+        content:"📜";
+
+        font-size:18px;
+
+    }
+
+    /* 그림 위로 */
 
     .cafe-game{
 
         position:relative;
 
-        width:98%;
+        width:100%;
 
-        max-width:none;
+        margin:8px auto 0;
 
-        margin:0 auto;
+        overflow:auto;
+
+        touch-action:pan-x pan-y pinch-zoom;
+
+        -webkit-overflow-scrolling:touch;
 
     }
 
@@ -1816,39 +1835,17 @@ body {
 
         height:auto;
 
-        border-radius:18px;
+        border-radius:20px;
 
     }
 
-    .mission-ui{
+    /* 터치영역 확대 */
 
-        display:flex;
+    .hidden-item{
 
-        justify-content:flex-end;
+        padding:14px;
 
-        align-items:center;
-
-        gap:10px;
-
-        margin-top:10px;
-
-    }
-
-    .find-count{
-
-        min-width:110px;
-
-        padding:8px 14px;
-
-        font-size:15px;
-
-    }
-
-    .story-btn{
-
-        padding:8px 14px;
-
-        font-size:14px;
+        box-sizing:content-box;
 
     }
 
@@ -1879,29 +1876,29 @@ body {
 
     .item-letter{
 
-        top:74.5%;
-        left:41.5%;
+        top:36%;
+        left:40%;
 
     }
 
     .item-key{
 
-        top:38.5%;
-        left:8%;
+        top:33%;
+        left:28%;
 
     }
 
     .item-moon{
 
-        top:25.5%;
-        left:66.5%;
+        top:25%;
+        left:56%;
 
     }
 
     .item-bear{
 
-        top:85%;
-        left:88%;
+        top:48%;
+        left:53%;
 
     }
 
@@ -1959,7 +1956,6 @@ body {
     line-height:1.8;
 
 }
-
 
 /* =====================================================
                     POPUP
@@ -2030,7 +2026,6 @@ body {
     opacity:.9;
 
 }
-
 
 /* =====================================================
                     CODE POPUP
@@ -2122,7 +2117,6 @@ body {
 
 }
 
-
 /* =====================================================
                     CLEAR POPUP
 ===================================================== */
@@ -2143,7 +2137,6 @@ body {
 
     border-radius:25px;
 
-    /* 기본 : 잠금 */
     background:#8b8b8b;
 
     color:#fff;
@@ -2159,8 +2152,6 @@ body {
     transition:.2s;
 
 }
-
-/* 25분 이후 */
 
 #closeMission03Clear.active{
 
@@ -2210,11 +2201,25 @@ body {
 
 }
 
-
 /* =====================================================
                     03 END
 ===================================================== */
 
+/* ==========================
+MISSION 04
+========================== */
+
+#mission04FacePopup{
+display:none;
+}
+
+#mission04CodeArea{
+display:none;
+}
+
+#mission04ClearPopup{
+display:none;
+}
 
 /* ==========================
    MISSION 04
