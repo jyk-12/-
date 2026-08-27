@@ -1309,7 +1309,8 @@ body {
 
 #mission03FacePopup,
 #mission03CodeArea,
-#mission03ClearPopup{
+#mission03ClearPopup,
+#mission03NoticePopup{
 
     display:none;
 
@@ -1323,14 +1324,14 @@ body {
 
     position:relative;
 
-    width:95%;
-    max-width:1100px;
+    width:98%;
+    max-width:1280px;
 
     min-height:850px;
 
     margin:0 auto;
 
-    padding:30px;
+    padding:20px;
 
     background:#fffaf3;
 
@@ -1340,27 +1341,8 @@ body {
 
     box-sizing:border-box;
 
-}
-
-/* 닫기 버튼 */
-
-#mission03Close{
-
-    position:absolute;
-
-    top:20px;
-    right:20px;
-
-    border:none;
-    background:none;
-
-    font-size:34px;
-
-    color:#7a7a7a;
-
-    cursor:pointer;
-
-    z-index:100;
+    display:flex;
+    flex-direction:column;
 
 }
 
@@ -1370,11 +1352,11 @@ body {
 
 .mission-title{
 
-    margin-bottom:10px;
+    margin-bottom:8px;
 
     text-align:center;
 
-    font-size:32px;
+    font-size:30px;
 
     font-weight:800;
 
@@ -1384,11 +1366,11 @@ body {
 
 .mission-subtitle{
 
-    margin-bottom:20px;
+    margin-bottom:15px;
 
     text-align:center;
 
-    font-size:18px;
+    font-size:17px;
 
     color:#6d4c41;
 
@@ -1400,19 +1382,21 @@ body {
 
 .find-count{
 
-    width:220px;
+    display:flex;
 
-    margin:0 auto 25px;
+    align-items:center;
 
-    padding:12px;
+    justify-content:center;
 
-    border-radius:50px;
+    min-width:120px;
+
+    padding:10px 18px;
+
+    border-radius:30px;
 
     background:#f6e6c8;
 
-    text-align:center;
-
-    font-size:20px;
+    font-size:17px;
 
     font-weight:700;
 
@@ -1426,21 +1410,17 @@ body {
                     MISSION UI
 ===================================================== */
 
+/* PC에서는 숨김 */
+
 .mission-ui{
 
-    display:flex;
-
-    justify-content:flex-end;
-
-    align-items:center;
-
-    gap:14px;
-
-    margin-top:15px;
+    display:none;
 
 }
 
 .story-btn{
+
+    display:none;
 
     padding:10px 18px;
 
@@ -1473,6 +1453,12 @@ body {
 /* =====================================================
                     CAFE
 ===================================================== */
+
+.cafe-scroll{
+
+    width:100%;
+
+}
 
 .cafe-game{
 
@@ -1509,7 +1495,6 @@ body {
     color:#6d4c41;
 
 }
-
 
 /* =====================================================
                     HIDDEN ITEM
@@ -1728,8 +1713,11 @@ body {
     .mission03-box{
 
         width:96%;
-        height:72vh;
-        max-height:72vh;
+
+        height:72dvh;
+
+        max-height:72dvh;
+
         min-height:auto;
 
         padding:12px;
@@ -1756,12 +1744,12 @@ body {
 
     .mission-ui{
 
+        display:flex;
+
         position:absolute;
 
         top:10px;
         right:70px;
-
-        display:flex;
 
         align-items:center;
 
@@ -1776,6 +1764,7 @@ body {
     .find-count{
 
         width:auto;
+
         min-width:0;
 
         margin:0;
@@ -1784,15 +1773,7 @@ body {
 
         border-radius:30px;
 
-        font-size:15px;
-
         white-space:nowrap;
-
-    }
-
-    /* 모바일에서는 🔍0/5 */
-
-    .find-count{
 
         font-size:0;
 
@@ -1815,6 +1796,8 @@ body {
     }
 
     .story-btn{
+
+        display:block;
 
         padding:6px 10px;
 
@@ -1841,6 +1824,7 @@ body {
         flex:1;
 
         overflow-y:auto;
+
         overflow-x:hidden;
 
         -webkit-overflow-scrolling:touch;
@@ -1879,22 +1863,6 @@ body {
 
     }
 
-}
-
-    /* =====================================================
-                        DEBUG MODE
-        테스트 시 아래 주석만 해제
-    ====================================================== */
-
-    /*
-    .hidden-item{
-
-        border:2px solid red;
-        background:rgba(255,0,0,.18);
-
-    }
-    */
-
     /* ==========================
             MOBILE POSITION
     ========================== */
@@ -1906,10 +1874,24 @@ body {
 
     }
 
+    .item-star img{
+
+        opacity:1;
+
+        transform:rotate(18deg);
+
+    }
+
     .item-letter{
 
         top:36%;
         left:40%;
+
+    }
+
+    .item-letter img{
+
+        opacity:1;
 
     }
 
@@ -1920,10 +1902,26 @@ body {
 
     }
 
+    .item-key img{
+
+        opacity:.9;
+
+        transform:rotate(-10deg);
+
+    }
+
     .item-moon{
 
         top:25%;
         left:56%;
+
+    }
+
+    .item-moon img{
+
+        opacity:.7;
+
+        transform:rotate(50deg);
 
     }
 
@@ -1933,6 +1931,27 @@ body {
         left:53%;
 
     }
+
+    .item-bear img{
+
+        opacity:.95;
+
+        transform:rotate(190deg);
+
+    }
+
+    /* =====================================================
+                        DEBUG MODE
+    ====================================================== */
+
+    /*
+    .hidden-item{
+
+        border:2px solid red;
+        background:rgba(255,0,0,.18);
+
+    }
+    */
 
 }
 
@@ -1990,12 +2009,74 @@ body {
 }
 
 /* =====================================================
-                    POPUP
+                    NOTICE POPUP
 ===================================================== */
 
-/* ==========================
-        FACE POPUP
-========================== */
+#mission03NoticePopup{
+
+    display:none;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+}
+
+#mission03NoticePopup .story-text{
+
+    margin-bottom:22px;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    line-height:1.8;
+
+    color:#d9e6ff;
+
+}
+
+#closeMission03Notice{
+
+    width:150px;
+
+    height:46px;
+
+    margin-top:18px;
+
+    border:none;
+
+    border-radius:25px;
+
+    background:#8ecff4;
+
+    color:#fff;
+
+    font-family:inherit;
+
+    font-size:15px;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+#closeMission03Notice:hover{
+
+    opacity:.9;
+
+}
+
+/* =====================================================
+                    FACE POPUP
+===================================================== */
 
 #mission03FacePopup{
 
@@ -2169,6 +2250,7 @@ body {
 
     border-radius:25px;
 
+    /* 기본 : 잠금 */
     background:#8b8b8b;
 
     color:#fff;
@@ -2184,6 +2266,8 @@ body {
     transition:.2s;
 
 }
+
+/* 25분 이후 */
 
 #closeMission03Clear.active{
 
@@ -2236,6 +2320,7 @@ body {
 /* =====================================================
                     03 END
 ===================================================== */
+
 
 /* ==========================
 MISSION 04
