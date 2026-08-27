@@ -1410,43 +1410,29 @@ body {
                     MISSION UI
 ===================================================== */
 
-/* PC에서는 숨김 */
-
 .mission-ui{
 
-    display:none;
+    position:absolute;
 
-}
+    top:12px;
+    left:12px;
+    right:12px;
 
-.story-btn{
+    display:flex;
 
-    display:none;
+    justify-content:space-between;
 
-    padding:10px 18px;
+    align-items:center;
 
-    border:none;
+    padding:8px 12px;
 
-    border-radius:30px;
+    background:rgba(0,0,0,.35);
 
-    background:#d9c4a1;
+    backdrop-filter:blur(8px);
 
-    color:#4e342e;
+    border-radius:16px;
 
-    font-family:inherit;
-
-    font-size:15px;
-
-    font-weight:700;
-
-    cursor:pointer;
-
-    transition:.2s;
-
-}
-
-.story-btn:hover{
-
-    opacity:.9;
+    z-index:300;
 
 }
 
@@ -1712,12 +1698,11 @@ body {
 
     .mission03-box{
 
-        width:96%;
+        position:relative;
 
-        height:72dvh;
-
-        max-height:72dvh;
-
+        width:97%;
+        height:78dvh;
+        max-height:80dvh;
         min-height:auto;
 
         padding:12px;
@@ -1725,6 +1710,9 @@ body {
         overflow:hidden;
 
         border-radius:20px;
+
+        display:flex;
+        flex-direction:column;
 
     }
 
@@ -1744,24 +1732,47 @@ body {
 
     .mission-ui{
 
-        display:flex;
-
         position:absolute;
 
         top:10px;
-        right:70px;
+        left:10px;
+        right:10px;
+
+        display:flex;
+
+        justify-content:space-between;
 
         align-items:center;
 
-        gap:10px;
+        padding:8px 12px;
 
-        margin:0;
+        background:rgba(0,0,0,.32);
+
+        backdrop-filter:blur(10px);
+
+        border-radius:18px;
 
         z-index:300;
 
     }
 
+    .left-ui{
+
+        display:flex;
+
+        align-items:center;
+
+        gap:10px;
+
+    }
+
     .find-count{
+
+        display:flex;
+
+        align-items:center;
+
+        justify-content:center;
 
         width:auto;
 
@@ -1769,19 +1780,19 @@ body {
 
         margin:0;
 
-        padding:6px 12px;
+        padding:7px 12px;
 
         border-radius:30px;
 
+        background:rgba(255,255,255,.15);
+
+        backdrop-filter:blur(6px);
+
         white-space:nowrap;
 
+        color:#fff;
+
         font-size:0;
-
-    }
-
-    .find-count span{
-
-        font-size:15px;
 
     }
 
@@ -1795,23 +1806,70 @@ body {
 
     }
 
-    .story-btn{
+    .find-count span{
 
-        display:block;
-
-        padding:6px 10px;
-
-        font-size:0;
-
-        line-height:1;
+        font-size:15px;
 
     }
 
-    .story-btn::after{
+    .story-btn{
 
-        content:"📜";
+        display:flex;
 
-        font-size:18px;
+        align-items:center;
+
+        justify-content:center;
+
+        padding:7px 12px;
+
+        border:none;
+
+        border-radius:30px;
+
+        background:rgba(255,255,255,.15);
+
+        backdrop-filter:blur(6px);
+
+        color:#fff;
+
+        font-size:13px;
+
+        cursor:pointer;
+
+    }
+
+    .story-btn::before{
+
+        content:"📜 ";
+
+    }
+
+    .detail-close{
+
+        position:static;
+
+        width:40px;
+        height:40px;
+
+        margin:0;
+
+        border:none;
+
+        border-radius:50%;
+
+        background:rgba(255,255,255,.15);
+
+        backdrop-filter:blur(6px);
+
+        color:#fff;
+
+        font-size:24px;
+
+        line-height:1;
+
+        cursor:pointer;
+
+        flex-shrink:0;
 
     }
 
@@ -1823,8 +1881,9 @@ body {
 
         flex:1;
 
-        overflow-y:auto;
+        margin-top:64px;
 
+        overflow-y:auto;
         overflow-x:hidden;
 
         -webkit-overflow-scrolling:touch;
@@ -1835,9 +1894,9 @@ body {
 
         position:relative;
 
-        width:100%;
+        width:103%;
 
-        margin:6px auto 0;
+        margin:0 auto;
 
     }
 
@@ -1849,21 +1908,48 @@ body {
 
         height:auto;
 
-        border-radius:20px;
-
-    }
-
-    /* 터치영역 확대 */
-
-    .hidden-item{
-
-        padding:14px;
-
-        box-sizing:content-box;
+        border-radius:18px;
 
     }
 
     /* ==========================
+            HIDDEN ITEM
+    ========================== */
+
+    .hidden-item{
+
+        position:absolute;
+
+        padding:15px;
+
+        box-sizing:content-box;
+
+        appearance:none;
+        -webkit-appearance:none;
+
+        background:none;
+
+        border:none;
+
+        cursor:pointer;
+
+        transition:.18s;
+
+    }
+
+    .hidden-item img{
+
+        display:block;
+
+        width:100%;
+
+        height:auto;
+
+        pointer-events:none;
+
+    }
+
+     /* ==========================
             MOBILE POSITION
     ========================== */
 
@@ -1872,13 +1958,9 @@ body {
         top:21%;
         left:42%;
 
-    }
+        opacity:.98;
 
-    .item-star img{
-
-        opacity:1;
-
-        transform:rotate(18deg);
+        transform:rotate(-8deg) scale(.96);
 
     }
 
@@ -1887,11 +1969,9 @@ body {
         top:36%;
         left:40%;
 
-    }
+        opacity:.97;
 
-    .item-letter img{
-
-        opacity:1;
+        transform:rotate(5deg) scale(.97);
 
     }
 
@@ -1900,13 +1980,9 @@ body {
         top:33%;
         left:28%;
 
-    }
+        opacity:.98;
 
-    .item-key img{
-
-        opacity:.9;
-
-        transform:rotate(-10deg);
+        transform:rotate(-12deg) scale(.95);
 
     }
 
@@ -1915,13 +1991,9 @@ body {
         top:25%;
         left:56%;
 
-    }
+        opacity:.99;
 
-    .item-moon img{
-
-        opacity:.7;
-
-        transform:rotate(50deg);
+        transform:rotate(10deg) scale(.97);
 
     }
 
@@ -1930,18 +2002,415 @@ body {
         top:48%;
         left:53%;
 
-    }
+        opacity:.98;
 
-    .item-bear img{
-
-        opacity:.95;
-
-        transform:rotate(190deg);
+        transform:rotate(-6deg) scale(.98);
 
     }
 
-    /* =====================================================
+    /* ==========================
+            STORY POPUP
+    ========================== */
+
+    #mission03StoryPopup .clear-box{
+
+        width:88%;
+
+        max-width:360px;
+
+        padding:26px 22px;
+
+        border-radius:22px;
+
+    }
+
+    #mission03StoryPopup h2{
+
+        font-size:24px;
+
+        margin-bottom:18px;
+
+    }
+
+    #mission03StoryPopup .story-text{
+
+        font-size:15px;
+
+        line-height:1.8;
+
+        margin-bottom:24px;
+
+    }
+
+    #mission03StoryPopup button{
+
+        width:100%;
+
+        height:46px;
+
+        border:none;
+
+        border-radius:12px;
+
+        font-size:15px;
+
+    }
+
+    /* ==========================
+            NOTICE POPUP
+    ========================== */
+
+    #mission03NoticePopup .clear-box{
+
+        width:88%;
+
+        max-width:360px;
+
+        padding:26px 22px;
+
+        border-radius:22px;
+
+    }
+
+    #mission03NoticePopup h2{
+
+        font-size:24px;
+
+        margin-bottom:18px;
+
+    }
+
+    #mission03NoticePopup .story-text{
+
+        font-size:15px;
+
+        line-height:1.8;
+
+        margin-bottom:24px;
+
+    }
+
+    #mission03NoticePopup button{
+
+        width:100%;
+
+        height:46px;
+
+        border:none;
+
+        border-radius:12px;
+
+        font-size:15px;
+
+    }
+
+    /* ==========================
+            SYSTEM POPUP
+    ========================== */
+
+    .system-popup{
+
+        position:fixed;
+
+        inset:0;
+
+        display:none;
+
+        justify-content:center;
+
+        align-items:center;
+
+        background:rgba(0,0,0,.28);
+
+        z-index:9999;
+
+    }
+
+    .system-popup.active{
+
+        display:flex;
+
+    }
+
+    .system-box{
+
+        width:280px;
+
+        background:#fff;
+
+        border-radius:18px;
+
+        overflow:hidden;
+
+        box-shadow:0 14px 40px rgba(0,0,0,.25);
+
+        animation:systemPop .18s ease;
+
+    }
+
+    .system-box p{
+
+        padding:28px 24px;
+
+        text-align:center;
+
+        color:#333;
+
+        font-size:15px;
+
+        line-height:1.7;
+
+    }
+
+    .system-box button{
+
+        width:100%;
+
+        height:48px;
+
+        border:none;
+
+        border-top:1px solid #ececec;
+
+        background:#fff;
+
+        color:#2F80ED;
+
+        font-size:15px;
+
+    }
+
+    @keyframes systemPop{
+
+        from{
+
+            transform:scale(.94);
+
+            opacity:0;
+
+        }
+
+        to{
+
+            transform:scale(1);
+
+            opacity:1;
+
+        }
+
+    }
+    
+        /* ==========================
+            FACE POPUP
+    ========================== */
+
+    #mission03FacePopup .clear-box{
+
+        width:88%;
+
+        max-width:360px;
+
+        padding:26px 22px;
+
+        border-radius:22px;
+
+    }
+
+    #mission03FacePopup .story-text{
+
+        font-size:15px;
+
+        line-height:1.8;
+
+        margin-bottom:24px;
+
+    }
+
+    #mission03FacePopup button{
+
+        width:100%;
+
+        height:46px;
+
+        border:none;
+
+        border-radius:12px;
+
+        font-size:15px;
+
+    }
+
+    /* ==========================
+            CODE POPUP
+    ========================== */
+
+    #mission03CodeArea{
+
+        padding:24px 20px;
+
+    }
+
+    #mission03CodeArea p{
+
+        font-size:16px;
+
+        margin-bottom:18px;
+
+    }
+
+    #mission03Code{
+
+        width:100%;
+
+        height:46px;
+
+        border-radius:12px;
+
+        font-size:16px;
+
+        text-align:center;
+
+        margin-bottom:14px;
+
+    }
+
+    #checkMission03Code{
+
+        width:100%;
+
+        height:46px;
+
+        border:none;
+
+        border-radius:12px;
+
+        font-size:15px;
+
+    }
+
+    /* ==========================
+            CLEAR POPUP
+    ========================== */
+
+    #mission03ClearPopup .clear-box{
+
+        width:88%;
+
+        max-width:360px;
+
+        padding:28px 22px;
+
+        border-radius:22px;
+
+    }
+
+    #mission03ClearPopup h2{
+
+        font-size:24px;
+
+        margin-bottom:18px;
+
+    }
+
+    #mission03ClearPopup p{
+
+        font-size:15px;
+
+        line-height:1.8;
+
+        margin-bottom:24px;
+
+    }
+
+    #closeMission03Clear{
+
+        width:100%;
+
+        height:46px;
+
+        border:none;
+
+        border-radius:12px;
+
+        font-size:15px;
+
+    }
+
+    /* ==========================
+            MOBILE TOUCH
+    ========================== */
+
+    .hidden-item{
+
+        min-width:44px;
+
+        min-height:44px;
+
+        touch-action:manipulation;
+
+        -webkit-tap-highlight-color:transparent;
+
+    }
+
+    .hidden-item:active{
+
+        transform:scale(.96);
+
+    }
+
+    /* ==========================
+            SAFE AREA
+    ========================== */
+
+    .mission03-box{
+
+        padding-bottom:calc(12px + env(safe-area-inset-bottom));
+
+    }
+
+    .mission-ui{
+
+        padding-top:max(8px, env(safe-area-inset-top));
+
+    }
+
+    /* ==========================
+            MOBILE SCROLL
+    ========================== */
+
+    .cafe-scroll{
+
+        scrollbar-width:none;
+
+        -ms-overflow-style:none;
+
+    }
+
+    .cafe-scroll::-webkit-scrollbar{
+
+        display:none;
+
+    }
+
+    /* ==========================
+            IMAGE
+    ========================== */
+
+    .cafe-bg{
+
+        user-select:none;
+
+        -webkit-user-select:none;
+
+        -webkit-user-drag:none;
+
+        pointer-events:none;
+
+    }
+    
+     /* =====================================================
                         DEBUG MODE
+        테스트 시 아래 주석만 해제
     ====================================================== */
 
     /*
@@ -1956,370 +2425,10 @@ body {
 }
 
 /* =====================================================
-                    ROTATE NOTICE
-===================================================== */
-
-#rotateNotice,
-#rotatePortraitNotice{
-
-    position:fixed;
-
-    inset:0;
-
-    display:none;
-
-    align-items:center;
-
-    justify-content:center;
-
-    background:rgba(0,0,0,.82);
-
-    z-index:99999;
-
-}
-
-.rotate-box{
-
-    width:300px;
-
-    padding:35px 25px;
-
-    border-radius:25px;
-
-    background:#1b263b;
-
-    color:#fff;
-
-    text-align:center;
-
-}
-
-.rotate-box h2{
-
-    margin-bottom:18px;
-
-    color:#ffd166;
-
-}
-
-.rotate-box p{
-
-    line-height:1.8;
-
-}
-
-/* =====================================================
-                    NOTICE POPUP
-===================================================== */
-
-#mission03NoticePopup{
-
-    display:none;
-
-    flex-direction:column;
-
-    align-items:center;
-
-    justify-content:center;
-
-    text-align:center;
-
-}
-
-#mission03NoticePopup .story-text{
-
-    margin-bottom:22px;
-
-    font-size:18px;
-
-    font-weight:700;
-
-    line-height:1.8;
-
-    color:#d9e6ff;
-
-}
-
-#closeMission03Notice{
-
-    width:150px;
-
-    height:46px;
-
-    margin-top:18px;
-
-    border:none;
-
-    border-radius:25px;
-
-    background:#8ecff4;
-
-    color:#fff;
-
-    font-family:inherit;
-
-    font-size:15px;
-
-    font-weight:800;
-
-    cursor:pointer;
-
-    transition:.2s;
-
-}
-
-#closeMission03Notice:hover{
-
-    opacity:.9;
-
-}
-
-/* =====================================================
-                    FACE POPUP
-===================================================== */
-
-#mission03FacePopup{
-
-    display:none;
-
-    flex-direction:column;
-
-    align-items:center;
-
-    justify-content:center;
-
-    text-align:center;
-
-}
-
-#mission03FacePopup .story-text{
-
-    margin-bottom:22px;
-
-    font-size:18px;
-
-    font-weight:700;
-
-    line-height:1.8;
-
-    color:#d9e6ff;
-
-}
-
-#closeMission03FacePopup{
-
-    width:150px;
-
-    height:46px;
-
-    margin-top:18px;
-
-    border:none;
-
-    border-radius:25px;
-
-    background:#b39ddb;
-
-    color:#fff;
-
-    font-family:inherit;
-
-    font-size:15px;
-
-    font-weight:800;
-
-    cursor:pointer;
-
-    transition:.2s;
-
-}
-
-#closeMission03FacePopup:hover{
-
-    opacity:.9;
-
-}
-
-/* =====================================================
-                    CODE POPUP
-===================================================== */
-
-#mission03CodeArea{
-
-    display:none;
-
-}
-
-#mission03CodeArea p{
-
-    margin-bottom:18px;
-
-    font-size:18px;
-
-    font-weight:700;
-
-    color:#ddf3ff;
-
-}
-
-#mission03CodeArea input{
-
-    width:100%;
-
-    height:48px;
-
-    margin:18px 0 14px;
-
-    padding:0 15px;
-
-    border:none;
-
-    border-radius:12px;
-
-    background:#f8fbfc;
-
-    outline:none;
-
-    box-sizing:border-box;
-
-    text-align:center;
-
-    font-family:inherit;
-
-    font-size:15px;
-
-}
-
-#mission03CodeArea input:focus{
-
-    background:#fff;
-
-}
-
-#checkMission03Code{
-
-    width:100%;
-
-    height:48px;
-
-    border:none;
-
-    border-radius:12px;
-
-    background:#8ecff4;
-
-    color:#fff;
-
-    font-family:inherit;
-
-    font-size:14px;
-
-    font-weight:800;
-
-    cursor:pointer;
-
-    transition:.2s;
-
-}
-
-#checkMission03Code:hover{
-
-    transform:translateY(-1px);
-
-    opacity:.9;
-
-}
-
-/* =====================================================
-                    CLEAR POPUP
-===================================================== */
-
-#mission03ClearPopup{
-
-    display:none;
-
-}
-
-#closeMission03Clear{
-
-    width:150px;
-
-    height:46px;
-
-    border:none;
-
-    border-radius:25px;
-
-    /* 기본 : 잠금 */
-    background:#8b8b8b;
-
-    color:#fff;
-
-    font-family:inherit;
-
-    font-size:15px;
-
-    font-weight:800;
-
-    cursor:not-allowed;
-
-    transition:.2s;
-
-}
-
-/* 25분 이후 */
-
-#closeMission03Clear.active{
-
-    background:#8ecff4;
-
-    cursor:pointer;
-
-}
-
-#closeMission03Clear.active:hover{
-
-    opacity:.9;
-
-}
-
-/* =====================================================
-                    MOBILE POPUP
-===================================================== */
-
-@media (max-width:768px){
-
-    .face-popup{
-
-        width:92%;
-
-        max-width:340px;
-
-        padding:35px 22px;
-
-        border-radius:22px;
-
-    }
-
-    .clear-box{
-
-        width:92%;
-
-        max-width:310px;
-
-    }
-
-    #mission03CodeArea input{
-
-        font-size:16px;
-
-    }
-
-}
-
-/* =====================================================
                     03 END
-===================================================== */
+===================================================== */   
+
+    
 
 
 /* ==========================

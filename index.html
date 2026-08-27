@@ -597,16 +597,6 @@
 
     <div class="mission03-box">
 
-        <!-- 닫기 -->
-
-        <button
-            class="detail-close"
-            id="mission03Close">
-
-            ×
-
-        </button>
-
         <!-- 제목 -->
 
         <h2 class="mission-title">
@@ -625,25 +615,36 @@
                 상단 UI
         ========================== -->
 
-        <div class="mission-ui">
+ <div class="mission-ui">
 
-            <div class="find-count">
+    <div class="left-ui">
 
-                🔍 찾은 물건
-                <span id="foundCount">0/5</span>
+        <div class="find-count">
 
-            </div>
-
-            <button
-                class="story-btn"
-                id="mission03StoryBtn">
-
-                다시보기
-
-            </button>
+            🔍 찾은 물건
+            <span id="foundCount">0/5</span>
 
         </div>
 
+        <button
+            class="story-btn"
+            id="mission03StoryBtn">
+
+            다시보기
+
+        </button>
+
+    </div>
+
+    <button
+        class="detail-close"
+        id="mission03Close">
+
+        ×
+
+    </button>
+
+</div>
         <!-- ==========================
                 그림 영역
         ========================== -->
@@ -695,6 +696,41 @@
         </p>
 
     </div>
+
+    <!-- =====================================================
+                    STORY POPUP
+===================================================== -->
+
+<div
+    class="face-popup"
+    id="mission03StoryPopup">
+
+    <div class="clear-box">
+
+        <h2>
+
+            MISSION 03
+
+        </h2>
+
+        <p
+            class="story-text"
+            id="mission03StoryText">
+
+            <!-- JS에서 내용 -->
+
+        </p>
+
+        <button
+            id="closeMission03Story">
+
+            닫기
+
+        </button>
+
+    </div>
+
+</div>
 
     <!-- =====================================================
                     NOTICE POPUP
@@ -816,6 +852,34 @@
         </div>
 
     </div>
+
+    <!-- =====================================================
+                    SYSTEM POPUP
+===================================================== -->
+
+    <div
+    class="system-popup"
+    id="mission03SystemPopup">
+
+      <div class="system-box">
+
+        <p
+            id="mission03SystemText">
+
+            시스템 메세지
+
+        </p>
+
+        <button
+            id="closeMission03System">
+
+            확인
+
+        </button>
+
+      </div>
+
+   </div>
 
 </div>
 <!-- mission03Detail 끝 -->
