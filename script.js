@@ -680,7 +680,6 @@ function startMission03Timer(){
 
 }
 
-
 // ==========================
 // MISSION 03 OPEN
 // ==========================
@@ -696,6 +695,24 @@ document.getElementById("rotateNotice");
 
 const rotatePortraitNotice =
 document.getElementById("rotatePortraitNotice");
+
+const mission03NoticePopup =
+document.getElementById("mission03NoticePopup");
+
+const mission03NoticeText =
+document.getElementById("mission03NoticeText");
+
+const closeMission03Notice =
+document.getElementById("closeMission03Notice");
+
+const mission03StoryBtn =
+document.getElementById("mission03StoryBtn");
+
+const mission03CompletePopup =
+document.getElementById("mission03CompletePopup");
+
+const closeMission03Complete =
+document.getElementById("closeMission03Complete");
 
 let mission03NeedPortrait = false;
 
@@ -726,6 +743,22 @@ function openMission03(){
     // 이벤트 시작
     startMission03Event();
 
+    // 모바일 Notice Popup
+    if(window.innerWidth <= 900){
+
+        mission03NoticeText.innerHTML = `
+숲속 카페 안에 숨겨진 물건을 모두 찾아보세요!<br><br>
+⭐ 별<br>
+🧸 곰인형<br>
+🌙 달<br>
+🔑 열쇠<br>
+✉️ 편지
+`;
+
+        mission03NoticePopup.style.display = "flex";
+
+    }
+
 }
 
 // ==========================
@@ -738,10 +771,8 @@ if(mission03Card){
 
         if(mission03Card.classList.contains("locked")) return;
 
-        // ⭐ 모바일 여부 먼저 확인
         const isMobile = window.innerWidth <= 900;
 
-        // PC는 바로 오픈
         if(!isMobile){
 
             openMission03();
@@ -749,7 +780,6 @@ if(mission03Card){
 
         }
 
-        // 모바일
         if(window.innerHeight > window.innerWidth){
 
             rotateNotice.style.display="flex";
@@ -765,8 +795,6 @@ if(mission03Card){
     });
 
 }
-
-
 
 // ==========================
 // CLOSE
@@ -784,8 +812,6 @@ if(mission03Close){
 
 }
 
-
-
 // ==========================
 // ROTATE CHECK
 // ==========================
@@ -794,12 +820,9 @@ window.addEventListener("resize",()=>{
 
     const isMobile = window.innerWidth <= 900;
 
-    // ⭐ PC는 회전 안내 사용 안 함
     if(!isMobile) return;
 
-    // ===================================
-    // 처음 입장 → 가로 공지
-    // ===================================
+    // 처음 입장 → 가로 안내 후 Notice Popup
     if(
 
         rotateNotice &&
@@ -816,9 +839,7 @@ window.addEventListener("resize",()=>{
 
     }
 
-    // ===================================
-    // 숨은그림 완료 후 → 세로 공지
-    // ===================================
+    // 숨은그림 완료 후 → 세로 안내
     if(
 
         mission03NeedPortrait &&
@@ -832,7 +853,6 @@ window.addEventListener("resize",()=>{
 
         mission03NeedPortrait = false;
 
-        // ★ FacePopup은 세로가 된 뒤에만
         mission03FacePopup.style.display="flex";
 
         return;
@@ -910,14 +930,12 @@ hiddenItems.forEach(item=>{
                 // 모바일
                 // ==========================
 
-                // 이미 세로면 바로 FacePopup
                 if(window.innerHeight > window.innerWidth){
 
                     mission03FacePopup.style.display="flex";
 
                 }
 
-                // 가로면 세로공지 먼저
                 else{
 
                     mission03NeedPortrait = true;
@@ -944,7 +962,6 @@ if(closeMission03FacePopup){
 
         mission03FacePopup.style.display="none";
 
-        // ⭐ 모바일 여부 먼저 확인
         const isMobile = window.innerWidth <= 900;
 
         // ==========================
@@ -962,14 +979,12 @@ if(closeMission03FacePopup){
         // 모바일
         // ==========================
 
-        // 이미 세로면 바로 인증번호
         if(window.innerHeight > window.innerWidth){
 
             mission03CodeArea.style.display="block";
 
         }
 
-        // 가로면 세로공지
         else{
 
             mission03NeedPortrait = true;
@@ -1011,39 +1026,6 @@ window.addEventListener("resize",()=>{
 
 });
 
-
-// ==========================
-// ROTATE → CODE
-// ==========================
-
-window.addEventListener("resize",()=>{
-
-    const isMobile = window.innerWidth <= 900;
-
-    // ⭐ PC는 사용 안 함
-    if(!isMobile) return;
-
-    if(
-
-        mission03NeedPortrait &&
-        rotatePortraitNotice &&
-        window.innerHeight > window.innerWidth
-
-    ){
-
-        rotatePortraitNotice.style.display="none";
-
-        mission03NeedPortrait = false;
-
-        mission03CodeArea.style.display="block";
-
-    }
-
-});
-
-
-
-
 // ==========================
 // CODE CHECK
 // ==========================
@@ -1059,7 +1041,6 @@ if(checkMission03Code){
 
             mission03CodeArea.style.display="none";
 
-            // ⭐ 다른 미션과 동일
             mission03ClearPopup.style.display="flex";
 
             mission03Status.innerHTML="CLEAR ✓";
@@ -1091,15 +1072,7 @@ if(closeMission03Clear){
 
             mission03ClearPopup.style.display="none";
 
-            mission03Detail.classList.remove("show");
-
-            showLightFragment();
-
-            missionPanel.classList.add("show");
-
-            startMission04Timer();
-
-            startHidden01Timer();
+            mission03CompletePopup.style.display="flex";
 
             return;
 
@@ -1110,7 +1083,6 @@ if(closeMission03Clear){
         // ==========================
         if(mission03Notice24){
 
-            // 아무 반응 없음
             return;
 
         }
@@ -1119,6 +1091,30 @@ if(closeMission03Clear){
         // 24분 이전
         // ==========================
         alert("최종 확인이 진행 중입니다.\n잠시 후 다시 시도해주세요.");
+
+    });
+
+}
+
+// ==========================
+// COMPLETE CLOSE
+// ==========================
+
+if(closeMission03Complete){
+
+    closeMission03Complete.addEventListener("click",()=>{
+
+        mission03CompletePopup.style.display="none";
+
+        mission03Detail.classList.remove("show");
+
+        showLightFragment();
+
+        missionPanel.classList.add("show");
+
+        startMission04Timer();
+
+        startHidden01Timer();
 
     });
 
@@ -1228,14 +1224,12 @@ function startMission03Event(){
 
             mission03Notice24 = true;
 
-            // 전원 공통 진동
             if(navigator.vibrate){
 
                 navigator.vibrate([700,200,700]);
 
             }
 
-            // 전원 공통 시스템창
             alert("곧 다음 구역이 활성화됩니다.\n준비해주세요.");
 
         }
