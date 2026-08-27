@@ -598,53 +598,39 @@
     <div class="mission03-box">
 
         <!-- 제목 -->
-
         <h2 class="mission-title">
-
             ☕ MISSION 03
-
         </h2>
 
         <p class="mission-subtitle">
-
             숲속 카페 안에 숨겨진 물건을 모두 찾아보세요!
-
         </p>
 
         <!-- ==========================
                 상단 UI
         ========================== -->
 
- <div class="mission-ui">
+        <div class="mission-ui">
 
-    <div class="left-ui">
+            <div class="left-ui">
 
-        <div class="find-count">
+                <div class="find-count">
+                    🔍 찾은 물건
+                    <span id="foundCount">0/5</span>
+                </div>
 
-            🔍 찾은 물건
-            <span id="foundCount">0/5</span>
+            </div>
+
+            <button
+                class="detail-close"
+                id="mission03Close">
+
+                ×
+
+            </button>
 
         </div>
 
-        <button
-            class="story-btn"
-            id="mission03StoryBtn">
-
-            다시보기
-
-        </button>
-
-    </div>
-
-    <button
-        class="detail-close"
-        id="mission03Close">
-
-        ×
-
-    </button>
-
-</div>
         <!-- ==========================
                 그림 영역
         ========================== -->
@@ -687,12 +673,8 @@
 
         </div>
 
-        <!-- PC에서만 보일 안내 -->
-
         <p class="mission-guide">
-
             별, 곰인형, 달, 열쇠, 편지를 찾아보세요 👀
-
         </p>
 
     </div>
@@ -708,16 +690,14 @@
         <div class="clear-box">
 
             <h2>
-
                 MISSION 03
-
             </h2>
 
             <p
                 class="story-text"
                 id="mission03NoticeText">
 
-                <!-- JS에서 내용 변경 -->
+                <!-- JS에서 출력 -->
 
             </p>
 
@@ -765,9 +745,7 @@
         id="mission03CodeArea">
 
         <p>
-
             인증번호를 입력해주세요.
-
         </p>
 
         <input
@@ -795,9 +773,7 @@
         <div class="clear-box">
 
             <h2>
-
                 SYSTEM
-
             </h2>
 
             <p>
@@ -820,103 +796,59 @@
 
     <!-- =====================================================
                     SYSTEM POPUP
-===================================================== -->
+    ====================================================== -->
 
     <div
-    class="system-popup"
-    id="mission03SystemPopup">
+        class="system-popup"
+        id="mission03SystemPopup">
 
-      <div class="system-box">
+        <div class="system-box">
 
-        <p
-            id="mission03SystemText">
+            <p id="mission03SystemText">
 
-            시스템 메세지
+                시스템 메세지
 
-        </p>
+            </p>
 
-        <button
-            id="closeMission03System">
+            <button
+                id="closeMission03System">
 
-            확인
+                확인
 
-        </button>
+            </button>
 
-      </div>
-
-   </div>
-
-   <!-- =====================================================
-                    NOTICE POPUP
-===================================================== -->
-
-<div
-    class="face-popup"
-    id="mission03NoticePopup">
-
-    <div class="clear-box">
-
-        <h2>
-
-            MISSION 03
-
-        </h2>
-
-        <p
-            class="story-text"
-            id="mission03NoticeText">
-
-            <!--
-            JS에서 출력
-
-            MISSION03.숲속 카페 안에 숨겨진
-            물건을 모두 찾아보세요!
-
-            별, 곰인형, 달,
-            열쇠, 편지
-            -->
-
-        </p>
-
-        <button
-            id="closeMission03Notice">
-
-            시작하기
-
-        </button>
+        </div>
 
     </div>
 
-</div>
-
-<!-- =====================================================
+    <!-- =====================================================
                     COMPLETE POPUP
-===================================================== -->
+    ====================================================== -->
 
-<div
-    class="system-popup"
-    id="mission03CompletePopup">
+    <div
+        class="system-popup"
+        id="mission03CompletePopup">
 
-    <div class="system-box">
+        <div class="system-box">
 
-        <h2>
+            <h2>
 
-            NO SIGNAL
+                NO SIGNAL
 
-        </h2>
+            </h2>
 
-        <p>
+            <p>
 
-            MISSION COMPLETE
+                MISSION COMPLETE
 
-        </p>
+            </p>
 
-        <button
-            id="closeMission03Complete">
+            <button
+                id="closeMission03Complete">
 
-            확인
+                확인
 
-        </button>
+            </button>
 
         </div>
 
