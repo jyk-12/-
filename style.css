@@ -1719,7 +1719,6 @@ body {
 
 }
 
-
 /* =====================================================
             LANDSCAPE (MISSION 03)
 ===================================================== */
@@ -1729,11 +1728,8 @@ body {
     .mission03-box{
 
         width:96%;
-
         height:72vh;
-
         max-height:72vh;
-
         min-height:auto;
 
         padding:12px;
@@ -1747,20 +1743,22 @@ body {
     /* 모바일에서만 제목 숨김 */
 
     .mission-title,
-    .mission-subtitle{
+    .mission-subtitle,
+    .mission-guide{
 
         display:none;
 
     }
 
-    /* X / 찾은물건 / 다시보기 */
+    /* ==========================
+            상단 UI
+    ========================== */
 
     .mission-ui{
 
         position:absolute;
 
-        top:12px;
-
+        top:10px;
         right:70px;
 
         display:flex;
@@ -1771,23 +1769,48 @@ body {
 
         margin:0;
 
-        z-index:200;
+        z-index:300;
 
     }
 
     .find-count{
 
         width:auto;
-
         min-width:0;
 
         margin:0;
 
         padding:6px 12px;
 
+        border-radius:30px;
+
         font-size:15px;
 
-        border-radius:30px;
+        white-space:nowrap;
+
+    }
+
+    /* 모바일에서는 🔍0/5 */
+
+    .find-count{
+
+        font-size:0;
+
+    }
+
+    .find-count span{
+
+        font-size:15px;
+
+    }
+
+    .find-count::before{
+
+        content:"🔍";
+
+        font-size:15px;
+
+        margin-right:4px;
 
     }
 
@@ -1809,7 +1832,20 @@ body {
 
     }
 
-    /* 그림 위로 */
+    /* ==========================
+            그림만 스크롤
+    ========================== */
+
+    .cafe-scroll{
+
+        flex:1;
+
+        overflow-y:auto;
+        overflow-x:hidden;
+
+        -webkit-overflow-scrolling:touch;
+
+    }
 
     .cafe-game{
 
@@ -1817,13 +1853,7 @@ body {
 
         width:100%;
 
-        margin:8px auto 0;
-
-        overflow:auto;
-
-        touch-action:pan-x pan-y pinch-zoom;
-
-        -webkit-overflow-scrolling:touch;
+        margin:6px auto 0;
 
     }
 
@@ -1848,6 +1878,8 @@ body {
         box-sizing:content-box;
 
     }
+
+}
 
     /* =====================================================
                         DEBUG MODE
