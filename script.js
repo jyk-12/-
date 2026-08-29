@@ -831,7 +831,7 @@ if(!isMobile){
 
         }else{
 
-           showMission03Notice();
+           showMission03NoticePopup();
         }
 
     });
@@ -953,11 +953,11 @@ window.addEventListener("resize",()=>{
 
     mission03RotatePopup.style.display = "none";
 
-    if(mission03CurrentScreen === "start"){
+   if(mission03CurrentScreen === "start"){
 
-        mission03NoticePopup.style.display = "flex";
+    showMission03NoticePopup();
 
-    }
+}
 
 });
 
