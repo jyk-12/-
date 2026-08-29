@@ -947,7 +947,9 @@ window.addEventListener("resize",()=>{
 
     mission03RotatePopup.style.display = "none";
 
-   if(mission03CurrentScreen === "start"){
+  if(mission03CurrentScreen === "start"){
+
+    alert("resize 들어옴");
 
     showMission03NoticePopup();
 
