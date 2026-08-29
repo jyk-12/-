@@ -844,6 +844,8 @@ if(!isMobile){
 
 function showMission03Notice(){
 
+    alert("함수 실행");
+
     mission03NoticeText.innerHTML = `
     숲속 카페 어딘가에<br>
     숨겨진 흔적이 남아 있습니다.<br><br>
