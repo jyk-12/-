@@ -953,11 +953,13 @@ window.addEventListener("resize",()=>{
 
     mission03RotatePopup.style.display = "none";
 
-    if(mission03CurrentScreen === "start"){
+   if(mission03CurrentScreen === "start"){
 
     showMission03NoticePopup();
 
 }
+
+});
 
 // ==========================
 // 03 HIDDEN
