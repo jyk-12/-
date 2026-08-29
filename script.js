@@ -690,11 +690,8 @@ document.getElementById("mission03Detail");
 const mission03Close =
 document.getElementById("mission03Close");
 
-const rotateNotice =
-document.getElementById("rotateNotice");
-
-const rotatePortraitNotice =
-document.getElementById("rotatePortraitNotice");
+const mission03FoundText =
+document.getElementById("mission03FoundText");
 
 const mission03NoticePopup =
 document.getElementById("mission03NoticePopup");
@@ -702,93 +699,139 @@ document.getElementById("mission03NoticePopup");
 const mission03NoticeText =
 document.getElementById("mission03NoticeText");
 
-const closeMission03Notice =
+const closeMission03NoticePopup =
 document.getElementById("closeMission03Notice");
 
-const mission03StoryBtn =
-document.getElementById("mission03StoryBtn");
+const mission03SystemPopup =
+document.getElementById("mission03SystemPopup");
 
-const mission03CompletePopup =
-document.getElementById("mission03CompletePopup");
+const mission03RandomText =
+document.getElementById("mission03RandomText");
 
-const closeMission03Complete =
-document.getElementById("closeMission03Complete");
+const mission03EventText =
+document.getElementById("mission03EventText");
 
-let mission03NeedPortrait = false;
+const closeMission03SystemPopup =
+document.getElementById("closeMission03SystemPopup");
 
+const closeMission03FacePopup =
+document.getElementById("closeMission03FacePopup");
+
+const mission03CodePopup =
+document.getElementById("mission03CodePopup");
+
+const mission03ClearPopup =
+document.getElementById("mission03ClearPopup");
+
+const mission03ReTurnPopup =
+document.getElementById("mission03ReTurnPopup");
+
+const mission03RotatePopup =
+document.getElementById("mission03RotatePopup");
+
+const hiddenItems =
+document.querySelectorAll(".hidden-item");
+
+// 게임 화면 열기
 function openMission03(){
 
+    // 미션 목록 닫기
     missionPanel.classList.remove("show");
 
+    // 게임 화면 열기
     mission03Detail.classList.add("show");
 
-    // 플레이 시작
-    mission03PlayTime = new Date();
-
-    mission03CanClose = false;
-
-    mission03Notice20 = false;
-    mission03Notice22 = false;
-    mission03Notice24 = false;
-
-    if(closeMission03Clear){
-
-        closeMission03Clear.classList.remove("active");
-
-    }
-
-    // 숨은그림 초기화
-    resetMission03Hidden();
-
-    // 이벤트 시작
-    startMission03Event();
-
-    // 모바일 Notice Popup
-    if(window.innerWidth <= 900){
-
-        mission03NoticeText.innerHTML = `
-숲속 카페 안에 숨겨진 물건을 모두 찾아보세요!<br><br>
-⭐ 별<br>
-🧸 곰인형<br>
-🌙 달<br>
-🔑 열쇠<br>
-✉️ 편지
-`;
-
-        mission03NoticePopup.style.display = "flex";
-
-    }
+    // 현재 화면 저장
+    mission03CurrentScreen = "game";
 
 }
 
 // ==========================
-// CARD CLICK
+// MISSION 03 START
+// ==========================
+
+function openMission03BeforeStart(){
+
+    /*
+    // 최초 시작일 경우만
+    if(!mission03Started){
+
+        // 숨은그림 초기화
+        resetMission03Hidden();
+
+        // 플레이 시작 시간
+        mission03PlayTime = new Date();
+
+        // 이벤트 시작
+        startMission03Event();
+
+        // 이벤트 상태 초기화
+        mission03CanClose = false;
+
+        mission03Notice20 = false;
+        mission03Notice22 = false;
+        mission03Notice24 = false;
+
+        // Clear 버튼 비활성화
+        if(closeMission03Clear){
+
+            closeMission03Clear.classList.remove("active");
+
+        }
+
+        mission03Started = true;
+
+    }
+    */
+
+    // 임시 : 타이머 기능 비활성화
+    openMission03();
+
+}
+
+// ==========================
+// 03 CARD CLICK
 // ==========================
 
 if(mission03Card){
 
     mission03Card.addEventListener("click",()=>{
 
+        // 잠겨있으면 종료
         if(mission03Card.classList.contains("locked")) return;
 
         const isMobile = window.innerWidth <= 900;
 
-        if(!isMobile){
+        // ==========================
+        // PC
+        // ==========================
 
-            openMission03();
-            return;
+if(!isMobile){
 
-        }
+    /*
+    원래는 최초 시작 로직을 거쳐야 함
+    (타이머 기능 활성화 시 사용)
+    */
+
+    openMission03BeforeStart();
+
+    return;
+
+}
+
+        // ==========================
+        // MOBILE
+        // ==========================
 
         if(window.innerHeight > window.innerWidth){
 
-            rotateNotice.style.display="flex";
+            mission03CurrentScreen = "start";
 
-        }
+            mission03RotatePopup.style.display = "flex";
 
-        else{
+        }else{
 
-            openMission03();
+            mission03NoticePopup.style.display = "flex";
 
         }
 
@@ -797,15 +840,41 @@ if(mission03Card){
 }
 
 // ==========================
-// CLOSE
+// 03 NOTICE POPUP
+// ==========================
+
+if(closeMission03NoticePopup){
+
+    closeMission03NoticePopup.addEventListener("click",()=>{
+
+        // 안내창 닫기
+        mission03NoticePopup.style.display = "none";
+
+        // 최초 시작
+/*
+원래 시작 함수
+(타이머 기능 활성화 시 사용)
+*/
+openMission03BeforeStart();
+    });
+
+}
+
+// ==========================
+// 03 CLOSE
 // ==========================
 
 if(mission03Close){
 
     mission03Close.addEventListener("click",()=>{
 
+        // 게임 화면 닫기
         mission03Detail.classList.remove("show");
 
+        // 현재 화면 저장
+        mission03CurrentScreen = "list";
+
+        // 미션 목록 열기
         missionPanel.classList.add("show");
 
     });
@@ -813,7 +882,7 @@ if(mission03Close){
 }
 
 // ==========================
-// ROTATE CHECK
+// 03 ROTATE CHECK
 // ==========================
 
 window.addEventListener("resize",()=>{
@@ -822,258 +891,232 @@ window.addEventListener("resize",()=>{
 
     if(!isMobile) return;
 
-    // 처음 입장 → 가로 안내 후 Notice Popup
-    if(
+    // ==========================
+    // 세로
+    // ==========================
 
-        rotateNotice &&
-        rotateNotice.style.display==="flex" &&
-        window.innerWidth > window.innerHeight
+    if(window.innerHeight > window.innerWidth){
 
-    ){
+        if(mission03CurrentScreen === "start"){
 
-        rotateNotice.style.display="none";
-
-        openMission03();
-
-        return;
-
-    }
-
-    // 숨은그림 완료 후 → 세로 안내
-    if(
-
-        mission03NeedPortrait &&
-        rotatePortraitNotice &&
-        rotatePortraitNotice.style.display==="flex" &&
-        window.innerHeight > window.innerWidth
-
-    ){
-
-        rotatePortraitNotice.style.display="none";
-
-        mission03NeedPortrait = false;
-
-        mission03FacePopup.style.display="flex";
-
-        return;
-
-    }
-
-});
-
-// ==========================
-// HIDDEN ITEM
-// ==========================
-
-const hiddenItems =
-document.querySelectorAll(".hidden-item");
-
-const foundCount =
-document.getElementById("foundCount");
-
-let mission03FoundCount = 0;
-
-function resetMission03Hidden(){
-
-    mission03FoundCount = 0;
-
-    if(foundCount){
-
-        foundCount.innerHTML = "0/5";
-
-    }
-
-    hiddenItems.forEach(item=>{
-
-        item.classList.remove("found");
-
-    });
-
-}
-
-hiddenItems.forEach(item=>{
-
-    item.addEventListener("click",()=>{
-
-        if(item.classList.contains("found")) return;
-
-        item.classList.add("found");
-
-        mission03FoundCount++;
-
-        if(foundCount){
-
-            foundCount.innerHTML =
-            `${mission03FoundCount}/5`;
-
-        }
-
-        if(mission03FoundCount >= hiddenItems.length){
-
-            setTimeout(()=>{
-
-                const isMobile =
-                window.innerWidth <= 900;
-
-                // ==========================
-                // PC
-                // ==========================
-                if(!isMobile){
-
-                    mission03FacePopup.style.display="flex";
-
-                    return;
-
-                }
-
-                // ==========================
-                // 모바일
-                // ==========================
-
-                if(window.innerHeight > window.innerWidth){
-
-                    mission03FacePopup.style.display="flex";
-
-                }
-
-                else{
-
-                    mission03NeedPortrait = true;
-
-                    rotatePortraitNotice.style.display="flex";
-
-                }
-
-            },300);
-
-        }
-
-    });
-
-});
-
-// ==========================
-// FACE POPUP → PORTRAIT
-// ==========================
-
-if(closeMission03FacePopup){
-
-    closeMission03FacePopup.addEventListener("click",()=>{
-
-        mission03FacePopup.style.display="none";
-
-        const isMobile = window.innerWidth <= 900;
-
-        // ==========================
-        // PC
-        // ==========================
-        if(!isMobile){
-
-            mission03CodeArea.style.display="block";
+            mission03RotatePopup.style.display = "flex";
 
             return;
 
         }
 
-        // ==========================
-        // 모바일
-        // ==========================
+        if(mission03CurrentScreen === "game"){
 
-        if(window.innerHeight > window.innerWidth){
+            mission03RotatePopup.style.display = "flex";
 
-            mission03CodeArea.style.display="block";
+            return;
 
         }
 
-        else{
+        if(mission03CurrentScreen === "rotate"){
 
-            mission03NeedPortrait = true;
+            setTimeout(()=>{
 
-            rotatePortraitNotice.style.display="flex";
+                mission03RotatePopup.style.display = "none";
+
+                showMission03FacePopup();
+
+                mission03CurrentScreen = "face";
+
+            },2000);
+
+            return;
 
         }
 
-    });
+    }
 
-}
+    // ==========================
+    // 가로
+    // ==========================
 
-// ==========================
-// ROTATE → CODE
-// ==========================
+    mission03RotatePopup.style.display = "none";
 
-window.addEventListener("resize",()=>{
+    if(mission03CurrentScreen === "start"){
 
-    const isMobile = window.innerWidth <= 900;
-
-    if(!isMobile) return;
-
-    if(
-
-        mission03NeedPortrait &&
-        rotatePortraitNotice &&
-        rotatePortraitNotice.style.display==="flex" &&
-        window.innerHeight > window.innerWidth
-
-    ){
-
-        rotatePortraitNotice.style.display="none";
-
-        mission03NeedPortrait = false;
-
-        mission03CodeArea.style.display="block";
+        mission03NoticePopup.style.display = "flex";
 
     }
 
 });
 
 // ==========================
-// CODE CHECK
+// 03 HIDDEN
 // ==========================
 
-if(checkMission03Code){
+hiddenItems.forEach((item)=>{
 
-    checkMission03Code.addEventListener("click",()=>{
+    item.addEventListener("click",()=>{
 
-        const code =
-        mission03Code.value.trim();
+        // 이미 찾은 아이템이면 종료
+        if(item.dataset.found === "true") return;
 
-        if(code==="3333"){
+        // 찾음 표시
+        item.dataset.found = "true";
 
-            mission03CodeArea.style.display="none";
+        const foundCircle =
+        item.querySelector(".found-circle");
 
-            mission03ClearPopup.style.display="flex";
+        if(foundCircle){
 
-            mission03Status.innerHTML="CLEAR ✓";
+            foundCircle.style.display = "block";
+
+        }
+
+        // 찾은 개수 증가
+        mission03FoundCount++;
+
+        // 진행률 갱신
+        if(mission03FoundText){
+
+            mission03FoundText.innerHTML =
+            `${mission03FoundCount} / ${hiddenItems.length}`;
 
         }
 
-        else{
+        // 모두 찾았으면
+        if(mission03FoundCount >= hiddenItems.length){
 
-            alert("인증번호가 틀렸어!");
+            mission03CurrentScreen = "rotate";
+
+            mission03RotatePopup.style.display = "flex";
 
         }
+
+    });
+
+});
+
+// ==========================
+// OVERLAY
+// ==========================
+
+let mission03Overlay = null;
+
+function showMission03Overlay(){
+
+    // 최초 1회 생성
+    if(!mission03Overlay){
+
+        mission03Overlay = document.createElement("div");
+
+        mission03Overlay.style.position = "fixed";
+        mission03Overlay.style.top = "0";
+        mission03Overlay.style.left = "0";
+        mission03Overlay.style.width = "100%";
+        mission03Overlay.style.height = "100%";
+        mission03Overlay.style.background = "rgba(0,0,0,.55)";
+        mission03Overlay.style.zIndex = "9998";
+
+        document.body.appendChild(mission03Overlay);
+
+    }
+
+    mission03Overlay.style.display = "block";
+
+}
+
+// ==========================
+// FACE POPUP
+// ==========================
+
+function showMission03FacePopup(){
+
+    // Overlay
+    showMission03Overlay();
+
+    // Face Popup
+    mission03FacePopup.style.display = "flex";
+
+}
+
+if(closeMission03FacePopup){
+
+    closeMission03FacePopup.addEventListener("click",()=>{
+
+        // Face Popup 닫기
+        mission03FacePopup.style.display = "none";
+
+        // Code Popup
+        showMission03CodePopup();
 
     });
 
 }
 
 // ==========================
-// FINAL CLOSE
+// 03 CODE POPUP
 // ==========================
+
+function showMission03CodePopup(){
+
+    mission03CodePopup.style.display = "flex";
+
+    mission03CodeInput.value = "";
+    mission03CodeInput.focus();
+
+}
+
+mission03CodeBtn.addEventListener("click",()=>{
+
+    const code = mission03CodeInput.value.trim();
+
+    if(code === mission03Answer){
+
+        mission03CodePopup.style.display = "none";
+
+        // ↓ 다음 단계
+        // showMission03ClearPopup();
+
+    }else{
+
+        alert("인증번호를 다시 확인해주세요.");
+
+    }
+
+});
+
+// ==========================
+// CLEAR POPUP
+// ==========================
+
+function showMission03ClearPopup(){
+
+    // Code Popup 닫기
+    mission03CodePopup.style.display = "none";
+
+    // Clear Popup 열기
+    mission03ClearPopup.style.display = "flex";
+
+    // 현재 화면
+    mission03CurrentScreen = "clear";
+
+    // Clear 버튼 비활성화
+    if(closeMission03Clear){
+
+        closeMission03Clear.classList.remove("active");
+
+    }
+
+}
 
 if(closeMission03Clear){
 
     closeMission03Clear.addEventListener("click",()=>{
 
         // ==========================
-        // 25분 이후
+        // 24분 이전
         // ==========================
-        if(mission03CanClose){
 
-            mission03ClearPopup.style.display="none";
+        if(!mission03Notice24){
 
-            mission03CompletePopup.style.display="flex";
-
+            // Random Text
+            showMission03RandomMessage();
             return;
 
         }
@@ -1081,47 +1124,101 @@ if(closeMission03Clear){
         // ==========================
         // 24분 이후
         // ==========================
-        if(mission03Notice24){
+
+        if(!mission03CanClose){
 
             return;
 
         }
 
         // ==========================
-        // 24분 이전
+        // 25분 이후
         // ==========================
-        alert("최종 확인이 진행 중입니다.\n잠시 후 다시 시도해주세요.");
+
+        // Clear Popup 닫기
+        mission03ClearPopup.style.display = "none";
+
+        // 빛의 조각
+        showLightFragment();
+
+        // Mission04 Timer 시작
+        startMission04Timer();
+
+        // Hidden01 Intro 시작
+        startHidden01Intro();
+
+        // 현재 화면
+        mission03CurrentScreen = "list";
 
     });
 
 }
 
 // ==========================
-// COMPLETE CLOSE
+// RANDOM TEXT
 // ==========================
 
-if(closeMission03Complete){
+// 랜덤 문구
+const mission03RandomMessages = [
 
-    closeMission03Complete.addEventListener("click",()=>{
+    "오래된 기록을 정리하고 있습니다.",
 
-        mission03CompletePopup.style.display="none";
+    "ㄷㄹㅇㄹ디화앋ㅇㅇㅇㅇㅇ.",
 
-        mission03Detail.classList.remove("show");
+    "미확인 신호를 추적하고 있습니다.",
 
-        showLightFragment();
+    "ㅇㅇㄱ구어럳로뷀거아라디어ㅏ라",
 
-        missionPanel.classList.add("show");
+    "잠시 후 시도해주세요"
 
-        startMission04Timer();
+];
 
-        startHidden01Timer();
+// 랜덤 문구 출력
+function showMission03RandomMessage(){
+
+    // 랜덤 선택
+    const randomMessage =
+    mission03RandomMessages[
+        Math.floor(Math.random() * mission03RandomMessages.length)
+    ];
+
+    // System Popup 문구 변경
+    if(mission03RandomText){
+
+        mission03RandomText.innerHTML = randomMessage;
+
+    }
+
+    // System Popup 열기
+    if(mission03SystemPopup){
+
+        mission03SystemPopup.style.display = "flex";
+
+    }
+
+}
+
+// ==========================
+// SYSTEM POPUP
+// ==========================
+
+// System Popup 닫기
+if(closeMission03SystemPopup){
+
+    closeMission03SystemPopup.addEventListener("click",()=>{
+
+        if(mission03SystemPopup){
+
+            mission03SystemPopup.style.display = "none";
+
+        }
 
     });
 
 }
 
 /* =====================================================
-                MISSION03 EVENT
+                    EVENT
 ===================================================== */
 
 // 실제 플레이 시작 시간
@@ -1157,7 +1254,6 @@ function startMission03Event(){
     mission03Notice20 = false;
     mission03Notice22 = false;
     mission03Notice24 = false;
-
     mission03CanClose = false;
 
     if(closeMission03Clear){
@@ -1180,6 +1276,7 @@ function startMission03Event(){
         // ==========================
         // 20분
         // ==========================
+
         if(!mission03Notice20 && elapsed>=EVENT20){
 
             mission03Notice20 = true;
@@ -1200,8 +1297,9 @@ function startMission03Event(){
         }
 
         // ==========================
-        // 22분
+        // 22분 Event
         // ==========================
+
         if(!mission03Notice22 && elapsed>=EVENT22){
 
             mission03Notice22 = true;
@@ -1211,15 +1309,19 @@ function startMission03Event(){
                 mission03ClearPopup.style.display!="flex"
             ){
 
-                alert("시간이 얼마 남지 않았습니다.\n서둘러 미션을 완료해주세요.");
+                mission03EventText.innerHTML =
+                "서둘러 미션 및 인증을 완료해주세요.";
+
+                mission03SystemPopup.style.display = "flex";
 
             }
 
         }
 
         // ==========================
-        // 24분
+        // 24분 Event
         // ==========================
+
         if(!mission03Notice24 && elapsed>=EVENT24){
 
             mission03Notice24 = true;
@@ -1230,13 +1332,26 @@ function startMission03Event(){
 
             }
 
-            alert("곧 다음 구역이 활성화됩니다.\n준비해주세요.");
+            if(mission03ClearPopup.style.display=="flex"){
+
+                mission03EventText.innerHTML =
+                "최종 확인이 진행 중입니다.<br>버튼이 재설정되고 있습니다.";
+
+            }else{
+
+                mission03EventText.innerHTML =
+                "곧 다음 구역이 활성화됩니다.<br>서둘러 미션 및 인증을 완료해주세요.";
+
+            }
+
+            mission03SystemPopup.style.display = "flex";
 
         }
 
         // ==========================
         // 25분
         // ==========================
+
         if(elapsed>=EVENT25){
 
             mission03CanClose = true;
@@ -1254,6 +1369,33 @@ function startMission03Event(){
     },1000);
 
 }
+
+// ==========================
+// RE-TURN POPUP
+// ==========================
+
+// Re-Turn Popup 열기
+function showMission03ReTurnPopup(){
+
+    mission03ReTurnPopup.style.display = "flex";
+
+}
+
+// Re-Turn Popup 닫기
+if(closeMission03ReTurn){
+
+    closeMission03ReTurn.addEventListener("click",()=>{
+
+        // Re-Turn Popup 닫기
+        mission03ReTurnPopup.style.display = "none";
+
+        // 미션 목록 열기
+        missionPanel.classList.add("show");
+
+    });
+
+}
+
 
 
 // =====================================================

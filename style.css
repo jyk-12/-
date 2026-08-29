@@ -1300,38 +1300,53 @@ body {
     cursor:pointer;
 
 }
-
+      
 /* =====================================================
-                    MISSION 03
+MISSION 03
 ===================================================== */
 
 /* 처음 숨김 */
 
 #mission03FacePopup,
-#mission03CodeArea,
+#mission03CodePopup,
 #mission03ClearPopup,
-#mission03NoticePopup{
+#mission03SystemPopup,
+#mission03ReTurnPopup{
 
     display:none;
 
 }
 
 /* =====================================================
-                    MISSION BOX
+MISSION 03
+===================================================== */
+
+/* 처음 숨김 */
+
+#mission03FacePopup,
+#mission03CodeArea,
+#mission03ClearPopup{
+
+    display:none;
+
+}
+
+/* =====================================================
+MISSION BOX
 ===================================================== */
 
 .mission03-box{
 
     position:relative;
 
-    width:98%;
-    max-width:1280px;
+    width:95%;
+    max-width:1100px;
 
     min-height:850px;
 
     margin:0 auto;
 
-    padding:20px;
+    padding:30px;
 
     background:#fffaf3;
 
@@ -1341,22 +1356,41 @@ body {
 
     box-sizing:border-box;
 
-    display:flex;
-    flex-direction:column;
+}
+
+/* 닫기 */
+
+#mission03Close{
+
+    position:absolute;
+
+    top:20px;
+    right:20px;
+
+    border:none;
+    background:none;
+
+    font-size:34px;
+
+    color:#7a7a7a;
+
+    cursor:pointer;
+
+    z-index:100;
 
 }
 
 /* =====================================================
-                    TITLE
+TITLE
 ===================================================== */
 
 .mission-title{
 
-    margin-bottom:8px;
+    margin-bottom:10px;
 
     text-align:center;
 
-    font-size:30px;
+    font-size:32px;
 
     font-weight:800;
 
@@ -1366,37 +1400,35 @@ body {
 
 .mission-subtitle{
 
-    margin-bottom:15px;
+    margin-bottom:20px;
 
     text-align:center;
 
-    font-size:17px;
+    font-size:18px;
 
     color:#6d4c41;
 
 }
 
 /* =====================================================
-                    FIND COUNT
+FIND COUNT
 ===================================================== */
 
 .find-count{
 
-    display:flex;
+    width:220px;
 
-    align-items:center;
+    margin:0 auto 25px;
 
-    justify-content:center;
+    padding:12px;
 
-    min-width:120px;
-
-    padding:10px 18px;
-
-    border-radius:30px;
+    border-radius:50px;
 
     background:#f6e6c8;
 
-    font-size:17px;
+    text-align:center;
+
+    font-size:20px;
 
     font-weight:700;
 
@@ -1407,44 +1439,8 @@ body {
 }
 
 /* =====================================================
-                    MISSION UI
+CAFE
 ===================================================== */
-
-.mission-ui{
-
-    position:absolute;
-
-    top:12px;
-    left:12px;
-    right:12px;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    padding:8px 12px;
-
-    background:rgba(0,0,0,.35);
-
-    backdrop-filter:blur(8px);
-
-    border-radius:16px;
-
-    z-index:300;
-
-}
-
-/* =====================================================
-                    CAFE
-===================================================== */
-
-.cafe-scroll{
-
-    width:100%;
-
-}
 
 .cafe-game{
 
@@ -1483,7 +1479,7 @@ body {
 }
 
 /* =====================================================
-                    HIDDEN ITEM
+HIDDEN ITEM
 ===================================================== */
 
 .hidden-item{
@@ -1551,7 +1547,7 @@ body {
 }
 
 /* =====================================================
-                    ITEM POSITION
+ITEM POSITION (PC)
 ===================================================== */
 
 /* ⭐ */
@@ -1653,822 +1649,445 @@ body {
 }
 
 /* =====================================================
-                    MOBILE
+POPUP (MISSION 03)
 ===================================================== */
-
-@media (max-width:768px){
-
-    .mission03-box{
-
-        width:98%;
-
-        min-height:700px;
-
-        padding:18px;
-
-    }
-
-    .mission-title{
-
-        font-size:26px;
-
-    }
-
-    .mission-subtitle{
-
-        font-size:15px;
-
-    }
-
-    .find-count{
-
-        width:180px;
-
-        font-size:17px;
-
-    }
-
-}
-
-/* =====================================================
-            LANDSCAPE (MISSION 03)
-===================================================== */
-
-@media (max-width:900px) and (orientation:landscape){
-
-    .mission03-box{
-
-        position:relative;
-
-        width:97%;
-        height:78dvh;
-        max-height:80dvh;
-        min-height:auto;
-
-        padding:12px;
-
-        overflow:hidden;
-
-        border-radius:20px;
-
-        display:flex;
-        flex-direction:column;
-
-    }
-
-    /* 모바일에서만 제목 숨김 */
-
-    .mission-title,
-    .mission-subtitle,
-    .mission-guide{
-
-        display:none;
-
-    }
-
-    /* ==========================
-            상단 UI
-    ========================== */
-
-    .mission-ui{
-
-        position:absolute;
-
-        top:10px;
-        left:10px;
-        right:10px;
-
-        display:flex;
-
-        justify-content:space-between;
-
-        align-items:center;
-
-        padding:8px 12px;
-
-        background:rgba(0,0,0,.32);
-
-        backdrop-filter:blur(10px);
-
-        border-radius:18px;
-
-        z-index:300;
-
-    }
-
-    .left-ui{
-
-        display:flex;
-
-        align-items:center;
-
-        gap:10px;
-
-    }
-
-    .find-count{
-
-        display:flex;
-
-        align-items:center;
-
-        justify-content:center;
-
-        width:auto;
-
-        min-width:0;
-
-        margin:0;
-
-        padding:7px 12px;
-
-        border-radius:30px;
-
-        background:rgba(255,255,255,.15);
-
-        backdrop-filter:blur(6px);
-
-        white-space:nowrap;
-
-        color:#fff;
-
-        font-size:0;
-
-    }
-
-    .find-count::before{
-
-        content:"🔍";
-
-        font-size:15px;
-
-        margin-right:4px;
-
-    }
-
-    .find-count span{
-
-        font-size:15px;
-
-    }
-
-    .story-btn{
-
-        display:flex;
-
-        align-items:center;
-
-        justify-content:center;
-
-        padding:7px 12px;
-
-        border:none;
-
-        border-radius:30px;
-
-        background:rgba(255,255,255,.15);
-
-        backdrop-filter:blur(6px);
-
-        color:#fff;
-
-        font-size:13px;
-
-        cursor:pointer;
-
-    }
-
-    .story-btn::before{
-
-        content:"📜 ";
-
-    }
-
-    .detail-close{
-
-        position:static;
-
-        width:40px;
-        height:40px;
-
-        margin:0;
-
-        border:none;
-
-        border-radius:50%;
-
-        background:rgba(255,255,255,.15);
-
-        backdrop-filter:blur(6px);
-
-        color:#fff;
-
-        font-size:24px;
-
-        line-height:1;
-
-        cursor:pointer;
-
-        flex-shrink:0;
-
-    }
-
-    /* ==========================
-            그림만 스크롤
-    ========================== */
-
-    .cafe-scroll{
-
-        flex:1;
-
-        margin-top:64px;
-
-        overflow-y:auto;
-        overflow-x:hidden;
-
-        -webkit-overflow-scrolling:touch;
-
-    }
-
-    .cafe-game{
-
-        position:relative;
-
-        width:103%;
-
-        margin:0 auto;
-
-    }
-
-    .cafe-bg{
-
-        display:block;
-
-        width:100%;
-
-        height:auto;
-
-        border-radius:18px;
-
-    }
-
-    /* ==========================
-            HIDDEN ITEM
-    ========================== */
-
-    .hidden-item{
-
-        position:absolute;
-
-        padding:15px;
-
-        box-sizing:content-box;
-
-        appearance:none;
-        -webkit-appearance:none;
-
-        background:none;
-
-        border:none;
-
-        cursor:pointer;
-
-        transition:.18s;
-
-    }
-
-    .hidden-item img{
-
-        display:block;
-
-        width:100%;
-
-        height:auto;
-
-        pointer-events:none;
-
-    }
-
-     /* ==========================
-            MOBILE POSITION
-    ========================== */
-
-    .item-star{
-
-        top:21%;
-        left:42%;
-
-        opacity:.98;
-
-        transform:rotate(-8deg) scale(.96);
-
-    }
-
-    .item-letter{
-
-        top:36%;
-        left:40%;
-
-        opacity:.97;
-
-        transform:rotate(5deg) scale(.97);
-
-    }
-
-    .item-key{
-
-        top:33%;
-        left:28%;
-
-        opacity:.98;
-
-        transform:rotate(-12deg) scale(.95);
-
-    }
-
-    .item-moon{
-
-        top:25%;
-        left:56%;
-
-        opacity:.99;
-
-        transform:rotate(10deg) scale(.97);
-
-    }
-
-    .item-bear{
-
-        top:48%;
-        left:53%;
-
-        opacity:.98;
-
-        transform:rotate(-6deg) scale(.98);
-
-    }
-
-    /* ==========================
-        NOTICE POPUP
-========================== */
-
-#mission03NoticePopup .clear-box{
-
-    width:88%;
-
-    max-width:380px;
-
-    padding:28px 24px;
-
-    border-radius:22px;
-
-}
-
-#mission03NoticePopup h2{
-
-    font-size:24px;
-
-    margin-bottom:18px;
-
-}
-
-#mission03NoticePopup .story-text{
-
-    font-size:15px;
-
-    line-height:1.9;
-
-    text-align:center;
-
-    white-space:pre-line;
-
-    margin-bottom:26px;
-
-}
-
-#mission03NoticePopup button{
-
-    width:100%;
-
-    height:46px;
-
-    border:none;
-
-    border-radius:12px;
-
-    font-size:15px;
-
-}
 
 /* ==========================
-        COMPLETE POPUP
+FACE POPUP
 ========================== */
 
-#mission03CompletePopup{
+#mission03FacePopup .story-text{
 
-    background:rgba(20, 27, 76, 0.9);
+    margin-bottom:22px;
 
-}
+    font-size:18px;
 
-#mission03CompletePopup .system-box{
-
-    width:300px;
-
-    background:#111;
-
-    color:#fff;
-
-    border:1px solid rgba(255,255,255,.12);
-
-}
-
-#mission03CompletePopup h2{
-
-    margin:28px 0 12px;
-
-    text-align:center;
-
-    font-size:28px;
-
-    letter-spacing:6px;
-
-    color:#fff;
-
-}
-
-#mission03CompletePopup p{
-
-    padding:0 24px 28px;
-
-    color:#ddd;
-
-    font-size:16px;
-
-    text-align:center;
+    font-weight:700;
 
     line-height:1.8;
 
+    color:#37474f;
+
 }
 
-#mission03CompletePopup button{
+#closeMission03FacePopup{
 
-    width:100%;
-
-    height:48px;
+    width:140px;
+    height:45px;
 
     border:none;
+    border-radius:25px;
 
-    border-top:1px solid rgba(255,255,255,.08);
-
-    background:#181818;
+    background:#b39ddb;
 
     color:#fff;
 
+    font-family:inherit;
+    font-size:15px;
+    font-weight:800;
+
+    cursor:pointer;
+
+}
+
+/* ==========================
+CODE POPUP
+========================== */
+
+#mission03CodeArea{
+
+    display:none;
+
+}
+
+#mission03CodeArea p{
+
+    margin-bottom:18px;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    color:#37474f;
+
+}
+
+#mission03CodeArea input{
+
+    width:100%;
+    height:48px;
+
+    margin:18px 0 14px;
+    padding:0 15px;
+
+    border:none;
+    border-radius:12px;
+
+    background:#f8fbfc;
+
+    outline:none;
+
+    box-sizing:border-box;
+
+    text-align:center;
+
+    font-family:inherit;
     font-size:15px;
 
 }
 
-    /* ==========================
-            SYSTEM POPUP
-    ========================== */
+#mission03CodeArea input:focus{
 
-    .system-popup{
+    background:#fff;
 
-        position:fixed;
+}
 
-        inset:0;
+#checkMission03Code{
 
-        display:none;
+    width:100%;
+    height:48px;
 
-        justify-content:center;
+    border:none;
+    border-radius:12px;
 
-        align-items:center;
+    background:#8ecff4;
 
-        background:rgba(0,0,0,.28);
+    color:#fff;
 
-        z-index:9999;
+    font-size:14px;
+    font-weight:800;
 
-    }
+    cursor:pointer;
 
-    .system-popup.active{
+}
 
-        display:flex;
+/* ==========================
+CLEAR POPUP
+========================== */
 
-    }
+#mission03ClearPopup{
 
-    .system-box{
+    display:none;
 
-        width:280px;
+}
 
-        background:#fff;
+#closeMission03Clear{
 
-        border-radius:18px;
+    width:140px;
+    height:45px;
 
-        overflow:hidden;
+    border:none;
+    border-radius:25px;
 
-        box-shadow:0 14px 40px rgba(0,0,0,.25);
+    background:#8b8b8b;
 
-        animation:systemPop .18s ease;
+    color:#fff;
 
-    }
+    font-size:15px;
+    font-weight:800;
 
-    .system-box p{
+    cursor:not-allowed;
 
-        padding:28px 24px;
+    transition:.2s;
 
-        text-align:center;
+}
 
-        color:#333;
+#closeMission03Clear.active{
 
-        font-size:15px;
+    background:#8ecff4;
 
-        line-height:1.7;
+    cursor:pointer;
 
-    }
+}
 
-    .system-box button{
+/* ==========================
+SYSTEM POPUP
+========================== */
 
-        width:100%;
+.system-popup{
 
-        height:48px;
+    position:fixed;
 
-        border:none;
+    inset:0;
 
-        border-top:1px solid #ececec;
+    display:none;
 
-        background:#fff;
+    align-items:center;
 
-        color:#2F80ED;
+    justify-content:center;
 
-        font-size:15px;
+    z-index:10000;
 
-    }
+}
 
-    @keyframes systemPop{
+.system-box{
 
-        from{
+    width:300px;
 
-            transform:scale(.94);
+    padding:28px 24px;
 
-            opacity:0;
+    border-radius:18px;
 
-        }
+    background:#ffffff;
 
-        to{
+    text-align:center;
 
-            transform:scale(1);
+    box-shadow:0 15px 40px rgba(0,0,0,.18);
 
-            opacity:1;
+}
 
-        }
+.system-box h2{
 
-    }
-    
-        /* ==========================
-            FACE POPUP
-    ========================== */
+    margin-bottom:14px;
 
-    #mission03FacePopup .clear-box{
+    font-size:20px;
 
-        width:88%;
+    font-weight:700;
 
-        max-width:360px;
+    color:#37474f;
 
-        padding:26px 22px;
+}
 
-        border-radius:22px;
+.system-box p{
 
-    }
+    margin-bottom:22px;
 
-    #mission03FacePopup .story-text{
+    font-size:15px;
 
-        font-size:15px;
+    line-height:1.7;
 
-        line-height:1.8;
+    color:#546e7a;
 
-        margin-bottom:24px;
+}
 
-    }
+.system-box button{
 
-    #mission03FacePopup button{
+    width:130px;
+    height:42px;
 
-        width:100%;
+    border:none;
+    border-radius:12px;
 
-        height:46px;
+    background:#b9e5ff;
 
-        border:none;
+    color:#0a1422;
 
-        border-radius:12px;
+    font-family:inherit;
 
-        font-size:15px;
+    font-size:14px;
 
-    }
+    font-weight:700;
 
-    /* ==========================
-            CODE POPUP
-    ========================== */
+    cursor:pointer;
 
-    #mission03CodeArea{
+}
 
-        padding:24px 20px;
+/* ==========================
+RETURN POPUP
+========================== */
 
-    }
+.return-popup{
 
-    #mission03CodeArea p{
+    position:fixed;
 
-        font-size:16px;
+    inset:0;
 
-        margin-bottom:18px;
+    display:none;
 
-    }
+    flex-direction:column;
 
-    #mission03Code{
+    align-items:center;
 
-        width:100%;
+    justify-content:center;
 
-        height:46px;
+    text-align:center;
 
-        border-radius:12px;
+    z-index:10001;
 
-        font-size:16px;
+}
 
-        text-align:center;
+.return-box{
 
-        margin-bottom:14px;
+    width:100%;
 
-    }
+    max-width:600px;
 
-    #checkMission03Code{
+    padding:40px 30px;
 
-        width:100%;
+    box-sizing:border-box;
 
-        height:46px;
+}
 
-        border:none;
+.return-box h2{
 
-        border-radius:12px;
+    margin-bottom:18px;
 
-        font-size:15px;
+    font-size:32px;
 
-    }
+    font-weight:800;
 
-    /* ==========================
-            CLEAR POPUP
-    ========================== */
+    color:#ffffff;
 
-    #mission03ClearPopup .clear-box{
+}
 
-        width:88%;
+.return-box p{
 
-        max-width:360px;
+    margin-bottom:32px;
 
-        padding:28px 22px;
+    font-size:18px;
 
-        border-radius:22px;
+    line-height:1.8;
 
-    }
+    color:#f3f5f7;
 
-    #mission03ClearPopup h2{
+}
 
-        font-size:24px;
+#closeMission03ReTurn{
 
-        margin-bottom:18px;
+    width:160px;
+    height:48px;
 
-    }
+    border:none;
+    border-radius:28px;
 
-    #mission03ClearPopup p{
+    background:#8ecff4;
 
-        font-size:15px;
+    color:#ffffff;
 
-        line-height:1.8;
+    font-family:inherit;
 
-        margin-bottom:24px;
+    font-size:15px;
 
-    }
+    font-weight:800;
 
-    #closeMission03Clear{
+    cursor:pointer;
 
-        width:100%;
+}
 
-        height:46px;
+/* ==========================
+ROTATE POPUP
+========================== */
 
-        border:none;
+.rotate-popup{
 
-        border-radius:12px;
+    position:fixed;
 
-        font-size:15px;
+    inset:0;
 
-    }
+    display:none;
 
-    /* ==========================
-            MOBILE TOUCH
-    ========================== */
+    justify-content:center;
 
-    .hidden-item{
+    align-items:center;
 
-        min-width:44px;
+    z-index:10000;
 
-        min-height:44px;
+}
 
-        touch-action:manipulation;
+.rotate-box{
 
-        -webkit-tap-highlight-color:transparent;
+    width:300px;
 
-    }
+    padding:35px 25px;
 
-    .hidden-item:active{
+    background:rgba(250,218,218,.95);
 
-        transform:scale(.96);
+    border-radius:35px;
 
-    }
+    text-align:center;
 
-    /* ==========================
-            SAFE AREA
-    ========================== */
+    box-shadow:0 20px 50px rgba(60,100,130,.25);
 
-    .mission03-box{
+}
 
-        padding-bottom:calc(12px + env(safe-area-inset-bottom));
+.rotate-box h2{
 
-    }
+    margin-bottom:15px;
 
-    .mission-ui{
+    color:#37474f;
 
-        padding-top:max(8px, env(safe-area-inset-top));
+}
 
-    }
+.rotate-box p{
 
-    /* ==========================
-            MOBILE SCROLL
-    ========================== */
+    margin-bottom:25px;
 
-    .cafe-scroll{
+    color:#1c2e4e;
 
-        scrollbar-width:none;
+    font-weight:600;
 
-        -ms-overflow-style:none;
+    line-height:1.7;
 
-    }
+}
 
-    .cafe-scroll::-webkit-scrollbar{
+/* ==========================
+NOTICE POPUP
+========================== */
 
-        display:none;
+.notice-popup{
 
-    }
+    position:fixed;
 
-    /* ==========================
-            IMAGE
-    ========================== */
+    inset:0;
 
-    .cafe-bg{
+    display:none;
 
-        user-select:none;
+    justify-content:center;
 
-        -webkit-user-select:none;
+    align-items:center;
 
-        -webkit-user-drag:none;
+    z-index:10000;
 
-        pointer-events:none;
+}
 
-    }
+.notice-box{
 
-     /* =====================================================
-                        DEBUG MODE
-        테스트 시 아래 주석만 해제
-    ====================================================== */
+    width:300px;
 
-    /*
-    .hidden-item{
+    padding:35px 25px;
 
-        border:2px solid red;
-        background:rgba(255,0,0,.18);
+    background:rgba(250,218,218,.95);
 
-    }
-    */
+    border-radius:35px;
+
+    text-align:center;
+
+    box-shadow:0 20px 50px rgba(60,100,130,.25);
 
 }
 
 /* =====================================================
-                    03 END
-===================================================== */   
+MOBILE
+===================================================== */
 
-    
+@media (max-width:900px){
 
+    .rotate-popup{
 
-/* ==========================
-MISSION 04
-========================== */
+        background:rgba(12,18,35,.82);
 
-#mission04FacePopup{
-display:none;
-}
+    }
 
-#mission04CodeArea{
-display:none;
-}
+    .notice-popup{
 
-#mission04ClearPopup{
-display:none;
+        background:rgba(12,18,35,.82);
+
+    }
+
+    .return-popup{
+
+        background:rgba(12,18,35,.82);
+
+    }
+
+    .return-box{
+
+        width:92%;
+
+        max-width:340px;
+
+    }
+
 }
 
 /* ==========================
@@ -2528,7 +2147,6 @@ display:none;
     opacity:.9;
 
 }
-
 
 
 #closeMission04FacePopup{
@@ -2644,7 +2262,6 @@ display:none;
     margin-left:0;
 
 }
-
 
 
 /* ==========================
