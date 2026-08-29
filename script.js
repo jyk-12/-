@@ -825,15 +825,19 @@ if(!isMobile){
 
         if(window.innerHeight > window.innerWidth){
 
-            mission03CurrentScreen = "start";
+    alert("세로");
 
-            mission03RotatePopup.style.display = "flex";
+    mission03CurrentScreen = "start";
 
-        }else{
+    mission03RotatePopup.style.display = "flex";
 
-           showMission03Notice();
-        }
+}else{
 
+    alert("가로");
+
+    showMission03Notice();
+
+}
     });
 
 }
