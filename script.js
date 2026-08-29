@@ -831,7 +831,7 @@ if(!isMobile){
 
         }else{
 
-           howMission03Notice();
+           showMission03Notice();
         }
 
     });
