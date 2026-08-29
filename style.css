@@ -2215,11 +2215,13 @@ MISSION03 MOBILE GAME
 
 .mission03-box{
 
+    background:red !important;
+
+
     width:100%;
 
     height:100vh;
-
-    min-height:100vh;
+min-height:100vh;
 
     margin:0;
 
