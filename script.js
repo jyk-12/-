@@ -825,19 +825,15 @@ if(!isMobile){
 
         if(window.innerHeight > window.innerWidth){
 
-    alert("세로");
+            mission03CurrentScreen = "start";
 
-    mission03CurrentScreen = "start";
+            mission03RotatePopup.style.display = "flex";
 
-    mission03RotatePopup.style.display = "flex";
+        }else{
 
-}else{
+           showMission03NoticePopup();
+        }
 
-    alert("가로");
-
-    showMission03Notice();
-
-}
     });
 
 }
@@ -846,9 +842,7 @@ if(!isMobile){
 // 03 NOTICE POPUP
 // ==========================
 
-function showMission03Notice(){
-
-    alert("함수 실행");
+function showMission03NoticePopup(){
 
     mission03NoticeText.innerHTML = `
     숲속 카페 어딘가에<br>
