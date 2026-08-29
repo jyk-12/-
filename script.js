@@ -831,8 +831,7 @@ if(!isMobile){
 
         }else{
 
-            mission03NoticePopup.style.display = "flex";
-
+           howMission03Notice();
         }
 
     });
