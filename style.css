@@ -2209,79 +2209,74 @@ MOBILE
 MISSION03 MOBILE UI
 ===================================================== */
 
-    .mission03-box{
+/* =====================================================
+MISSION03 MOBILE GAME
+===================================================== */
 
-        width:100%;
+.mission03-box{
 
-        min-height:100vh;
+    width:100%;
 
-        padding:16px;
+    height:100vh;
 
-        border-radius:0;
+    min-height:100vh;
 
-    }
+    margin:0;
 
-    #mission03Close{
+    padding:0;
 
-        top:12px;
+    border-radius:0;
 
-        right:14px;
+    overflow-y:auto;
 
-        font-size:30px;
+    overflow-x:hidden;
 
-    }
+}
 
-    .mission-title{
+/* 제목 제거 */
 
-        margin-top:8px;
+.mission-title,
+.mission-subtitle,
+.find-count,
+.mission-guide{
 
-        margin-bottom:6px;
+    display:none;
 
-        font-size:24px;
+}
 
-    }
+/* 카페 */
 
-    .mission-subtitle{
+.cafe-game{
 
-        margin-bottom:14px;
+    width:100%;
 
-        font-size:14px;
+    margin:0;
 
-    }
+    padding:0;
 
-    .find-count{
+}
 
-        width:auto;
+/* 사진 */
 
-        margin:0 auto 14px;
+.cafe-bg{
 
-        padding:8px 16px;
+    display:block;
 
-        font-size:15px;
+    width:100%;
 
-    }
+    height:auto;
 
-    .mission-guide{
+    border-radius:0;
 
-        margin-top:14px;
+}
 
-        font-size:14px;
+/* 기존 X 버튼 숨김 */
 
-        line-height:1.6;
+#mission03Close{
 
-    }
+    display:none;
 
-    .cafe-game{
-
-        width:100%;
-
-    }
-
-    .cafe-bg{
-
-        border-radius:14px;
-
-    }
+}
 
     /* =====================================================
 ITEM POSITION (MOBILE)
@@ -2346,7 +2341,7 @@ ITEM POSITION (MOBILE)
         height:42px;
 
     }
-    
+
     /*popup들 설정*/
 
     .rotate-popup{
