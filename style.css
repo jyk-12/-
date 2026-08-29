@@ -2131,15 +2131,15 @@ NOTICE POPUP
 
 .notice-box{
 
-    width:320px;
+    width:360px;
 
-    max-width:90%;
+    max-width:92%;
 
-    padding:32px 26px;
+    padding:24px 22px;
 
     background:#fffaf3;
 
-    border-radius:28px;
+    border-radius:24px;
 
     border:2px solid #e8dcc8;
 
@@ -2153,11 +2153,11 @@ NOTICE POPUP
 
 .notice-box h2{
 
-    margin:0 0 16px;
+    margin:0 0 14px;
 
     color:#6a4b2f;
 
-    font-size:24px;
+    font-size:22px;
 
     font-weight:800;
 
@@ -2165,13 +2165,13 @@ NOTICE POPUP
 
 .notice-box p{
 
-    margin:0 0 14px;
+    margin:0;
 
     color:#8a6a4c;
 
-    line-height:1.8;
+    line-height:1.6;
 
-    font-size:15px;
+    font-size:14px;
 
     font-weight:600;
 
@@ -2179,9 +2179,9 @@ NOTICE POPUP
 
 .notice-box button{
 
-    margin-top:18px;
+    margin-top:20px;
 
-    min-width:120px;
+    width:130px;
 
     height:42px;
 
@@ -2196,8 +2196,6 @@ NOTICE POPUP
     font-size:14px;
 
     font-weight:700;
-
-    cursor:pointer;
 
 }
 
