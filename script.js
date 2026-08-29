@@ -949,16 +949,55 @@ window.addEventListener("resize",()=>{
 // 03 HIDDEN
 // ==========================
 
-hiddenItems.forEach((item)=>{
+// 찾은 개수
+let mission03FoundCount = 0;
+
+// 초기화
+function resetMission03Hidden(){
+
+    mission03FoundCount = 0;
+
+    if(mission03FoundText){
+
+        mission03FoundText.innerHTML =
+        `0 / ${hiddenItems.length}`;
+
+    }
+
+    hiddenItems.forEach(item=>{
+
+        // 찾음 여부 초기화
+        item.dataset.found = "false";
+
+        // 빨간 원 숨김
+        const foundCircle =
+        item.querySelector(".found-circle");
+
+        if(foundCircle){
+
+            foundCircle.style.display = "none";
+
+        }
+
+    });
+
+}
+
+// 아이템 클릭
+hiddenItems.forEach(item=>{
 
     item.addEventListener("click",()=>{
 
-        // 이미 찾은 아이템이면 종료
+        // 이미 찾았으면 종료
         if(item.dataset.found === "true") return;
 
         // 찾음 표시
         item.dataset.found = "true";
 
+        // 애니메이션용
+         item.classList.add("found");
+
+        // 빨간 원 표시
         const foundCircle =
         item.querySelector(".found-circle");
 
@@ -968,10 +1007,10 @@ hiddenItems.forEach((item)=>{
 
         }
 
-        // 찾은 개수 증가
+        // 카운트 증가
         mission03FoundCount++;
 
-        // 진행률 갱신
+        // 화면 갱신
         if(mission03FoundText){
 
             mission03FoundText.innerHTML =
@@ -979,12 +1018,32 @@ hiddenItems.forEach((item)=>{
 
         }
 
-        // 모두 찾았으면
+        // 모두 찾음
         if(mission03FoundCount >= hiddenItems.length){
 
-            mission03CurrentScreen = "rotate";
+            const isMobile =
+            window.innerWidth <= 900;
 
-            mission03RotatePopup.style.display = "flex";
+            // PC
+            if(!isMobile){
+
+                showMission03FacePopup();
+                return;
+
+            }
+
+            // 모바일
+            if(window.innerHeight > window.innerWidth){
+
+                showMission03FacePopup();
+
+            }else{
+
+                mission03CurrentScreen = "rotate";
+
+                mission03RotatePopup.style.display = "flex";
+
+            }
 
         }
 
@@ -1064,14 +1123,14 @@ function showMission03CodePopup(){
 
 mission03CodeBtn.addEventListener("click",()=>{
 
-    const code = mission03CodeInput.value.trim();
+    const code =
+    mission03CodeInput.value.trim();
 
-    if(code === mission03Answer){
+    if(code === "3333"){
 
         mission03CodePopup.style.display = "none";
 
-        // ↓ 다음 단계
-        // showMission03ClearPopup();
+        showMission03ClearPopup();
 
     }else{
 
@@ -1238,10 +1297,10 @@ let mission03Notice24 = false;
 function startMission03Event(){
 
     // ===== 테스트용 =====
-    const EVENT20 = 2 * 60;
-    const EVENT22 = 3 * 60;
-    const EVENT24 = 5 * 60;
-    const EVENT25 = 6 * 60;
+    const EVENT20 = 1 * 60;
+    const EVENT22 = 2 * 60;
+    const EVENT24 = 3 * 60;
+    const EVENT25 = 4 * 60;
 
     /*
     // ===== 실제 =====

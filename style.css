@@ -1339,10 +1339,10 @@ MISSION BOX
 
     position:relative;
 
-    width:95%;
-    max-width:1100px;
+    width:90%;
+    max-width:1045x;
 
-    min-height:850px;
+    min-height:650px;
 
     margin:0 auto;
 
@@ -1526,23 +1526,57 @@ HIDDEN ITEM
 
 }
 
-/* 찾은 후 */
+@keyframes foundPop{
 
-.hidden-item.found{
+    0%{
+
+        transform:translate(-50%,-50%) scale(1);
+
+    }
+
+    50%{
+
+        transform:translate(-50%,-50%) scale(1.15);
+
+    }
+
+    100%{
+
+        transform:translate(-50%,-50%) scale(1);
+
+    }
+
+}
+
+/* ==========================
+FOUND CIRCLE
+========================== */
+
+.found-circle{
+
+    position:absolute;
+
+    top:50%;
+    left:50%;
+
+    width:120%;
+    height:120%;
+
+    transform:translate(-50%,-50%);
 
     border:2px solid #ff3b30;
 
     border-radius:50%;
 
+    display:none;
+
+    pointer-events:none;
+
+    box-sizing:border-box;
+
+    z-index:200;
+
     animation:foundPop .25s ease;
-
-}
-
-@keyframes foundPop{
-
-    0%{transform:scale(1);}
-    50%{transform:scale(1.15);}
-    100%{transform:scale(1);}
 
 }
 
@@ -1666,7 +1700,7 @@ FACE POPUP
 
     line-height:1.8;
 
-    color:#37474f;
+    color:#e8f7ff;
 
 }
 
@@ -1694,13 +1728,47 @@ FACE POPUP
 CODE POPUP
 ========================== */
 
-#mission03CodeArea{
+#mission03CodePopup{
+
+    position:fixed;
+
+    inset:0;
 
     display:none;
 
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:10001;
+
 }
 
-#mission03CodeArea p{
+#mission03CodePopup .code-box{
+
+    width:340px;
+
+    max-width:90%;
+
+    padding:35px 28px;
+
+    background:#eef8ff;
+
+    border-radius:28px;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.20);
+
+    color:#37474f;
+
+    font-family:inherit;
+
+    text-align:center;
+
+    box-sizing:border-box;
+
+}
+
+#mission03CodePopup .story-text{
 
     margin-bottom:18px;
 
@@ -1708,19 +1776,24 @@ CODE POPUP
 
     font-weight:700;
 
+    line-height:1.8;
+
     color:#37474f;
 
 }
 
-#mission03CodeArea input{
+#mission03CodePopup input{
 
     width:100%;
+
     height:48px;
 
     margin:18px 0 14px;
+
     padding:0 15px;
 
     border:none;
+
     border-radius:12px;
 
     background:#f8fbfc;
@@ -1732,32 +1805,48 @@ CODE POPUP
     text-align:center;
 
     font-family:inherit;
+
     font-size:15px;
+
+    color:#37474f;
 
 }
 
-#mission03CodeArea input:focus{
+#mission03CodePopup input:focus{
 
     background:#fff;
 
 }
 
-#checkMission03Code{
+#mission03CodeBtn{
 
     width:100%;
+
     height:48px;
 
     border:none;
+
     border-radius:12px;
 
     background:#8ecff4;
 
     color:#fff;
 
+    font-family:inherit;
+
     font-size:14px;
+
     font-weight:800;
 
     cursor:pointer;
+
+    transition:.2s;
+
+}
+
+#mission03CodeBtn:hover{
+
+    opacity:.9;
 
 }
 
