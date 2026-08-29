@@ -831,7 +831,8 @@ if(!isMobile){
 
         }else{
 
-           showMission03NoticePopup();
+            mission03NoticePopup.style.display = "flex";
+
         }
 
     });
@@ -842,22 +843,6 @@ if(!isMobile){
 // 03 NOTICE POPUP
 // ==========================
 
-function showMission03NoticePopup(){
-
-    mission03NoticeText.innerHTML = `
-    숲속 카페 어딘가에<br>
-    숨겨진 흔적이 남아 있습니다.<br><br>
-
-    <strong>
-    별, 곰인형, 달,<br>
-    열쇠, 편지
-    </strong>를 찾아보세요. 👀
-    `;
-
-    mission03NoticePopup.style.display = "flex";
-
-}
-
 if(closeMission03NoticePopup){
 
     closeMission03NoticePopup.addEventListener("click",()=>{
@@ -866,12 +851,11 @@ if(closeMission03NoticePopup){
         mission03NoticePopup.style.display = "none";
 
         // 최초 시작
-        /*
-        원래 시작 함수
-        (타이머 기능 활성화 시 사용)
-        */
-        openMission03BeforeStart();
-
+/*
+원래 시작 함수
+(타이머 기능 활성화 시 사용)
+*/
+openMission03BeforeStart();
     });
 
 }
@@ -953,11 +937,11 @@ window.addEventListener("resize",()=>{
 
     mission03RotatePopup.style.display = "none";
 
-   if(mission03CurrentScreen === "start"){
+    if(mission03CurrentScreen === "start"){
 
-    showMission03NoticePopup();
+        mission03NoticePopup.style.display = "flex";
 
-}
+    }
 
 });
 
