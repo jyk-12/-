@@ -844,15 +844,9 @@ if(!isMobile){
 
 function showMission03NoticePopup(){
 
-    mission03NoticeText.innerHTML = `
-    숲속 카페 어딘가에<br>
-    숨겨진 흔적이 남아 있습니다.<br><br>
+    alert("실행");
 
-    <strong>
-    별, 곰인형, 달,<br>
-    열쇠, 편지
-    </strong>를 찾아보세요. 👀
-    `;
+    mission03NoticeText.innerHTML = "테스트";
 
     mission03NoticePopup.style.display = "flex";
 
