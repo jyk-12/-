@@ -955,11 +955,9 @@ window.addEventListener("resize",()=>{
 
     if(mission03CurrentScreen === "start"){
 
-        mission03NoticePopup.style.display = "flex";
+    showMission03NoticePopup();
 
-    }
-
-});
+}
 
 // ==========================
 // 03 HIDDEN
