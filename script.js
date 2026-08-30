@@ -1226,7 +1226,7 @@ function showMission03Overlay(){
         mission03Overlay.style.left = "0";
         mission03Overlay.style.width = "100%";
         mission03Overlay.style.height = "100%";
-        mission03Overlay.style.background = "rgba(5, 2, 12, 0.78)";
+        mission03Overlay.style.background = "rgba(5, 2, 12, 0.89)";
         mission03Overlay.style.zIndex = "9998";
 
         document.body.appendChild(mission03Overlay);
