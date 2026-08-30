@@ -973,44 +973,57 @@ window.addEventListener("resize",()=>{
     if(!isMobile) return;
 
     // ==========================
-    // 세로
-    // ==========================
+// 세로
+// ==========================
 
-    if(window.innerHeight > window.innerWidth){
+if(window.innerHeight > window.innerWidth){
 
-        if(mission03CurrentScreen === "start"){
+    if(mission03CurrentScreen === "start"){
 
-            mission03RotatePopup.style.display = "flex";
+        mission03RotatePopup.style.display = "flex";
 
-            return;
-
-        }
-
-        if(mission03CurrentScreen === "game"){
-
-            mission03RotatePopup.style.display = "flex";
-
-            return;
-
-        }
-
-        if(mission03CurrentScreen === "rotate"){
-
-            setTimeout(()=>{
-
-                mission03RotatePopup.style.display = "none";
-
-                showMission03FacePopup();
-
-                mission03CurrentScreen = "face";
-
-            },2000);
-
-            return;
-
-        }
+        return;
 
     }
+
+    if(mission03CurrentScreen === "game"){
+
+        mission03RotatePopup.style.display = "flex";
+
+        return;
+
+    }
+
+    // ==========================
+    // 숨은그림 완료 후
+    // 세로 공지
+    // ==========================
+
+    if(mission03CurrentScreen === "rotate"){
+
+        // 기존 가로 공지 닫기
+        mission03RotatePopup.style.display = "none";
+
+        // 세로 공지 표시
+        mission03RotatePortraitPopup.style.display = "flex";
+
+        setTimeout(()=>{
+
+            // 세로 공지 닫기
+            mission03RotatePortraitPopup.style.display = "none";
+
+            // 다음 팝업
+            showMission03FacePopup();
+
+            mission03CurrentScreen = "face";
+
+        },2000);
+
+        return;
+
+    }
+
+}
 
     // ==========================
     // 가로
