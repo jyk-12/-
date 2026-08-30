@@ -2413,14 +2413,14 @@ MISSION03 MOBILE GAME
 }
 
     /* =====================================================
-ITEM POSITION (MOBILE)
+                ITEM POSITION (MOBILE)
 ===================================================== */
 
-    /* ⭐ */
+/* ⭐ */
 
 .item-star{
 
-  border:2px red;
+    border:2px solid red;
 
     top:15%;
     left:20%;
@@ -2432,7 +2432,7 @@ ITEM POSITION (MOBILE)
 
 .item-star img{
 
-    border:2px red;
+    border:2px solid red;
 
     opacity:1;
 
@@ -2443,8 +2443,8 @@ ITEM POSITION (MOBILE)
 /* ✉ */
 
 .item-letter{
-    border:2px red;
 
+    border:2px solid red;
 
     top:80%;
     left:41.5%;
@@ -2455,10 +2455,11 @@ ITEM POSITION (MOBILE)
 }
 
 .item-letter img{
-    border:2px red;
 
+    border:2px solid red;
 
     opacity:1;
+
     transform:rotate(80deg);
 
 }
@@ -2466,10 +2467,10 @@ ITEM POSITION (MOBILE)
 /* 🔑 */
 
 .item-key{
-    border:2px red;
 
+    border:2px solid red;
 
-    top:40;
+    top:40%;
     left:10%;
 
     width:13px;
@@ -2478,6 +2479,8 @@ ITEM POSITION (MOBILE)
 }
 
 .item-key img{
+
+    border:2px solid red;
 
     opacity:.9;
 
@@ -2488,8 +2491,8 @@ ITEM POSITION (MOBILE)
 /* 🌙 */
 
 .item-moon{
-    border:2px red;
 
+    border:2px solid red;
 
     top:27.5%;
     left:68.5%;
@@ -2501,6 +2504,8 @@ ITEM POSITION (MOBILE)
 
 .item-moon img{
 
+    border:2px solid red;
+
     opacity:.7;
 
     transform:rotate(50deg);
@@ -2510,7 +2515,8 @@ ITEM POSITION (MOBILE)
 /* 🧸 */
 
 .item-bear{
-    border:2px red;
+
+    border:2px solid red;
 
     top:92%;
     left:90%;
@@ -2521,6 +2527,8 @@ ITEM POSITION (MOBILE)
 }
 
 .item-bear img{
+
+    border:2px solid red;
 
     opacity:.95;
 
