@@ -784,7 +784,8 @@ function openMission03BeforeStart(){
     }
     */
 
-
+    // 임시 : 타이머 기능 비활성화
+    openMission03();
 
 }
 
