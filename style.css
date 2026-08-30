@@ -1340,7 +1340,7 @@ MISSION BOX
     position:relative;
 
     width:90%;
-    max-width:1045x;
+    max-width:1045px;
 
     min-height:650px;
 
@@ -2239,6 +2239,8 @@ MISSION03 MOBILE GAME
 .cafe-scroll{
 
     flex:1;
+
+    min-height:0;
 
     overflow-y:auto;
     overflow-x:hidden;
