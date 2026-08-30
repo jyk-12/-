@@ -2255,8 +2255,8 @@ min-height:100vh;
     margin:0;
 
     padding:0;
-
 }
+
 
 /* 사진 */
 
@@ -2270,6 +2270,14 @@ min-height:100vh;
 
     border-radius:0;
 
+}
+
+.cafe-game{
+    background:blue !important;
+}
+
+.cafe-bg{
+    background:green !important;
 }
 
 /* 기존 X 버튼 숨김 */
