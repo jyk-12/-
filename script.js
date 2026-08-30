@@ -930,15 +930,25 @@ function showMission03NoticePopup(){
 
 if(closeMission03NoticePopup){
 
-    closeMission03Notice.addEventListener("click",()=>{
+    closeMission03NoticePopup.addEventListener("click",()=>{
 
-    mission03NoticePopup.style.display = "none";
+        // Notice 닫기
+        mission03NoticePopup.style.display = "none";
 
-    alert("타이머 시작!");
+        // ==========================
+        // 최초 시작만 게임 시작
+        // ==========================
 
-    openMission03BeforeStart();
+        if(mission03CurrentScreen === "start"){
 
-});
+            alert("타이머 시작!");
+
+            openMission03BeforeStart();
+
+        }
+
+    });
+
 }
 
 // ==========================
@@ -973,71 +983,79 @@ window.addEventListener("resize",()=>{
     if(!isMobile) return;
 
     // ==========================
-// 세로
-// ==========================
-
-if(window.innerHeight > window.innerWidth){
-
-    if(mission03CurrentScreen === "start"){
-
-        mission03RotatePopup.style.display = "flex";
-
-        return;
-
-    }
-
-    if(mission03CurrentScreen === "game"){
-
-        mission03RotatePopup.style.display = "flex";
-
-        return;
-
-    }
-
-    // ==========================
-    // 숨은그림 완료 후
-    // 세로 공지
+    // 세로
     // ==========================
 
-    if(mission03CurrentScreen === "rotate"){
+    if(window.innerHeight > window.innerWidth){
 
-        // 기존 가로 공지 닫기
-        mission03RotatePopup.style.display = "none";
+        // 시작 전
+        if(mission03CurrentScreen === "start"){
 
-        // 세로 공지 표시
-        mission03RotatePortraitPopup.style.display = "flex";
+            mission03RotatePopup.style.display = "flex";
 
-        setTimeout(()=>{
+            return;
 
-            // 세로 공지 닫기
-            mission03RotatePortraitPopup.style.display = "none";
+        }
 
-            // 다음 팝업
-            showMission03FacePopup();
+        // 게임 진행 중
+        if(mission03CurrentScreen === "game"){
 
-            mission03CurrentScreen = "face";
+            mission03RotatePopup.style.display = "flex";
 
-        },2000);
+            return;
 
-        return;
+        }
+
+        // ==========================
+        // 숨은그림 완료 후
+        // 세로 공지
+        // ==========================
+
+        if(mission03CurrentScreen === "rotate"){
+
+            // 기존 가로 공지 숨김
+            mission03RotatePopup.style.display = "none";
+
+            // 세로 공지 표시
+            mission03RotatePortraitPopup.style.display = "flex";
+
+            setTimeout(()=>{
+
+                // 세로 공지 닫기
+                mission03RotatePortraitPopup.style.display = "none";
+
+                // Face Popup
+                showMission03FacePopup();
+
+                // 현재 화면
+                mission03CurrentScreen = "face";
+
+            },2000);
+
+            return;
+
+        }
 
     }
-
-}
 
     // ==========================
     // 가로
     // ==========================
 
+    // 가로 공지 닫기
     mission03RotatePopup.style.display = "none";
 
-  if(mission03CurrentScreen === "start"){
+    // 세로 공지도 닫기
+    mission03RotatePortraitPopup.style.display = "none";
 
-    alert("resize 들어옴");
+    // 최초 시작
+    if(mission03CurrentScreen === "start"){
 
-    showMission03NoticePopup();
+        alert("resize 들어옴");
 
-}
+        showMission03NoticePopup();
+
+    }
 
 });
 
