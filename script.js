@@ -732,7 +732,10 @@ document.getElementById("mission03RotatePopup");
 const hiddenItems =
 document.querySelectorAll(".hidden-item");
 
+// ==========================
 // 게임 화면 열기
+// ==========================
+
 function openMission03(){
 
     // 미션 목록 닫기
@@ -743,6 +746,12 @@ function openMission03(){
 
     // 현재 화면 저장
     mission03CurrentScreen = "game";
+
+    // ==========================
+    // MOBILE TOP UI 생성
+    // ==========================
+
+    createMission03MobileUI();
 
 }
 
@@ -833,6 +842,70 @@ if(!isMobile){
 
            showMission03NoticePopup();
         }
+
+    });
+
+}
+
+/* =====================================================
+                MISSION03 MOBILE TOP UI
+===================================================== */
+
+function createMission03MobileUI(){
+
+    // PC는 생성 안함
+    if(window.innerWidth > 900) return;
+
+    // 이미 생성되어 있으면 종료
+    if(document.getElementById("mission03TopUI")) return;
+
+    mission03Detail.insertAdjacentHTML(
+
+        "afterbegin",
+
+        `
+        <div
+            id="mission03TopUI"
+            class="mission03-top-ui">
+
+            <!-- 찾은 개수 -->
+
+            <div class="mission03-count">
+
+                🔎
+
+                <span id="mission03MobileFound">
+
+                    0 / 5
+
+                </span>
+
+            </div>
+
+            <!-- 다시보기 -->
+
+            <button
+                id="mission03ReplayBtn"
+                class="mission03-replay">
+
+                📜
+
+            </button>
+
+        </div>
+        `
+
+    );
+
+    // ==========================
+    // 다시보기
+    // ==========================
+
+    document
+    .getElementById("mission03ReplayBtn")
+    .addEventListener("click",()=>{
+
+        showMission03NoticePopup();
 
     });
 
@@ -967,9 +1040,28 @@ function resetMission03Hidden(){
 
     mission03FoundCount = 0;
 
+    // ==========================
+    // PC COUNT
+    // ==========================
+
     if(mission03FoundText){
 
         mission03FoundText.innerHTML =
+        `0 / ${hiddenItems.length}`;
+
+    }
+
+    // ==========================
+    // MOBILE COUNT
+    // ==========================
+
+    const mobileFound =
+
+    document.getElementById("mission03MobileFound");
+
+    if(mobileFound){
+
+        mobileFound.innerHTML =
         `0 / ${hiddenItems.length}`;
 
     }
@@ -1005,7 +1097,7 @@ hiddenItems.forEach(item=>{
         item.dataset.found = "true";
 
         // 애니메이션용
-         item.classList.add("found");
+        item.classList.add("found");
 
         // 빨간 원 표시
         const foundCircle =
@@ -1020,7 +1112,10 @@ hiddenItems.forEach(item=>{
         // 카운트 증가
         mission03FoundCount++;
 
-        // 화면 갱신
+        // ==========================
+        // PC COUNT
+        // ==========================
+
         if(mission03FoundText){
 
             mission03FoundText.innerHTML =
@@ -1028,7 +1123,25 @@ hiddenItems.forEach(item=>{
 
         }
 
+        // ==========================
+        // MOBILE COUNT
+        // ==========================
+
+        const mobileFound =
+
+        document.getElementById("mission03MobileFound");
+
+        if(mobileFound){
+
+            mobileFound.innerHTML =
+            `${mission03FoundCount} / ${hiddenItems.length}`;
+
+        }
+
+        // ==========================
         // 모두 찾음
+        // ==========================
+
         if(mission03FoundCount >= hiddenItems.length){
 
             const isMobile =
