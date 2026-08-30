@@ -2299,63 +2299,102 @@ ITEM POSITION (MOBILE)
 
     /* ⭐ */
 
-    .item-star{
+.item-star{
 
-        top:20.5%;
-        left:41.5%;
+    top:15%;
+    left:20%;
 
-        width:18px;
-        height:18px;
+    width:15px;
+    height:15px;
 
-    }
+}
 
-    /* ✉ */
+.item-star img{
 
-    .item-letter{
+    opacity:1;
 
-        top:73.5%;
-        left:40.5%;
+    transform:rotate(18deg);
 
-        width:34px;
-        height:26px;
+}
 
-    }
+/* ✉ */
 
-    /* 🔑 */
+.item-letter{
 
-    .item-key{
+    top:80%;
+    left:41.5%;
 
-        top:38%;
-        left:6.5%;
+    width:12px;
+    height:12px;
 
-        width:38px;
-        height:30px;
+}
 
-    }
+.item-letter img{
 
-    /* 🌙 */
+    opacity:1;
+    transform:rotate(80deg);
 
-    .item-moon{
+}
 
-        top:24.5%;
-        left:66%;
+/* 🔑 */
 
-        width:28px;
-        height:32px;
+.item-key{
 
-    }
+    top:40;
+    left:10%;
 
-    /* 🧸 */
+    width:13px;
+    height:13px;
 
-    .item-bear{
+}
 
-        top:84%;
-        left:87%;
+.item-key img{
 
-        width:36px;
-        height:42px;
+    opacity:.9;
 
-    }
+    transform:rotate(-80deg);
+
+}
+
+/* 🌙 */
+
+.item-moon{
+
+    top:27.5%;
+    left:68.5%;
+
+    width:13px;
+    height:13px;
+
+}
+
+.item-moon img{
+
+    opacity:.7;
+
+    transform:rotate(50deg);
+
+}
+
+/* 🧸 */
+
+.item-bear{
+
+    top:92%;
+    left:90%;
+
+    width:25px;
+    height:26px;
+
+}
+
+.item-bear img{
+
+    opacity:.95;
+
+    transform:rotate(190deg);
+
+}
 
     /*popup들 설정*/
 
