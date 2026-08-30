@@ -764,39 +764,30 @@ function openMission03(){
 
 function openMission03BeforeStart(){
 
-    /*
-    // 최초 시작일 경우만
-    if(!mission03Started){
+    // 숨은그림 초기화
+    resetMission03Hidden();
 
-        // 숨은그림 초기화
-        resetMission03Hidden();
+    // 플레이 시작 시간
+    mission03PlayTime = new Date();
 
-        // 플레이 시작 시간
-        mission03PlayTime = new Date();
+    // 이벤트 시작
+    startMission03Event();
 
-        // 이벤트 시작
-        startMission03Event();
+    // 이벤트 상태 초기화
+    mission03CanClose = false;
 
-        // 이벤트 상태 초기화
-        mission03CanClose = false;
+    mission03Notice20 = false;
+    mission03Notice22 = false;
+    mission03Notice24 = false;
 
-        mission03Notice20 = false;
-        mission03Notice22 = false;
-        mission03Notice24 = false;
+    // Clear 버튼 비활성화
+    if(closeMission03Clear){
 
-        // Clear 버튼 비활성화
-        if(closeMission03Clear){
-
-            closeMission03Clear.classList.remove("active");
-
-        }
-
-        mission03Started = true;
+        closeMission03Clear.classList.remove("active");
 
     }
-    */
 
-    // 임시 : 타이머 기능 비활성화
+    // 미션 열기
     openMission03();
 
 }
@@ -1351,20 +1342,23 @@ if(closeMission03Clear){
         // 25분 이후
         // ==========================
 
-        // Clear Popup 닫기
         mission03ClearPopup.style.display = "none";
 
-        // 빛의 조각
-        showLightFragment();
+        if(mission03Overlay){
+    mission03Overlay.style.display = "none";
+}
 
-        // Mission04 Timer 시작
-        startMission04Timer();
+         mission03Detail.classList.remove("show");
 
-        // Hidden01 Intro 시작
-        startHidden01Intro();
+         mission03CurrentScreen = "list";
 
-        // 현재 화면
-        mission03CurrentScreen = "list";
+         showLightFragment();
+
+         missionPanel.classList.add("show");
+
+         startMission04Timer();
+
+         startHidden01Opening();
 
     });
 
@@ -1453,6 +1447,8 @@ let mission03Notice24 = false;
 
 function startMission03Event(){
 
+    console.log("🚀 Mission03 Event Start");
+
     // ===== 테스트용 =====
     const EVENT20 = 1 * 60;
     const EVENT22 = 2 * 60;
@@ -1489,11 +1485,15 @@ function startMission03Event(){
         const elapsed =
         Math.floor((new Date()-mission03PlayTime)/1000);
 
+        console.log("⏱ elapsed =", elapsed);
+
         // ==========================
         // 20분
         // ==========================
 
         if(!mission03Notice20 && elapsed>=EVENT20){
+
+            console.log("✅ EVENT20");
 
             mission03Notice20 = true;
 
@@ -1518,6 +1518,8 @@ function startMission03Event(){
 
         if(!mission03Notice22 && elapsed>=EVENT22){
 
+            console.log("✅ EVENT22");
+
             mission03Notice22 = true;
 
             if(
@@ -1539,6 +1541,8 @@ function startMission03Event(){
         // ==========================
 
         if(!mission03Notice24 && elapsed>=EVENT24){
+
+            console.log("✅ EVENT24");
 
             mission03Notice24 = true;
 
@@ -1569,6 +1573,8 @@ function startMission03Event(){
         // ==========================
 
         if(elapsed>=EVENT25){
+
+            console.log("✅ EVENT25");
 
             mission03CanClose = true;
 
@@ -2554,9 +2560,7 @@ if(endingButton){
 
                 endingWaitingPopup.style.display="none";
 
-                missionPanel.classList.remove("show");
-
-                endingDetail.classList.add("show");
+                startEnding();
 
                 return;
 
@@ -2581,17 +2585,64 @@ if(endingButton){
 
             updateTimer();
 
-            const timer = setInterval(updateTimer,1000);
+            const timer =
+            setInterval(updateTimer,1000);
 
             return;
 
         }
 
+        startEnding();
+
+    });
+
+}
+
+
+
+// ==========================
+// START ENDING
+// ==========================
+
+function startEnding(){
+
+    const endingFade =
+    document.getElementById("endingFade");
+
+    const glitter =
+    document.querySelectorAll(".glitter");
+
+    endingFade.classList.add("show");
+
+    setTimeout(()=>{
+
         missionPanel.classList.remove("show");
 
         endingDetail.classList.add("show");
 
+    },800);
+
+    setTimeout(()=>{
+
+        endingFade.classList.remove("show");
+
+    },1300);
+
+    glitter.forEach((star,index)=>{
+
+        setTimeout(()=>{
+
+            star.classList.add("show");
+
+        },1500+(index*120));
+
     });
+
+    setTimeout(()=>{
+
+        endingStar.classList.add("show");
+
+    },4500);
 
 }
 
@@ -2625,7 +2676,6 @@ if(endingStar){
 
 }
 
-
 // ==========================
 // STORY
 // ==========================
@@ -2638,26 +2688,175 @@ if(showConstellation){
 
         constellationPopup.style.display="flex";
 
+        setTimeout(()=>{
+
+            document
+            .getElementById("constellationText")
+            .classList.add("show");
+
+        },2500);
+
+        setTimeout(()=>{
+
+            document
+            .getElementById("constellationTitle")
+            .innerHTML="LIBRA.DH";
+
+            document
+            .getElementById("constellationDate")
+            .innerHTML="09.25";
+
+        },5500);
+
+        setTimeout(()=>{
+
+            document
+            .getElementById("constellationTitle")
+            .innerHTML="- THE END -";
+
+            document
+            .getElementById("constellationDate")
+            .innerHTML="";
+
+            document
+            .getElementById("endingButtons")
+            .classList.add("show");
+
+        },9000);
+
     });
 
 }
 
+// =====================================================
+//              HIDDEN 01 OPENING
+// =====================================================
 
 // ==========================
-// REPLAY
+// COLOR
 // ==========================
 
-if(endingReplay){
+const hiddenOpeningColors = [
 
-    endingReplay.addEventListener("click",()=>{
+    "#ffffff", // White
+    "#fc6edbcb", //pink
+    "#7a5cff", // Purple
+    "#80ef94", // green
+    "#ffe14d"  // Gold
 
-        constellationPopup.style.display="none";
+];
 
-        endingDetail.classList.remove("show");
 
-        missionPanel.classList.add("show");
+// ==========================
+// SPEED
+// ==========================
 
-    });
+const hiddenOpeningSpeeds = [
+
+    45,
+    55,
+    65
+
+];
+
+
+// ==========================
+// PATTERN
+// ==========================
+
+const hiddenPatterns = [
+
+    "AAABBBAAABBBAAABBB",
+    "ABABABABABABABAB",
+    "AAAABBBBABAABBBB",
+    "AABBAABBBBAAAABB",
+    "ABBAABBABAABBABA"
+
+];
+
+
+// ==========================
+// START
+// ==========================
+
+function startHidden01Opening(){
+
+    const opening =
+    document.getElementById("hidden01Opening");
+
+    opening.style.display="block";
+
+    // ======================
+    // Color Random
+    // ======================
+
+    const colorA =
+    hiddenOpeningColors[
+        Math.floor(Math.random()*hiddenOpeningColors.length)
+    ];
+
+    let colorB=colorA;
+
+    while(colorB===colorA){
+
+        colorB=
+        hiddenOpeningColors[
+            Math.floor(Math.random()*hiddenOpeningColors.length)
+        ];
+
+    }
+
+    // ======================
+    // Speed Random
+    // ======================
+
+    const speed=
+    hiddenOpeningSpeeds[
+        Math.floor(Math.random()*hiddenOpeningSpeeds.length)
+    ];
+
+    // ======================
+    // Pattern Random
+    // ======================
+
+    const pattern=
+    hiddenPatterns[
+        Math.floor(Math.random()*hiddenPatterns.length)
+    ];
+
+    let index=0;
+
+    opening.style.opacity="1";
+
+    const flash=
+    setInterval(()=>{
+
+        if(index>=pattern.length){
+
+            clearInterval(flash);
+
+            opening.style.display="none";
+            opening.style.opacity="0";
+
+            hidden01Popup.style.display="flex";
+
+            return;
+
+        }
+
+        if(pattern[index]==="A"){
+
+            opening.style.background=colorA;
+
+        }else{
+
+            opening.style.background=colorB;
+
+        }
+
+        index++;
+
+    },speed);
 
 }
 
@@ -2692,7 +2891,7 @@ function startHidden01Timer(){
 
     setTimeout(()=>{
 
-        hidden01Popup.style.display="flex";
+        startHidden01Opening();
 
     },30000);
 

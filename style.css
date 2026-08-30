@@ -3334,6 +3334,37 @@ MISSION03 MOBILE GAME
 
 }
 
+/* =====================================================
+                    ENDING FADE
+===================================================== */
+
+#endingFade{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:#000;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:opacity .8s ease;
+
+    z-index:99999;
+
+}
+
+#endingFade.show{
+
+    opacity:1;
+
+}
 
 /* =====================================================
                     ENDING HEADER
@@ -3379,8 +3410,6 @@ MISSION03 MOBILE GAME
 
 }
 
-
-
 /* =====================================================
                     ENDING SKY
 ===================================================== */
@@ -3388,18 +3417,15 @@ MISSION03 MOBILE GAME
 #endingDetail{
 
     background:
-
     radial-gradient(circle at top,#25355f 0%,#10192f 45%,#05070f 100%);
+
+    overflow:hidden;
 
 }
 
-#endingDetail .detail-box{
+.ending-sky{
 
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
+    position:relative;
 
     width:100%;
 
@@ -3408,60 +3434,124 @@ MISSION03 MOBILE GAME
 }
 
 
-
 /* =====================================================
-                    STAR
+                    BACKGROUND STARS
 ===================================================== */
 
-#endingStar{
+.glitter{
 
-    background:none;
+    position:absolute;
 
-    border:none;
+    width:2px;
 
-    font-size:70px;
+    height:2px;
 
-    color:#fff4b0;
+    border-radius:50%;
 
-    cursor:pointer;
+    background:white;
 
-    transition:.3s;
+    opacity:0;
 
-    animation:endingTwinkle 2s infinite;
+    box-shadow:
+    0 0 5px white,
+    0 0 10px white;
+
+    animation:
+    glitterTwinkle 2.5s infinite alternate;
 
 }
 
-#endingStar:hover{
+.glitter.show{
 
-    transform:scale(1.15);
+    opacity:.9;
 
 }
 
+@keyframes glitterTwinkle{
 
+    from{
 
-@keyframes endingTwinkle{
-
-    0%{
-
-        opacity:.4;
+        opacity:.2;
 
     }
 
-    50%{
+    to{
 
         opacity:1;
 
     }
 
-    100%{
+}
 
-        opacity:.4;
+/* 위치 */
 
-    }
+.g1{top:8%;left:12%;}
+.g2{top:15%;left:30%;}
+.g3{top:10%;left:52%;}
+.g4{top:18%;left:75%;}
+.g5{top:28%;left:15%;}
+.g6{top:33%;left:60%;}
+.g7{top:42%;left:82%;}
+.g8{top:50%;left:20%;}
+.g9{top:58%;left:44%;}
+.g10{top:65%;left:70%;}
+.g11{top:72%;left:12%;}
+.g12{top:78%;left:35%;}
+.g13{top:82%;left:58%;}
+.g14{top:74%;left:88%;}
+.g15{top:40%;left:8%;}
+.g16{top:22%;left:90%;}
+.g17{top:55%;left:92%;}
+.g18{top:30%;left:40%;}
+.g19{top:12%;left:64%;}
+.g20{top:88%;left:78%;}
+
+
+/* =====================================================
+                    BIG STAR
+===================================================== */
+
+#endingStar{
+
+    position:absolute;
+
+    top:50%;
+
+    left:50%;
+
+    transform:translate(-50%,-50%) scale(.4);
+
+    background:none;
+
+    border:none;
+
+    color:#fff4b0;
+
+    font-size:75px;
+
+    opacity:0;
+
+    cursor:pointer;
+
+    transition:1s;
+
+    pointer-events:none;
+
+    text-shadow:
+    0 0 15px #fff4b0,
+    0 0 35px #fff4b0;
 
 }
 
+#endingStar.show{
 
+    opacity:1;
+
+    transform:translate(-50%,-50%) scale(1);
+
+    pointer-events:auto;
+
+}
 
 /* =====================================================
                     WAITING TIMER
@@ -3497,11 +3587,87 @@ MISSION03 MOBILE GAME
                 CONSTELLATION
 ===================================================== */
 
-#constellationPopup h2{
+#constellationArea{
 
-    font-size:70px;
+    width:100%;
+    height:260px;
 
-    margin-bottom:20px;
+    margin-bottom:25px;
+
+    border-radius:12px;
+
+    background:#09101f;
+
+}
+
+#constellationText{
+
+    opacity:0;
+
+    transition:2s;
+
+}
+
+#constellationText.show{
+
+    opacity:1;
+
+}
+
+#constellationTitle{
+
+    font-size:48px;
+
+    color:#fff4b0;
+
+    margin-bottom:10px;
+
+}
+
+#constellationDate{
+
+    font-size:18px;
+
+    letter-spacing:2px;
+
+}
+
+#endingButtons{
+
+    display:none;
+
+    gap:12px;
+
+    justify-content:center;
+
+    margin-top:25px;
+
+}
+
+#endingButtons.show{
+
+    display:flex;
+
+}
+
+
+/* =====================================================
+            HIDDEN 01 OPENING
+===================================================== */
+
+.hidden-opening{
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:9998;
+
+    opacity:0;
+
+    pointer-events:none;
 
 }
 
