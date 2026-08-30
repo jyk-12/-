@@ -2246,7 +2246,7 @@ MISSION03 MOBILE GAME
 
     flex:none;
 
-    height:calc(100dvh - 15px);
+    height:calc(100dvh - 10px);
 
     overflow-y:auto;
     overflow-x:hidden;
@@ -2300,10 +2300,30 @@ MISSION03 MOBILE GAME
 }
 
 /* =====================================================
-                MOBILE TOP UI
+                MISSION03 MOBILE TOP UI
+===================================================== */
+
+/* PC에서는 숨김 */
+
+.mission03-top-ui{
+
+    display:none;
+
+}
+
+/* =====================================================
+                MOBILE LANDSCAPE
 ===================================================== */
 
 @media (max-width:900px) and (orientation:landscape){
+
+    /* 기존 PC 상단 UI 숨김 */
+
+    .mission-ui{
+
+        display:none;
+
+    }
 
     /* ==========================
             TOP UI
@@ -2311,13 +2331,11 @@ MISSION03 MOBILE GAME
 
     .mission03-top-ui{
 
+        display:block;
+
         position:fixed;
 
-        top:0;
-        left:0;
-
-        width:100%;
-        height:70px;
+        inset:0;
 
         z-index:9999;
 
@@ -2339,69 +2357,44 @@ MISSION03 MOBILE GAME
 
         position:absolute;
 
-        top:12px;          /* ↑↓ 위치 */
-        left:18px;         /* ←→ 위치 */
+        top:8px;
+        left:10px;
 
         display:flex;
         align-items:center;
-        gap:8px;
+        gap:6px;
 
-        padding:8px 18px;
-
-        border-radius:999px;
+        padding:5px 12px;
 
         background:rgba(248,240,223,.95);
 
-        border:2px solid #d5c4a3;
+        border:2px solid #d8c5a4;
+        border-radius:999px;
 
-        font-size:22px;
+        color:#4d3726;
+
+        font-size:16px;
         font-weight:bold;
-
-        color:#5c4632;
 
     }
 
     /* ==========================
-            다시보기 버튼
+            다시보기
     ========================== */
 
     .mission03-replay{
 
         position:absolute;
 
-        top:12px;          /* ↑↓ 위치 */
-        right:82px;        /* ←→ 위치 */
+        top:8px;
+        right:10px;
 
-        width:48px;
-        height:48px;
+        width:34px;
+        height:34px;
 
-        border:none;
-
-        border-radius:50%;
-
-        background:rgba(248,240,223,.95);
-
-        border:2px solid #d5c4a3;
-
-        font-size:24px;
-
-        cursor:pointer;
-
-    }
-
-    /* ==========================
-            닫기 버튼
-    ========================== */
-
-    #mission03Close{
-
-        position:absolute;
-
-        top:12px;          /* ↑↓ 위치 */
-        right:18px;        /* ←→ 위치 */
-
-        width:48px;
-        height:48px;
+        display:flex;
+        justify-content:center;
+        align-items:center;
 
         border:none;
 
@@ -2409,12 +2402,9 @@ MISSION03 MOBILE GAME
 
         background:rgba(248,240,223,.95);
 
-        border:2px solid #d5c4a3;
+        border:2px solid #d8c5a4;
 
-        font-size:26px;
-        font-weight:bold;
-
-        color:#5c4632;
+        font-size:17px;
 
         cursor:pointer;
 
