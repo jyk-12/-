@@ -729,6 +729,9 @@ document.getElementById("mission03ReTurnPopup");
 const mission03RotatePopup =
 document.getElementById("mission03RotatePopup");
 
+const mission03RotatePortraitPopup =
+document.getElementById("mission03RotatePortraitPopup");
+
 const hiddenItems =
 document.querySelectorAll(".hidden-item");
 
@@ -1223,7 +1226,7 @@ function showMission03Overlay(){
         mission03Overlay.style.left = "0";
         mission03Overlay.style.width = "100%";
         mission03Overlay.style.height = "100%";
-        mission03Overlay.style.background = "rgba(0,0,0,.55)";
+        mission03Overlay.style.background = "rgba(5, 2, 12, 0.78)";
         mission03Overlay.style.zIndex = "9998";
 
         document.body.appendChild(mission03Overlay);

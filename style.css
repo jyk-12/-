@@ -1895,85 +1895,80 @@ CLEAR POPUP
 
 }
 
-/* ==========================
-SYSTEM POPUP
-========================== */
-
-.system-popup{
-
-    position:fixed;
-
-    inset:0;
-
-    display:none;
-
-    align-items:center;
-
-    justify-content:center;
-
-    z-index:10000;
-
-}
+/* =====================================================
+                SYSTEM POPUP
+===================================================== */
 
 .system-box{
 
-    width:300px;
+    width:90%;
+    max-width:430px;
+
+    background:#f4f4f4;
+
+    border:1px solid #8e8e8e;
+    border-radius:4px;
+
+    overflow:hidden;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.35);
+
+}
+
+.system-content{
 
     padding:28px 24px;
 
-    border-radius:18px;
+    min-height:90px;
 
-    background:#ffffff;
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
 
     text-align:center;
 
-    box-shadow:0 15px 40px rgba(0,0,0,.18);
+    color:#1f1f1f;
 
-}
-
-.system-box h2{
-
-    margin-bottom:14px;
-
-    font-size:20px;
-
-    font-weight:700;
-
-    color:#37474f;
-
-}
-
-.system-box p{
-
-    margin-bottom:22px;
-
-    font-size:15px;
+    font-size:16px;
 
     line-height:1.7;
 
-    color:#546e7a;
+}
+
+.system-footer{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    padding:10px 14px;
+
+    border-top:1px solid #d8d8d8;
 
 }
 
-.system-box button{
+.system-confirm{
 
-    width:130px;
-    height:42px;
+    background:none;
 
     border:none;
-    border-radius:12px;
 
-    background:#b9e5ff;
+    color:#0066cc;
 
-    color:#0a1422;
+    font-size:15px;
 
-    font-family:inherit;
-
-    font-size:14px;
-
-    font-weight:700;
+    font-weight:600;
 
     cursor:pointer;
+
+    padding:2px 6px;
+
+}
+
+.system-confirm:hover{
+
+    text-decoration:underline;
 
 }
 
@@ -2547,33 +2542,51 @@ MISSION03 MOBILE GAME
 
 }
 
-    /*popup들 설정*/
+    /* =====================================================
+        MOBILE POPUP OVERLAY
+===================================================== */
 
-    .rotate-popup{
+/* 화면 회전 */
+.rotate-popup{
 
-         background:rgba(4, 11, 43, 0.95);
+    background:rgba(4, 11, 43, 0.95);
 
-    }
+}
 
-    .notice-popup{
+/* 안내 */
+.notice-popup{
 
-        background:rgba(4, 7, 18, 0.961);
+    background:rgba(4, 7, 18, 0.961);
 
-    }
+}
 
-    .return-popup{
+/* 재입장시 */
+.return-popup{
 
-        background:rgb(1, 4, 12);
+    background:rgb(1, 4, 12);
 
-    }
+}
 
-    .return-box{
+/* 얼굴 팝업 */
+.face-popup{
 
-        width:92%;
+    background:rgba(4, 7, 18, 0.961);
 
-        max-width:340px;
+}
 
-    }
+/* 인증코드 */
+.code-popup{
+
+    background:rgba(4, 7, 18, 0.961);
+
+}
+
+/* 클리어 */
+.clear-popup{
+
+    background:rgba(4, 7, 18, 0.961);
+
+}
 
 }
 
