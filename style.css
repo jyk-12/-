@@ -2085,13 +2085,13 @@ ROTATE POPUP
 
     padding:35px 25px;
 
-    background:rgba(7, 19, 70, 0.95);
+    background:rgba(6, 17, 68, 0.95);
 
     border-radius:35px;
 
     text-align:center;
 
-    box-shadow:0 20px 50px rgba(60,100,130,.25);
+    box-shadow:0 20px 50px rgba(54, 90, 118, 0.25);
 
 }
 
@@ -2246,7 +2246,7 @@ MISSION03 MOBILE GAME
 
     flex:none;
 
-    height:calc(100dvh - 20px);
+    height:calc(100dvh - 15px);
 
     overflow-y:auto;
     overflow-x:hidden;
@@ -2296,6 +2296,129 @@ MISSION03 MOBILE GAME
 #mission03Close{
 
     display:none;
+
+}
+
+/* =====================================================
+                MOBILE TOP UI
+===================================================== */
+
+@media (max-width:900px) and (orientation:landscape){
+
+    /* ==========================
+            TOP UI
+    ========================== */
+
+    .mission03-top-ui{
+
+        position:fixed;
+
+        top:0;
+        left:0;
+
+        width:100%;
+        height:70px;
+
+        z-index:9999;
+
+        pointer-events:none;
+
+    }
+
+    .mission03-top-ui>*{
+
+        pointer-events:auto;
+
+    }
+
+    /* ==========================
+            찾은 개수
+    ========================== */
+
+    .mission03-count{
+
+        position:absolute;
+
+        top:12px;          /* ↑↓ 위치 */
+        left:18px;         /* ←→ 위치 */
+
+        display:flex;
+        align-items:center;
+        gap:8px;
+
+        padding:8px 18px;
+
+        border-radius:999px;
+
+        background:rgba(248,240,223,.95);
+
+        border:2px solid #d5c4a3;
+
+        font-size:22px;
+        font-weight:bold;
+
+        color:#5c4632;
+
+    }
+
+    /* ==========================
+            다시보기 버튼
+    ========================== */
+
+    .mission03-replay{
+
+        position:absolute;
+
+        top:12px;          /* ↑↓ 위치 */
+        right:82px;        /* ←→ 위치 */
+
+        width:48px;
+        height:48px;
+
+        border:none;
+
+        border-radius:50%;
+
+        background:rgba(248,240,223,.95);
+
+        border:2px solid #d5c4a3;
+
+        font-size:24px;
+
+        cursor:pointer;
+
+    }
+
+    /* ==========================
+            닫기 버튼
+    ========================== */
+
+    #mission03Close{
+
+        position:absolute;
+
+        top:12px;          /* ↑↓ 위치 */
+        right:18px;        /* ←→ 위치 */
+
+        width:48px;
+        height:48px;
+
+        border:none;
+
+        border-radius:50%;
+
+        background:rgba(248,240,223,.95);
+
+        border:2px solid #d5c4a3;
+
+        font-size:26px;
+        font-weight:bold;
+
+        color:#5c4632;
+
+        cursor:pointer;
+
+    }
 
 }
 
@@ -2419,7 +2542,7 @@ ITEM POSITION (MOBILE)
 
     .rotate-popup{
 
-         background:rgba(7, 19, 70, 0.95);
+         background:rgba(4, 11, 43, 0.95);
 
     }
 
