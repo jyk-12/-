@@ -784,14 +784,7 @@ function openMission03BeforeStart(){
     }
     */
 
-    function openMission03BeforeStart(){
 
-    mission03PlayTime = new Date();
-    startMission03Event();
-
-    openMission03();
-
-}
 
 }
 
