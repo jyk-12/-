@@ -2434,10 +2434,10 @@ MISSION03 MOBILE GAME
     border:2px solid red;
 
     top:20%;
-    left:40%;
+    left:42/5%;
 
-    width:20px;
-    height:20px;
+    width:18px;
+    height:18px;
 
 }
 
@@ -2457,8 +2457,8 @@ MISSION03 MOBILE GAME
 
     border:2px solid red;
 
-    top:85%;
-    left:41.5%;
+    top:82%;
+    left:42.5%;
 
     width:18px;
     height:18px;
@@ -2471,7 +2471,7 @@ MISSION03 MOBILE GAME
 
     opacity:1;
 
-    transform:rotate(60deg);
+    transform:rotate(95deg);
 
 }
 
@@ -2482,7 +2482,7 @@ MISSION03 MOBILE GAME
     border:2px solid red;
 
     top:40%;
-    left:10%;
+    left:9%;
 
     width:24px;
     height:24px;
@@ -2495,7 +2495,7 @@ MISSION03 MOBILE GAME
 
     opacity:.9;
 
-    transform:rotate(10deg);
+    transform:rotate(85deg);
 
 }
 
@@ -2505,8 +2505,8 @@ MISSION03 MOBILE GAME
 
     border:2px solid red;
 
-    top:29.5%;
-    left:64.5%;
+    top:27.5%;
+    left:67.5%;
 
     width:18px;
     height:24px;
@@ -2530,7 +2530,7 @@ MISSION03 MOBILE GAME
     border:2px solid red;
 
     top:92%;
-    left:85%;
+    left:91%;
 
     width:32px;
     height:34px;
