@@ -2250,6 +2250,8 @@ min-height:100vh;
 
 .cafe-game{
 
+    background:blue !important;
+
     width:100%;
 
     margin:0;
@@ -2262,6 +2264,8 @@ min-height:100vh;
 
 .cafe-bg{
 
+    background:rgb(225, 171, 8) !important;
+
     display:block;
 
     width:100%;
@@ -2270,14 +2274,6 @@ min-height:100vh;
 
     border-radius:0;
 
-}
-
-.cafe-game{
-    background:blue !important;
-}
-
-.cafe-bg{
-    background:green !important;
 }
 
 /* 기존 X 버튼 숨김 */
