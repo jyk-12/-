@@ -1198,7 +1198,7 @@ hiddenItems.forEach(item=>{
 
                 mission03CurrentScreen = "rotate";
 
-                mission03RotatePopup.style.display = "flex";
+                mission03RotatePortraitPopup.style.display = "flex";
 
             }
 
