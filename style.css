@@ -2238,9 +2238,9 @@ MISSION03 MOBILE GAME
 
 .cafe-scroll{
 
-    flex:1;
+    flex:none;
 
-    min-height:0;
+    height:calc(100dvh - 60px);
 
     overflow-y:auto;
     overflow-x:hidden;
