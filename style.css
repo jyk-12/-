@@ -2085,7 +2085,7 @@ ROTATE POPUP
 
     padding:35px 25px;
 
-    background:rgba(250,218,218,.95);
+    background:rgba(7, 19, 70, 0.95);
 
     border-radius:35px;
 
@@ -2099,7 +2099,7 @@ ROTATE POPUP
 
     margin-bottom:15px;
 
-    color:#37474f;
+    color:#ecaa1a;
 
 }
 
@@ -2107,7 +2107,7 @@ ROTATE POPUP
 
     margin-bottom:25px;
 
-    color:#1c2e4e;
+    color:#93a9d0;
 
     font-weight:600;
 
@@ -2246,7 +2246,7 @@ MISSION03 MOBILE GAME
 
     flex:none;
 
-    height:calc(100dvh - 40px);
+    height:calc(100dvh - 20px);
 
     overflow-y:auto;
     overflow-x:hidden;

@@ -857,20 +857,15 @@ function showMission03NoticePopup(){
 
 if(closeMission03NoticePopup){
 
-    closeMission03NoticePopup.addEventListener("click",()=>{
+    closeMission03Notice.addEventListener("click",()=>{
 
-        // 안내창 닫기
-        mission03NoticePopup.style.display = "none";
+    mission03NoticePopup.style.display = "none";
 
-        // 최초 시작
-        /*
-        원래 시작 함수
-        (타이머 기능 활성화 시 사용)
-        */
-        openMission03BeforeStart();
+    alert("타이머 시작!");
 
-    });
+    openMission03BeforeStart();
 
+});
 }
 
 // ==========================
