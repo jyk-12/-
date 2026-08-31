@@ -1902,6 +1902,16 @@ document.getElementById("mission05Close");
 const mission05Timer =
 document.getElementById("mission05Timer");
 
+// =====================================================
+// MISSION05 STATE
+// =====================================================
+
+// locked
+// fakeOpen
+// realOpen
+
+let mission05State="locked";
+
 
 // 처음에는 잠금
 
@@ -1954,18 +1964,20 @@ function startMission05Timer(){
 
         if(timeLeft<=0){
 
-            clearInterval(timer);
+    clearInterval(timer);
 
-            mission05Status.innerHTML="OPEN";
+    // ⭐ 이제부터는 진짜 OPEN
+    mission05State="realOpen";
 
-            mission05Timer.style.display="none";
+    mission05Status.innerHTML="OPEN";
 
-            mission05Card.classList.remove("locked");
+    mission05Timer.style.display="none";
 
-            mission05Card.classList.add("open");
+    mission05Card.classList.remove("locked");
 
-        }
+    mission05Card.classList.add("open");
 
+}
         timeLeft--;
 
     },1000);
@@ -1981,15 +1993,38 @@ if(mission05Card){
 
     mission05Card.addEventListener("click",()=>{
 
-        if(!mission05Card.classList.contains("open")){
+        // 아직 잠겨있으면 아무 일도 안 함
+        if(mission05State==="locked"){
 
             return;
 
         }
 
-        missionPanel.classList.remove("show");
+        // 가짜 OPEN
+ if(mission05State==="fakeOpen"){
 
-        mission05Detail.classList.add("show");
+    // 다시 잠금
+    mission05State="locked";
+
+    mission05Card.classList.remove("open");
+
+    mission05Card.classList.add("locked");
+
+    // 히든 시작
+    hidden02Popup.style.display="flex";
+
+    return;
+
+}
+
+        // 진짜 OPEN
+        if(mission05State==="realOpen"){
+
+            missionPanel.classList.remove("show");
+
+            mission05Detail.classList.add("show");
+
+        }
 
     });
 
@@ -2947,8 +2982,6 @@ if(hidden02Popup){
 
 }
 
-
-
 // ======================================
 // TEST
 // ======================================
@@ -2957,7 +2990,13 @@ function startHidden02Timer(){
 
     setTimeout(()=>{
 
-        hidden02Popup.style.display="flex";
+        mission05State="fakeOpen";
+
+        mission05Status.innerHTML="OPEN";
+
+        mission05Card.classList.remove("locked");
+
+        mission05Card.classList.add("open");
 
     },30000);
 
