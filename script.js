@@ -2902,7 +2902,6 @@ document.getElementById("libraStar7")
 
 ];
 
-
 // =====================================================
 //                  LIBRA STORY
 // =====================================================
@@ -2912,29 +2911,73 @@ const endingStoryList = [
 `오래전,
 
 누구도 끝을 맺지 못했던 전설은
-긴 시간 동안
-수많은 조각으로 흩어졌습니다.`,
+긴 시간 동안 수많은 조각으로 흩어졌습니다.
 
-`그 조각들은
+그 조각들은
 사람들의 기억이 되었고,
-
 누군가의 사랑이 되었으며,
 
 오래된 기록과
-작은 흔적 속에
-조용히 남아 있었습니다.`,
+작은 흔적 속에 조용히 남아 있었습니다.`,
 
 `오늘,
 
 당신은 그 흩어진 조각들을
 하나씩 다시 이어 주었습니다.
 
-그리고...`
+그리고...
+
+마지막 조각이
+제자리를 찾는 순간,`,
+
+`오래된 기록은
+그 길을 지켜온 이름 모를 '길지기'의 역할도
+비로소 끝났으며
+
+오래도록 감춰져 있던
+전설의 진실이 모습을 드러냈습니다.`,
+
+`사람들은
+이 이야기를
+'디케의 전설'이라 불렀지만
+
+그 전설은 처음부터
+완성된 이야기가 아니었습니다.
+
+디케조차 끝맺지 못했던 전설.`,
+
+`오늘,
+
+당신이 마지막 조각을
+제자리로 되돌려 놓음으로써,
+
+비로소
+
+천칭자리의 전설은
+완성되었습니다.`,
+
+`하지만...
+
+전설은 완성되는 순간
+끝나는 것이 아니었습니다.
+
+누군가가 기억하고,
+누군가가 이어갈 때,
+
+전설은 계속해서 살아갑니다.`,
+
+`오늘,
+
+당신의 하루가
+그 전설의 마지막 페이지이자
+새로운 첫 페이지가 되었습니다.
+
+이제 이 이야기는
+더 이상 디케만의 전설이 아닙니다.`
 
 ];
 
 let endingStoryIndex = 0;
-
 
 // =====================================================
 //                  LIBRA STORY START
@@ -2961,10 +3004,6 @@ function showEndingStory(){
 
     endingStoryNext.classList.remove("show");
 
-    showConstellation.classList.remove("show");
-
-    showConstellation.style.display="none";
-
     setTimeout(()=>{
 
         endingStoryText.innerHTML =
@@ -2972,28 +3011,15 @@ function showEndingStory(){
 
         endingStoryText.classList.add("show");
 
-        if(
-            endingStoryIndex <
-            endingStoryList.length-1
-        ){
+        // 모든 페이지 동일하게 ✦ 하나만 사용
+        endingStoryNext.innerHTML="✦";
 
-            endingStoryNext.classList.add("show");
-
-        }else{
-
-            showConstellation.style.display="block";
-
-            setTimeout(()=>{
-
-                showConstellation.classList.add("show");
-
-            },600);
-
-        }
+        endingStoryNext.classList.add("show");
 
     },600);
 
 }
+
 
 // =====================================================
 //                  LIBRA STORY NEXT
@@ -3003,6 +3029,7 @@ if(endingStoryNext){
 
     endingStoryNext.addEventListener("click",()=>{
 
+        // 아직 다음 페이지가 있으면
         if(
             endingStoryIndex <
             endingStoryList.length-1
@@ -3016,11 +3043,10 @@ if(endingStoryNext){
 
         }
 
+        // 마지막 ✦ 클릭
         endingStoryText.classList.remove("show");
 
         endingStoryNext.classList.remove("show");
-
-        showConstellation.classList.remove("show");
 
         setTimeout(()=>{
 
@@ -3042,12 +3068,7 @@ if(endingStoryNext){
 
 function startLibraEnding(){
 
-    // -----------------------------
-    // 초기화
-    // -----------------------------
-
     constellationTitle.innerHTML="LIBRA";
-
     constellationDate.innerHTML="09.24 ~ 10.22";
 
     constellationTitle.style.color="#ffffff";
@@ -3063,9 +3084,9 @@ function startLibraEnding(){
 
 
 
-    // -----------------------------
-    // 별 초기화
-    // -----------------------------
+    // ==========================
+    // STAR RESET
+    // ==========================
 
     libraStars.forEach(star=>{
 
@@ -3075,9 +3096,22 @@ function startLibraEnding(){
 
 
 
-    // -----------------------------
-    // 별 하나씩 등장
-    // -----------------------------
+    // ==========================
+    // STAR APPEAR
+    // (랜덤 느낌)
+    // ==========================
+
+    const starDelay=[
+
+        800,     // star1
+        0,       // star2
+        2600,    // star3
+        1700,    // star4
+        350,     // star5
+        2100,    // star6
+        1300     // star7
+
+    ];
 
     libraStars.forEach((star,index)=>{
 
@@ -3085,24 +3119,23 @@ function startLibraEnding(){
 
             star.classList.add("show");
 
-        },index*1000);
+        },starDelay[index]);
 
     });
 
 
 
-    // -----------------------------
-    // 별 감상 시간
-    // -----------------------------
+    // ==========================
+    // STAR FINISH
+    // ==========================
 
-    const starFinish =
-    (libraStars.length-1)*1000+1800;
-
+    const starFinish=4400;
 
 
-    // -----------------------------
-    // LIBRA 등장
-    // -----------------------------
+
+    // ==========================
+    // LIBRA FADE IN
+    // ==========================
 
     setTimeout(()=>{
 
@@ -3113,38 +3146,49 @@ function startLibraEnding(){
 
 
 
-    // -----------------------------
-    // LIBRA.DH 변경
-    // -----------------------------
+    // ==========================
+    // LIBRA → LIBRA.DH
+    // ==========================
+
+    setTimeout(()=>{
+
+        constellationTitle.style.opacity="0";
+        constellationDate.style.opacity="0";
+
+    },starFinish+2200);
+
+
 
     setTimeout(()=>{
 
         constellationTitle.innerHTML="LIBRA.DH";
-
         constellationDate.innerHTML="9.25";
 
         constellationTitle.style.color="#e7d6a5";
         constellationDate.style.color="#e7d6a5";
 
-    },starFinish+2000);
+        constellationTitle.style.opacity="1";
+        constellationDate.style.opacity="1";
+
+    },starFinish+3200);
 
 
 
-    // -----------------------------
+    // ==========================
     // THE END
-    // -----------------------------
+    // ==========================
 
     setTimeout(()=>{
 
         theEnd.style.opacity="1";
 
-    },starFinish+4500);
+    },starFinish+5600);
 
 
 
-    // -----------------------------
+    // ==========================
     // 목록으로
-    // -----------------------------
+    // ==========================
 
     setTimeout(()=>{
 
@@ -3152,7 +3196,7 @@ function startLibraEnding(){
 
         endingClose.style.pointerEvents="auto";
 
-    },starFinish+6000);
+    },starFinish+6900);
 
 }
 
@@ -3182,7 +3226,6 @@ if(showConstellation){
 
 }
 
-
 // =====================================================
 //                  LIBRA BUTTON
 // =====================================================
@@ -3193,10 +3236,13 @@ if(endingClose){
 
         constellationPopup.style.display="none";
 
+        endingDetail.classList.remove("show");
+
+        missionPanel.classList.add("show");
+
     });
 
 }
-
 
 // =====================================================
 //              HIDDEN 01 OPENING

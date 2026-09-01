@@ -2434,7 +2434,7 @@ MISSION03 MOBILE GAME
     border:2px solid red;
 
     top:21.5%;
-    left:43.8%;
+    left:42.5%;
 
     width:16px;
     height:16px;
@@ -2481,7 +2481,7 @@ MISSION03 MOBILE GAME
 
     border:2px solid red;
 
-    top:43.2%;
+    top:41.5%;
     left:8.3%;
 
     width:22px;
@@ -2506,10 +2506,10 @@ MISSION03 MOBILE GAME
     border:2px solid red;
 
     top:26%;
-    left:65.5%;
+    left:67%;
 
     width:22px;
-    height:35px;
+    height:36px;
 
 }
 
@@ -2530,7 +2530,7 @@ MISSION03 MOBILE GAME
     border:2px solid red;
 
     top:92.5%;
-    left:84.5%;
+    left:87.5%;
 
     width:32px;
     height:34px;
@@ -3739,77 +3739,70 @@ MISSION03 MOBILE GAME
 
 }
 
-
-
 /* =====================================================
                     LIBRA STAR POSITION
 ===================================================== */
 
-/* 오른쪽 */
+/* 오른쪽 삼각형 */
 
 #libraStar1{
 
-    top:40%;
-    left:69%;
+    top:34%;
+    left:67%;
 
 }
 
 #libraStar2{
 
-    top:31%;
-    left:61%;
+    top:26%;
+    left:59%;
 
 }
 
 #libraStar3{
 
-    top:49%;
-    left:60%;
+    top:43%;
+    left:58%;
 
 }
 
-/* 왼쪽 */
+
+/* 왼쪽 라인 */
 
 #libraStar4{
 
-    top:31%;
-    left:43%;
+    top:25%;
+    left:42%;
 
 }
 
 #libraStar5{
 
-    top:61%;
-    left:44%;
+    top:54%;
+    left:43%;
 
 }
 
 #libraStar6{
 
-    top:48%;
-    left:29%;
+    top:42%;
+    left:30%;
 
 }
 
 #libraStar7{
 
-    top:65%;
-    left:18%;
+    top:58%;
+    left:20%;
 
 }
-
-
-
-/* =====================================================
-                    LIBRA TEXT
-===================================================== */
 
 #constellationText{
 
     position:absolute;
 
     left:50%;
-    top:45%;
+    top:52%;
 
     transform:translate(-50%,-50%);
 
@@ -3825,11 +3818,11 @@ MISSION03 MOBILE GAME
 
     margin:0;
 
-    font-size:22px;
+    font-size:16px;
 
     font-weight:700;
 
-    letter-spacing:7px;
+    letter-spacing:5px;
 
     color:#fff;
 
@@ -3841,11 +3834,11 @@ MISSION03 MOBILE GAME
 
 #constellationDate{
 
-    margin-top:14px;
+    margin-top:8px;
 
-    font-size:12px;
+    font-size:11px;
 
-    letter-spacing:3px;
+    letter-spacing:2px;
 
     color:rgba(255,255,255,.75);
 
@@ -3864,7 +3857,7 @@ MISSION03 MOBILE GAME
     position:absolute;
 
     left:50%;
-    top:61%;
+    top:66%;
 
     transform:translateX(-50%);
 
