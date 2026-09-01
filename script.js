@@ -2747,6 +2747,8 @@ if(endingButton){
         const updateTimer = ()=>{
 
             const now = new Date();
+            console.log("현재시간 :", now);
+console.log("오픈시간 :", endingOpenTime);
 
             const distance = endingOpenTime - now;
 
@@ -2959,6 +2961,8 @@ function showEndingStory(){
 
     endingStoryNext.classList.remove("show");
 
+    showConstellation.classList.remove("show");
+
     showConstellation.style.display="none";
 
     setTimeout(()=>{
@@ -2979,9 +2983,15 @@ function showEndingStory(){
 
             showConstellation.style.display="block";
 
+            setTimeout(()=>{
+
+                showConstellation.classList.add("show");
+
+            },600);
+
         }
 
-    },300);
+    },600);
 
 }
 
@@ -3010,6 +3020,8 @@ if(endingStoryNext){
 
         endingStoryNext.classList.remove("show");
 
+        showConstellation.classList.remove("show");
+
         setTimeout(()=>{
 
             endingStoryOverlay.style.display="none";
@@ -3018,13 +3030,11 @@ if(endingStoryNext){
 
             startLibraEnding();
 
-        },350);
+        },600);
 
     });
 
 }
-
-
 
 // =====================================================
 //                  LIBRA SYSTEM
@@ -3032,13 +3042,30 @@ if(endingStoryNext){
 
 function startLibraEnding(){
 
+    // -----------------------------
+    // 초기화
+    // -----------------------------
+
     constellationTitle.innerHTML="LIBRA";
 
     constellationDate.innerHTML="09.24 ~ 10.22";
 
+    constellationTitle.style.color="#ffffff";
+    constellationDate.style.color="rgba(255,255,255,.75)";
+
+    constellationTitle.style.opacity="0";
+    constellationDate.style.opacity="0";
+
     theEnd.style.opacity="0";
 
     endingClose.style.opacity="0";
+    endingClose.style.pointerEvents="none";
+
+
+
+    // -----------------------------
+    // 별 초기화
+    // -----------------------------
 
     libraStars.forEach(star=>{
 
@@ -3046,15 +3073,49 @@ function startLibraEnding(){
 
     });
 
+
+
+    // -----------------------------
+    // 별 하나씩 등장
+    // -----------------------------
+
     libraStars.forEach((star,index)=>{
 
         setTimeout(()=>{
 
             star.classList.add("show");
 
-        },index*300);
+        },index*1000);
 
     });
+
+
+
+    // -----------------------------
+    // 별 감상 시간
+    // -----------------------------
+
+    const starFinish =
+    (libraStars.length-1)*1000+1800;
+
+
+
+    // -----------------------------
+    // LIBRA 등장
+    // -----------------------------
+
+    setTimeout(()=>{
+
+        constellationTitle.style.opacity="1";
+        constellationDate.style.opacity="1";
+
+    },starFinish);
+
+
+
+    // -----------------------------
+    // LIBRA.DH 변경
+    // -----------------------------
 
     setTimeout(()=>{
 
@@ -3062,13 +3123,28 @@ function startLibraEnding(){
 
         constellationDate.innerHTML="9.25";
 
-    },3200);
+        constellationTitle.style.color="#e7d6a5";
+        constellationDate.style.color="#e7d6a5";
+
+    },starFinish+2000);
+
+
+
+    // -----------------------------
+    // THE END
+    // -----------------------------
 
     setTimeout(()=>{
 
         theEnd.style.opacity="1";
 
-    },5500);
+    },starFinish+4500);
+
+
+
+    // -----------------------------
+    // 목록으로
+    // -----------------------------
 
     setTimeout(()=>{
 
@@ -3076,25 +3152,9 @@ function startLibraEnding(){
 
         endingClose.style.pointerEvents="auto";
 
-    },6000);
+    },starFinish+6000);
 
 }
-
-
-
-/*
-// =====================================================
-//                  LIBRA LINES
-// =====================================================
-
-// 별 위치 확정 후 사용
-
-const libraLines=[
-
-];
-
-*/
-
 
 // =====================================================
 //          LIBRA SHOW CONSTELLATION
@@ -3106,7 +3166,7 @@ if(showConstellation){
 
         endingStoryText.classList.remove("show");
 
-        showConstellation.style.display="none";
+        showConstellation.classList.remove("show");
 
         setTimeout(()=>{
 
@@ -3116,11 +3176,12 @@ if(showConstellation){
 
             startLibraEnding();
 
-        },350);
+        },600);
 
     });
 
 }
+
 
 // =====================================================
 //                  LIBRA BUTTON

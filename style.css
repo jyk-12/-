@@ -2433,11 +2433,11 @@ MISSION03 MOBILE GAME
 
     border:2px solid red;
 
-    top:23.5%;
-    left:42.8%;
+    top:21.5%;
+    left:43.8%;
 
-    width:17px;
-    height:17px;
+    width:16px;
+    height:16px;
 
 }
 
@@ -2445,9 +2445,9 @@ MISSION03 MOBILE GAME
 
     border:2px solid red;
 
-    opacity:1;
+    opacity:0.85;
 
-    transform:rotate(18deg);
+    transform:rotate(-18deg);
 
 }
 
@@ -2481,7 +2481,7 @@ MISSION03 MOBILE GAME
 
     border:2px solid red;
 
-    top:42.5%;
+    top:43.2%;
     left:8.3%;
 
     width:22px;
@@ -2505,8 +2505,8 @@ MISSION03 MOBILE GAME
 
     border:2px solid red;
 
-    top:27.5%;
-    left:67.5%;
+    top:26%;
+    left:65.5%;
 
     width:22px;
     height:35px;
@@ -2529,8 +2529,8 @@ MISSION03 MOBILE GAME
 
     border:2px solid red;
 
-    top:91.5%;
-    left:86.5%;
+    top:92.5%;
+    left:84.5%;
 
     width:32px;
     height:34px;
@@ -3354,7 +3354,7 @@ MISSION03 MOBILE GAME
 
     pointer-events:none;
 
-    transition:opacity .8s ease;
+    transition:opacity 3s ease;
 
     z-index:99999;
 
@@ -3547,7 +3547,7 @@ MISSION03 MOBILE GAME
 
     opacity:1;
 
-    transform:translate(-50%,-50%) scale(1);
+    transform:translate(-50%,-50%) scale(0.3);
 
     pointer-events:auto;
 
@@ -3575,7 +3575,7 @@ MISSION03 MOBILE GAME
     position:absolute;
     inset:0;
 
-    background:rgba(0,0,0,.82);
+    background:rgba(24, 30, 87, 0.372);
     backdrop-filter:blur(4px);
 
 }
@@ -3623,7 +3623,6 @@ MISSION03 MOBILE GAME
 }
 
 
-
 /* =====================================================
                     LIBRA STORY NEXT
 ===================================================== */
@@ -3643,7 +3642,7 @@ MISSION03 MOBILE GAME
 
     opacity:0;
 
-    transition:.5s;
+    transition:opacity 1s;
 
 }
 
@@ -3665,27 +3664,36 @@ MISSION03 MOBILE GAME
 
     margin-top:60px;
 
-    padding:14px 34px;
-
-    background:rgba(255,255,255,.08);
-
-    border:1px solid rgba(255,255,255,.35);
+    background:none;
+    border:none;
 
     color:#fff;
 
-    border-radius:999px;
+    font-size:22px;
 
     cursor:pointer;
 
-    transition:.4s;
+    opacity:0;
+
+    transition:opacity 1s;
+
+}
+
+#showConstellation.show{
+
+    display:block;
+
+    opacity:1;
 
 }
 
 #showConstellation:hover{
 
-    background:rgba(255,255,255,.18);
+    color:#fff;
 
 }
+
+
 
 /* =====================================================
                     LIBRA STARS
@@ -3702,24 +3710,24 @@ MISSION03 MOBILE GAME
 
     position:absolute;
 
-    width:8px;
-    height:8px;
+    width:7px;
+    height:7px;
 
     border-radius:50%;
 
     background:#fff;
 
     box-shadow:
-    0 0 6px #fff,
-    0 0 14px #fff;
+        0 0 6px #fff,
+        0 0 14px #fff;
 
     opacity:0;
 
     transform:scale(.3);
 
     transition:
-    opacity .8s,
-    transform .8s;
+        opacity 1s,
+        transform 1s;
 
 }
 
@@ -3732,104 +3740,63 @@ MISSION03 MOBILE GAME
 }
 
 
+
 /* =====================================================
                     LIBRA STAR POSITION
 ===================================================== */
 
-/* 오른쪽 삼각형 */
+/* 오른쪽 */
 
 #libraStar1{
 
-    top:44%;
+    top:40%;
     left:69%;
 
 }
 
 #libraStar2{
 
-    top:35%;
+    top:31%;
     left:61%;
 
 }
 
 #libraStar3{
 
-    top:53%;
+    top:49%;
     left:60%;
 
 }
 
-/* 왼쪽 라인 */
+/* 왼쪽 */
 
 #libraStar4{
 
-    top:34%;
+    top:31%;
     left:43%;
 
 }
 
 #libraStar5{
 
-    top:64%;
+    top:61%;
     left:44%;
 
 }
 
 #libraStar6{
 
-    top:51%;
+    top:48%;
     left:29%;
 
 }
 
 #libraStar7{
 
-    top:68%;
+    top:65%;
     left:18%;
 
 }
-
-
-
-/* =====================================================
-                    LIBRA LINES
-===================================================== */
-
-/*
-
-.libra-line{
-
-}
-
-#libraLine1{
-
-}
-
-#libraLine2{
-
-}
-
-#libraLine3{
-
-}
-
-#libraLine4{
-
-}
-
-#libraLine5{
-
-}
-
-#libraLine6{
-
-}
-
-#libraLine7{
-
-}
-
-*/
 
 
 
@@ -3858,31 +3825,35 @@ MISSION03 MOBILE GAME
 
     margin:0;
 
-    font-size:34px;
+    font-size:22px;
 
     font-weight:700;
 
-    letter-spacing:8px;
+    letter-spacing:7px;
 
     color:#fff;
 
-    transition:.8s;
+    opacity:0;
+
+    transition:opacity 1s,color 1s;
 
 }
 
 #constellationDate{
 
-    margin-top:40px;
+    margin-top:14px;
 
-    font-size:13px;
+    font-size:12px;
 
     letter-spacing:3px;
 
     color:rgba(255,255,255,.75);
 
+    opacity:0;
+
+    transition:opacity 1s,color 1s;
+
 }
-
-
 
 /* =====================================================
                     LIBRA THE END
@@ -3893,7 +3864,7 @@ MISSION03 MOBILE GAME
     position:absolute;
 
     left:50%;
-    top:55%;
+    top:61%;
 
     transform:translateX(-50%);
 
@@ -3905,7 +3876,7 @@ MISSION03 MOBILE GAME
 
     opacity:0;
 
-    transition:.8s;
+    transition:1s;
 
 }
 
@@ -3920,17 +3891,16 @@ MISSION03 MOBILE GAME
     position:absolute;
 
     left:50%;
-    top:63%;
+    top:72%;
 
     transform:translateX(-50%);
 
-    padding:10px 34px;
-
-    border:1px solid rgba(255,255,255,.5);
-
-    background:transparent;
+    border:none;
+    background:none;
 
     color:#fff;
+
+    font-size:18px;
 
     cursor:pointer;
 
@@ -3938,13 +3908,13 @@ MISSION03 MOBILE GAME
 
     pointer-events:none;
 
-    transition:.5s;
+    transition:opacity 1s;
 
 }
 
 #endingClose:hover{
 
-    background:rgba(255,255,255,.08);
+    color:#fff;
 
 }
 
