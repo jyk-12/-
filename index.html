@@ -491,8 +491,8 @@
 
            <h2>MISSION CLEAR</h2>
 
-            <p class="comment-sub">희미했던 발자취 하나가 제자리를 되찾아,
-            잊혀진 전설의 시간이 다시 천천히 흐르기 시작합니다.<br></p>
+            <p class="comment-sub">희미했던 발자취 하나가 제자리를 되찾아,<br>
+            잊혀진 전설의 시간이 다시 천천히 흐르기 시작합니다.</p>
              
 
             <button id="closeMission02FacePopup">
@@ -1540,31 +1540,35 @@
 </section>
 
 
+<!-- =====================================================
+                    ENDING STORY
+===================================================== -->
 
-<!-- STORY -->
+<div id="endingStoryOverlay">
 
-<div
-    class="clear-popup"
-    id="endingStory">
+    <div id="storyDim"></div>
 
-    <div class="clear-box">
+    <div id="storyContainer">
 
-        <h2>
+        <!-- 스토리 -->
 
-            STORY
+        <div id="endingStoryText"></div>
 
-        </h2>
+        <!-- 다음 -->
 
-        <p>
+        <button
+            id="endingStoryNext">
 
-            엔딩 스토리가 들어갈 자리입니다.
+            ★
 
-        </p>
+        </button>
+
+        <!-- 마지막 버튼 -->
 
         <button
             id="showConstellation">
 
-            완성된 별자리 보기
+            완성된 빛의 조각 보러가기
 
         </button>
 
@@ -1584,13 +1588,63 @@
 
     <div class="clear-box">
 
-        <!-- 별자리 영역 -->
+        <!-- =====================================================
+                            LIBRA STARS
+        ===================================================== -->
 
         <div id="constellationArea">
 
+            <span
+                class="libra-star"
+                id="libraStar1"></span>
+
+            <span
+                class="libra-star"
+                id="libraStar2"></span>
+
+            <span
+                class="libra-star"
+                id="libraStar3"></span>
+
+            <span
+                class="libra-star"
+                id="libraStar4"></span>
+
+            <span
+                class="libra-star"
+                id="libraStar5"></span>
+
+            <span
+                class="libra-star"
+                id="libraStar6"></span>
+
+            <span
+                class="libra-star"
+                id="libraStar7"></span>
+
         </div>
 
-        <!-- 텍스트 -->
+
+
+        <!-- =====================================================
+                            LIBRA LINES
+        ===================================================== -->
+
+        <!--
+        <span class="libra-line" id="libraLine1"></span>
+        <span class="libra-line" id="libraLine2"></span>
+        <span class="libra-line" id="libraLine3"></span>
+        <span class="libra-line" id="libraLine4"></span>
+        <span class="libra-line" id="libraLine5"></span>
+        <span class="libra-line" id="libraLine6"></span>
+        <span class="libra-line" id="libraLine7"></span>
+        -->
+
+
+
+        <!-- =====================================================
+                            LIBRA TITLE
+        ===================================================== -->
 
         <div id="constellationText">
 
@@ -1608,28 +1662,34 @@
 
         </div>
 
-        <div id="endingButtons">
 
-            <button
-                id="endingReplay">
 
-                다시보기
+        <!-- =====================================================
+                            LIBRA THE END
+        ===================================================== -->
 
-            </button>
+        <div id="theEnd">
 
-            <button
-                id="endingClose">
-
-                닫기
-
-            </button>
+            - THE END -
 
         </div>
+
+
+
+        <!-- =====================================================
+                            LIBRA BUTTON
+        ===================================================== -->
+
+        <button
+            id="endingClose">
+
+            닫기
+
+        </button>
 
     </div>
 
 </div>
-
 
 
 <!-- =====================================================
@@ -1654,21 +1714,20 @@
 
         <h2>
 
-            🌟 HIDDEN MISSION
+            🌟 HIDDEN MISSION <br>기록남기기
 
         </h2>
 
         <p>
 
-            에너지가 떨어졌어요!<br>
-            에너지를 충전하러<br>
-            에너지샵으로 이동해주세요!
-
+            먼훗날 이들을 위해 남긴 기록이 사라졌습니다.<br>
+           또다른 기록저장소로 이동해 <br> 다시 기록을 남겨주세요.
+        
         </p>
 
         <p class="hidden-code">
 
-            ㅂㅈㄱㅂㄹ45ㄱ341
+            송파동 40
 
         </p>
 
@@ -1701,13 +1760,13 @@
 
         <h2>
 
-            🌟 HIDDEN MISSION
+            🌟 LEGENDARY ITEM
 
-        </h2>
+        </h2> 
 
         <p>
 
-            여기에 Hidden02 내용을 작성해주세요.
+            『 축복의 열매 』 획득가능<br>위치 정보가 업데이트되었습니다.
 
         </p>
 

@@ -1909,6 +1909,8 @@ document.getElementById("mission05Timer");
 // MISSION05 STATE
 // =====================================================
 
+let mission05State = "locked";
+
 // locked
 // fakeOpen
 // realOpen
@@ -2005,9 +2007,7 @@ function startMission05Timer(){
         // 진짜 Mission5 남은 시간을 화면에 표시
         // =================================================
 
-        if(
-        
-            mission05State==="locked"
+        if( mission05State==="locked"
         ){
 
             const min =
@@ -2120,7 +2120,11 @@ if(mission05Card){
 
 
             // ⭐ Hidden2 등장
-            hidden02Popup.style.display="flex";
+            startHidden02Glitch(()=>{
+
+    hidden02Popup.style.display="flex";
+
+});
 
 
             return;
@@ -2642,11 +2646,27 @@ document.getElementById("endingDetail");
 const endingStar =
 document.getElementById("endingStar");
 
-const endingStory =
-document.getElementById("endingStory");
+
+// =====================================================
+//                  STORY ELEMENT
+// =====================================================
+
+const endingStoryOverlay =
+document.getElementById("endingStoryOverlay");
+
+const endingStoryText =
+document.getElementById("endingStoryText");
+
+const endingStoryNext =
+document.getElementById("endingStoryNext");
 
 const showConstellation =
 document.getElementById("showConstellation");
+
+
+// =====================================================
+//                  CONSTELLATION
+// =====================================================
 
 const constellationPopup =
 document.getElementById("constellationPopup");
@@ -2692,9 +2712,21 @@ if(endingWaitingPopup){
 
 }
 
-if(endingStory){
+if(endingStoryOverlay){
 
-    endingStory.style.display="none";
+    endingStoryOverlay.style.display="none";
+
+}
+
+if(endingStoryNext){
+
+    endingStoryNext.classList.remove("show");
+
+}
+
+if(showConstellation){
+
+    showConstellation.style.display="none";
 
 }
 
@@ -2703,7 +2735,6 @@ if(constellationPopup){
     constellationPopup.style.display="none";
 
 }
-
 
 // ==========================
 // ENDING BUTTON
@@ -2835,63 +2866,276 @@ if(endingStar){
 
     endingStar.addEventListener("click",()=>{
 
-        endingStory.style.display="flex";
+        startEndingStory();
 
     });
 
 }
 
-// ==========================
-// STORY
-// ==========================
+// =====================================================
+//                  LIBRA CONST
+// =====================================================
+
+const constellationTitle =
+document.getElementById("constellationTitle");
+
+const constellationDate =
+document.getElementById("constellationDate");
+
+const theEnd =
+document.getElementById("theEnd");
+
+const endingClose =
+document.getElementById("endingClose");
+
+const libraStars = [
+
+document.getElementById("libraStar1"),
+document.getElementById("libraStar2"),
+document.getElementById("libraStar3"),
+document.getElementById("libraStar4"),
+document.getElementById("libraStar5"),
+document.getElementById("libraStar6"),
+document.getElementById("libraStar7")
+
+];
+
+
+// =====================================================
+//                  LIBRA STORY
+// =====================================================
+
+const endingStoryList = [
+
+`오래전,
+
+누구도 끝을 맺지 못했던 전설은
+긴 시간 동안
+수많은 조각으로 흩어졌습니다.`,
+
+`그 조각들은
+사람들의 기억이 되었고,
+
+누군가의 사랑이 되었으며,
+
+오래된 기록과
+작은 흔적 속에
+조용히 남아 있었습니다.`,
+
+`오늘,
+
+당신은 그 흩어진 조각들을
+하나씩 다시 이어 주었습니다.
+
+그리고...`
+
+];
+
+let endingStoryIndex = 0;
+
+
+// =====================================================
+//                  LIBRA STORY START
+// =====================================================
+
+function startEndingStory(){
+
+    endingStoryIndex = 0;
+
+    endingStoryOverlay.style.display="flex";
+
+    showEndingStory();
+
+}
+
+
+// =====================================================
+//                  LIBRA STORY SHOW
+// =====================================================
+
+function showEndingStory(){
+
+    endingStoryText.classList.remove("show");
+
+    endingStoryNext.classList.remove("show");
+
+    showConstellation.style.display="none";
+
+    setTimeout(()=>{
+
+        endingStoryText.innerHTML =
+        endingStoryList[endingStoryIndex];
+
+        endingStoryText.classList.add("show");
+
+        if(
+            endingStoryIndex <
+            endingStoryList.length-1
+        ){
+
+            endingStoryNext.classList.add("show");
+
+        }else{
+
+            showConstellation.style.display="block";
+
+        }
+
+    },300);
+
+}
+
+// =====================================================
+//                  LIBRA STORY NEXT
+// =====================================================
+
+if(endingStoryNext){
+
+    endingStoryNext.addEventListener("click",()=>{
+
+        if(
+            endingStoryIndex <
+            endingStoryList.length-1
+        ){
+
+            endingStoryIndex++;
+
+            showEndingStory();
+
+            return;
+
+        }
+
+        endingStoryText.classList.remove("show");
+
+        endingStoryNext.classList.remove("show");
+
+        setTimeout(()=>{
+
+            endingStoryOverlay.style.display="none";
+
+            constellationPopup.style.display="flex";
+
+            startLibraEnding();
+
+        },350);
+
+    });
+
+}
+
+
+
+// =====================================================
+//                  LIBRA SYSTEM
+// =====================================================
+
+function startLibraEnding(){
+
+    constellationTitle.innerHTML="LIBRA";
+
+    constellationDate.innerHTML="09.24 ~ 10.22";
+
+    theEnd.style.opacity="0";
+
+    endingClose.style.opacity="0";
+
+    libraStars.forEach(star=>{
+
+        star.classList.remove("show");
+
+    });
+
+    libraStars.forEach((star,index)=>{
+
+        setTimeout(()=>{
+
+            star.classList.add("show");
+
+        },index*300);
+
+    });
+
+    setTimeout(()=>{
+
+        constellationTitle.innerHTML="LIBRA.DH";
+
+        constellationDate.innerHTML="9.25";
+
+    },3200);
+
+    setTimeout(()=>{
+
+        theEnd.style.opacity="1";
+
+    },5500);
+
+    setTimeout(()=>{
+
+        endingClose.style.opacity="1";
+
+        endingClose.style.pointerEvents="auto";
+
+    },6000);
+
+}
+
+
+
+/*
+// =====================================================
+//                  LIBRA LINES
+// =====================================================
+
+// 별 위치 확정 후 사용
+
+const libraLines=[
+
+];
+
+*/
+
+
+// =====================================================
+//          LIBRA SHOW CONSTELLATION
+// =====================================================
 
 if(showConstellation){
 
     showConstellation.addEventListener("click",()=>{
 
-        endingStory.style.display="none";
+        endingStoryText.classList.remove("show");
 
-        constellationPopup.style.display="flex";
-
-        setTimeout(()=>{
-
-            document
-            .getElementById("constellationText")
-            .classList.add("show");
-
-        },2500);
+        showConstellation.style.display="none";
 
         setTimeout(()=>{
 
-            document
-            .getElementById("constellationTitle")
-            .innerHTML="LIBRA.DH";
+            endingStoryOverlay.style.display="none";
 
-            document
-            .getElementById("constellationDate")
-            .innerHTML="09.25";
+            constellationPopup.style.display="flex";
 
-        },5500);
+            startLibraEnding();
 
-        setTimeout(()=>{
-
-            document
-            .getElementById("constellationTitle")
-            .innerHTML="- THE END -";
-
-            document
-            .getElementById("constellationDate")
-            .innerHTML="";
-
-            document
-            .getElementById("endingButtons")
-            .classList.add("show");
-
-        },9000);
+        },350);
 
     });
 
 }
+
+// =====================================================
+//                  LIBRA BUTTON
+// =====================================================
+
+if(endingClose){
+
+    endingClose.addEventListener("click",()=>{
+
+        constellationPopup.style.display="none";
+
+    });
+
+}
+
 
 // =====================================================
 //              HIDDEN 01 OPENING
@@ -3091,6 +3335,7 @@ if(checkHidden01){
 
 }
 
+
 // =====================================================
 //                  HIDDEN 02
 // =====================================================
@@ -3120,28 +3365,46 @@ if(hidden02Popup){
 //                  HIDDEN 02 TIMER
 // =====================================================
 
-// =====================================================
-//                  HIDDEN 02 TIMER
-// =====================================================
-
 // ⭐ 테스트용
 // Hidden2는 Mission4 CLEAR 후 30초 뒤 등장
 
 function startHidden02Timer(){
 
-    setTimeout(()=>{
+    let hidden02TimeLeft = 30;
 
-        // ⭐ Mission5를 가짜 OPEN 상태로 변경
-        mission05State="fakeOpen";
+    // ⭐ 처음에는 Hidden2 타이머 표시
+    mission05Timer.style.display = "block";
 
-        // ⭐ 목록에 OPEN 표시
-        setMission05Status("OPEN");
+    const hidden02Timer = setInterval(()=>{
 
-        mission05Card.classList.remove("locked");
+        const min = Math.floor(hidden02TimeLeft / 60);
+        const sec = hidden02TimeLeft % 60;
 
-        mission05Card.classList.add("open");
+        mission05Timer.innerHTML =
+        `${String(min).padStart(2,"0")}:${String(sec).padStart(2,"0")}`;
 
-    },30000);
+        if(hidden02TimeLeft <= 0){
+
+            clearInterval(hidden02Timer);
+
+            // ⭐ Fake Mission5 OPEN
+            mission05State = "fakeOpen";
+
+            setMission05Status("OPEN");
+
+            mission05Card.classList.remove("locked");
+            mission05Card.classList.add("open");
+
+            // OPEN 상태에서는 타이머 숨김
+            mission05Timer.style.display = "none";
+
+            return;
+
+        }
+
+        hidden02TimeLeft--;
+
+    },1000);
 
 }
 
