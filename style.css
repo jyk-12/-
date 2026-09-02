@@ -2485,7 +2485,7 @@ MISSION03 MOBILE GAME
     left:8.3%;
 
     width:22px;
-    height:24px;
+    height:26px;
 
 }
 
@@ -2506,7 +2506,7 @@ MISSION03 MOBILE GAME
     border:2px solid red;
 
     top:26%;
-    left:67%;
+    left:66.6%;
 
     width:22px;
     height:36px;
@@ -2530,7 +2530,7 @@ MISSION03 MOBILE GAME
     border:2px solid red;
 
     top:92.5%;
-    left:87.5%;
+    left:88.2%;
 
     width:32px;
     height:34px;
@@ -3354,7 +3354,7 @@ MISSION03 MOBILE GAME
 
     pointer-events:none;
 
-    transition:opacity 3s ease;
+    transition:opacity 5.5s ease;
 
     z-index:99999;
 
@@ -3483,28 +3483,147 @@ MISSION03 MOBILE GAME
 
 }
 
-/* 위치 */
+/* 위치 + 랜덤 반짝임 */
 
-.g1{top:8%;left:12%;}
-.g2{top:15%;left:30%;}
-.g3{top:10%;left:52%;}
-.g4{top:18%;left:75%;}
-.g5{top:28%;left:15%;}
-.g6{top:33%;left:60%;}
-.g7{top:42%;left:82%;}
-.g8{top:50%;left:20%;}
-.g9{top:58%;left:44%;}
-.g10{top:65%;left:70%;}
-.g11{top:72%;left:12%;}
-.g12{top:78%;left:35%;}
-.g13{top:82%;left:58%;}
-.g14{top:74%;left:88%;}
-.g15{top:40%;left:8%;}
-.g16{top:22%;left:90%;}
-.g17{top:55%;left:92%;}
-.g18{top:30%;left:40%;}
-.g19{top:12%;left:64%;}
-.g20{top:88%;left:78%;}
+.g1{
+    top:8%;
+    left:12%;
+    animation-delay:.2s;
+    animation-duration:2.8s;
+}
+
+.g2{
+    top:15%;
+    left:30%;
+    animation-delay:1.6s;
+    animation-duration:3.9s;
+}
+
+.g3{
+    top:10%;
+    left:52%;
+    animation-delay:.4s;
+    animation-duration:2.6s;
+}
+
+.g4{
+    top:18%;
+    left:75%;
+    animation-delay:2.3s;
+    animation-duration:4.2s;
+}
+
+.g5{
+    top:28%;
+    left:15%;
+    animation-delay:3.5s;
+    animation-duration:3.1s;
+}
+
+.g6{
+    top:33%;
+    left:60%;
+    animation-delay:3.7s;
+    animation-duration:2.7s;
+}
+
+.g7{
+    top:42%;
+    left:82%;
+    animation-delay:1.1s;
+    animation-duration:3.5s;
+}
+
+.g8{
+    top:50%;
+    left:20%;
+    animation-delay:4.8s;
+    animation-duration:2.9s;
+}
+
+.g9{
+    top:58%;
+    left:44%;
+    animation-delay:5.0s;
+    animation-duration:3.3s;
+}
+
+.g10{
+    top:65%;
+    left:70%;
+    animation-delay:2.8s;
+    animation-duration:4.0s;
+}
+
+.g11{
+    top:72%;
+    left:12%;
+    animation-delay:.9s;
+    animation-duration:2.5s;
+}
+
+.g12{
+    top:78%;
+    left:35%;
+    animation-delay:3.2s;
+    animation-duration:3.6s;
+}
+
+.g13{
+    top:82%;
+    left:58%;
+    animation-delay:1.8s;
+    animation-duration:2.8s;
+}
+
+.g14{
+    top:74%;
+    left:88%;
+    animation-delay:4.4s;
+    animation-duration:3.9s;
+}
+
+.g15{
+    top:40%;
+    left:8%;
+    animation-delay:2.1s;
+    animation-duration:3.0s;
+}
+
+.g16{
+    top:22%;
+    left:90%;
+    animation-delay:5.5s;
+    animation-duration:4.1s;
+}
+
+.g17{
+    top:55%;
+    left:92%;
+    animation-delay:.6s;
+    animation-duration:2.7s;
+}
+
+.g18{
+    top:30%;
+    left:40%;
+    animation-delay:4.1s;
+    animation-duration:3.2s;
+}
+
+.g19{
+    top:12%;
+    left:64%;
+    animation-delay:2.6s;
+    animation-duration:2.9s;
+}
+
+.g20{
+    top:88%;
+    left:78%;
+    animation-delay:5.2s;
+    animation-duration:3.7s;
+}
 
 
 /* =====================================================
@@ -3525,9 +3644,9 @@ MISSION03 MOBILE GAME
 
     border:none;
 
-    color:#fff4b0;
+    color:#f3f0e0e6;
 
-    font-size:75px;
+    font-size:46px;
 
     opacity:0;
 
@@ -3538,8 +3657,8 @@ MISSION03 MOBILE GAME
     pointer-events:none;
 
     text-shadow:
-    0 0 15px #fff4b0,
-    0 0 35px #fff4b0;
+    0 0 8px #fff4b0,
+    0 0 16px #fff4b0;
 
 }
 
@@ -3547,7 +3666,7 @@ MISSION03 MOBILE GAME
 
     opacity:1;
 
-    transform:translate(-50%,-50%) scale(0.3);
+    transform:translate(-50%,-50%) scale(0.26);
 
     pointer-events:auto;
 
@@ -3693,7 +3812,45 @@ MISSION03 MOBILE GAME
 
 }
 
+/* =====================================================
+                CONSTELLATION OVERLAY
+===================================================== */
 
+#constellationPopup{
+
+    position:fixed;
+
+    inset:0;
+
+    display:none;
+
+    justify-content:center;
+    align-items:center;
+
+    z-index:9999;
+
+}
+
+#constellationDim{
+
+    position:absolute;
+
+    inset:0;
+
+    background:#160f6c48;
+
+}
+
+#constellationContainer{
+
+    position:relative;
+
+    width:100%;
+    height:100%;
+
+    overflow:hidden;
+
+}
 
 /* =====================================================
                     LIBRA STARS
@@ -3715,7 +3872,7 @@ MISSION03 MOBILE GAME
 
     border-radius:50%;
 
-    background:#fff;
+    background:#ffffff;
 
     box-shadow:
         0 0 6px #fff,
@@ -3747,21 +3904,21 @@ MISSION03 MOBILE GAME
 
 #libraStar1{
 
-    top:34%;
-    left:67%;
+    top:21%;    /* 34 → 31 → 23 */
+    left:59%;   /* 67 → 62 */
 
 }
 
 #libraStar2{
 
-    top:26%;
+    top:18%;    /* 26 → 18 */
     left:59%;
 
 }
 
 #libraStar3{
 
-    top:43%;
+    top:35%;    /* 43 → 35 */
     left:58%;
 
 }
@@ -3771,29 +3928,29 @@ MISSION03 MOBILE GAME
 
 #libraStar4{
 
-    top:25%;
+    top:17%;    /* 25 → 17 */
     left:42%;
 
 }
 
 #libraStar5{
 
-    top:54%;
-    left:43%;
+    top:48%;    /* 54 → 46 */
+    left:46%;
 
 }
 
 #libraStar6{
 
-    top:42%;
+    top:34%;    /* 42 → 34 */
     left:30%;
 
 }
 
 #libraStar7{
 
-    top:58%;
-    left:20%;
+    top:50%;    /* 58 → 50 */
+    left:23%;
 
 }
 
@@ -3801,7 +3958,8 @@ MISSION03 MOBILE GAME
 
     position:absolute;
 
-    left:50%;
+    left:56%;          /* 50 → 56 */
+
     top:52%;
 
     transform:translate(-50%,-50%);
@@ -3873,7 +4031,11 @@ MISSION03 MOBILE GAME
 
 }
 
+#theEnd.show{
 
+    opacity:1;
+
+}
 
 /* =====================================================
                     LIBRA BUTTON
@@ -3905,12 +4067,19 @@ MISSION03 MOBILE GAME
 
 }
 
+#endingClose.show{
+
+    opacity:1;
+
+    pointer-events:auto;
+
+}
+
 #endingClose:hover{
 
     color:#fff;
 
 }
-
 
 /* =====================================================
             HIDDEN 01 OPENING
@@ -4510,14 +4679,14 @@ MISSION03 MOBILE GAME
     background:
         radial-gradient(circle,
         #ffffff 0%,
-        #ff7b7b 35%,
-        #ff0000 70%,
+        #90b4cb 35%,
+        #4dcc99 70%,
         rgba(255,0,0,0) 100%);
 
     box-shadow:
         0 0 8px #ffffff,
-        0 0 18px #ff5555,
-        0 0 35px #ff0000;
+        0 0 18px #7b9cb0,
+        0 0 35px #43b487;
 
     transform:
         translate(-50%,-50%)

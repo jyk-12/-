@@ -1297,6 +1297,8 @@ function showMission03ClearPopup(){
     // Code Popup 닫기
     mission03CodePopup.style.display = "none";
 
+    mission03Status.innerHTML="CLEAR ✓";
+
     // Clear Popup 열기
     mission03ClearPopup.style.display = "flex";
 
@@ -1358,7 +1360,7 @@ if(closeMission03Clear){
 
          startMission04Timer();
 
-         startHidden01Opening();
+         setTimeout(()=>{ startHidden01Opening(); },1700);
 
     });
 
@@ -2824,7 +2826,7 @@ function startEnding(){
 
         endingFade.classList.remove("show");
 
-    },1300);
+    },5500);
 
     glitter.forEach((star,index)=>{
 
@@ -2909,19 +2911,19 @@ document.getElementById("libraStar7")
 const endingStoryList = [
 
 `오래전,
-
 누구도 끝을 맺지 못했던 전설은
-긴 시간 동안 수많은 조각으로 흩어졌습니다.
+긴 시간 동안 수많은 
+조각으로 흩어졌습니다.
 
 그 조각들은
 사람들의 기억이 되었고,
 누군가의 사랑이 되었으며,
+누군가의 우정이 되어있기도 했습니다.
 
-오래된 기록과
+그렇게 전설은 오래된 기록과
 작은 흔적 속에 조용히 남아 있었습니다.`,
 
-`오늘,
-
+`그러나 오늘,
 당신은 그 흩어진 조각들을
 하나씩 다시 이어 주었습니다.
 
@@ -2930,7 +2932,7 @@ const endingStoryList = [
 마지막 조각이
 제자리를 찾는 순간,`,
 
-`오래된 기록은
+`오래된 기록 속에 감춰져 있던
 그 길을 지켜온 이름 모를 '길지기'의 역할도
 비로소 끝났으며
 
@@ -2942,28 +2944,20 @@ const endingStoryList = [
 '디케의 전설'이라 불렀지만
 
 그 전설은 처음부터
-완성된 이야기가 아니었습니다.
+완성된 이야기가 아닌
+디케조차 끝맺지 못했던 전설이었습니다.`,
 
-디케조차 끝맺지 못했던 전설.`,
-
-`오늘,
-
+`하지만 오늘,
 당신이 마지막 조각을
 제자리로 되돌려 놓음으로써,
 
 비로소
+전설은 완성되었습니다.`,
 
-천칭자리의 전설은
-완성되었습니다.`,
+`전설은 완성되는 순간
+끝나는 것이 아니라
 
-`하지만...
-
-전설은 완성되는 순간
-끝나는 것이 아니었습니다.
-
-누군가가 기억하고,
-누군가가 이어갈 때,
-
+누군가가 기억하고,누군가가 이어갈 때,
 전설은 계속해서 살아갑니다.`,
 
 `오늘,
@@ -2973,7 +2967,7 @@ const endingStoryList = [
 새로운 첫 페이지가 되었습니다.
 
 이제 이 이야기는
-더 이상 디케만의 전설이 아닙니다.`
+더 이상 디케의 전설이 아닙니다.....`
 
 ];
 
@@ -3020,7 +3014,6 @@ function showEndingStory(){
 
 }
 
-
 // =====================================================
 //                  LIBRA STORY NEXT
 // =====================================================
@@ -3029,11 +3022,7 @@ if(endingStoryNext){
 
     endingStoryNext.addEventListener("click",()=>{
 
-        // 아직 다음 페이지가 있으면
-        if(
-            endingStoryIndex <
-            endingStoryList.length-1
-        ){
+        if(endingStoryIndex < endingStoryList.length-1){
 
             endingStoryIndex++;
 
@@ -3043,18 +3032,18 @@ if(endingStoryNext){
 
         }
 
-        // 마지막 ✦ 클릭
-        endingStoryText.classList.remove("show");
+        // 마지막 페이지
 
+        endingStoryText.classList.remove("show");
         endingStoryNext.classList.remove("show");
 
         setTimeout(()=>{
 
-            endingStoryOverlay.style.display="none";
+            endingStoryNext.style.display="none";
 
-            constellationPopup.style.display="flex";
+            showConstellation.style.display="block";
 
-            startLibraEnding();
+            showConstellation.classList.add("show");
 
         },600);
 
@@ -3147,7 +3136,7 @@ function startLibraEnding(){
 
 
     // ==========================
-    // LIBRA → LIBRA.DH
+    // LIBRA → LIBRA.JH
     // ==========================
 
     setTimeout(()=>{
@@ -3161,7 +3150,7 @@ function startLibraEnding(){
 
     setTimeout(()=>{
 
-        constellationTitle.innerHTML="LIBRA.DH";
+        constellationTitle.innerHTML="LIBRA.JH";
         constellationDate.innerHTML="9.25";
 
         constellationTitle.style.color="#e7d6a5";
@@ -3208,19 +3197,14 @@ if(showConstellation){
 
     showConstellation.addEventListener("click",()=>{
 
-        endingStoryText.classList.remove("show");
-
         showConstellation.classList.remove("show");
+        showConstellation.style.display="none";
 
-        setTimeout(()=>{
+        endingStoryOverlay.style.display="none";
 
-            endingStoryOverlay.style.display="none";
+        constellationPopup.style.display="flex";
 
-            constellationPopup.style.display="flex";
-
-            startLibraEnding();
-
-        },600);
+        startLibraEnding();
 
     });
 
@@ -3269,9 +3253,9 @@ const hiddenOpeningColors = [
 
 const hiddenOpeningSpeeds = [
 
-    45,
-    55,
-    65
+    25,
+    20,
+    15,
 
 ];
 
@@ -3311,11 +3295,11 @@ function startHidden01Opening(){
         Math.floor(Math.random()*hiddenOpeningColors.length)
     ];
 
-    let colorB=colorA;
+    let colorB = colorA;
 
     while(colorB===colorA){
 
-        colorB=
+        colorB =
         hiddenOpeningColors[
             Math.floor(Math.random()*hiddenOpeningColors.length)
         ];
@@ -3326,7 +3310,7 @@ function startHidden01Opening(){
     // Speed Random
     // ======================
 
-    const speed=
+    const speed =
     hiddenOpeningSpeeds[
         Math.floor(Math.random()*hiddenOpeningSpeeds.length)
     ];
@@ -3335,44 +3319,59 @@ function startHidden01Opening(){
     // Pattern Random
     // ======================
 
-    const pattern=
+    const pattern =
     hiddenPatterns[
         Math.floor(Math.random()*hiddenPatterns.length)
     ];
 
-    let index=0;
+    let index = 0;
 
-    opening.style.opacity="1";
+    // ======================
+    // Opening Duration
+    // ======================
 
-    const flash=
-    setInterval(()=>{
+    const openingDuration = 7000; // 7초 (5000=5초 / 10000=10초)
 
-        if(index>=pattern.length){
+    const startTime = Date.now();
+
+    opening.style.opacity = "1";
+
+    const flash = setInterval(()=>{
+
+        // 지정 시간 종료
+        if(Date.now() - startTime >= openingDuration){
 
             clearInterval(flash);
 
-            opening.style.display="none";
-            opening.style.opacity="0";
+            opening.style.display = "none";
+            opening.style.opacity = "0";
 
-            hidden01Popup.style.display="flex";
+            hidden01Popup.style.display = "flex";
 
             return;
 
         }
 
-        if(pattern[index]==="A"){
+        // 패턴 끝나면 다시 처음부터
+        if(index >= pattern.length){
 
-            opening.style.background=colorA;
+            index = 0;
+
+        }
+
+        if(pattern[index] === "A"){
+
+            opening.style.background = colorA;
 
         }else{
 
-            opening.style.background=colorB;
+            opening.style.background = colorB;
 
         }
 
         index++;
 
-    },speed);
+    }, speed);
 
 }
 
