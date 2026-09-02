@@ -2620,7 +2620,11 @@ if(closeMission06Clear){
 
         if(endingButton){ endingButton.style.display="block";}
 
-       
+       endingOpenTime = new Date();
+
+endingOpenTime.setSeconds(
+    endingOpenTime.getSeconds()+20
+);
 
     });
 
@@ -2647,6 +2651,15 @@ document.getElementById("endingDetail");
 
 const endingStar =
 document.getElementById("endingStar");
+
+const endingSystemPopup =
+document.getElementById("endingSystemPopup");
+
+const endingRandomText =
+document.getElementById("endingRandomText");
+
+const closeEndingSystemPopup =
+document.getElementById("closeEndingSystemPopup");
 
 
 // =====================================================
@@ -2677,15 +2690,86 @@ const endingReplay =
 document.getElementById("endingReplay");
 
 
+// =====================================================
+//              ENDING RANDOM TEXT
+// =====================================================
+
+// ==========================
+// RANDOM TEXT
+// ==========================
+
+const endingRandomMessages=[
+
+    "최종 암호를 해석하고 있습니다.",
+
+    "미확인 흔적을 분석하고 있습니다.",
+
+    "오래된 사랑을 대조하고 있습니다.",
+
+    "전설의 발자취를 추적하고 있습니다.",
+
+    "기록의 일치 여부를 확인하고 있습니다.",
+
+    "누락된 수집템를 복원하고 있습니다.",
+
+    "최종 절차를 진행하고 있습니다.",
+
+    "분석 결과를 정리하고 있습니다.",
+
+    "ㄹㅇㄷㅂㅇ...ㅁㄱㄹㅇ...",
+
+    "잠시 후 다시 시도해주세요."
+
+];
+
+
+// ==========================
+// RANDOM TEXT
+// ==========================
+
+function showEndingRandomMessage(){
+
+    const randomMessage =
+    endingRandomMessages[
+        Math.floor(Math.random()*endingRandomMessages.length)
+    ];
+
+    if(endingRandomText){
+
+        endingRandomText.innerHTML =
+        randomMessage;
+
+    }
+
+    if(endingSystemPopup){
+
+        endingSystemPopup.style.display="flex";
+
+    }
+
+}
+
+
+// ==========================
+// CLOSE
+// ==========================
+
+if(closeEndingSystemPopup){
+
+    closeEndingSystemPopup.addEventListener("click",()=>{
+
+        endingSystemPopup.style.display="none";
+
+    });
+
+}
+
+
 // ==========================
 // 실제 행사 전날 수정
 // ==========================
 
-let endingOpenTime = new Date();
-
-endingOpenTime.setMinutes(
-    endingOpenTime.getMinutes()+4
-);
+let endingOpenTime;
 
 // 날짜
 // endingOpenTime.setFullYear(2026);
@@ -2738,6 +2822,7 @@ if(constellationPopup){
 
 }
 
+
 // ==========================
 // ENDING BUTTON
 // ==========================
@@ -2746,58 +2831,29 @@ if(endingButton){
 
     endingButton.addEventListener("click",()=>{
 
-        const updateTimer = ()=>{
-
-            const now = new Date();
-            console.log("현재시간 :", now);
-console.log("오픈시간 :", endingOpenTime);
-
-            const distance = endingOpenTime - now;
-
-            if(distance <= 0){
-
-                clearInterval(timer);
-
-                endingWaitingPopup.style.display="none";
-
-                startEnding();
-
-                return;
-
-            }
-
-            const hour = Math.floor(distance/1000/60/60);
-
-            const min = Math.floor((distance/1000/60)%60);
-
-            const sec = Math.floor((distance/1000)%60);
-
-            endingTimer.innerHTML =
-            `${String(hour).padStart(2,"0")}:${String(min).padStart(2,"0")}:${String(sec).padStart(2,"0")}`;
-
-        };
-
         const now = new Date();
+
+        // ==========================
+        // LOCK
+        // ==========================
 
         if(now < endingOpenTime){
 
-            endingWaitingPopup.style.display="flex";
-
-            updateTimer();
-
-            const timer =
-            setInterval(updateTimer,1000);
+            showEndingRandomMessage();
 
             return;
 
         }
+
+        // ==========================
+        // OPEN
+        // ==========================
 
         startEnding();
 
     });
 
 }
-
 
 
 // ==========================
@@ -2820,7 +2876,7 @@ function startEnding(){
 
         endingDetail.classList.add("show");
 
-    },800);
+    },5000);
 
     setTimeout(()=>{
 
@@ -2834,7 +2890,7 @@ function startEnding(){
 
             star.classList.add("show");
 
-        },1500+(index*120));
+        },2500+(index*120));
 
     });
 

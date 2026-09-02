@@ -8,7 +8,9 @@
              initial-scale=1.0,
              maximum-scale=1.0,
              user-scalable=no">
-    <title> 전설의 흔적</title>
+    <title> Trace of Legend</title>
+
+    <meta property="og:image" content="https://jyk-12.github.io/Traces-of-the-Legend/별자리/images/main.png">
 
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 
@@ -1447,32 +1449,25 @@
 
 <!-- 활성화 전 -->
 
+<!-- =====================================================
+                    ENDING SYSTEM POPUP
+===================================================== -->
+
 <div
-    class="clear-popup"
-    id="endingWaitingPopup">
+    class="system-popup"
+    id="endingSystemPopup">
 
-    <div class="clear-box">
+    <div class="system-box">
 
-        <h2>
+        <p
+            id="endingRandomText">
 
-            🌌
-
-        </h2>
-
-        <p>
-
-            엔딩 활성화 중입니다.
-
-        </p>
-
-        <p id="endingTimer">
-
-            00:00:00
+            <!-- JS에서 Random Text 출력 -->
 
         </p>
 
         <button
-            id="closeEndingWaiting">
+            id="closeEndingSystemPopup">
 
             확인
 
@@ -1696,6 +1691,16 @@
         </button>
 
     </div>
+
+</div>
+
+<!-- =====================================================
+                HIDDEN 02 OPENING
+===================================================== -->
+
+<div
+    class="hidden-opening"
+    id="hidden02Opening">
 
 </div>
 
