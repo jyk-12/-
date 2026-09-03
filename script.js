@@ -1847,45 +1847,6 @@ if(checkMission04Code){
 
             mission04Status.innerHTML="CLEAR ✓";
 
-
-            // =================================================
-            //              TIMER 시간 설정
-            // =================================================
-
-            // ⭐ Hidden02 : CLEAR 후 20초
-            hidden02OpenTime=new Date();
-
-            hidden02OpenTime.setSeconds(
-                hidden02OpenTime.getSeconds()+20
-            );
-
-
-            // ⭐ Mission05 Fake OPEN : CLEAR 후 40초
-            mission05FakeOpenTime=new Date();
-
-            mission05FakeOpenTime.setSeconds(
-                mission05FakeOpenTime.getSeconds()+40
-            );
-
-
-            // ⭐ Mission05 Real OPEN : CLEAR 후 60초
-            mission05OpenTime=new Date();
-
-            mission05OpenTime.setSeconds(
-                mission05OpenTime.getSeconds()+60
-            );
-
-
-            // =================================================
-            //              THREE TIMER START
-            // =================================================
-
-            startHidden02Timer();
-
-            startMission05FakeTimer();
-
-            startMission05Timer();
-
         }
 
         else{
@@ -1893,6 +1854,53 @@ if(checkMission04Code){
             alert("인증번호가 틀렸습니다.");
 
         }
+
+    });
+
+}
+
+
+
+if(closeMission04Clear){
+
+    closeMission04Clear.addEventListener("click",()=>{
+
+        mission04ClearPopup.style.display="none";
+
+        mission04Detail.classList.remove("show");
+
+        showLightFragment();
+
+        missionPanel.classList.add("show");
+
+
+        // =================================================
+        //              TIMER 시간 설정
+        // =================================================
+
+        // ⭐ Hidden02 : 확인 후 20초
+        hidden02OpenTime=new Date();
+
+        hidden02OpenTime.setSeconds(
+            hidden02OpenTime.getSeconds()+20
+        );
+
+
+        // ⭐ Mission05 Fake OPEN : 확인 후 40초
+        mission05FakeOpenTime=new Date();
+
+        mission05FakeOpenTime.setSeconds(
+            mission05FakeOpenTime.getSeconds()+40
+        );
+
+
+        // =================================================
+        //              TWO TIMER START
+        // =================================================
+
+        startHidden02Timer();
+
+        startMission05FakeTimer();
 
     });
 
@@ -3370,7 +3378,9 @@ const checkHidden02 =
 document.getElementById("checkHidden02");
 
 if(hidden02Popup){
+
     hidden02Popup.style.display="none";
+
 }
 
 
@@ -3412,21 +3422,31 @@ function startHidden02Opening(){
             hidden02Popup.style.display="flex";
 
             return;
+
         }
 
         if(index>=pattern.length){
+
             index=0;
+
         }
 
         if(pattern[index]==="A"){
+
             opening.style.background=colorA;
-        }else{
+
+        }
+
+        else{
+
             opening.style.background=colorB;
+
         }
 
         index++;
 
     },speed);
+
 }
 
 
@@ -3445,7 +3465,22 @@ if(checkHidden02){
 
             hidden02Popup.style.display="none";
 
-        }else{
+
+            // =================================================
+            //          REAL MISSION05 TIMER START
+            // =================================================
+
+            mission05OpenTime=new Date();
+
+            mission05OpenTime.setSeconds(
+                mission05OpenTime.getSeconds()+60
+            );
+
+            startMission05Timer();
+
+        }
+
+        else{
 
             alert("다시 입력해주세요.");
 
@@ -3474,7 +3509,9 @@ function startHidden02Timer(){
         const now=new Date();
 
         if(now < hidden02OpenTime){
+
             return;
+
         }
 
         clearInterval(timer);
