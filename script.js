@@ -1849,13 +1849,12 @@ if(checkMission04Code){
 
             mission04Status.innerHTML="CLEAR ✓";
 
+            // ==========================
+            // MISSION05 TIMER START
+            // ==========================
+
             startMission05Timer();
 
-            
-
-console.log("Hidden Timer Start");
-
-startHidden02Timer();
         }
 
         else{
@@ -1863,26 +1862,6 @@ startHidden02Timer();
             alert("인증번호가 틀렸습니다.");
 
         }
-
-    });
-
-}
-
-
-
-if(closeMission04Clear){
-
-    closeMission04Clear.addEventListener("click",()=>{
-
-        mission04ClearPopup.style.display="none";
-
-        mission04Detail.classList.remove("show");
-
-        showLightFragment();
-
-        missionPanel.classList.add("show");
-
-        
 
     });
 
@@ -1907,18 +1886,20 @@ document.getElementById("mission05Close");
 const mission05Timer =
 document.getElementById("mission05Timer");
 
+
 // =====================================================
-// MISSION05 STATE
+//                  MISSION05 STATE
 // =====================================================
 
-let mission05State = "locked";
+let mission05State="locked";
 
 // locked
 // fakeOpen
 // realOpen
 
+
 // =====================================================
-//          MISSION 05 상태 표시 함수
+//          MISSION05 상태 표시 함수
 // =====================================================
 
 function setMission05Status(text){
@@ -1926,7 +1907,7 @@ function setMission05Status(text){
     for(const node of mission05Status.childNodes){
 
         if(
-            node.nodeType === 3 &&
+            node.nodeType===3 &&
             node.textContent.trim()
         ){
 
@@ -1940,104 +1921,108 @@ function setMission05Status(text){
 
 }
 
-// ======================================
-// ⭐ 실제 오픈 시간 (행사 전날 수정)
-// ======================================
-
-let mission05OpenTime = new Date();
-
-// 날짜 (행사 전날 설정)
-// mission05OpenTime.setFullYear(2026);
-// mission05OpenTime.setMonth(8);
-// mission05OpenTime.setDate(25);
-
-// 시간 (행사 전날 설정)
-// mission05OpenTime.setHours(15);
-// mission05OpenTime.setMinutes(40);
-// mission05OpenTime.setSeconds(0);
 
 // =====================================================
-//              MISSION 05 REAL TIMER
+//              실제 행사 전날 수정
 // =====================================================
 
-// ⭐ 테스트용
-// 진짜 Mission5는 Mission4 CLEAR 후 60초에 OPEN
-//
-// ⚠️ 중요
-// 이 타이머는 처음에는 화면에 표시하지 않는다.
-// 뒤에서 몰래 계속 흐른다.
-//
-// Hidden2가 열리는 순간부터
-// 현재 남은 시간이 화면에 나타난다.
+// ⭐ Fake Mission05 OPEN
+let mission05FakeOpenTime;
 
-let mission05RealTimerStarted = false;
+// ⭐ Real Mission05 OPEN
+let mission05OpenTime;
 
-let mission05RealTimeLeft = 60;
 
+// =====================================================
+//              REAL TIMER
+// =====================================================
+
+let mission05RealTimerStarted=false;
+
+let mission05RealTimeLeft=0;
+
+
+// =====================================================
+//              FAKE TIMER
+// =====================================================
+
+function startMission05FakeTimer(){
+
+    const fakeTimer=setInterval(()=>{
+
+        const now=new Date();
+
+        if(now>=mission05FakeOpenTime){
+
+            clearInterval(fakeTimer);
+
+            mission05State="fakeOpen";
+
+            setMission05Status("OPEN");
+
+            mission05Card.classList.remove("locked");
+
+            mission05Card.classList.add("open");
+
+        }
+
+    },1000);
+
+}
+
+
+// =====================================================
+//              REAL TIMER
+// =====================================================
 
 function startMission05Timer(){
 
-    if(!mission05Timer) return;
-
-    // ⭐ 중복 실행 방지
     if(mission05RealTimerStarted) return;
 
-    mission05RealTimerStarted = true;
+    mission05RealTimerStarted=true;
 
-    // ⭐ 진짜 Mission5 타이머 시작
-    mission05RealTimeLeft = 60;
+    const timer=setInterval(()=>{
 
+        const now=new Date();
 
-    // =================================================
-    // 처음에는 진짜 Mission5 타이머를 숨김
-    // =================================================
+        const distance=
+        mission05OpenTime-now;
 
-    mission05Timer.style.display="none";
-
-
-    // =================================================
-    // 진짜 Mission5 타이머
-    // =================================================
-
-    const realTimer = setInterval(()=>{
-
-        mission05RealTimeLeft--;
+        mission05RealTimeLeft=
+        Math.max(
+            0,
+            Math.floor(distance/1000)
+        );
 
 
-        // =================================================
-        // ⭐ Hidden2가 이미 열려 있다면
-        // 진짜 Mission5 남은 시간을 화면에 표시
-        // =================================================
+        // ==========================================
+        // Fake 클릭 후에만 남은시간 표시
+        // ==========================================
 
-        if( mission05State==="locked"
-        ){
+        if(mission05State==="locked"){
 
-            const min =
-            Math.floor(mission05RealTimeLeft / 60);
+            const min=
+            Math.floor(
+                mission05RealTimeLeft/60
+            );
 
-            const sec =
-            mission05RealTimeLeft % 60;
+            const sec=
+            mission05RealTimeLeft%60;
 
-            mission05Timer.innerHTML =
+            mission05Timer.innerHTML=
             `${String(min).padStart(2,"0")}:${String(sec).padStart(2,"0")}`;
-
-            mission05Timer.style.display="block";
 
         }
 
 
-        // =================================================
-        // ⭐ 진짜 Mission5 OPEN
-        // =================================================
+        // ==========================================
+        // REAL OPEN
+        // ==========================================
 
-        if(mission05RealTimeLeft<=0){
+        if(distance<=0){
 
-            clearInterval(realTimer);
+            clearInterval(timer);
 
-            mission05RealTimeLeft=0;
-
-
-            // ⭐ 진짜 OPEN
             mission05State="realOpen";
 
             setMission05Status("OPEN");
@@ -2048,17 +2033,11 @@ function startMission05Timer(){
 
             mission05Card.classList.add("open");
 
-
-            // =============================================
-            // 📳 여기 나중에 3초 진동 추가
-            // =============================================
-
         }
 
     },1000);
 
 }
-
 
 // =====================================================
 //                    MISSION 05 OPEN
@@ -2070,7 +2049,7 @@ if(mission05Card){
 
 
         // =================================================
-        // 🔒 아직 잠겨있으면 클릭 무시
+        // 🔒 아직 잠겨있으면 클릭 불가
         // =================================================
 
         if(mission05State==="locked"){
@@ -2081,53 +2060,35 @@ if(mission05Card){
 
 
         // =================================================
-        // 🎭 가짜 OPEN
-        // =================================================
-        //
-        // 플레이어는 Mission5가 열린 줄 알고 클릭
-        // 하지만 실제로는 Hidden2가 등장
-        //
+        // 🎭 FAKE OPEN
         // =================================================
 
         if(mission05State==="fakeOpen"){
 
-
-            // ⭐ 다시 잠금
+            // 다시 LOCK
             mission05State="locked";
 
             mission05Card.classList.remove("open");
 
             mission05Card.classList.add("locked");
 
-
-            // ⭐ OPEN → 🔒
             setMission05Status("🔒");
 
 
-            // =================================================
-            // ⭐ 여기서부터 진짜 Mission5 남은 시간 표시
-            // =================================================
+            // ==========================
+            // REAL TIMER 표시
+            // ==========================
 
             const min =
-            Math.floor(mission05RealTimeLeft / 60);
+            Math.floor(mission05RealTimeLeft/60);
 
             const sec =
-            mission05RealTimeLeft % 60;
+            mission05RealTimeLeft%60;
 
-
-            mission05Timer.innerHTML =
+            mission05Timer.innerHTML=
             `${String(min).padStart(2,"0")}:${String(sec).padStart(2,"0")}`;
 
             mission05Timer.style.display="block";
-
-
-            // ⭐ Hidden2 등장
-            startHidden02Glitch(()=>{
-
-    hidden02Popup.style.display="flex";
-
-});
-
 
             return;
 
@@ -2135,7 +2096,7 @@ if(mission05Card){
 
 
         // =================================================
-        // ⭐ 진짜 Mission5 OPEN
+        // ⭐ REAL OPEN
         // =================================================
 
         if(mission05State==="realOpen"){
@@ -2150,91 +2111,63 @@ if(mission05Card){
 
 }
 
-// ==========================
-// CLOSE
-// ==========================
-
-if(mission05Close){
-
-    mission05Close.addEventListener("click",()=>{
-
-        mission05Detail.classList.remove("show");
-
-        missionPanel.classList.add("show");
-
-    });
-
-}
-
-
-// ==========================
-// CLOSE
-// ==========================
-
-if(mission05Close){
-
-    mission05Close.addEventListener("click",()=>{
-
-        mission05Detail.classList.remove("show");
-
-        missionPanel.classList.add("show");
-
-
-    });
-
-}
-
 // =====================================================
-//                    MISSION 05 QUIZ
+//                    MISSION 05 OPEN
 // =====================================================
 
-const mission05QuizAnswer =
-document.getElementById("mission05QuizAnswer");
+if(mission05Card){
 
-const checkMission05Quiz =
-document.getElementById("checkMission05Quiz");
+    mission05Card.addEventListener("click",()=>{
 
-const mission05FacePopup =
-document.getElementById("mission05FacePopup");
+        // =================================================
+        // LOCK
+        // =================================================
 
-const closeMission05FacePopup =
-document.getElementById("closeMission05FacePopup");
+        if(mission05State==="locked"){
 
-const mission05CodeArea =
-document.getElementById("mission05CodeArea");
-
-
-
-if(mission05FacePopup){
-
-    mission05FacePopup.style.display="none";
-
-}
-
-if(mission05CodeArea){
-
-    mission05CodeArea.style.display="none";
-
-}
-
-
-
-if(checkMission05Quiz){
-
-    checkMission05Quiz.addEventListener("click",()=>{
-
-        const answer =
-        mission05QuizAnswer.value.trim();
-
-        if(answer==="정답"){
-
-            mission05FacePopup.style.display="block";
+            return;
 
         }
 
-        else{
+        // =================================================
+        // FAKE OPEN
+        // =================================================
 
-            alert("다시 입력해주세요!");
+        if(mission05State==="fakeOpen"){
+
+            // 다시 잠금
+            mission05State="locked";
+
+            mission05Card.classList.remove("open");
+            mission05Card.classList.add("locked");
+
+            setMission05Status("🔒");
+
+            // 진짜 타이머 표시 시작
+            mission05Timer.style.display="block";
+
+            const min =
+            Math.floor(mission05RealTimeLeft/60);
+
+            const sec =
+            mission05RealTimeLeft%60;
+
+            mission05Timer.innerHTML =
+            `${String(min).padStart(2,"0")}:${String(sec).padStart(2,"0")}`;
+
+            return;
+
+        }
+
+        // =================================================
+        // REAL OPEN
+        // =================================================
+
+        if(mission05State==="realOpen"){
+
+            missionPanel.classList.remove("show");
+
+            mission05Detail.classList.add("show");
 
         }
 
@@ -2242,28 +2175,8 @@ if(checkMission05Quiz){
 
 }
 
-
-
-// ==========================
-// FACE POPUP
-// ==========================
-
-if(closeMission05FacePopup){
-
-    closeMission05FacePopup.addEventListener("click",()=>{
-
-        mission05FacePopup.style.display="none";
-
-        mission05CodeArea.style.display="block";
-
-    });
-
-}
-
-
-
 // =====================================================
-//                    MISSION 05 CLEAR
+//                  MISSION 05 CODE
 // =====================================================
 
 const mission05Code =
@@ -2279,7 +2192,6 @@ const closeMission05Clear =
 document.getElementById("closeMission05Clear");
 
 
-
 if(mission05ClearPopup){
 
     mission05ClearPopup.style.display="none";
@@ -2287,6 +2199,9 @@ if(mission05ClearPopup){
 }
 
 
+// =====================================================
+//                  CHECK CODE
+// =====================================================
 
 if(checkMission05Code){
 
@@ -2295,13 +2210,17 @@ if(checkMission05Code){
         const code =
         mission05Code.value.trim();
 
-        if(code==="5555"){
-
-            mission05ClearPopup.style.display="flex";
+        if(code==="5555"){     // ⭐ 실제 정답으로 변경
 
             mission05Status.innerHTML="CLEAR ✓";
 
-            
+            mission05ClearPopup.style.display="flex";
+
+            // =================================================
+            // Mission06 Timer
+            // =================================================
+
+            startMission06Timer();
 
         }
 
@@ -2317,9 +2236,9 @@ if(checkMission05Code){
 
 
 
-// ==========================
-// FINAL CLOSE
-// ==========================
+// =====================================================
+//                  CLEAR CLOSE
+// =====================================================
 
 if(closeMission05Clear){
 
@@ -2332,9 +2251,6 @@ if(closeMission05Clear){
         showLightFragment();
 
         missionPanel.classList.add("show");
-        
-        startMission06Timer();
-
 
     });
 
@@ -3519,66 +3435,94 @@ if(hidden02Popup){
 
 }
 
-// ======================================
-// TEST
-// ======================================
+
 
 // =====================================================
-//                  HIDDEN 02 TIMER
+//              HIDDEN 02 OPENING
 // =====================================================
 
-// ⭐ 테스트용
-// Hidden2는 Mission4 CLEAR 후 30초 뒤 등장
+function startHidden02Opening(){
 
-function startHidden02Timer(){
+    const opening =
+    document.getElementById("hidden02Opening");
 
-    let hidden02TimeLeft = 30;
+    opening.style.display="block";
 
-    // ⭐ 처음에는 Hidden2 타이머 표시
-    mission05Timer.style.display = "block";
+    opening.style.opacity="1";
 
-    const hidden02Timer = setInterval(()=>{
 
-        const min = Math.floor(hidden02TimeLeft / 60);
-        const sec = hidden02TimeLeft % 60;
+    // ======================
+    // Purple Strobe
+    // ======================
 
-        mission05Timer.innerHTML =
-        `${String(min).padStart(2,"0")}:${String(sec).padStart(2,"0")}`;
+    const colorA="#7a5cff";
 
-        if(hidden02TimeLeft <= 0){
+    const colorB="#ffffff";
 
-            clearInterval(hidden02Timer);
+    const pattern="AAABBABBAAABABBBAAABBB";
 
-            // ⭐ Fake Mission5 OPEN
-            mission05State = "fakeOpen";
+    const speed=18;
 
-            setMission05Status("OPEN");
+    const openingDuration=2200;
 
-            mission05Card.classList.remove("locked");
-            mission05Card.classList.add("open");
+    let index=0;
 
-            // OPEN 상태에서는 타이머 숨김
-            mission05Timer.style.display = "none";
+    const startTime=Date.now();
+
+
+    const flash=setInterval(()=>{
+
+        if(Date.now()-startTime>=openingDuration){
+
+            clearInterval(flash);
+
+            opening.style.display="none";
+
+            opening.style.opacity="0";
+
+            hidden02Popup.style.display="flex";
 
             return;
 
         }
 
-        hidden02TimeLeft--;
 
-    },1000);
+        if(index>=pattern.length){
+
+            index=0;
+
+        }
+
+
+        if(pattern[index]==="A"){
+
+            opening.style.background=colorA;
+
+        }
+
+        else{
+
+            opening.style.background=colorB;
+
+        }
+
+        index++;
+
+    },speed);
 
 }
 
-// ======================================
-// ANSWER
-// ======================================
+
+
+// =====================================================
+//                  HIDDEN 02 ANSWER
+// =====================================================
 
 if(checkHidden02){
 
     checkHidden02.addEventListener("click",()=>{
 
-        const answer=
+        const answer =
         hidden02Answer.value.trim();
 
         if(answer==="정답"){

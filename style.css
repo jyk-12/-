@@ -2433,7 +2433,7 @@ MISSION03 MOBILE GAME
 
     border:2px solid red;
 
-    top:21.5%;
+    top:22.5%;
     left:42.5%;
 
     width:16px;
@@ -2481,11 +2481,11 @@ MISSION03 MOBILE GAME
 
     border:2px solid red;
 
-    top:41.5%;
-    left:8.3%;
+    top:41.8%;
+    left:8%;
 
     width:22px;
-    height:26px;
+    height:29px;
 
 }
 
@@ -2530,7 +2530,7 @@ MISSION03 MOBILE GAME
     border:2px solid red;
 
     top:92.5%;
-    left:88.2%;
+    left:87.6%;
 
     width:32px;
     height:34px;
@@ -2543,7 +2543,7 @@ MISSION03 MOBILE GAME
 
     opacity:.95;
 
-    transform:rotate(190deg);
+    transform:rotate(195deg);
 
 }
 
@@ -3904,22 +3904,22 @@ MISSION03 MOBILE GAME
 
 #libraStar1{
 
-    top:20.4%;      /* 21 → 20.4 */
-    left:58.5%;     /* 59 → 58.5 */
+    top:16.5%;      /* 21 → 20.4 */
+    left:57%;     /* 59 → 58.5 */
 
 }
 
 #libraStar2{
 
     top:18%;
-    left:57.8%;     /* 59 → 57.8 */
+    left:52%;     /* 59 → 57.8 */
 
 }
 
 #libraStar3{
 
-    top:32%;        /* 35 → 32 */
-    left:60%;       /* 58 → 60 */
+    top:27%;        /* 35 → 32 */
+    left:61%;       /* 58 → 60 */
 
 }
 
@@ -3928,15 +3928,15 @@ MISSION03 MOBILE GAME
 
 #libraStar4{
 
-    top:17%;
-    left:40.8%;     /* 42 → 40.8 */
+    top:20%;
+    left:38.5%;     /* 42 → 40.8 */
 
 }
 
 #libraStar5{
 
-    top:45%;        /* 48 → 45 */
-    left:49%;       /* 46 → 49 */
+    top:42%;        /* 48 → 45 */
+    left:50.8%;       /* 46 → 49 */
 
 }
 
@@ -3958,9 +3958,9 @@ MISSION03 MOBILE GAME
 
     position:absolute;
 
-    left:56%;
+    left:59.5%;
 
-    top:52%;
+    top:53.5%;
 
     transform:translate(-50%,-50%);
 
