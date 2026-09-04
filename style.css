@@ -2433,11 +2433,11 @@ MISSION03 MOBILE GAME
 
   
 
-    top:22.5%;
+    top:22.8%;
     left:42.5%;
 
-    width:14px;
-    height:14px;
+    width:12px;
+    height:12px;
 
 }
 
@@ -2457,7 +2457,7 @@ MISSION03 MOBILE GAME
  
 
     top:81.5%;
-    left:41.5%;
+    left:41.7%;
 
     width:16px;
     height:16px;
@@ -2479,7 +2479,7 @@ MISSION03 MOBILE GAME
 .item-key{
 
  
-    top:39.3%;
+    top:39.5%;
     left:8.3%;
 
     width:20px;
@@ -2501,7 +2501,7 @@ MISSION03 MOBILE GAME
 .item-moon{
 
 
-    top:26.2%;
+    top:26.3%;
     left:66.2%;
 
     width:22px;
@@ -3903,8 +3903,8 @@ MISSION03 MOBILE GAME
 
 #libraStar2{
 
-    top:19.5%;
-    left:47.2%;     /* 59 → 57.8 */
+    top:18.5%;
+    left:46%;     /* 59 → 57.8 */
 
 }
 
@@ -3920,8 +3920,8 @@ MISSION03 MOBILE GAME
 
 #libraStar4{
 
-    top:16%;
-    left:36.5%;     /* 42 → 40.8 */
+    top:20%;
+    left:35.7%;     /* 42 → 40.8 */
 
 }
 
@@ -3935,14 +3935,14 @@ MISSION03 MOBILE GAME
 #libraStar6{
 
     top:34%;
-    left:25.8%;     /* 30 → 28.8 */
+    left:24.3%;     /* 30 → 28.8 */
 
 }
 
 #libraStar7{
 
     top:50%;        /* 높이 유지 */
-    left:20.4%;     /* 23 → 21.4 */
+    left:19%;     /* 23 → 21.4 */
 
 }
 
