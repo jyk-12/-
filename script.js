@@ -232,13 +232,30 @@ if(clearPopup){
 
 
 
+// ==========================
+// MISSION02 OPEN TIME
+// ==========================
+
 const mission02OpenTime =
 new Date();
 
 
-mission02OpenTime.setHours(0);
-mission02OpenTime.setMinutes(0);
-mission02OpenTime.setSeconds(0);
+// ==========================
+// 실제 오픈 시간
+// ==========================
+
+// mission02OpenTime.setHours(0);
+// mission02OpenTime.setMinutes(0);
+// mission02OpenTime.setSeconds(0);
+
+
+// ==========================
+// TEST (30초)
+// ==========================
+
+mission02OpenTime.setSeconds(
+    mission02OpenTime.getSeconds()+30
+);
 
 
 
@@ -304,76 +321,63 @@ closeClear.addEventListener("click",()=>{
 
 }
 
-
-
-
 // ==========================
 // MISSION 02 TIMER
 // ==========================
 
-
 function startMission02Timer(){
-
 
     if(!mission02Timer){
         return;
     }
 
-
+    // 타이머 표시
+    mission02Timer.style.display="block";
 
     const timer =
     setInterval(()=>{
 
-
         const now =
         new Date();
 
-
         const distance =
-        mission02OpenTime - now;
+        mission02OpenTime-now;
 
+        // ==========================
+        // OPEN
+        // ==========================
 
-
-        if(distance <=0){
-
+        if(distance<=0){
 
             clearInterval(timer);
-
 
             mission02Status.innerHTML=
             "OPEN";
 
-
             mission02Timer.style.display="none";
-
 
             mission02Card.classList.remove("locked");
 
-
             mission02Card.classList.add("opened");
-
 
             return;
 
         }
 
-
+        // ==========================
+        // TIMER
+        // ==========================
 
         const min =
-        Math.floor(distance /1000/60);
-
+        Math.floor(distance/1000/60);
 
         const sec =
         Math.floor((distance/1000)%60);
 
-
-
-        mission02Timer.innerHTML =
+        mission02Timer.innerHTML=
         `${String(min).padStart(2,"0")}:${String(sec).padStart(2,"0")}`;
 
-
     },1000);
-
 
 }
 
@@ -526,49 +530,29 @@ closeMission02FacePopup.addEventListener("click",()=>{
 
 }
 
-
-
-
-
 // ==========================
 // MISSION 02 CLEAR
 // ==========================
 
-
 const mission02Code =
 document.getElementById("mission02Code");
-
 
 const checkMission02Code =
 document.getElementById("checkMission02Code");
 
-
 const mission02ClearPopup =
 document.getElementById("mission02ClearPopup");
-
 
 const closeMission02Clear =
 document.getElementById("closeMission02Clear");
 
-
-
 const mission03Card =
 document.getElementById("mission03Card");
-
 
 const mission03Status =
 document.getElementById("mission03Status");
 
-
-let mission03OpenTime =
-new Date();
-
-
-mission03OpenTime.setHours(0);
-mission03OpenTime.setMinutes(10);
-mission03OpenTime.setSeconds(0);
-
-
+let mission03OpenTime;
 
 if(mission02ClearPopup){
 
@@ -576,67 +560,72 @@ if(mission02ClearPopup){
 
 }
 
-
-
 if(checkMission02Code){
 
-checkMission02Code.addEventListener("click",()=>{
+    checkMission02Code.addEventListener("click",()=>{
+
+        const code =
+        mission02Code.value.trim();
+
+        if(code==="2222"){
+
+            mission02ClearPopup.style.display="flex";
+
+            mission02Status.innerHTML="CLEAR ✓";
+
+        }
+
+        else{
+
+            alert("인증번호가 틀렸어!");
+
+        }
+
+    });
+
+}
+
+if(closeMission02Clear){
+
+    closeMission02Clear.addEventListener("click",()=>{
+
+        mission02ClearPopup.style.display="none";
+
+        mission02Detail.classList.remove("show");
+
+        showLightFragment();
+
+        missionPanel.classList.add("show");
 
 
-    const code =
-    mission02Code.value.trim();
+        // ==========================
+        // MISSION03 OPEN TIME
+        // ==========================
+
+        // ===== 실제 =====
+
+        // mission03OpenTime = new Date();
+        // mission03OpenTime.setHours(0);
+        // mission03OpenTime.setMinutes(10);
+        // mission03OpenTime.setSeconds(0);
 
 
+        // ===== TEST =====
 
-    if(code==="2222"){
+        mission03OpenTime = new Date();
 
-
-        mission02ClearPopup.style.display="flex";
-
-
-        mission02Status.innerHTML="CLEAR ✓";
-
+        mission03OpenTime.setSeconds(
+            mission03OpenTime.getSeconds()+30
+        );
 
 
         startMission03Timer();
 
-
-
-    }else{
-
-
-        alert("인증번호가 틀렸어!");
-
-    }
-
-
-
-});
+    });
 
 }
 
 
-
-if(closeMission02Clear){
-
-closeMission02Clear.addEventListener("click",()=>{
-
-
-    mission02ClearPopup.style.display="none";
-
-
-    mission02Detail.classList.remove("show");
-
-    showLightFragment();
-
-
-    missionPanel.classList.add("show");
-
-
-
-});
-
-}
 
 // ==========================
 // MISSION 03 TIMER
@@ -648,6 +637,8 @@ function startMission03Timer(){
     document.getElementById("mission03Timer");
 
     if(!timerText) return;
+
+    timerText.style.display="block";
 
     const timer = setInterval(()=>{
 
@@ -664,6 +655,7 @@ function startMission03Timer(){
             timerText.style.display = "none";
 
             mission03Card.classList.remove("locked");
+
             mission03Card.classList.add("opened");
 
             return;
@@ -671,6 +663,7 @@ function startMission03Timer(){
         }
 
         const min = Math.floor(distance/1000/60);
+
         const sec = Math.floor((distance/1000)%60);
 
         timerText.innerHTML =
@@ -3442,7 +3435,7 @@ if(checkHidden01){
         const answer=
         hidden01Answer.value.trim();
 
-        if(answer==="정답"){
+        if(answer==="모노멘션"){
 
             hidden01Popup.style.display="none";
 
@@ -3554,7 +3547,7 @@ if(checkHidden02){
         const answer =
         hidden02Answer.value.trim();
 
-        if(answer==="정답"){
+        if(answer==="케키하우스"){
 
             console.log("Hidden02 CLEAR");
 
