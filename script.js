@@ -491,7 +491,7 @@ checkMission02Quiz.addEventListener("click",()=>{
 
 
 
-    if(answer==="정답"){
+    if(answer==="추억"){
 
 
         mission02FacePopup.style.display="block";
@@ -567,7 +567,7 @@ if(checkMission02Code){
         const code =
         mission02Code.value.trim();
 
-        if(code==="2222"){
+        if(code==="1240"){
 
             mission02ClearPopup.style.display="flex";
 
@@ -1267,7 +1267,7 @@ mission03CodeBtn.addEventListener("click",()=>{
     const code =
     mission03CodeInput.value.trim();
 
-    if(code === "3333"){
+    if(code === "record"){
 
         mission03CodePopup.style.display = "none";
 
@@ -1771,7 +1771,7 @@ if(checkMission04Quiz){
         const answer =
         mission04QuizAnswer.value.trim();
 
-        if(answer==="정답"){
+        if(answer==="지름신"){
 
             mission04FacePopup.style.display="block";
 
@@ -2183,7 +2183,7 @@ if(checkMission05Quiz){
         const answer =
         mission05QuizAnswer.value.trim();
 
-        if(answer==="정답"){
+        if(answer==="4570"){
 
             mission05FacePopup.style.display="block";
 
@@ -2249,7 +2249,7 @@ if(checkMission05Code){
         mission05Code.value.trim();
 
 
-        if(code==="5555"){
+        if(code==="3180"){
 
             mission05Status.innerHTML="CLEAR ✓";
 
@@ -2536,7 +2536,7 @@ if(checkMission06Code){
         const code =
         mission06Code.value.trim();
 
-        if(code==="6666"){
+        if(code==="true love"){
 
             mission06ClearPopup.style.display="flex";
 
