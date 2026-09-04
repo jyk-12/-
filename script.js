@@ -3449,7 +3449,6 @@ function startHidden02Opening(){
 
 }
 
-
 // =====================================================
 //                  HIDDEN 02 ANSWER
 // =====================================================
@@ -3463,8 +3462,9 @@ if(checkHidden02){
 
         if(answer==="정답"){
 
-            hidden02Popup.style.display="none";
+            console.log("Hidden02 CLEAR");
 
+            hidden02Popup.style.display="none";
 
             // =================================================
             //          REAL MISSION05 TIMER START
@@ -3475,6 +3475,8 @@ if(checkHidden02){
             mission05OpenTime.setSeconds(
                 mission05OpenTime.getSeconds()+60
             );
+
+            console.log("Real Timer Start");
 
             startMission05Timer();
 
@@ -3487,38 +3489,6 @@ if(checkHidden02){
         }
 
     });
-
-}
-
-
-// =====================================================
-//              HIDDEN 02 TIMER
-// =====================================================
-
-let hidden02OpenTime;
-let hidden02TimerStarted=false;
-
-function startHidden02Timer(){
-
-    if(hidden02TimerStarted) return;
-
-    hidden02TimerStarted=true;
-
-    const timer=setInterval(()=>{
-
-        const now=new Date();
-
-        if(now < hidden02OpenTime){
-
-            return;
-
-        }
-
-        clearInterval(timer);
-
-        startHidden02Opening();
-
-    },1000);
 
 }
 

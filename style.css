@@ -2447,7 +2447,7 @@ MISSION03 MOBILE GAME
 
     opacity:0.85;
 
-    transform:rotate(-18deg);
+    transform:rotate(-20deg);
 
 }
 
@@ -2481,8 +2481,8 @@ MISSION03 MOBILE GAME
 
     border:2px solid red;
 
-    top:41.8%;
-    left:8%;
+    top:41.3%;
+    left:8.3%;
 
     width:22px;
     height:29px;
@@ -2506,10 +2506,10 @@ MISSION03 MOBILE GAME
     border:2px solid red;
 
     top:26%;
-    left:66.6%;
+    left:66.2%;
 
     width:22px;
-    height:36px;
+    height:38.5px;
 
 }
 
@@ -2517,7 +2517,7 @@ MISSION03 MOBILE GAME
 
     border:2px solid red;
 
-    opacity:.7;
+    opacity:.6;
 
     transform:rotate(50deg);
 
@@ -2532,8 +2532,8 @@ MISSION03 MOBILE GAME
     top:92.5%;
     left:87.6%;
 
-    width:32px;
-    height:34px;
+    width:30px;
+    height:32px;
 
 }
 
@@ -2541,7 +2541,7 @@ MISSION03 MOBILE GAME
 
     border:2px solid red;
 
-    opacity:.95;
+    opacity:.85;
 
     transform:rotate(195deg);
 
