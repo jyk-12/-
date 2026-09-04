@@ -1970,18 +1970,11 @@ let mission05OpenTime;
 
 
 // =====================================================
-//              REAL TIMER
-// =====================================================
-
-let mission05RealTimerStarted=false;
-let mission05RealTimeLeft=0;
-
-
-// =====================================================
 //              FAKE TIMER
 // =====================================================
 
 let mission05FakeTimerStarted=false;
+let mission05FakeInterval=null;
 
 function startMission05FakeTimer(){
 
@@ -1989,20 +1982,45 @@ function startMission05FakeTimer(){
 
     mission05FakeTimerStarted=true;
 
-    const fakeTimer=setInterval(()=>{
+    mission05Timer.style.display="block";
+
+    mission05FakeInterval=setInterval(()=>{
 
         const now=new Date();
 
-        if(now>=mission05FakeOpenTime){
+        const distance=
+        mission05FakeOpenTime-now;
 
-            clearInterval(fakeTimer);
+        const timeLeft=
+        Math.max(
+            0,
+            Math.floor(distance/1000)
+        );
+
+        const min=
+        Math.floor(timeLeft/60);
+
+        const sec=
+        timeLeft%60;
+
+        if(mission05State==="locked"){
+
+            mission05Timer.innerHTML=
+            `${String(min).padStart(2,"0")}:${String(sec).padStart(2,"0")}`;
+
+        }
+
+        if(distance<=0){
+
+            clearInterval(mission05FakeInterval);
 
             mission05State="fakeOpen";
+
+            mission05Timer.style.display="none";
 
             setMission05Status("OPEN");
 
             mission05Card.classList.remove("locked");
-
             mission05Card.classList.add("open");
 
         }
@@ -2016,13 +2034,17 @@ function startMission05FakeTimer(){
 //              REAL TIMER
 // =====================================================
 
+let mission05RealTimerStarted=false;
+let mission05RealTimeLeft=0;
+let mission05RealInterval=null;
+
 function startMission05Timer(){
 
     if(mission05RealTimerStarted) return;
 
     mission05RealTimerStarted=true;
 
-    const timer=setInterval(()=>{
+    mission05RealInterval=setInterval(()=>{
 
         const now=new Date();
 
@@ -2035,14 +2057,27 @@ function startMission05Timer(){
             Math.floor(distance/1000)
         );
 
+        // Fake OPEN 클릭 후에만 표시
 
-        // ==========================================
-        // REAL OPEN
-        // ==========================================
+        if(
+            mission05State==="locked" &&
+            mission05Timer.style.display==="block"
+        ){
+
+            const min=
+            Math.floor(mission05RealTimeLeft/60);
+
+            const sec=
+            mission05RealTimeLeft%60;
+
+            mission05Timer.innerHTML=
+            `${String(min).padStart(2,"0")}:${String(sec).padStart(2,"0")}`;
+
+        }
 
         if(distance<=0){
 
-            clearInterval(timer);
+            clearInterval(mission05RealInterval);
 
             mission05State="realOpen";
 
@@ -2051,7 +2086,6 @@ function startMission05Timer(){
             mission05Timer.style.display="none";
 
             mission05Card.classList.remove("locked");
-
             mission05Card.classList.add("open");
 
         }
@@ -2087,25 +2121,14 @@ if(mission05Card){
             mission05State="locked";
 
             mission05Card.classList.remove("open");
-
             mission05Card.classList.add("locked");
 
             setMission05Status("🔒");
 
-
-            const min =
-            Math.floor(mission05RealTimeLeft/60);
-
-            const sec =
-            mission05RealTimeLeft%60;
-
-
-            mission05Timer.innerHTML =
-            `${String(min).padStart(2,"0")}:${String(sec).padStart(2,"0")}`;
-
             mission05Timer.style.display="block";
 
             return;
+
         }
 
 
@@ -2125,6 +2148,77 @@ if(mission05Card){
 
 }
 
+// =====================================================
+//                    MISSION 05 QUIZ
+// =====================================================
+
+const mission05QuizAnswer =
+document.getElementById("mission05QuizAnswer");
+
+const checkMission05Quiz =
+document.getElementById("checkMission05Quiz");
+
+const mission05FacePopup =
+document.getElementById("mission05FacePopup");
+
+const closeMission05FacePopup =
+document.getElementById("closeMission05FacePopup");
+
+const mission05CodeArea =
+document.getElementById("mission05CodeArea");
+
+
+
+if(mission05FacePopup){
+
+    mission05FacePopup.style.display="none";
+
+}
+
+if(mission05CodeArea){
+
+    mission05CodeArea.style.display="none";
+
+}
+
+
+
+if(checkMission05Quiz){
+
+    checkMission05Quiz.addEventListener("click",()=>{
+
+        const answer =
+        mission05QuizAnswer.value.trim();
+
+        if(answer==="정답"){
+
+            mission05FacePopup.style.display="block";
+
+        }
+
+        else{
+
+            alert("다시 입력해주세요!");
+
+        }
+
+    });
+
+}
+
+
+
+if(closeMission05FacePopup){
+
+    closeMission05FacePopup.addEventListener("click",()=>{
+
+        mission05FacePopup.style.display="none";
+
+        mission05CodeArea.style.display="block";
+
+    });
+
+}
 
 // =====================================================
 //                  MISSION 05 CODE
@@ -3466,6 +3560,7 @@ if(checkHidden02){
 
             hidden02Popup.style.display="none";
 
+
             // =================================================
             //          REAL MISSION05 TIMER START
             // =================================================
@@ -3489,6 +3584,38 @@ if(checkHidden02){
         }
 
     });
+
+}
+
+
+// =====================================================
+//              HIDDEN 02 TIMER
+// =====================================================
+
+let hidden02OpenTime;
+let hidden02TimerStarted=false;
+
+function startHidden02Timer(){
+
+    if(hidden02TimerStarted) return;
+
+    hidden02TimerStarted=true;
+
+    const timer=setInterval(()=>{
+
+        const now=new Date();
+
+        if(now < hidden02OpenTime){
+
+            return;
+
+        }
+
+        clearInterval(timer);
+
+        startHidden02Opening();
+
+    },1000);
 
 }
 

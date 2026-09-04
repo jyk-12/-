@@ -2431,7 +2431,7 @@ MISSION03 MOBILE GAME
 
 .item-star{
 
-    border:2px solid red;
+  
 
     top:22.5%;
     left:42.5%;
@@ -2443,8 +2443,7 @@ MISSION03 MOBILE GAME
 
 .item-star img{
 
-    border:2px solid red;
-
+  
     opacity:0.85;
 
     transform:rotate(-20deg);
@@ -2455,7 +2454,7 @@ MISSION03 MOBILE GAME
 
 .item-letter{
 
-    border:2px solid red;
+ 
 
     top:81.5%;
     left:41.5%;
@@ -2467,7 +2466,7 @@ MISSION03 MOBILE GAME
 
 .item-letter img{
 
-    border:2px solid red;
+  
 
     opacity:1;
 
@@ -2479,20 +2478,18 @@ MISSION03 MOBILE GAME
 
 .item-key{
 
-    border:2px solid red;
-
+ 
     top:41.3%;
     left:8.3%;
 
     width:22px;
-    height:29px;
+    height:31.5px;
 
 }
 
 .item-key img{
 
-    border:2px solid red;
-
+   
     opacity:.9;
 
     transform:rotate(78deg);
@@ -2503,21 +2500,20 @@ MISSION03 MOBILE GAME
 
 .item-moon{
 
-    border:2px solid red;
 
-    top:26%;
+    top:26.2%;
     left:66.2%;
 
     width:22px;
-    height:38.5px;
+    height:39px;
 
 }
 
 .item-moon img{
 
-    border:2px solid red;
+   
 
-    opacity:.6;
+    opacity:.55;
 
     transform:rotate(50deg);
 
@@ -2527,23 +2523,19 @@ MISSION03 MOBILE GAME
 
 .item-bear{
 
-    border:2px solid red;
-
     top:92.5%;
-    left:87.6%;
+    left:88.3%;
 
-    width:30px;
-    height:32px;
+    width:29px;
+    height:31px;
 
 }
 
 .item-bear img{
 
-    border:2px solid red;
-
     opacity:.85;
 
-    transform:rotate(195deg);
+    transform:rotate(198deg);
 
 }
 
