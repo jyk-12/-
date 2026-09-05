@@ -244,8 +244,8 @@ new Date();
 // 실제 오픈 시간
 // ==========================
 
-mission02OpenTime.setHours(10);
-mission02OpenTime.setMinutes(31);
+mission02OpenTime.setHours(14);
+mission02OpenTime.setMinutes(0);
 mission02OpenTime.setSeconds(0);
 
 
@@ -605,8 +605,8 @@ if(closeMission02Clear){
 // ===== 실제 =====
 
 mission03OpenTime = new Date();
-mission03OpenTime.setHours(10);
-mission03OpenTime.setMinutes(32);
+mission03OpenTime.setHours(15);
+mission03OpenTime.setMinutes(30);
 mission03OpenTime.setSeconds(0);
 
 // ===== TEST =====
@@ -1262,16 +1262,16 @@ function showMission03CodePopup(){
 
 mission03CodeBtn.addEventListener("click",()=>{
 
-    const code =
-    mission03CodeInput.value.trim();
+   const code =
+mission03Code.value.trim().toLowerCase();
 
-    if(code === "record"){
+if(code==="record"){
 
-        mission03CodePopup.style.display = "none";
+    mission03CodePopup.style.display="none";
 
-        showMission03ClearPopup();
+    showMission03ClearPopup();
 
-    }else{
+}else{
 
         alert("인증번호를 다시 확인해주세요.");
 
@@ -1442,19 +1442,13 @@ function startMission03Event(){
 
     console.log("🚀 Mission03 Event Start");
 
-    // ===== 테스트용 =====
-    const EVENT20 = 1 * 60;
-    const EVENT22 = 2 * 60;
-    const EVENT24 = 3 * 60;
-    const EVENT25 = 4 * 60;
 
-    /*
     // ===== 실제 =====
     const EVENT20 = 20 * 60;
     const EVENT22 = 22 * 60;
     const EVENT24 = 24 * 60;
     const EVENT25 = 25 * 60;
-    */
+
 
     mission03Notice20 = false;
     mission03Notice22 = false;
@@ -1638,8 +1632,8 @@ document.getElementById("mission04Timer");
 let mission04OpenTime = new Date();
 
 // 시간 (리허설)
-mission04OpenTime.setHours(10);
-mission04OpenTime.setMinutes(38);
+mission04OpenTime.setHours(16);
+mission04OpenTime.setMinutes(50);
 mission04OpenTime.setSeconds(0);
 
 // 처음에는 잠금 상태
@@ -1887,8 +1881,8 @@ if(closeMission04Clear){
 
 hidden02OpenTime = new Date();
 
-hidden02OpenTime.setHours(10);
-hidden02OpenTime.setMinutes(39);
+hidden02OpenTime.setHours(16);
+hidden02OpenTime.setMinutes(54);
 hidden02OpenTime.setSeconds(0);
 
 
@@ -1896,8 +1890,8 @@ hidden02OpenTime.setSeconds(0);
 
 mission05FakeOpenTime = new Date();
 
-mission05FakeOpenTime.setHours(10);
-mission05FakeOpenTime.setMinutes(41);
+mission05FakeOpenTime.setHours(17);
+mission05FakeOpenTime.setMinutes(30);
 mission05FakeOpenTime.setSeconds(0);
 
         // =================================================
@@ -2345,8 +2339,8 @@ if(mission06Card){
 let mission06OpenTime = new Date();
 
 // 시간 (리허설)
-mission06OpenTime.setHours(10);
-mission06OpenTime.setMinutes(44);
+mission06OpenTime.setHours(19);
+mission06OpenTime.setMinutes(55);
 mission06OpenTime.setSeconds(0);
 
 
@@ -2595,8 +2589,8 @@ if(closeMission06Clear){
         // endingOpenTime.setDate(25);
 
         // 시간 (리허설용으로 변경)
-        endingOpenTime.setHours(10);
-        endingOpenTime.setMinutes(46);
+        endingOpenTime.setHours(21);
+        endingOpenTime.setMinutes(30);
         endingOpenTime.setSeconds(0);
 
     });
@@ -3585,8 +3579,8 @@ mission05OpenTime = new Date();
 // mission05OpenTime.setDate(25);
 
 // 시간 (리허설용)
-mission05OpenTime.setHours(10);
-mission05OpenTime.setMinutes(42);
+mission05OpenTime.setHours(18);
+mission05OpenTime.setMinutes(0);
 mission05OpenTime.setSeconds(0);
 
 console.log("Real Timer Start");
