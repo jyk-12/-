@@ -245,7 +245,7 @@ new Date();
 // ==========================
 
 mission02OpenTime.setHours(10);
-mission02OpenTime.setMinutes(30);
+mission02OpenTime.setMinutes(31);
 mission02OpenTime.setSeconds(0);
 
 
@@ -1846,7 +1846,7 @@ if(checkMission04Code){
         const code =
         mission04Code.value.trim();
 
-        if(code===""){
+        if(code==="0"){
 
             mission04ClearPopup.style.display="flex";
 
