@@ -244,18 +244,18 @@ new Date();
 // 실제 오픈 시간
 // ==========================
 
-// mission02OpenTime.setHours(0);
-// mission02OpenTime.setMinutes(0);
-// mission02OpenTime.setSeconds(0);
+mission02OpenTime.setHours(10);
+mission02OpenTime.setMinutes(30);
+mission02OpenTime.setSeconds(0);
 
 
 // ==========================
 // TEST (30초)
 // ==========================
 
-mission02OpenTime.setSeconds(
+/*mission02OpenTime.setSeconds(
     mission02OpenTime.getSeconds()+30
-);
+);//*/
 
 
 
@@ -599,24 +599,23 @@ if(closeMission02Clear){
 
 
         // ==========================
-        // MISSION03 OPEN TIME
-        // ==========================
+// MISSION03 OPEN TIME
+// ==========================
 
-        // ===== 실제 =====
+// ===== 실제 =====
 
-        // mission03OpenTime = new Date();
-        // mission03OpenTime.setHours(0);
-        // mission03OpenTime.setMinutes(10);
-        // mission03OpenTime.setSeconds(0);
+mission03OpenTime = new Date();
+mission03OpenTime.setHours(10);
+mission03OpenTime.setMinutes(32);
+mission03OpenTime.setSeconds(0);
 
+// ===== TEST =====
 
-        // ===== TEST =====
+// mission03OpenTime = new Date();
 
-        mission03OpenTime = new Date();
-
-        mission03OpenTime.setSeconds(
-            mission03OpenTime.getSeconds()+30
-        );
+// mission03OpenTime.setSeconds(
+//     mission03OpenTime.getSeconds() + 30
+// );
 
 
         startMission03Timer();
@@ -904,7 +903,7 @@ function createMission03MobileUI(){
 
 function showMission03NoticePopup(){
 
-    alert("실행");
+
 
     mission03NoticeText.innerHTML =
 "숲속 카페 어딘가에<br>" +
@@ -928,7 +927,7 @@ if(closeMission03NoticePopup){
 
         if(mission03CurrentScreen === "start"){
 
-            alert("타이머 시작!");
+        
 
             openMission03BeforeStart();
 
@@ -1038,8 +1037,7 @@ window.addEventListener("resize",()=>{
     // 최초 시작
     if(mission03CurrentScreen === "start"){
 
-        alert("resize 들어옴");
-
+     
         showMission03NoticePopup();
 
     }
@@ -1613,8 +1611,6 @@ if(closeMission03ReTurn){
 
 }
 
-
-
 // =====================================================
 //                    MISSION 04
 // =====================================================
@@ -1635,6 +1631,17 @@ const mission04Timer =
 document.getElementById("mission04Timer");
 
 
+// ======================================
+// ⭐ 실제 오픈 시간 (리허설)
+// ======================================
+
+let mission04OpenTime = new Date();
+
+// 시간 (리허설)
+mission04OpenTime.setHours(10);
+mission04OpenTime.setMinutes(38);
+mission04OpenTime.setSeconds(0);
+
 // 처음에는 잠금 상태
 
 if (mission04Card) {
@@ -1654,20 +1661,16 @@ function startMission04Timer() {
 
     if (!mission04Timer) return;
 
-    let timeLeft = 30;   // ← 필요하면 30초를 원하는 시간으로 변경
-
     mission04Timer.style.display = "block";
 
     const timer = setInterval(() => {
 
-        const min = Math.floor(timeLeft / 60);
+        const now = new Date();
 
-        const sec = timeLeft % 60;
+        const distance =
+        mission04OpenTime - now;
 
-        mission04Timer.innerHTML =
-            `${String(min).padStart(2, "0")}:${String(sec).padStart(2, "0")}`;
-
-        if (timeLeft <= 0) {
+        if (distance <= 0) {
 
             clearInterval(timer);
 
@@ -1679,11 +1682,20 @@ function startMission04Timer() {
 
             mission04Card.classList.add("open");
 
+            return;
+
         }
 
-        timeLeft--;
+        const min =
+        Math.floor(distance / 1000 / 60);
 
-    }, 1000);
+        const sec =
+        Math.floor((distance / 1000) % 60);
+
+        mission04Timer.innerHTML =
+        `${String(min).padStart(2,"0")}:${String(sec).padStart(2,"0")}`;
+
+    },1000);
 
 }
 
@@ -1834,7 +1846,7 @@ if(checkMission04Code){
         const code =
         mission04Code.value.trim();
 
-        if(code==="4444"){
+        if(code===""){
 
             mission04ClearPopup.style.display="flex";
 
@@ -1851,8 +1863,6 @@ if(checkMission04Code){
     });
 
 }
-
-
 
 if(closeMission04Clear){
 
@@ -1871,21 +1881,24 @@ if(closeMission04Clear){
         //              TIMER 시간 설정
         // =================================================
 
-        // ⭐ Hidden02 : 확인 후 20초
-        hidden02OpenTime=new Date();
+        // ⭐ Hidden02 실제 오픈 시간 (행사 전날 수정)
 
-        hidden02OpenTime.setSeconds(
-            hidden02OpenTime.getSeconds()+20
-        );
+        // ⭐ Hidden02
+
+hidden02OpenTime = new Date();
+
+hidden02OpenTime.setHours(10);
+hidden02OpenTime.setMinutes(39);
+hidden02OpenTime.setSeconds(0);
 
 
-        // ⭐ Mission05 Fake OPEN : 확인 후 40초
-        mission05FakeOpenTime=new Date();
+// ⭐ Mission05 Fake OPEN
 
-        mission05FakeOpenTime.setSeconds(
-            mission05FakeOpenTime.getSeconds()+40
-        );
+mission05FakeOpenTime = new Date();
 
+mission05FakeOpenTime.setHours(10);
+mission05FakeOpenTime.setMinutes(41);
+mission05FakeOpenTime.setSeconds(0);
 
         // =================================================
         //              TWO TIMER START
@@ -1898,6 +1911,7 @@ if(closeMission04Clear){
     });
 
 }
+
 
 // =====================================================
 //                    MISSION 05
@@ -2324,22 +2338,16 @@ if(mission06Card){
 
 }
 
-
 // ======================================
-// ⭐ 실제 오픈 시간 (행사 전날 수정)
+// ⭐ 실제 오픈 시간 (리허설)
 // ======================================
 
 let mission06OpenTime = new Date();
 
-// 날짜 (행사 전날 설정)
-// mission06OpenTime.setFullYear(2026);
-// mission06OpenTime.setMonth(8);
-// mission06OpenTime.setDate(25);
-
-// 시간 (행사 전날 설정)
-// mission06OpenTime.setHours(16);
-// mission06OpenTime.setMinutes(0);
-// mission06OpenTime.setSeconds(0);
+// 시간 (리허설)
+mission06OpenTime.setHours(10);
+mission06OpenTime.setMinutes(44);
+mission06OpenTime.setSeconds(0);
 
 
 // ==========================
@@ -2350,20 +2358,16 @@ function startMission06Timer(){
 
     if(!mission06Timer) return;
 
-    let timeLeft = 30;
-
     mission06Timer.style.display="block";
 
     const timer=setInterval(()=>{
 
-        const min=Math.floor(timeLeft/60);
+        const now = new Date();
 
-        const sec=timeLeft%60;
+        const distance =
+        mission06OpenTime - now;
 
-        mission06Timer.innerHTML=
-        `${String(min).padStart(2,"0")}:${String(sec).padStart(2,"0")}`;
-
-        if(timeLeft<=0){
+        if(distance<=0){
 
             clearInterval(timer);
 
@@ -2375,15 +2379,22 @@ function startMission06Timer(){
 
             mission06Card.classList.add("open");
 
+            return;
+
         }
 
-        timeLeft--;
+        const min =
+        Math.floor(distance/1000/60);
+
+        const sec =
+        Math.floor((distance/1000)%60);
+
+        mission06Timer.innerHTML=
+        `${String(min).padStart(2,"0")}:${String(sec).padStart(2,"0")}`;
 
     },1000);
 
 }
-
-
 
 // ==========================
 // OPEN
@@ -2458,22 +2469,24 @@ if(mission06CodeArea){
 
 }
 
+if (checkMission06Quiz) {
 
+    checkMission06Quiz.addEventListener("click", () => {
 
-if(checkMission06Quiz){
+        const answer = mission06QuizAnswer.value
+            .trim()
+            .replace(/\s+/g, "")
+            .toUpperCase();
 
-    checkMission06Quiz.addEventListener("click",()=>{
+        if (
+            answer === "C구역7열37" ||
+            answer === "C구역7열36" ||
+            answer === "C구역7열38"
+        ) {
 
-        const answer =
-        mission06QuizAnswer.value.trim();
+            mission06FacePopup.style.display = "block";
 
-        if(answer==="정답"){
-
-            mission06FacePopup.style.display="block";
-
-        }
-
-        else{
+        } else {
 
             alert("다시 입력해주세요!");
 
@@ -2482,8 +2495,6 @@ if(checkMission06Quiz){
     });
 
 }
-
-
 
 // ==========================
 // FACE POPUP
@@ -2554,8 +2565,6 @@ if(checkMission06Code){
 
 }
 
-
-
 // ==========================
 // FINAL CLOSE
 // ==========================
@@ -2572,17 +2581,28 @@ if(closeMission06Clear){
 
         missionPanel.classList.add("show");
 
-        if(endingButton){ endingButton.style.display="block";}
+        if(endingButton){
 
-       endingOpenTime = new Date();
+            endingButton.style.display="block";
 
-endingOpenTime.setSeconds(
-    endingOpenTime.getSeconds()+20
-);
+        }
+
+        endingOpenTime = new Date();
+
+        // 날짜
+        // endingOpenTime.setFullYear(2026);
+        // endingOpenTime.setMonth(8);
+        // endingOpenTime.setDate(25);
+
+        // 시간 (리허설용으로 변경)
+        endingOpenTime.setHours(10);
+        endingOpenTime.setMinutes(46);
+        endingOpenTime.setSeconds(0);
 
     });
 
 }
+
 
 // =====================================================
 //                      ENDING
@@ -3553,20 +3573,25 @@ if(checkHidden02){
 
             hidden02Popup.style.display="none";
 
+// =================================================
+//          REAL MISSION05 TIMER START
+// =================================================
 
-            // =================================================
-            //          REAL MISSION05 TIMER START
-            // =================================================
+mission05OpenTime = new Date();
 
-            mission05OpenTime=new Date();
+// 날짜
+// mission05OpenTime.setFullYear(2026);
+// mission05OpenTime.setMonth(8);
+// mission05OpenTime.setDate(25);
 
-            mission05OpenTime.setSeconds(
-                mission05OpenTime.getSeconds()+60
-            );
+// 시간 (리허설용)
+mission05OpenTime.setHours(10);
+mission05OpenTime.setMinutes(42);
+mission05OpenTime.setSeconds(0);
 
-            console.log("Real Timer Start");
+console.log("Real Timer Start");
 
-            startMission05Timer();
+startMission05Timer();
 
         }
 
@@ -3596,17 +3621,20 @@ function startHidden02Timer(){
 
     const timer=setInterval(()=>{
 
-        const now=new Date();
+        const now = new Date();
 
-        if(now < hidden02OpenTime){
+        const distance =
+        hidden02OpenTime - now;
+
+        if(distance <= 0){
+
+            clearInterval(timer);
+
+            startHidden02Opening();
 
             return;
 
         }
-
-        clearInterval(timer);
-
-        startHidden02Opening();
 
     },1000);
 
